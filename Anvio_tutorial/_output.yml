@@ -1,0 +1,10 @@
+bookdown::gitbook:
+  highlight: tango
+css: style.css
+config:
+  link: "GitHub repo link"
+text: "About the book text here"
+toc:
+  collapse: section
+before: |
+  <li><a href="./">Demo Book</a></li>

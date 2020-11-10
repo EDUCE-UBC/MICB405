@@ -1,0 +1,26 @@
+---
+title: "Background_information"
+author: "Pranav_Sampara"
+date: "05/11/2020"
+output: 
+  bookdown::html_book:
+documentclass: book
+---
+
+
+# Background information
+
+## Project information
+
+
+## Data collection
+
+
+## Data availability
+
+
+## Goal of the exercise
+The idea is to generate high quality metagenome assembled genomes (MAGs), identify the taxonomy, and the metabolic potential of the MAGs of interest. 
+
+The following chapters provide more information on each of these steps
+

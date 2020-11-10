@@ -1,0 +1,25 @@
+---
+title: "Metagenomics_workflow"
+author: "Pranav_Sampara"
+date: "05/11/2020"
+output: 
+  bookdown::html_book:
+documentclass: book
+---
+
+
+# Metagenomics workflow 
+
+a.	Assembly (vs. co-assembly)
+
+b.	Mapping
+
+c.	Binning
+
+d.	Quality control on the bins
+
+e.	Taxonomic classification
+
+f.	Functional annotation
+
+g.	Any other downstream functions

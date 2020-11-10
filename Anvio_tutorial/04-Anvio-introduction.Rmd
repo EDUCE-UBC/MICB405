@@ -1,0 +1,105 @@
+---
+title: "Anvio introduction"
+author: "Pranav_Sampara"
+date: "05/11/2020"
+output: 
+  bookdown::html_book:
+documentclass: book
+---
+
+
+# Introduction to Anvio 
+
+## What is Anvi'o
+Analysis and visualization platform for ‘omics data, or Anvi’o is an open source platform for analyzing integrated multi-omics data developed by [Eren et al. 2015](https://peerj.com/articles/1319/). \n
+
+Anvi’o provides an excellent platform to visualize and analyze multi-omics data. We would use the platform to bin metagenome assembled genomes (MAGs) and manually refine the MAGs. \n
+
+Please visit [Anvi’o webpage](http://merenlab.org/software/anvio/) to learn more about Anvi'o and Anvi'o usage
+
+We would then summarize, or output, the MAGs and perform quality control by estimating the completion and redundancy of the MAGs using [CheckM](https://github.com/Ecogenomics/CheckM) developed by [Parks et al. 2015](https://genome.cshlp.org/content/25/7/1043). 
+
+Later, we would classify the MAGs using [GTDB-Tk](https://github.com/Ecogenomics/GTDBTk) developed by [Chaumeil et al. 2020](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182)
+
+## Anvi'o installation
+
+The following instructions provide an overview of commands that should work for most systems. For detailed instructions please see [Anvi’o installation resources](http://merenlab.org/2016/06/26/installation-v2/). \n
+
+Step 1: Please have a working install of [miniconda](https://docs.conda.io/en/latest/miniconda.html) on your terminal. Conda installation of Anvi’o is hassle-free and quick. Make sure the installation is updated by running
+
+```
+conda update conda
+```
+
+Step 2: 
+
+For Mac OSX users
+
+```
+# first get a copy of the following file (if you get a "command not found"
+# error for wget, you can either install it first, or manually download the
+# file from that URL:
+wget http://merenlab.org/files/anvio-conda-environments/anvio-environment-6.2.yml
+
+# just to make sure there is not a v6.2 environment already: 
+conda env remove --name anvio-6.2
+
+# create a new v6.2 environment using the file you just downloaded:
+conda env create -f anvio-environment-6.2.yml
+
+# activate that environment
+conda activate anvio-6.2
+
+```
+
+Linux / Windows users:
+```
+conda create -y --name anvio-6.2 python=3.6
+conda activate anvio-6.2
+conda install -y -c conda-forge -c bioconda anvio==6.2
+```
+
+Step 3: Confirm installation
+
+```
+anvi-self-test --suite mini
+```
+
+If all is well, your browser should open and load the test run results \n
+
+## Binning tools installation
+While we are installing Anvi'o, we might as well install binning tools that we would use along with Anvi'o. 
+
+Here we install - 
+
+1.    METABAT2 developed by [Kang et al. 2019](https://peerj.com/articles/7359/)
+
+2. MAXBIN2 developed by [Wu et al. 2016](https://academic.oup.com/bioinformatics/article/32/4/605/1744462)
+
+3. CONCOCT developed by [Alneberg et al. 2014](https://www.nature.com/articles/nmeth.3103)
+
+4. DASTOOL developed by [Sieber et al. 2018](https://www.nature.com/articles/s41564-018-0171-1)
+
+```
+# Metabat2
+conda install metabat2
+
+#Maxbin2
+conda install maxbin2
+
+#Concoct
+conda install -c bioconda concoct
+
+#DAS_Tool
+conda install -c bioconda das_tool
+```
+
+To verify if these binning tools are accessible by Anvi'o, please run these commands:
+
+```
+conda activate anvio-6.2
+anvi-cluster-contigs --help
+```
+You should get a help menu on how to use the binning tools in Anvi’o. If there is a binning tool that is not accessible, you should see **[NOT FOUND]** next to the binning tool name. If you do not see this tex next to the three binning tools you installed, you are good to proceed.
+
+CheckM and GTDB-Tk should be installed on your terminal
