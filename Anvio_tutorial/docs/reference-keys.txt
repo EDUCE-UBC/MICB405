@@ -36,5 +36,4 @@ manual-refinement
 iterative-assessment-and-refinement
 processing-mags
 taxonomic-classification-using-gtdb-tk
-metagenomics-workflow
 references-1
