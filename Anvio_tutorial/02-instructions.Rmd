@@ -1,0 +1,131 @@
+# Instructions {#instructions}
+
+## Goal of the exercise
+The goal is to generate high quality metagenome assembled genomes (MAGs), identify the taxonomy, and the metabolic potential of the MAGs of interest. 
+
+You will be working with metagenomic data from Cruise #. You will be provided with prerequisite information, such as a merged profile database and contigs database, that you would use to bin MAGs and later classify the taxonomy. 
+You would be working on an 'omics analysis and visualization platform, Anvi'o. For binning, you would use Metabat2, Maxbin2, Concoct, and DASTool. For taxonomic classification you would use CheckM and finally to check genome completeness and redundancy you would use CheckM.
+
+
+
+## Timeline
+
+The following provides an outline as well as some specific milestones within the project.
+
+
+
+## Reports
+Reports should be formatted as per the [Instructions to Authors](https://jb.asm.org/sites/default/files/additional-assets/JB-ITA.pdf) for the [Journal of Bacteriology](https://jb.asm.org/).
+
+Each group will complete **one** report with the following sections.
+
+### Abstract
+*200--250 words*
+
+Note that an Importance section is not required.
+
+### Introduction
+*500--750 words*
+
+- Overview of the nitrogen cycle including its global impacts and microbial foundations.
+- Introduce Saanich Inlet as a model ecosystem for studying microbial community responses to ocean deoxygenation *e.g.* seasonal cycles, relevant biogeochemistry, previous studies, etc. 
+
+### Methods
+*300--500 words*
+
+- Briefly describe the data (sampling, sequencing, processing, etc.)
+- Briefly describe your analysis methods including
+    - Anvi'o version and commands used
+    - Binning tools version and commands used
+    - CheckM and GTDB-Tk version and commands used. For GTDB-Tk, please mention the data release that was used
+    - R version and packages used
+    - Statistics (if applicable)
+- Provide three shell scripts and one single R script (if any) (i.e "binning.sh", "completion_redundancy.sh", "taxonomic_classification.sh" and an R script "file_name.R") as individual files (i.e. not as part of your manuscript) containing the complete code to generate your results.
+
+### Results {#research-questions}
+*500--750 words*
+
+Your analysis will focus on **binning and manual refinement** (which is given in your Canvas group name) and the following questions:
+
+
+You must include ≥ 3 figures/panels with titles and full captions. These figures can be combined into multi-panel figures if desired. These figures would typically contain the Anvi'o metagenome visualization, an example of a refined bin, and completion and redundancy estimates with taxonomic classification
+
+### Discussion
+*750--1000 words*
+
+- Frame your depth's results within a broader discussion of Saanich Inlet and the other depths (Apr 6 discussion)
+- Propose expected bins and comment on incomplete bins, and the reasoning behind these results  
+- Future directions
+
+### References
+*10 or more* formatted in the ASM style such as for the [Journal of Bacteriology](https://jb.asm.org/content/organization-and-format). If you are using a reference manager, this style can be downloaded for [EndNote](https://endnote.com/style_download/american-society-for-microbiology-asm-journals-2/), [Mendeley](https://github.com/citation-style-language/styles/blob/master/american-society-for-microbiology.csl), or [Zotero](https://www.zotero.org/styles?q=microbiology).
+
+Make sure to cite the data source papers!
+
+
+
+## Assessment
+Reports will account for 15% of the course marks distributed as follows.
+
+### Peer evaluation (5%)
+**Total: 40 pts**
+
+Peer assessment will occur through [CATME](https://www.catme.org/) wherein everyone will assess themselves and their group members. Marks will be scaled to your evaluation score with 90%+ (or 0.9+ out of 1 within CATME) counting as full marks.
+
+Individuals who do not adequately contribute to their group will forfeit the 5% contributions mark and may be asked to complete the project on their own.
+
+Peer assessment includes:
+
+- Contributing to the team's work
+- Interacting with teammates
+- Expecting quality
+- Having related knowledge, skills, and abilities
+
+Individuals score themselves and all team members on a scale of 1 (unsatisfactory) -- 3 (satisfactory) -- 5 (excellent) in these categories. Scores are then averaged and scaled within team such that 1 corresponds to all team members contributing equally to all categories of assessment:
+
+- 1+ = Mostly 5s
+- 0.95 = Mostly 4s
+- 0.8 = Mostly 3s
+- 0.65 = Mostly 2s
+- 0.5 = Mostly 1s
+
+Marks will be scaled to your CATME score based on the following:
+
+- 0.9 - 1+ = 100% = 40
+- 0.8 - 0.89 = 90% = 36
+- 0.7 - 0.79 = 80% = 32
+- 0.6 - 0.69 = 70% = 28
+- <0.6 = Assessed on a case-by-case basis
+
+
+
+*Unwarranted blanketed low scoring of your team or high scoring of yourself will result in the removal of your scores from the average so that they do not unfairly impact you or your team members.*
+
+If issues occur within your group, please do not hesitate to contact Dr. Hallam (shallam@mail.ubc.ca), or Dr. Koenig (stephan.koenig@ubc.ca) *at any point*. 
+
+
+### Report (10%)
+**Total: 80 pts**
+
+Each group will submit an electronic copy of their group's final report (due **April 24**). Reports will be assessed on:
+
+- Completion of relevant analyses toward answering biological questions
+- Logic and completeness of conclusions made from these analyses
+- Writing clarity, grammar, and style
+- Figure clarity, effectiveness, and relevance
+
+| | **Poor (0-1 pts)**	| **Below average (2-4 pts)**	| **Good (5-7 pts)** |	**Excellent (8-10 pts)**
+------------- | ----------------------- | ----------------------- | ----------------------- | -----------------------
+**Abstract** | Not provided | Summarizes only part of the report or contains numerous inaccuracies | Summarizes most of the report including relevant results; Some inaccuracies or missing pieces | Accurately summarizes the report including background, relevant results, and conclusions; Few to no inaccuracies | 
+**Introduction** | Background information not provided or provided but not relevant to the research question(s); Hypotheses / questions are not stated nor supported by relevant sources | Background is relevant but not sufficient to frame the research question(s); Hypotheses / questions are unclear and/or unsupported | Background is relevant but does not fully frame the research question(s); Hypotheses / questions are unclear or unsupported | Background is relevant and fully frames the research question(s); Hypotheses / questions are clearly stated and supported by scientific sources
+**Methods** | Incomplete and missing numerous methods used; Unclear or confusing | Missing several methods used; Numerous errors or unclear statements | Missing one or more methods used; Results could not be replicated due to issues with clarity or accuracy | Sufficient to allow replication of the results including sampling, sequencing, processing, and analysis; Succinct and not overly wordy
+**Code (R and TreeSAPP)** | Code missing significant portions or is not provided | Code is incomplete or erroneous such that results cannot be replicated; No explanation of code is given | Code replicates results but is verbose or inefficient; Minimal commenting is provided | Code replicates results and is efficient; Detailed explanation of code is provided in comments using # notation
+**Results** | Most of the research questions are not addressed or the results are consistently incomplete or irrelevant | Several research questions are not addressed; Numerous results are incomplete, erroneous, or irrelevant | 1 or more research questions are not fully addressed; Some results are incomplete or do not to pertain to the questions | All research questions are investigated with relevant analyses and figures; Results are clearly stated and not incorrectly or over-interpreted
+**Figures & captions** | 2 or fewer figures are given; Captions are incomplete or missing | 3+ relevant figures are provided but lack proper formatting or completeness; Captions lack numerous details or descriptions | 4+ relevant figures are provided with mostly proper formatting; Captions lack some details or descriptions | 5+ relevant figures are provided with proper formatting; Captions are included for all figures and contain a title as well as description of axes, other aesthetics, and overall data trends
+**Discussion** | Synthesis of results is missing or does not pertain to the data; Statements are not supported by the data | Conclusions are incomplete or not relevant to the data; Multiple research questions are not addressed or results are incorrectly interpreted | Conclusions restate results but without summarization or synthesis across depths; 1 or more questions are not addressed; Some results are incorrectly interpreted | Results are summarized within the context of the original questions and more broadly across depths; Results are correctly interpreted and discussed with scientific language; Conclusions are supported by the data and 1 or more future directions are proposed
+**Writing, grammar, & format** | Grammatical errors, spelling mistakes, and/or language cause significant issues in understanding of the content throughout | Numerous grammatical, spelling, or language errors that negatively impact understanding; Some language is overly verbose or informal; One or more sections significantly differ from the recommended length | Some grammatical, spelling, or language errors that negatively impact understanding occur; Some language is overly verbose or informal; One section may significantly differ from the recommended length | Minimal to no errors; Formal scientific language used throughout; Text flows and is easy to read; Sections adhere to word limits; Report provided in J Bacteriology format
+
+
+
+## UJEMI submission
+Outstanding reports will be invited to submit to The Undergraduate Journal of Experimental Microbiology and Immunology ([UJEMI](https://jemi.microbiology.ubc.ca/)). More information on this will be provided near the end of the Finals Period.

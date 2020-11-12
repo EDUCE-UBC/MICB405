@@ -31,7 +31,7 @@ Clearly, this book is an introduction to binning and refinement. To maximize the
 A few key aspects that make metagenomics a valuable tool are:
 
 a.	Ecophysiology: Enables the study of who is capable of doing what. In other words, function and identity relationships in the community or ecosystem of interest can be probed.
-Read [Spang et al. 2019](Read https://www.nature.com/articles/s41564-019-0406-9) \n
+Read [Spang et al. 2019](https://www.nature.com/articles/s41564-019-0406-9) \n
 
 b.	Ecology: Estimate community characteristics – richness, diversity indices. Additionally, specific community functions can be investigated.
 Read [Louca et al. 2016](https://www.pnas.org/content/113/40/E5925.long) \n

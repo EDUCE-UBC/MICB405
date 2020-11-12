@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Introduction to Anvio | Introduction</title>
-  <meta name="description" content="4 Introduction to Anvio | Introduction" />
+  <title>8 References | Introduction</title>
+  <meta name="description" content="8 References | Introduction" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Introduction to Anvio | Introduction" />
+  <meta property="og:title" content="8 References | Introduction" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Introduction to Anvio | Introduction" />
+  <meta name="twitter:title" content="8 References | Introduction" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="background-information.html"/>
-<link rel="next" href="anvio-binning-exercise.html"/>
+<link rel="prev" href="metagenomics-workflow.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -134,81 +134,26 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction-to-anvio" class="section level1">
-<h1><span class="header-section-number">4</span> Introduction to Anvio</h1>
-<div id="what-is-anvio" class="section level2">
-<h2><span class="header-section-number">4.1</span> What is Anvi’o</h2>
-<p>Analysis and visualization platform for ‘omics data, or Anvi’o is an open source platform for analyzing integrated multi-omics data developed by <a href="https://peerj.com/articles/1319/">Eren et al. 2015</a>. </p>
-<p>Anvi’o provides an excellent platform to visualize and analyze multi-omics data. We would use the platform to bin metagenome assembled genomes (MAGs) and manually refine the MAGs. </p>
-<p>Please visit <a href="http://merenlab.org/software/anvio/">Anvi’o webpage</a> to learn more about Anvi’o and Anvi’o usage</p>
-<p>We would then summarize, or output, the MAGs and perform quality control by estimating the completion and redundancy of the MAGs using <a href="https://github.com/Ecogenomics/CheckM">CheckM</a> developed by <a href="https://genome.cshlp.org/content/25/7/1043">Parks et al. 2015</a>.</p>
-<p>Later, we would classify the MAGs using <a href="https://github.com/Ecogenomics/GTDBTk">GTDB-Tk</a> developed by <a href="https://academic.oup.com/bioinformatics/article/36/6/1925/5626182">Chaumeil et al. 2020</a></p>
-</div>
-<div id="anvio-installation" class="section level2">
-<h2><span class="header-section-number">4.2</span> Anvi’o installation</h2>
-<p>The following instructions provide an overview of commands that should work for most systems. For detailed instructions please see <a href="http://merenlab.org/2016/06/26/installation-v2/">Anvi’o installation resources</a>. </p>
-<p>Step 1: Please have a working install of <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> on your terminal. Conda installation of Anvi’o is hassle-free and quick. Make sure the installation is updated by running</p>
-<pre><code>conda update conda</code></pre>
-<p>Step 2:</p>
-<p>For Mac OSX users</p>
-<pre><code># first get a copy of the following file (if you get a &quot;command not found&quot;
-# error for wget, you can either install it first, or manually download the
-# file from that URL:
-wget http://merenlab.org/files/anvio-conda-environments/anvio-environment-6.2.yml
-
-# just to make sure there is not a v6.2 environment already: 
-conda env remove --name anvio-6.2
-
-# create a new v6.2 environment using the file you just downloaded:
-conda env create -f anvio-environment-6.2.yml
-
-# activate that environment
-conda activate anvio-6.2
-</code></pre>
-<p>Linux / Windows users:</p>
-<pre><code>conda create -y --name anvio-6.2 python=3.6
-conda activate anvio-6.2
-conda install -y -c conda-forge -c bioconda anvio==6.2</code></pre>
-<p>Step 3: Confirm installation</p>
-<pre><code>anvi-self-test --suite mini</code></pre>
-<p>If all is well, your browser should open and load the test run results </p>
-</div>
-<div id="binning-tools-installation" class="section level2">
-<h2><span class="header-section-number">4.3</span> Binning tools installation</h2>
-<p>While we are installing Anvi’o, we might as well install binning tools that we would use along with Anvi’o.</p>
-<p>Here we install -</p>
+<div id="references-1" class="section level1">
+<h1><span class="header-section-number">8</span> References</h1>
 <ol style="list-style-type: decimal">
-<li><p>METABAT2 developed by <a href="https://peerj.com/articles/7359/">Kang et al. 2019</a></p></li>
-<li><p>MAXBIN2 developed by <a href="https://academic.oup.com/bioinformatics/article/32/4/605/1744462">Wu et al. 2016</a></p></li>
-<li><p>CONCOCT developed by <a href="https://www.nature.com/articles/nmeth.3103">Alneberg et al. 2014</a></p></li>
-<li><p>DASTOOL developed by <a href="https://www.nature.com/articles/s41564-018-0171-1">Sieber et al. 2018</a></p></li>
+<li><p>Eren, A. M. et al. Anvi’o: an advanced analysis and visualization platform for ‘omics data. PeerJ 3, e1319 (2015).</p></li>
+<li><p>Kang, D. D. et al. MetaBAT 2: an adaptive binning algorithm for robust and efficient genome reconstruction from metagenome assemblies. PeerJ 7, e7359 (2019).</p></li>
+<li><p>Wu, Y.-W., Simmons, B. A. &amp; Singer, S. W. MaxBin 2.0: an automated binning algorithm to recover genomes from multiple metagenomic datasets. Bioinformatics 32, 605–607 (2016).</p></li>
+<li><p>Parks, D. H. et al. A standardized bacterial taxonomy based on genome phylogeny substantially revises the tree of life. Nat Biotechnol 36, 996–1004 (2018).</p></li>
+<li><p>Sun, C. L., Thomas, B. C., Barrangou, R. &amp; Banfield, J. F. Metagenomic reconstructions of bacterial CRISPR loci constrain population histories. The ISME Journal 10, 858–870 (2016).</p></li>
+<li><p>Louca, S. et al. Integrating biogeochemistry with multiomic sequence information in a model oxygen minimum zone. PNAS 113, E5925–E5933 (2016).</p></li>
+<li><p>Spang, A. et al. Proposal of the reverse flow model for the origin of the eukaryotic cell based on comparative analyses of Asgard archaeal metabolism. Nature Microbiology 4, 1138–1148 (2019).</p></li>
 </ol>
-<pre><code># Metabat2
-conda install metabat2
 
-#Maxbin2
-conda install maxbin2
-
-#Concoct
-conda install -c bioconda concoct
-
-#DAS_Tool
-conda install -c bioconda das_tool</code></pre>
-<p>To verify if these binning tools are accessible by Anvi’o, please run these commands:</p>
-<pre><code>conda activate anvio-6.2
-anvi-cluster-contigs --help</code></pre>
-<p>You should get a help menu on how to use the binning tools in Anvi’o. If there is a binning tool that is not accessible, you should see <strong>[NOT FOUND]</strong> next to the binning tool name. If you do not see this tex next to the three binning tools you installed, you are good to proceed.</p>
-<p>CheckM and GTDB-Tk should be installed on your terminal</p>
-
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="background-information.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="anvio-binning-exercise.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="metagenomics-workflow.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
