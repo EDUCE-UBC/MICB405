@@ -6,6 +6,7 @@ key-points-to-be-aware-of-and-known-pitfalls-in-metagenomics
 basic-outline-of-a-metagenomics-pipeline
 instructions
 goal-of-the-exercise
+project-ideas
 timeline
 reports
 abstract

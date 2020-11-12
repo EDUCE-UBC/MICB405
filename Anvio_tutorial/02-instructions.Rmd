@@ -6,6 +6,12 @@ The goal is to generate high quality metagenome assembled genomes (MAGs), identi
 You will be working with metagenomic data from Cruise #. You will be provided with prerequisite information, such as a merged profile database and contigs database, that you would use to bin MAGs and later classify the taxonomy. 
 You would be working on an 'omics analysis and visualization platform, Anvi'o. For binning, you would use Metabat2, Maxbin2, Concoct, and DASTool. For taxonomic classification you would use CheckM and finally to check genome completeness and redundancy you would use CheckM.
 
+## Project ideas
+- Determine what fractions of contigs map to MAGs vs contigs not in MAGs, as a way to evaluate the total amount of information available to evaluate
+- Evaluate nitrogen cycling genes within MAGs using Prokka and TreeSAPP annotations
+-Compare taxonomic assignment TreeSAPP identified genes to GTDB-Tk assigned taxonomies of MAGs, generated using Anvi'o. Can you identify known groups based on published work
+-Evaluate changes in nitrogen cycling gene taxonomy and abundance at different depths in the Saanich inlet water column
+
 
 
 ## Timeline
@@ -45,16 +51,22 @@ Note that an Importance section is not required.
 ### Results {#research-questions}
 *500--750 words*
 
-Your analysis will focus on **binning and manual refinement** (which is given in your Canvas group name) and the following questions:
+Your analysis will focus on **binning and manual refinement, generating high quality bins (assessed by CheckM), assigning taxonomy, and metabolic networks of interested taxa and gene modules (typically denitrification genes, but you can be creative)** (which is given in your Canvas group name) and the following questions:
 
 
-You must include ≥ 3 figures/panels with titles and full captions. These figures can be combined into multi-panel figures if desired. These figures would typically contain the Anvi'o metagenome visualization, an example of a refined bin, and completion and redundancy estimates with taxonomic classification
+You must include ≥  figures/panels with titles and full captions. These figures can be combined into multi-panel figures if desired. These figures would typically contain 
+- The Anvi'o metagenome visualization and an example of a refined bin. 
+- Completion and redundancy estimates with GTDB-Tk taxonomic classification at phylum and family levels
+- Plot depth of MAG coverage relative to the number of reads in the metagenome for each depth
+- Generate annotations for predicted ORFs on contigs and MAGs using Prokka, and 
+- Compare recovery of nitrogen cycling genesbetween MAGs and assembled contigs between Prokka and TreeSAPP
 
 ### Discussion
 *750--1000 words*
 
 - Frame your depth's results within a broader discussion of Saanich Inlet and the other depths (Apr 6 discussion)
-- Propose expected bins and comment on incomplete bins, and the reasoning behind these results  
+- Propose expected taxa and comment on coverage, and the reasoning behind these results  
+- Provide a discussion on metabolic networks of the interested taxa
 - Future directions
 
 ### References
