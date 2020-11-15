@@ -1,13 +1,3 @@
----
-title: "Anvio binning exercise"
-author: "Pranav_Sampara"
-date: "05/11/2020"
-output: 
-  bookdown::html_book:
-documentclass: book
----
-
-
 # Anvio binning exercise 
 
 You will be provided with contigs and merged profiles’ database to run binning and later manual refinement on the bins. 

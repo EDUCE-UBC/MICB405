@@ -1,13 +1,3 @@
----
-title: "Anvio introduction"
-author: "Pranav_Sampara"
-date: "05/11/2020"
-output: 
-  bookdown::html_book:
-documentclass: book
----
-
-
 # Introduction to Anvio 
 
 ## What is Anvi'o

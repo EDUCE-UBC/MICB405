@@ -1,13 +1,3 @@
----
-title: "Background_information"
-author: "Pranav_Sampara"
-date: "05/11/2020"
-output: 
-  bookdown::html_book:
-documentclass: book
----
-
-
 # Background information
 
 ## Project information

@@ -1,12 +1,3 @@
----
-title: "References"
-author: "Pranav_Sampara"
-date: "05/11/2020"
-output: 
-  bookdown::html_book:
-documentclass: book
----
-
 # References
 
 1.	Eren, A. M. et al. Anvi’o: an advanced analysis and visualization platform for ‘omics data. PeerJ 3, e1319 (2015).
