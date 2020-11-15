@@ -8,49 +8,49 @@ description: "This is a minimal example of using the bookdown package to write a
 ---
 
 # Introduction
+
 This book is a brief guide to illustrate a typical binning and manual refinement workflow on the Anvio platform. This book uses four binning tools - METABAT2, MAXBIN2, CONCOCT, and DASTool. CheckM is used for MAG quality assessment and GTDB-Tk is used for taxonomic classification. Finally, TreeSAPP is used for functional annotation.
 
 ## Guide to the book
+
 An introduction to 'omics methods is provided with a commentary and focus on metagenomics. Typical workflow, key points, and usual pitfalls for metagenomic analysis is provided
 
 Later, an introduction to the exercise that is to be done on Anvio is provided. This part of the book contains the project brief, data collection, and description of the data provided to students is discussed
 
 Next, a brief introduction and installation guide to Anvio and binning tools is provided
 
-Finally, example scripts are provided to achieve the final goal of high quality bins, taxonomic classification, and functional annotation of interested taxa. 
+Finally, example scripts are provided to achieve the final goal of high quality bins, taxonomic classification, and functional annotation of interested taxa.
 
 Clearly, this book is an introduction to binning and refinement. To maximize the benefit of this tutorial, please read the supporting scientific literature wherever provided and beyond.
 
 ## Brief introduction to 'omics methods
 
-
 ## Some key aspects of metagenomics
 
 A few key aspects that make metagenomics a valuable tool are:
 
-a.	Ecophysiology: Enables the study of who is capable of doing what. In other words, function and identity relationships in the community or ecosystem of interest can be probed.
-Read [Spang et al. 2019](https://www.nature.com/articles/s41564-019-0406-9) \n
+a.  Ecophysiology: Enables the study of who is capable of doing what. In other words, function and identity relationships in the community or ecosystem of interest can be probed. Read [Spang et al. 2019](https://www.nature.com/articles/s41564-019-0406-9)
 
-b.	Ecology: Estimate community characteristics – richness, diversity indices. Additionally, specific community functions can be investigated.
-Read [Louca et al. 2016](https://www.pnas.org/content/113/40/E5925.long) \n
+b.  Ecology: Estimate community characteristics -- richness, diversity indices. Additionally, specific community functions can be investigated. Read [Louca et al. 2016](https://www.pnas.org/content/113/40/E5925.long)
 
-c.	Evolution: Finally, an investigation into how populations evolve in their natural habitat is possible with metagenomics. Particularly, selective pressures, if any, can be identified. Of course, you may need time-series sequencing and biogeochemistry data associated with the ecosystem of interest.
-Read [Sun et al. 2016](https://www.nature.com/articles/ismej2015162)
-\n
+c.  Evolution: Finally, an investigation into how populations evolve in their natural habitat is possible with metagenomics. Particularly, selective pressures, if any, can be identified. Of course, you may need time-series sequencing and biogeochemistry data associated with the ecosystem of interest. Read [Sun et al. 2016](https://www.nature.com/articles/ismej2015162)
 
 ## Key points to be aware of and known pitfalls in metagenomics
-
 
 ## Basic outline of a metagenomics pipeline
 
 Although there can be many means to make sense of the information in metagenomic datasets, a typical workflow consists of the following steps after generating sequencing data:
 
-1.    Quality control, or polishing, of the raw reads \n 
+1.  Quality control, or polishing, of the raw reads
 
-2.    Assembly of the raw reads into contiguous sequences, or contigs, and scaffolds \n
+2.  Assembly of the raw reads into contiguous sequences, or contigs, and scaffolds
 
-3.    Generation of coverage information by mapping the assembled reads to the polished reads \n
-4.    Using sequence composition and coverage information to group, or bin, similar contigs. These bins are referred to as metagenome-assembled genomes or MAGs \n
-5.    Quality control of the MAGs to assess completion and contamination \n
-6.    Taxonomic classification and functional annotation of MAGs to identify who is present and what their metabolic potential is \n
-7.    Phylogenomic or phylogenetic study of genomes or genes of interest and pangenomic analysis of similar taxa can be also be done to study the community networks \n
+3.  Generation of coverage information by mapping the assembled reads to the polished reads
+
+4.  Using sequence composition and coverage information to group, or bin, similar contigs. These bins are referred to as metagenome-assembled genomes or MAGs
+
+5.  Quality control of the MAGs to assess completion and contamination
+
+6.  Taxonomic classification and functional annotation of MAGs to identify who is present and what their metabolic potential is
+
+7.  Phylogenomic or phylogenetic study of genomes or genes of interest and pangenomic analysis of similar taxa can be also be done to study the community networks

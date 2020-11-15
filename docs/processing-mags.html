@@ -164,15 +164,20 @@
 <p>The following commands will generate taxonomic classification of archaeal and bacterial MAGs</p>
 <pre><code>#Create GTDB-Tk output directory
 mkdir ~/path_to_gtdbtk_output_dir
+
 #Create variable for output directory
 gtdbtk_out=~/path_to_gtdb_output_dir
+
 #Establish bins’ fasta files directory 
 in_fasta=~/path_to_output_fasta_files
+
 #Export GTDB-Tk data path
 export GTDBTK_DATA_PATH=~/path_to_GTDB_data
+
 #Operational parameters – change as required on your system
 threads=48
 pplacer_threads=24
+
 #Run GTDB-Tk
 gtdbtk classify_wf -x fa --genome_dir $in_fasta \
     --out_dir $gtdbtk_out \
