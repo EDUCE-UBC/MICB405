@@ -1,4 +1,4 @@
-# Introduction to Anvio
+# Introduction to Anvi'o
 
 ## What is Anvi'o
 

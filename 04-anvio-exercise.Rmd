@@ -1,4 +1,4 @@
-# Anvio binning exercise 
+# Anvi'o binning exercise 
 
 You will be provided with contigs and merged profiles’ database to run binning and later manual refinement on the bins. 
 

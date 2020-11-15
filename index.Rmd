@@ -9,15 +9,15 @@ description: "This is a minimal example of using the bookdown package to write a
 
 # Introduction
 
-This book is a brief guide to illustrate a typical binning and manual refinement workflow on the Anvio platform. This book uses four binning tools - METABAT2, MAXBIN2, CONCOCT, and DASTool. CheckM is used for MAG quality assessment and GTDB-Tk is used for taxonomic classification. Finally, TreeSAPP is used for functional annotation.
+This book is a brief guide to illustrate a typical binning and manual refinement workflow on the Anvi'o platform. This book uses four binning tools - METABAT2, MAXBIN2, CONCOCT, and DASTool. CheckM is used for MAG quality assessment and GTDB-Tk is used for taxonomic classification. Finally, TreeSAPP is used for functional annotation.
 
 ## Guide to the book
 
 An introduction to 'omics methods is provided with a commentary and focus on metagenomics. Typical workflow, key points, and usual pitfalls for metagenomic analysis is provided
 
-Later, an introduction to the exercise that is to be done on Anvio is provided. This part of the book contains the project brief, data collection, and description of the data provided to students is discussed
+Later, an introduction to the exercise that is to be done on Anvi'o is provided. This part of the book contains the project brief, data collection, and description of the data provided to students is discussed
 
-Next, a brief introduction and installation guide to Anvio and binning tools is provided
+Next, a brief introduction and installation guide to Anvi'o and binning tools is provided
 
 Finally, example scripts are provided to achieve the final goal of high quality bins, taxonomic classification, and functional annotation of interested taxa.
 
