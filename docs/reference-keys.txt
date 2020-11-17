@@ -1,7 +1,7 @@
 introduction
 guide-to-the-book
 brief-introduction-to-omics-methods
-some-key-aspects-of-metagenomics
+some-key-features-of-metagenomic-analysis
 key-points-to-be-aware-of-and-known-pitfalls-in-metagenomics
 basic-outline-of-a-metagenomics-pipeline
 instructions
@@ -26,10 +26,9 @@ introduction-to-anvio
 what-is-anvio
 anvio-installation
 binning-tools-installation
-anvio-binning-exercise
 automatic-binning-on-anvio-using-metabat2-maxbin2-and-concoct
 note-to-educe-tas
-assessing-quality-bins
+assessing-quality-mags
 note-the-mag-quality
 manual-refinement
 iterative-assessment-and-refinement

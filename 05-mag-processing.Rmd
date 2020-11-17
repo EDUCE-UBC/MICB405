@@ -4,17 +4,17 @@ Taxonomic classification can be done with GTDB-Tk. GTDB-Tk is a toolkit for usin
 
 For an in-depth commentary on how to utilize GTDB-Tk please visit https://ecogenomics.github.io/GTDBTk/
 
-After taxonomic classification, functional annotation can be done using TreeSAPP
+After taxonomic classification, functional annotation can be done using different applications including prokka or TreeSAPP.
 
- You will be implementing a pipeline called Tree-based Sensitive and Accurate Protein Profiler (**TreeSAPP**) for automated reconstruction of the nitrogen cycle along defined redox gradients in Saanich Inlet using the Google Cloud Platform. TreeSAPP takes either metagenomic or metatranscriptomic reads and aligns them to previously binned sequence data with each bin representing a putative microbial taxon.
+Here, you will be implementing the Tree-based Sensitive and Accurate Protein Profiler (**TreeSAPP**) for automated reconstruction of the nitrogen cycle along defined redox gradients in Saanich Inlet. TreeSAPP takes either metagenomic or metatranscriptomic reads and aligns them to previously binned sequence data with each bin representing a putative microbial taxon.
  
 TreeSAPP determines three things:
 
-A. What taxa are in our metagenomic and metatranscriptomic data represented?
+A. What taxa are represented in the metagenomic or metatranscriptomic sample?
 
-B. Which marker genes do these taxa contain (metagenomic data) or actually express (metatranscriptomic data)?
+B. Which marker genes do these taxa encode (metagenomic data) or express (metatranscriptomic data)?
 
-C. At what levels are those genes represented (metagenomic data) or expressed by the taxon?
+C. At what levels are these genes present (metagenomic data) or expressed in the sample?
 
 Please see the [TreeSAPP wiki](https://github.com/hallamlab/TreeSAPP/wiki/Classifying-sequences-with-treesapp-assign) for more information on `treesapp assign`, the subcommand you will use. You will be provided with a script template for both the shell and R portion of your analysis ("treesapp_analysis.sh" and "treesapp_analysis.R") that will guide you as you develop your code.
 
@@ -46,4 +46,4 @@ gtdbtk classify_wf -x fa --genome_dir $in_fasta \
 	--pplacer_cpus $pplacer_threads
 ```
 
-You would obtain two soft links in the gtdbtk output directory, each for bacteria and archaea taxonomic classification. Please follow the soft link to locate the actual files for taxonomic classification, and download to your system.
+You will obtain two soft links in the gtdbtk output directory, each for bacteria and archaea taxonomic classification. Please follow the soft link to locate the actual files for taxonomic classification, and download to your system.
