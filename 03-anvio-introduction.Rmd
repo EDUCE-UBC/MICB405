@@ -1,22 +1,20 @@
-# Introduction to Anvi'o
+# Introduction to anvi'o
 
-## What is Anvi'o
+## What is anvi'o
 
-Analysis and visualization platform for 'omics data, or Anvi'o is an open source platform for analyzing integrated multi-omics data developed by [Eren et al. 2015](https://peerj.com/articles/1319/).
+Analysis and visualization platform for 'omics data, or anvi'o was developed by [Eren et al. 2015](https://peerj.com/articles/1319/) at the University of Chicago. Anvi'o is an open source platform for analyzing integrated multi-omics data and provides a useful and intiutive framework for constructing and curating metagenome assebled genomes (MAGs)  
 
-Anvi'o provides an excellent platform to visualize and analyze multi-omics data. We would use the platform to bin metagenome assembled genomes (MAGs) and manually refine the MAGs.
+In this tutorial we will use anvi'o to constrcut metagenome assembled genomes (MAGs) from the Saanich Inlet water column with manual refinement. Please visit [anvi'o webpage](http://merenlab.org/software/anvio/) to learn more about the platform and its usage.
 
-Please visit [Anvi'o webpage](http://merenlab.org/software/anvio/) to learn more about Anvi'o and Anvi'o usage.
+After constructing MAGs from several depth intervals you will perform quality control by estimating completion and contamination using [CheckM](https://github.com/Ecogenomics/CheckM) developed by [Parks et al. 2015](https://genome.cshlp.org/content/25/7/1043).
 
-We would then summarize, or output, the MAGs and perform quality control by estimating the completion and redundancy of the MAGs using [CheckM](https://github.com/Ecogenomics/CheckM) developed by [Parks et al. 2015](https://genome.cshlp.org/content/25/7/1043).
+You will then classify medium to high-quality MAGs [Bowers et al. 2017](https://rdcu.be/b9JqO) using [GTDB-Tk](https://github.com/Ecogenomics/GTDBTk) developed by [Chaumeil et al. 2020](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182).
 
-Later, we would classify the MAGs using [GTDB-Tk](https://github.com/Ecogenomics/GTDBTk) developed by [Chaumeil et al. 2020](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182).
+## anvi'o installation
 
-## Anvi'o installation
+The following instructions based on documentation provided by the Meren lab provide an overview of commands that should work for most operating systems. For detailed instructions please see [anvi'o installation resources](http://merenlab.org/2016/06/26/installation-v2/).
 
-The following instructions provide an overview of commands that should work for most systems. For detailed instructions please see [Anvi'o installation resources](http://merenlab.org/2016/06/26/installation-v2/).
-
-Step 1: Please have a working install of [miniconda](https://docs.conda.io/en/latest/miniconda.html) on your terminal. Conda installation of Anvi'o is hassle-free and quick. Make sure the installation is updated by running
+Step 1: Please have a working install of [miniconda](https://docs.conda.io/en/latest/miniconda.html) on your terminal. Conda installation of anvi'o is hassle-free and quick. Make sure the installation is updated by running
 
 ```
 conda update conda
@@ -60,7 +58,7 @@ If all is well, your browser should open and load the test run results \n
 
 ## Binning tools installation
 
-While we are installing Anvi'o, we might as well install binning tools that we would use along with Anvi'o.
+While we are installing anvi'o, we might as well install binning tools needed to construct MAGs.
 
 Here we install -
 
@@ -86,13 +84,13 @@ conda install -c bioconda concoct
 conda install -c bioconda das\_tool
 ```
 
-To verify if these binning tools are accessible by Anvi'o, please run these commands:
+To verify if these binning tools are accessible by anvi'o, please run these commands:
 
 ```
 conda activate anvio-6.2
 anvi-cluster-contigs --help
 ````
 
-You should get a help menu on how to use the binning tools in Anvi'o. If there is a binning tool that is not accessible, you should see **[NOT FOUND]** next to the binning tool name. If you do not see this tex next to the three binning tools you installed, you are good to proceed.
+You should get a help menu on how to use the binning tools in anvi'o. If there is a binning tool that is not accessible, you should see **[NOT FOUND]** next to the binning tool name. If you do not see this tex next to the three binning tools you installed, you are good to proceed.
 
-CheckM and GTDB-Tk should be installed on your terminal.
+CheckM (https://anaconda.org/bioconda/checkm-genome) and GTDB-Tk (https://anaconda.org/bioconda/gtdbtk) should also be installed on your terminal.

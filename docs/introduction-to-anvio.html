@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Introduction to Anvi’o | Anvi’o binning and refinement tutorial</title>
+  <title>4 Introduction to anvi’o | anvi’o binning and refinement tutorial</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Introduction to Anvi’o | Anvi’o binning and refinement tutorial" />
+  <meta property="og:title" content="4 Introduction to anvi’o | anvi’o binning and refinement tutorial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,14 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Introduction to Anvi’o | Anvi’o binning and refinement tutorial" />
+  <meta name="twitter:title" content="4 Introduction to anvi’o | anvi’o binning and refinement tutorial" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
-<meta name="author" content="Pranav Sampara" />
+<meta name="author" content="Pranav Sampara and Steven Hallam" />
 
 
-<meta name="date" content="2020-05-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,8 +31,7 @@
   
   
 <link rel="prev" href="background-information.html"/>
-<link rel="next" href="anvio-binning-exercise.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<link rel="next" href="processing-mags.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -72,20 +70,17 @@
 <li><a href="./">Anvio binning and refinement tutorial</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
-<ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#guide-to-the-book"><i class="fa fa-check"></i><b>1.1</b> Guide to the book</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#brief-introduction-to-omics-methods"><i class="fa fa-check"></i><b>1.2</b> Brief introduction to ’omics methods</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#some-key-aspects-of-metagenomics"><i class="fa fa-check"></i><b>1.3</b> Some key aspects of metagenomics</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#some-key-features-of-metagenomic-analysis"><i class="fa fa-check"></i><b>1.3</b> Some key features of metagenomic analysis</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#key-points-to-be-aware-of-and-known-pitfalls-in-metagenomics"><i class="fa fa-check"></i><b>1.4</b> Key points to be aware of and known pitfalls in metagenomics</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#basic-outline-of-a-metagenomics-pipeline"><i class="fa fa-check"></i><b>1.5</b> Basic outline of a metagenomics pipeline</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i><b>2</b> Instructions</a>
-<ul>
+<li class="chapter" data-level="2" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i><b>2</b> Instructions</a><ul>
 <li class="chapter" data-level="2.1" data-path="instructions.html"><a href="instructions.html#goal-of-the-exercise"><i class="fa fa-check"></i><b>2.1</b> Goal of the exercise</a></li>
 <li class="chapter" data-level="2.2" data-path="instructions.html"><a href="instructions.html#project-ideas"><i class="fa fa-check"></i><b>2.2</b> Project ideas</a></li>
-<li class="chapter" data-level="2.3" data-path="instructions.html"><a href="instructions.html#reports-and-assessment"><i class="fa fa-check"></i><b>2.3</b> Reports and Assessment</a>
-<ul>
+<li class="chapter" data-level="2.3" data-path="instructions.html"><a href="instructions.html#reports-and-assessment"><i class="fa fa-check"></i><b>2.3</b> Reports and Assessment</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="instructions.html"><a href="instructions.html#abstract-250-word-max."><i class="fa fa-check"></i><b>2.3.1</b> Abstract (250 word max.)</a></li>
 <li class="chapter" data-level="2.3.2" data-path="instructions.html"><a href="instructions.html#importance-120-word-max."><i class="fa fa-check"></i><b>2.3.2</b> Importance (120 word max.)</a></li>
 <li class="chapter" data-level="2.3.3" data-path="instructions.html"><a href="instructions.html#introduction-1250-words"><i class="fa fa-check"></i><b>2.3.3</b> Introduction (1250 words)</a></li>
@@ -98,36 +93,28 @@
 <li class="chapter" data-level="2.3.10" data-path="instructions.html"><a href="instructions.html#ujemi-submission"><i class="fa fa-check"></i><b>2.3.10</b> UJEMI submission</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="background-information.html"><a href="background-information.html"><i class="fa fa-check"></i><b>3</b> Background information</a>
-<ul>
+<li class="chapter" data-level="3" data-path="background-information.html"><a href="background-information.html"><i class="fa fa-check"></i><b>3</b> Background information</a><ul>
 <li class="chapter" data-level="3.1" data-path="background-information.html"><a href="background-information.html#project-information"><i class="fa fa-check"></i><b>3.1</b> Project information</a></li>
 <li class="chapter" data-level="3.2" data-path="background-information.html"><a href="background-information.html#data-collection"><i class="fa fa-check"></i><b>3.2</b> Data collection</a></li>
 <li class="chapter" data-level="3.3" data-path="background-information.html"><a href="background-information.html#data-availability"><i class="fa fa-check"></i><b>3.3</b> Data availability</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html"><i class="fa fa-check"></i><b>4</b> Introduction to Anvi’o</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#what-is-anvio"><i class="fa fa-check"></i><b>4.1</b> What is Anvi’o</a></li>
-<li class="chapter" data-level="4.2" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#anvio-installation"><i class="fa fa-check"></i><b>4.2</b> Anvi’o installation</a></li>
+<li class="chapter" data-level="4" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html"><i class="fa fa-check"></i><b>4</b> Introduction to anvi’o</a><ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#what-is-anvio"><i class="fa fa-check"></i><b>4.1</b> What is anvi’o</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#anvio-installation"><i class="fa fa-check"></i><b>4.2</b> anvi’o installation</a></li>
 <li class="chapter" data-level="4.3" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#binning-tools-installation"><i class="fa fa-check"></i><b>4.3</b> Binning tools installation</a></li>
+<li class="chapter" data-level="4.4" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#automatic-binning-on-anvio-using-metabat2-maxbin2-and-concoct"><i class="fa fa-check"></i><b>4.4</b> Automatic binning on anvi’o using METABAT2, MAXBIN2, and CONCOCT</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#note-to-educe-tas"><i class="fa fa-check"></i><b>4.4.1</b> Note to EDUCE-TA’s</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html"><i class="fa fa-check"></i><b>5</b> Anvi’o binning exercise</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html#automatic-binning-on-anvio-using-metabat2-maxbin2-and-concoct"><i class="fa fa-check"></i><b>5.1</b> Automatic binning on Anvi’o using METABAT2, MAXBIN2, and CONCOCT</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html#note-to-educe-tas"><i class="fa fa-check"></i><b>5.1.1</b> Note to EDUCE-TA’s</a></li>
+<li class="chapter" data-level="4.5" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#assessing-quality-mags"><i class="fa fa-check"></i><b>4.5</b> Assessing quality MAGs</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#note-the-mag-quality"><i class="fa fa-check"></i><b>4.5.1</b> Note the MAG quality</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html#assessing-quality-bins"><i class="fa fa-check"></i><b>5.2</b> Assessing quality bins</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html#note-the-mag-quality"><i class="fa fa-check"></i><b>5.2.1</b> Note the MAG quality</a></li>
+<li class="chapter" data-level="4.6" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#manual-refinement"><i class="fa fa-check"></i><b>4.6</b> Manual refinement</a></li>
+<li class="chapter" data-level="4.7" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#iterative-assessment-and-refinement"><i class="fa fa-check"></i><b>4.7</b> Iterative assessment and refinement</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html#manual-refinement"><i class="fa fa-check"></i><b>5.3</b> Manual refinement</a></li>
-<li class="chapter" data-level="5.4" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html#iterative-assessment-and-refinement"><i class="fa fa-check"></i><b>5.4</b> Iterative assessment and refinement</a></li>
+<li class="chapter" data-level="5" data-path="processing-mags.html"><a href="processing-mags.html"><i class="fa fa-check"></i><b>5</b> Processing MAGs</a><ul>
+<li class="chapter" data-level="5.1" data-path="processing-mags.html"><a href="processing-mags.html#taxonomic-classification-using-gtdb-tk"><i class="fa fa-check"></i><b>5.1</b> Taxonomic classification using GTDB-Tk</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="processing-mags.html"><a href="processing-mags.html"><i class="fa fa-check"></i><b>6</b> Processing MAGs</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="processing-mags.html"><a href="processing-mags.html#taxonomic-classification-using-gtdb-tk"><i class="fa fa-check"></i><b>6.1</b> Taxonomic classification using GTDB-Tk</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
+<li class="chapter" data-level="6" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>6</b> References</a></li>
 </ul>
 
       </nav>
@@ -137,7 +124,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Anvi’o binning and refinement tutorial</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">anvi’o binning and refinement tutorial</a>
           </h1>
         </div>
 
@@ -145,20 +132,19 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction-to-anvio" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Introduction to Anvi’o</h1>
-<div id="what-is-anvio" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> What is Anvi’o</h2>
-<p>Analysis and visualization platform for ’omics data, or Anvi’o is an open source platform for analyzing integrated multi-omics data developed by <a href="https://peerj.com/articles/1319/">Eren et al. 2015</a>.</p>
-<p>Anvi’o provides an excellent platform to visualize and analyze multi-omics data. We would use the platform to bin metagenome assembled genomes (MAGs) and manually refine the MAGs.</p>
-<p>Please visit <a href="http://merenlab.org/software/anvio/">Anvi’o webpage</a> to learn more about Anvi’o and Anvi’o usage.</p>
-<p>We would then summarize, or output, the MAGs and perform quality control by estimating the completion and redundancy of the MAGs using <a href="https://github.com/Ecogenomics/CheckM">CheckM</a> developed by <a href="https://genome.cshlp.org/content/25/7/1043">Parks et al. 2015</a>.</p>
-<p>Later, we would classify the MAGs using <a href="https://github.com/Ecogenomics/GTDBTk">GTDB-Tk</a> developed by <a href="https://academic.oup.com/bioinformatics/article/36/6/1925/5626182">Chaumeil et al. 2020</a>.</p>
+<div id="introduction-to-anvio" class="section level1">
+<h1><span class="header-section-number">4</span> Introduction to anvi’o</h1>
+<div id="what-is-anvio" class="section level2">
+<h2><span class="header-section-number">4.1</span> What is anvi’o</h2>
+<p>Analysis and visualization platform for ’omics data, or anvi’o was developed by <a href="https://peerj.com/articles/1319/">Eren et al. 2015</a> at the University of Chicago. Anvi’o is an open source platform for analyzing integrated multi-omics data and provides a useful and intiutive framework for constructing and curating metagenome assebled genomes (MAGs)</p>
+<p>In this tutorial we will use anvi’o to constrcut metagenome assembled genomes (MAGs) from the Saanich Inlet water column with manual refinement. Please visit <a href="http://merenlab.org/software/anvio/">anvi’o webpage</a> to learn more about the platform and its usage.</p>
+<p>After constructing MAGs from several depth intervals you will perform quality control by estimating completion and contamination using <a href="https://github.com/Ecogenomics/CheckM">CheckM</a> developed by <a href="https://genome.cshlp.org/content/25/7/1043">Parks et al. 2015</a>.</p>
+<p>You will then classify medium to high-quality MAGs <a href="https://rdcu.be/b9JqO">Bowers et al. 2017</a> using <a href="https://github.com/Ecogenomics/GTDBTk">GTDB-Tk</a> developed by <a href="https://academic.oup.com/bioinformatics/article/36/6/1925/5626182">Chaumeil et al. 2020</a>.</p>
 </div>
-<div id="anvio-installation" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Anvi’o installation</h2>
-<p>The following instructions provide an overview of commands that should work for most systems. For detailed instructions please see <a href="http://merenlab.org/2016/06/26/installation-v2/">Anvi’o installation resources</a>.</p>
-<p>Step 1: Please have a working install of <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> on your terminal. Conda installation of Anvi’o is hassle-free and quick. Make sure the installation is updated by running</p>
+<div id="anvio-installation" class="section level2">
+<h2><span class="header-section-number">4.2</span> anvi’o installation</h2>
+<p>The following instructions based on documentation provided by the Meren lab provide an overview of commands that should work for most operating systems. For detailed instructions please see <a href="http://merenlab.org/2016/06/26/installation-v2/">anvi’o installation resources</a>.</p>
+<p>Step 1: Please have a working install of <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> on your terminal. Conda installation of anvi’o is hassle-free and quick. Make sure the installation is updated by running</p>
 <pre><code>conda update conda</code></pre>
 <p>Step 2:</p>
 <p>For Mac OSX users</p>
@@ -183,9 +169,9 @@ conda install -y -c conda-forge -c bioconda anvio==6.2</code></pre>
 <pre><code>anvi-self-test --suite mini</code></pre>
 <p>If all is well, your browser should open and load the test run results </p>
 </div>
-<div id="binning-tools-installation" class="section level2" number="4.3">
+<div id="binning-tools-installation" class="section level2">
 <h2><span class="header-section-number">4.3</span> Binning tools installation</h2>
-<p>While we are installing Anvi’o, we might as well install binning tools that we would use along with Anvi’o.</p>
+<p>While we are installing anvi’o, we might as well install binning tools needed to construct MAGs.</p>
 <p>Here we install -</p>
 <ol style="list-style-type: decimal">
 <li><p>METABAT2 developed by <a href="https://peerj.com/articles/7359/">Kang et al. 2019</a></p></li>
@@ -204,11 +190,108 @@ conda install -c bioconda concoct
 
 # DAS Tool
 conda install -c bioconda das\_tool</code></pre>
-<p>To verify if these binning tools are accessible by Anvi’o, please run these commands:</p>
+<p>To verify if these binning tools are accessible by anvi’o, please run these commands:</p>
 <pre><code>conda activate anvio-6.2
 anvi-cluster-contigs --help</code></pre>
-<p>You should get a help menu on how to use the binning tools in Anvi’o. If there is a binning tool that is not accessible, you should see <strong>[NOT FOUND]</strong> next to the binning tool name. If you do not see this tex next to the three binning tools you installed, you are good to proceed.</p>
-<p>CheckM and GTDB-Tk should be installed on your terminal.</p>
+<p>You should get a help menu on how to use the binning tools in anvi’o. If there is a binning tool that is not accessible, you should see <strong>[NOT FOUND]</strong> next to the binning tool name. If you do not see this tex next to the three binning tools you installed, you are good to proceed.</p>
+<p>CheckM (<a href="https://anaconda.org/bioconda/checkm-genome" class="uri">https://anaconda.org/bioconda/checkm-genome</a>) and GTDB-Tk (<a href="https://anaconda.org/bioconda/gtdbtk" class="uri">https://anaconda.org/bioconda/gtdbtk</a>) should also be installed on your terminal.</p>
+
+<p>#anvi’o binning exercise</p>
+<p>You will be provided with fastq files, contig and merged profile databases to construct MAGs and conduct manual refinement.</p>
+<p>Please see this tutorial on <a href="http://merenlab.org/tutorials/assembly-based-metagenomics/">assembly-based metagenomics</a> and <a href="http://merenlab.org/2016/06/22/anvio-tutorial-v2/">metagenomic workflow tutorial</a> on anvi’o to understand how these files were obtained and an in-depth explanation on moving forward. The anvi’o documentation also provides an excellent commentary on the nuances of each step. Additional course material relevant to this tutorial can be found in the lecture slides describing metagenome assembled genomes.</p>
+</div>
+<div id="automatic-binning-on-anvio-using-metabat2-maxbin2-and-concoct" class="section level2">
+<h2><span class="header-section-number">4.4</span> Automatic binning on anvi’o using METABAT2, MAXBIN2, and CONCOCT</h2>
+<p>The following commands provide a step by step approach to obtain MAGs and to load the results on the visualization platform of anvi’o on your browser for manual refinement.</p>
+<pre><code>#Create variables for profile and contig databases for easy access to files
+profile_db = ~/path_to_profile_db 
+contig_db = ~/path_to_contig_db 
+
+#Make output directory
+Mkdir ~/path_to_output_directory
+
+#Create variable for output directory
+bin_out=~/path_to_output_directory
+
+#Operational parameters
+threads=32 #Change to suitable amount of threads
+
+#Clustering with metabat2
+anvi-cluster-contigs -p $profile_db -c $contig_db -C metabat --driver metabat2 -T $threads --just-do-it
+
+#Clustering with concoct
+anvi-cluster-contigs -p $profile_db -c $contig_db -C concoct --driver concoct -T $threads --just-do-it
+
+#Clustering with maxbin2
+anvi-cluster-contigs -p $profile_db -c $contig_db -C maxbin --driver maxbin2 -T $threads --just-do-it
+
+#Consensus binning with DASTOOL
+anvi-cluster-contigs -p $profile_db -c $contig_db --driver dastool -S metabat,concoct,maxbin -C dastool --just-do-it -T $threads
+
+#Obtain bins as fasta files
+anvi-summarize -p $profile_db -c $contig_db -C dastool -o $bin_out/dastool_out
+
+#Copy all bin fasta files for downstream processing such as quality estimation, taxonomic classification, and functional annotation
+
+#Make directory for fasta files for easy access
+mkdir $bin_out/fasta_files
+cp $bin_out/dastool_out/*/*fasta $bin_out/fasta_files</code></pre>
+<div id="note-to-educe-tas" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Note to EDUCE-TA’s</h3>
+<p>In case we want the students to practice manual refinement alone, we can provide them with contaminated MAGs using Concoct.</p>
+<p>The following commands creates a fixed number of MAGs (ideally lower than the actual genomes expected) using Concoct</p>
+<pre><code>profile_db = ~/path_to_profile_db 
+contig_db = ~/path_to_contig_db 
+
+#Make output directory
+Mkdir ~/path_to_output_directory
+
+#Operational parameters
+threads=32 #Change to suitable amount of threads
+
+bins=N #Change N to half of the number of bins expected to deliberately contaminate bins and later manually refine them
+
+#Clustering with concoct
+anvi-cluster-contigs -p $profile_db -c $contig_db -C concoct --driver concoct -T $threads --just-do-it --clusters $bins</code></pre>
+</div>
+</div>
+<div id="assessing-quality-mags" class="section level2">
+<h2><span class="header-section-number">4.5</span> Assessing quality MAGs</h2>
+<p>Check completion and redundancy of MAGs using CheckM. Change paths and operational parameters as required for your system. For a more detailed understanding of how to use CheckM please visit <a href="https://github.com/Ecogenomics/CheckM/wiki">CheckM wiki</a></p>
+<pre><code>#Create checkM output directory
+mkdir ~/path_to_checkm_output_dir
+
+#Create variable for output directory
+checkm_out=~/path_to_checkm_output_dir
+
+#Establish bins’ fasta files directory 
+in_fasta=~/path_to_output_fasta_files
+
+#Operational parameters – change as required on your system
+threads=48
+pplacer_threads=24
+
+#Run CheckM
+checkm lineage_wf -t $threads --pplacer_threads $pplacer_threads \
+    -f $checkm_out/checkm_out.tsv --tab_table \
+    -x fasta $in_fasta $checkm_out/checkm_lineage_wf
+    
+#checkm_out.tsv is a tab separated file that provides quality estimates on the set of bins</code></pre>
+<div id="note-the-mag-quality" class="section level3">
+<h3><span class="header-section-number">4.5.1</span> Note the MAG quality</h3>
+<p>Open the tab separated file, checkm_out.tsv in a spreadsheet viewer and study the completion and contamination column. We are looking for medium to high-quality MAGs <a href="https://rdcu.be/b9JqO">Bowers et al. 2017</a>.</p>
+<p>For this exercise, we aim to have bins with less than 10 % contamination and more than 50 % completion. We will now use the “anvi-refine” feature to manually refine the bins which have more than 10 % contamination. Please make a note of all the bins which are more than 50 % complete and have more than 10 % contamination.</p>
+</div>
+</div>
+<div id="manual-refinement" class="section level2">
+<h2><span class="header-section-number">4.6</span> Manual refinement</h2>
+<p>Manual refinement on anvi’o is described in great detail <a href="http://merenlab.org/2017/05/11/anvi-refine-by-veronika/">here</a></p>
+<iframe src="http://merenlab.org/2017/05/11/anvi-refine-by-veronika/?showcase=0" width="672" height="600px">
+</iframe>
+</div>
+<div id="iterative-assessment-and-refinement" class="section level2">
+<h2><span class="header-section-number">4.7</span> Iterative assessment and refinement</h2>
+<p>After manual refinement of the bins using anvi’o, iteratively run quality assessment and manual refinement of high contamination bins until you have a list of bins which are more than 90 % complete and less than 10 % contaminated.</p>
 
 </div>
 </div>
@@ -218,7 +301,7 @@ anvi-cluster-contigs --help</code></pre>
         </div>
       </div>
 <a href="background-information.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="anvio-binning-exercise.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="processing-mags.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
