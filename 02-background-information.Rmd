@@ -11,3 +11,30 @@ Multi-omic sequence information (DNA, RNA and proteins) from Saanich Inlet along
 Please refer [Hawley, A. K. et al. (2017)](https://www.nature.com/articles/sdata2017160) and [Torres-Beltrán, M. et al. (2017)](https://www.nature.com/articles/sdata2017159)
 
 ## Data availability
+
+The following files are available on Orca.
+
+```
+# Directory with all files
+/projects/micb405/resources/metagenomics_data
+
+# Raw reads by depth
+/projects/micb405/resources/metagenomics_data/SI072_100m_raw_reads.fastq.gz
+/projects/micb405/resources/metagenomics_data/SI072_120m_raw_reads.fastq.gz
+/projects/micb405/resources/metagenomics_data/SI072_200m_raw_reads.fastq.gz
+
+# Deduplicated set of contigs from the combined 100, 120 and 200 m datasets
+/projects/micb405/resources/metagenomics_data/SI072_Dedupe_Contigs.fa
+
+# Directory with bins refined with anvi'o and CheckM table
+/projects/micb405/resources/metagenomics_data/SI072_Bins_Refined_final
+
+# Directory with taxonomic classification of refined bins by GTDB-Tk
+/projects/micb405/resources/metagenomics_data/SI072_Bins_Ref_5_GTDB_r95
+
+# Directory with taxonomic classification of refined bins by Centrifuge
+/projects/micb405/resources/metagenomics_data/Import_To_Contig_DB_files/Centrifuge_Taxonomy
+
+# Directory with Prokka output for MAGs
+/projects/micb405/resources/metagenomics_data/Import_To_Contig_DB_files/Prokka_Functions
+```
