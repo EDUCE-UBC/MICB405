@@ -2,9 +2,9 @@
 
 ## What is anvi'o
 
-Analysis and visualization platform for 'omics data, or anvi'o was developed by [Eren et al. 2015](https://peerj.com/articles/1319/) at the University of Chicago. Anvi'o is an open source platform for analyzing integrated multi-omics data and provides a useful and intiutive framework for constructing and curating metagenome assebled genomes (MAGs)  
+**An**alysis and **vi**sualization platform for **'o**mics data (anvi'o) was developed by [Eren et al. 2015](https://peerj.com/articles/1319/) at the University of Chicago. Anvi'o is an open source platform for analyzing integrated multi-omics data and provides a useful and intiutive framework for constructing and curating metagenome assebled genomes (MAGs)  
 
-In this tutorial we will use anvi'o to constrcut metagenome assembled genomes (MAGs) from the Saanich Inlet water column with manual refinement. Please visit [anvi'o webpage](http://merenlab.org/software/anvio/) to learn more about the platform and its usage.
+In this tutorial we will use anvi'o to construct metagenome assembled genomes (MAGs) from the Saanich Inlet water column with manual refinement. Please visit [anvi'o webpage](http://merenlab.org/software/anvio/) to learn more about the platform and its usage.
 
 After constructing MAGs from several depth intervals you will perform quality control by estimating completion and contamination using [CheckM](https://github.com/Ecogenomics/CheckM) developed by [Parks et al. 2015](https://genome.cshlp.org/content/25/7/1043).
 
@@ -71,17 +71,20 @@ Here we install -
 4.  DASTOOL developed by [Sieber et al. 2018](https://www.nature.com/articles/s41564-018-0171-1)
 
 ```
+# Make sure you have activated the anvi'o enironment
+conda activate anvio-6.2
+
 # Metabat2
-conda install metabat2
+conda install -c bioconda metabat2
 
 # Maxbin2
-conda install maxbin2
+conda install -c bioconda maxbin2
 
 # Concoct
 conda install -c bioconda concoct
 
 # DAS Tool
-conda install -c bioconda das\_tool
+conda install -c bioconda das_tool
 ```
 
 To verify if these binning tools are accessible by anvi'o, please run these commands:
@@ -91,6 +94,6 @@ conda activate anvio-6.2
 anvi-cluster-contigs --help
 ````
 
-You should get a help menu on how to use the binning tools in anvi'o. If there is a binning tool that is not accessible, you should see **[NOT FOUND]** next to the binning tool name. If you do not see this tex next to the three binning tools you installed, you are good to proceed.
+You should get a help menu on how to use the binning tools in anvi'o. If there is a binning tool that is not accessible, you should see `[NOT FOUND]` next to the binning tool name. If you do not see this text next to the three binning tools you installed, you are good to proceed.
 
 CheckM (https://anaconda.org/bioconda/checkm-genome) and GTDB-Tk (https://anaconda.org/bioconda/gtdbtk) should also be installed on your terminal.

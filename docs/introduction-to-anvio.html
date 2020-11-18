@@ -148,8 +148,8 @@
 <h1><span class="header-section-number">4</span> Introduction to anvi’o</h1>
 <div id="what-is-anvio" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> What is anvi’o</h2>
-<p>Analysis and visualization platform for ’omics data, or anvi’o was developed by <a href="https://peerj.com/articles/1319/">Eren et al. 2015</a> at the University of Chicago. Anvi’o is an open source platform for analyzing integrated multi-omics data and provides a useful and intiutive framework for constructing and curating metagenome assebled genomes (MAGs)</p>
-<p>In this tutorial we will use anvi’o to constrcut metagenome assembled genomes (MAGs) from the Saanich Inlet water column with manual refinement. Please visit <a href="http://merenlab.org/software/anvio/">anvi’o webpage</a> to learn more about the platform and its usage.</p>
+<p><strong>An</strong>alysis and <strong>vi</strong>sualization platform for <strong>’o</strong>mics data (anvi’o) was developed by <a href="https://peerj.com/articles/1319/">Eren et al. 2015</a> at the University of Chicago. Anvi’o is an open source platform for analyzing integrated multi-omics data and provides a useful and intiutive framework for constructing and curating metagenome assebled genomes (MAGs)</p>
+<p>In this tutorial we will use anvi’o to construct metagenome assembled genomes (MAGs) from the Saanich Inlet water column with manual refinement. Please visit <a href="http://merenlab.org/software/anvio/">anvi’o webpage</a> to learn more about the platform and its usage.</p>
 <p>After constructing MAGs from several depth intervals you will perform quality control by estimating completion and contamination using <a href="https://github.com/Ecogenomics/CheckM">CheckM</a> developed by <a href="https://genome.cshlp.org/content/25/7/1043">Parks et al. 2015</a>.</p>
 <p>You will then classify medium to high-quality MAGs <a href="https://rdcu.be/b9JqO">Bowers et al. 2017</a> using <a href="https://github.com/Ecogenomics/GTDBTk">GTDB-Tk</a> developed by <a href="https://academic.oup.com/bioinformatics/article/36/6/1925/5626182">Chaumeil et al. 2020</a>.</p>
 </div>
@@ -191,21 +191,24 @@ conda install -y -c conda-forge -c bioconda anvio==6.2</code></pre>
 <li><p>CONCOCT developed by <a href="https://www.nature.com/articles/nmeth.3103">Alneberg et al. 2014</a></p></li>
 <li><p>DASTOOL developed by <a href="https://www.nature.com/articles/s41564-018-0171-1">Sieber et al. 2018</a></p></li>
 </ol>
-<pre><code># Metabat2
-conda install metabat2
+<pre><code># Make sure you have activated the anvi&#39;o enironment
+conda activate anvio-6.2
+
+# Metabat2
+conda install -c bioconda metabat2
 
 # Maxbin2
-conda install maxbin2
+conda install -c bioconda maxbin2
 
 # Concoct
 conda install -c bioconda concoct
 
 # DAS Tool
-conda install -c bioconda das\_tool</code></pre>
+conda install -c bioconda das_tool</code></pre>
 <p>To verify if these binning tools are accessible by anvi’o, please run these commands:</p>
 <pre><code>conda activate anvio-6.2
 anvi-cluster-contigs --help</code></pre>
-<p>You should get a help menu on how to use the binning tools in anvi’o. If there is a binning tool that is not accessible, you should see <strong>[NOT FOUND]</strong> next to the binning tool name. If you do not see this tex next to the three binning tools you installed, you are good to proceed.</p>
+<p>You should get a help menu on how to use the binning tools in anvi’o. If there is a binning tool that is not accessible, you should see <code>[NOT FOUND]</code> next to the binning tool name. If you do not see this text next to the three binning tools you installed, you are good to proceed.</p>
 <p>CheckM (<a href="https://anaconda.org/bioconda/checkm-genome" class="uri">https://anaconda.org/bioconda/checkm-genome</a>) and GTDB-Tk (<a href="https://anaconda.org/bioconda/gtdbtk" class="uri">https://anaconda.org/bioconda/gtdbtk</a>) should also be installed on your terminal.</p>
 
 </div>
