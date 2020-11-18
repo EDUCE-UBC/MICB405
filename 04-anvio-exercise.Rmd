@@ -1,4 +1,4 @@
-#anvi'o binning exercise 
+# anvi'o binning exercise 
 
 You will be provided with fastq files, contig and merged profile databases to construct MAGs and conduct manual refinement. 
 

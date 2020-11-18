@@ -26,6 +26,7 @@ introduction-to-anvio
 what-is-anvio
 anvio-installation
 binning-tools-installation
+anvio-binning-exercise
 automatic-binning-on-anvio-using-metabat2-maxbin2-and-concoct
 note-to-educe-tas
 assessing-quality-mags
