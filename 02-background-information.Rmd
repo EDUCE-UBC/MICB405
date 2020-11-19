@@ -37,4 +37,7 @@ The following files are available on Orca.
 
 # Directory with Prokka output for MAGs
 /projects/micb405/resources/metagenomics_data/Import_To_Contig_DB_files/Prokka_Functions
+
+# BAM files and indices for data
+/projects/micb405/resources/metagenomics_data/bams
 ```
