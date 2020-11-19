@@ -6,7 +6,7 @@ The primary objective of this tutorial is to use anvi'o to construct population 
 
 You will be working with metagenomic data sets from the Saanich Inlet time series Cruise \#72. Prerequisite input files are provided to construct individual contig and merged profile databases for binning. As indicated above you will be using anvi'o, an 'omics analysis and visualization platform' developed by the Meren lab at the University of Chicago. Specific automated binning applications invoked by anvi'o can include MetaBAT2, MaxBin2, CONCOCT, and DAS Tool. 
 
-Following MAG construciton you will use CheckM to check MAG completeness and contamination and GTDB-Tk to assign taxonomic affiliation. Collectively this information will enable you to reconstruct metabolic networks at the individual, population and community levels of biologicL organization.You will also be using prokka to predict and annotate open reading frames, and BWA to map reads onto MAGs to determine coverage and assess how representative the bins in the sampled community. 
+Following MAG construciton you will use CheckM to check MAG completeness and contamination and GTDB-Tk to assign taxonomic affiliation. Collectively this information will enable you to reconstruct metabolic networks at the individual, population and community levels of biological organization. You will also be using prokka to predict and annotate open reading frames, and BWA to map reads onto MAGs to determine coverage and assess how representative the bins in the sampled community. 
 
 Results from anvi'o will be compared to those generated using TreeSAPP, an application for fast phylogentic mapping of functional anchor genes, and the subject of a separate tutorial.
 
@@ -25,8 +25,8 @@ Reports should be formatted as per the [Instructions to Authors](https://jb.asm.
 
 Reports will account for 20% of the course marks (50 points). The project will be assessed by the following criteria:
 
-1.  Completion of the proposed workflow. Expected outputs are available and formatted correctly (40%).
-2.  A written report (4000 - 4500 words) adhering to the structure below (40%). 
+1. Completion of the proposed workflow. Expected outputs are available and formatted correctly (40%).
+2. A written report (4000 - 4500 words) adhering to the structure below (40%). 
 3. Five minute oral presentation following the structure of the written report with emphasis on visual analysis of results (20%).
 
 Each group will complete **one** report with the sections listed below. The word counts for each section are recommnedations and can be adjusted as needed, but the topics within each must needs be included!
