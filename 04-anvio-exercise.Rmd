@@ -2,6 +2,7 @@
 
 You will be provided with fastq files, contig and merged profile databases to construct MAGs and conduct manual refinement. 
 
+
 Please see this tutorial on [assembly-based metagenomics](http://merenlab.org/tutorials/assembly-based-metagenomics/) and [metagenomic workflow tutorial](http://merenlab.org/2016/06/22/anvio-tutorial-v2/) on anvi’o to understand how these files were obtained and an in-depth explanation on moving forward. The anvi’o documentation also provides an excellent commentary on the nuances of each step. Additional course material relevant to this tutorial can be found in the lecture slides describing metagenome assembled genomes.  
 
 ## Automatic binning on anvi'o using METABAT2, MAXBIN2, and CONCOCT

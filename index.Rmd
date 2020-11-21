@@ -43,7 +43,6 @@ Environmental genomics, also known as metagenomics is the study of uncultivated 
 
 3.  Evolution: Investigate how individuals, populations and communities evolve in response to ecological and environmental state changes with an emphasis on defining ancestry and selective pressures in space and time. Read [Sun et al. 2016](https://www.nature.com/articles/ismej2015162)
 
-## Key points to be aware of and known pitfalls in metagenomics
 
 ## Basic outline of a metagenomics pipeline
 
