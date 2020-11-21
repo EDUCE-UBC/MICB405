@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Introduction to anvi’o | anvi’o binning and refinement tutorial</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Introduction to anvi’o | anvi’o binning and refinement tutorial" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Introduction to anvi’o | anvi’o binning and refinement tutorial" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Pranav Sampara and Steven Hallam" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="background-information.html"/>
+<link rel="next" href="anvio-binning-exercise.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Anvio binning and refinement tutorial</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#guide-to-the-book"><i class="fa fa-check"></i><b>1.1</b> Guide to the book</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#brief-introduction-to-omics-methods"><i class="fa fa-check"></i><b>1.2</b> Brief introduction to ’omics methods</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#some-key-features-of-metagenomic-analysis"><i class="fa fa-check"></i><b>1.3</b> Some key features of metagenomic analysis</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#key-points-to-be-aware-of-and-known-pitfalls-in-metagenomics"><i class="fa fa-check"></i><b>1.4</b> Key points to be aware of and known pitfalls in metagenomics</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#basic-outline-of-a-metagenomics-pipeline"><i class="fa fa-check"></i><b>1.5</b> Basic outline of a metagenomics pipeline</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i><b>2</b> Instructions</a><ul>
+<li class="chapter" data-level="2.1" data-path="instructions.html"><a href="instructions.html#goal-of-the-exercise"><i class="fa fa-check"></i><b>2.1</b> Goal of the exercise</a></li>
+<li class="chapter" data-level="2.2" data-path="instructions.html"><a href="instructions.html#project-ideas"><i class="fa fa-check"></i><b>2.2</b> Project ideas</a></li>
+<li class="chapter" data-level="2.3" data-path="instructions.html"><a href="instructions.html#reports-and-assessment"><i class="fa fa-check"></i><b>2.3</b> Reports and Assessment</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="instructions.html"><a href="instructions.html#abstract-250-word-max."><i class="fa fa-check"></i><b>2.3.1</b> Abstract (250 word max.)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="instructions.html"><a href="instructions.html#importance-120-word-max."><i class="fa fa-check"></i><b>2.3.2</b> Importance (120 word max.)</a></li>
+<li class="chapter" data-level="2.3.3" data-path="instructions.html"><a href="instructions.html#introduction-1250-words"><i class="fa fa-check"></i><b>2.3.3</b> Introduction (1250 words)</a></li>
+<li class="chapter" data-level="2.3.4" data-path="instructions.html"><a href="instructions.html#methods-750-words"><i class="fa fa-check"></i><b>2.3.4</b> Methods (750 words)</a></li>
+<li class="chapter" data-level="2.3.5" data-path="instructions.html"><a href="instructions.html#results-1000-words"><i class="fa fa-check"></i><b>2.3.5</b> Results (1000 words)</a></li>
+<li class="chapter" data-level="2.3.6" data-path="instructions.html"><a href="instructions.html#discussion-1000-words"><i class="fa fa-check"></i><b>2.3.6</b> Discussion (1000 words)</a></li>
+<li class="chapter" data-level="2.3.7" data-path="instructions.html"><a href="instructions.html#figures-and-tables-4-with-captions"><i class="fa fa-check"></i><b>2.3.7</b> Figures and tables (≥4 with captions)</a></li>
+<li class="chapter" data-level="2.3.8" data-path="instructions.html"><a href="instructions.html#references-20"><i class="fa fa-check"></i><b>2.3.8</b> References (&gt;20)</a></li>
+<li class="chapter" data-level="2.3.9" data-path="instructions.html"><a href="instructions.html#fin."><i class="fa fa-check"></i><b>2.3.9</b> Fin.</a></li>
+<li class="chapter" data-level="2.3.10" data-path="instructions.html"><a href="instructions.html#ujemi-submission"><i class="fa fa-check"></i><b>2.3.10</b> UJEMI submission</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="background-information.html"><a href="background-information.html"><i class="fa fa-check"></i><b>3</b> Background information</a><ul>
+<li class="chapter" data-level="3.1" data-path="background-information.html"><a href="background-information.html#project-information"><i class="fa fa-check"></i><b>3.1</b> Project information</a></li>
+<li class="chapter" data-level="3.2" data-path="background-information.html"><a href="background-information.html#data-collection"><i class="fa fa-check"></i><b>3.2</b> Data collection</a></li>
+<li class="chapter" data-level="3.3" data-path="background-information.html"><a href="background-information.html#data-availability"><i class="fa fa-check"></i><b>3.3</b> Data availability</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html"><i class="fa fa-check"></i><b>4</b> Introduction to anvi’o</a><ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#what-is-anvio"><i class="fa fa-check"></i><b>4.1</b> What is anvi’o</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#anvio-installation"><i class="fa fa-check"></i><b>4.2</b> anvi’o installation</a></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-anvio.html"><a href="introduction-to-anvio.html#binning-tools-installation"><i class="fa fa-check"></i><b>4.3</b> Binning tools installation</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html"><i class="fa fa-check"></i><b>5</b> anvi’o binning exercise</a><ul>
+<li class="chapter" data-level="5.1" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html#automatic-binning-on-anvio-using-metabat2-maxbin2-and-concoct"><i class="fa fa-check"></i><b>5.1</b> Automatic binning on anvi’o using METABAT2, MAXBIN2, and CONCOCT</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html#note-to-educe-tas"><i class="fa fa-check"></i><b>5.1.1</b> Note to EDUCE-TA’s</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html#assessing-quality-mags"><i class="fa fa-check"></i><b>5.2</b> Assessing quality MAGs</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html#note-the-mag-quality"><i class="fa fa-check"></i><b>5.2.1</b> Note the MAG quality</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html#manual-refinement"><i class="fa fa-check"></i><b>5.3</b> Manual refinement</a></li>
+<li class="chapter" data-level="5.4" data-path="anvio-binning-exercise.html"><a href="anvio-binning-exercise.html#iterative-assessment-and-refinement"><i class="fa fa-check"></i><b>5.4</b> Iterative assessment and refinement</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="processing-mags.html"><a href="processing-mags.html"><i class="fa fa-check"></i><b>6</b> Processing MAGs</a><ul>
+<li class="chapter" data-level="6.1" data-path="processing-mags.html"><a href="processing-mags.html#taxonomic-classification-using-gtdb-tk"><i class="fa fa-check"></i><b>6.1</b> Taxonomic classification using GTDB-Tk</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">anvi’o binning and refinement tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction-to-anvio" class="section level1">
+<h1><span class="header-section-number">4</span> Introduction to anvi’o</h1>
+<div id="what-is-anvio" class="section level2">
+<h2><span class="header-section-number">4.1</span> What is anvi’o</h2>
+<p><strong>An</strong>alysis and <strong>vi</strong>sualization platform for <strong>’o</strong>mics data (anvi’o) was developed by <a href="https://peerj.com/articles/1319/">Eren et al. 2015</a> at the University of Chicago. Anvi’o is an open source platform for analyzing integrated multi-omics data and provides a useful and intiutive framework for constructing and curating metagenome assebled genomes (MAGs)</p>
+<p>In this tutorial we will use anvi’o to construct metagenome assembled genomes (MAGs) from the Saanich Inlet water column with manual refinement. Please visit <a href="http://merenlab.org/software/anvio/">anvi’o webpage</a> to learn more about the platform and its usage.</p>
+<p>After constructing MAGs from several depth intervals you will perform quality control by estimating completion and contamination using <a href="https://github.com/Ecogenomics/CheckM">CheckM</a> developed by <a href="https://genome.cshlp.org/content/25/7/1043">Parks et al. 2015</a>.</p>
+<p>You will then classify medium to high-quality MAGs <a href="https://rdcu.be/b9JqO">Bowers et al. 2017</a> using <a href="https://github.com/Ecogenomics/GTDBTk">GTDB-Tk</a> developed by <a href="https://academic.oup.com/bioinformatics/article/36/6/1925/5626182">Chaumeil et al. 2020</a>.</p>
+</div>
+<div id="anvio-installation" class="section level2">
+<h2><span class="header-section-number">4.2</span> anvi’o installation</h2>
+<p>The following instructions based on documentation provided by the Meren lab provide an overview of commands that should work for most operating systems. For detailed instructions please see <a href="http://merenlab.org/2016/06/26/installation-v2/">anvi’o installation resources</a>.</p>
+<p>Step 1: Please have a working install of <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> on your terminal. Conda installation of anvi’o is hassle-free and quick. Make sure the installation is updated by running</p>
+<pre><code>conda update conda</code></pre>
+<p>Step 2:</p>
+<p>For Mac OSX users</p>
+<pre><code># first get a copy of the following file (if you get a &quot;command not found&quot;
+# error for wget, you can either install it first, or manually download the
+# file from that URL:
+wget http://merenlab.org/files/anvio-conda-environments/anvio-environment-6.2.yml
+
+# just to make sure there is not a v6.2 environment already: 
+conda env remove --name anvio-6.2
+
+# create a new v6.2 environment using the file you just downloaded:
+conda env create -f anvio-environment-6.2.yml
+
+# activate that environment
+conda activate anvio-6.2</code></pre>
+<p>Linux / Windows users:</p>
+<pre><code>conda create -y --name anvio-6.2 python=3.6
+conda activate anvio-6.2
+conda install -y -c conda-forge -c bioconda anvio==6.2</code></pre>
+<p>Step 3: Confirm installation</p>
+<pre><code>anvi-self-test --suite mini</code></pre>
+<p>If all is well, your browser should open and load the test run results </p>
+</div>
+<div id="binning-tools-installation" class="section level2">
+<h2><span class="header-section-number">4.3</span> Binning tools installation</h2>
+<p>While we are installing anvi’o, we might as well install binning tools needed to construct MAGs.</p>
+<p>Here we install -</p>
+<ol style="list-style-type: decimal">
+<li><p>METABAT2 developed by <a href="https://peerj.com/articles/7359/">Kang et al. 2019</a></p></li>
+<li><p>MAXBIN2 developed by <a href="https://academic.oup.com/bioinformatics/article/32/4/605/1744462">Wu et al. 2016</a></p></li>
+<li><p>CONCOCT developed by <a href="https://www.nature.com/articles/nmeth.3103">Alneberg et al. 2014</a></p></li>
+<li><p>DASTOOL developed by <a href="https://www.nature.com/articles/s41564-018-0171-1">Sieber et al. 2018</a></p></li>
+</ol>
+<pre><code># Make sure you have activated the anvi&#39;o enironment
+conda activate anvio-6.2
+
+# Metabat2
+conda install -c bioconda metabat2
+
+# Maxbin2
+conda install -c bioconda maxbin2
+
+# Concoct
+conda install -c bioconda concoct
+
+# DAS Tool
+conda install -c bioconda das_tool</code></pre>
+<p>To verify if these binning tools are accessible by anvi’o, please run these commands:</p>
+<pre><code>conda activate anvio-6.2
+anvi-cluster-contigs --help</code></pre>
+<p>You should get a help menu on how to use the binning tools in anvi’o. If there is a binning tool that is not accessible, you should see <code>[NOT FOUND]</code> next to the binning tool name. If you do not see this text next to the three binning tools you installed, you are good to proceed.</p>
+<p>CheckM (<a href="https://anaconda.org/bioconda/checkm-genome" class="uri">https://anaconda.org/bioconda/checkm-genome</a>) and GTDB-Tk (<a href="https://anaconda.org/bioconda/gtdbtk" class="uri">https://anaconda.org/bioconda/gtdbtk</a>) should also be installed on your terminal.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="background-information.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="anvio-binning-exercise.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+},
+"link": "GitHub repo link"
+});
+});
+</script>
+
+</body>
+
+</html>
