@@ -5,6 +5,6 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><a href="./">Anvio binning and refinement tutorial</a></li>
+        <li><a href="./">anvi'o binning and refinement tutorial</a></li>
     link: "GitHub repo link"
   text: "About the book text here"
