@@ -108,4 +108,3 @@ knitr::include_app('http://merenlab.org/2017/05/11/anvi-refine-by-veronika/', he
 ## Iterative assessment and refinement
 
 After manual refinement of the bins using anvi’o, iteratively run quality assessment and manual refinement of high contamination bins until you have a list of bins which are more than 90 % complete and less than 10 % contaminated. 
-

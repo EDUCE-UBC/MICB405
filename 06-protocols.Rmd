@@ -1,0 +1,249 @@
+# Protocol and scripts
+
+The following scripts and commands were used in the generation of the files available for data processing. 
+
+In short, the protocol used is: 
+
+1) Quality filter reads with Trimmomatic (v.0.35) ([Bolger et al., (2014)](https://doi.org/10.1093/bioinformatics/btu170)).
+2) Assemble QC reads Megahit (v.1.1.3) ([Li et al., (2015)](https://doi.org/10.1093/bioinformatics/btv033))
+3) Annotate contigs with Prokka.
+4) Deduplicate contigs with BBtools ([BBtools](https://jgi.doe.gov/data-and-tools/bbtools/)).
+5) Map the deduplicated contigs to the QC reads with bwa-mem ([Li H. (2013)](https://arxiv.org/pdf/1303.3997.pdf)).
+6) Create anvi'o contigs and profile databases ([Eren et al. 2015](https://peerj.com/articles/1319/)).
+7) Construct metagenome-assembled genomes (MAGs) using binning tools such as Metabat2 ([Kang et al. 2019](https://peerj.com/articles/7359/)), Maxbin2 ([Wu et al. 2016](https://academic.oup.com/bioinformatics/article/32/4/605/1744462)), Concoct ([Alneberg et al. 2014](https://www.nature.com/articles/nmeth.3103)), and DASTool ([Sieber et al. 2018](https://www.nature.com/articles/s41564-018-0171-1)).
+8) Use CheckM ([Parks et al. 2015](https://genome.cshlp.org/content/25/7/1043)) for estimating genome completion and contamination. 
+9) Revisit anvi'o for manual refinement using the program `anvi-refine`
+10) Identify taxonomy using GTDB-Tk ([Chaumeil et al. 2020](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182)).
+11) Downstream processing of MAGs using TreeSAPP ([Morgan-Lang et al. 2020](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa588/5868555)) to identify genes and functions of interest.
+
+## Project files
+
+In case you are stuck and need to access project files, please look through the file structure system, [`project_structure_level.txt`](project_structure_level.txt).
+
+The path to the project files -
+`/projects/micb405/resources/metagenomics_data/MICB405_Project_Files`
+
+
+## Quality filtering and assembly
+
+Quality filtered reads and assembled contigs are available on the server. Quality filtering was performed using Trimmomatic and Assembly was performed using Megahit.
+
+## Deduplication of contigs
+
+`dedupe.sh in=SI072_Combined_contigs.fa out=SI072_Dedupe_Contigs.fa outd=duplicates.fa`
+
+## Prokka annotation
+
+If you want to leverage the anvi-import-function with Prokka annotations, you will need to do this first. Prokka takes a long time to run, but this needs to happen first before you had anything over to the students. This protocol follows tutorial listed [here](http://merenlab.org/2017/05/18/working-with-prokka/).
+
+Download and install the following:
+
+```
+wget https://raw.githubusercontent.com/karkman/gff_parser/master/gff_parser.py -O gff_parser.py`
+
+pip install gffutils
+```
+
+Before you begin, you’ll need to modify the Prokka code a little bit before running the tool to ensure you get partial gene calls from Prodigal since we’re working with metagenomes. For Prokka v1.14.6 you’ll want to take away the -c flag on line 717 of the prodigal command.
+
+Run Prokka on your deduplicated combined assembly:
+
+`prokka --prefix PROKKA --outdir PROKKA --cpus 4 --metagenome  SI072_Dedupe_Contigs.fa`
+
+Prokka takes a really long time to run, but you only really need the `.gff` file that it produces. Once the job gets to the tbl2asn step, just kill it (it will make you cry inside, but it’ll be fine I promise! Have solace in knowing that there’s a good chance that it would have crashed on its own anyway).
+Next you’ll use that custom script you just downloaded and installed:
+
+`python gff_parser.py PROKKA/PROKKA.gff --gene-calls gene_calls.txt  --annotation gene_annot.txt`
+                         
+This script parses the gff file to give you the inputs that you’ll need. However,  as of `anvio-6.2`, this script produces an extra column in the gene-calls.txt file that is no longer accepted when you try to build the contig database (it’s column labeled call_type) and it’s the 7th one in from the left. The quickest way I dealt with it was to use the cut command:
+
+`cut -f1,2,3,4,5,6,8,9 path/PROKKA/BAC_gene_calls.txt > path/PROKKA/BAC_gene_call_fixed.txt`
+
+## Mapping
+
+This step can happen in parallel with running Prokka or building your contigs database if you have the RAM, but as long as this happens before you make your profile databases, you’ll be fine.
+
+First, you need to index the input fasta file:
+
+`bwa index SI072_Dedupe_Contigs.fa`
+
+Then follow the following steps for each sample:
+
+`bwa mem -t 4 SI072_Dedupe_Contigs.fa SI072_(depth_here)m_raw_reads.fastq.gz | samtools view -b | samtools sort -o SI072_(depth_here)m_Dedupe_contigs_sorted.bam`
+
+`samtools view -b -F 4 SI072_(depth_here)m_Dedupe_contigs_sorted.bam > SI072_(depth_here)m_Dedupe_contigs_sorted.mapped.bam`
+
+`samtools index SI072_(depth_here)m_Dedupe_contigs_sorted.mapped.bam`
+
+## Create anvi'o databases
+
+You would need to create a contigs database to store all information related to the contigs and a profile database to store sample specific information about the contigs.
+
+### Building contigs database
+
+`anvi-gen-contigs-database -f SI072_Dedupe_Contigs.fa -o SI072_Dedupe_contigs.db  --external-gene-calls Prokka_to_Anvio/BAC_gene_calls_fixed.txt -n 'SI072 100m,120m, 200m with Prokka' --ignore-internal-stop-codons`
+
+`anvi-import-functions -c SI072_Dedupe_contigs.db -i Prokka_to_Anvio/BAC_gene_annot.txt`
+
+`anvi-run-hmms -c SI072_Dedupe_contigs.db --num-threads 8`
+
+You could annotate the contigs with NCBI cogs, but since we used Prokka, we will skip any more annotation.
+
+### Building profile databases
+
+Since you’ve already gone through the trouble of building up your bam and bam.bai files, you can skip right ahead to the anvi-profile step, note that the minimum contig length cut-off is 2000 bp:
+
+`anvi-profile -i SI072_(depth_here)m_Dedupe_contigs_sorted.mapped.bam -c SI072_Dedupe_contigs.db --min-contig-length 2000 --output-dir SI072_(Depth)_Profile --sample-name “sample_name”` #Assign your sample name
+
+Do this for each sample. You could run a for loop to ease through
+
+Next, merge the profiles together:
+
+`anvi-merge *Profile/PROFILE.db -o SI072_MERGED -c SI072_Dedupe_contigs.db --sample-name SI072`
+
+## Binning
+
+Once anvio can see your binnning tools, it’s time to make some bins with concoct, maxbin2, and metabat2. Its very important that you set the minimum contig length is the same as your profile db, some of the binning algorithms fail if you don’t
+
+`anvi-cluster-contigs -p SI072_MERGED/PROFILE.db -c SI072_Dedupe_contigs.db -C maxbin2 --driver maxbin2 -T 8 --min-contig-length 2000 --just-do-it`
+
+`anvi-cluster-contigs -p SI072_MERGED/PROFILE.db -c SI072_Dedupe_contigs.db -C maxbin2 --driver maxbin2 -T 8 --min-contig-length 2000 --just-do-it`
+
+`anvi-cluster-contigs -p SI072_MERGED_Profile/PROFILE.db -c SI072_Dedupe_contigs.db -C maxbin2 --driver maxbin2 -T 8 --min-contig-length 2000 --just-do-it`
+
+Now we can use dastool to consolidate these bins:
+
+`anvi-cluster-contigs -p SI072_MERGED_Profile/PROFILE.db -c SI072_Dedupe_contigs.db -C dastool --driver dastool -T 8 --just-do-it -S concoct,metabat2,maxbin2`
+
+Now that we’ve got some bins with dastool, it’s time to grab the fasta files. First, you need to make a summary directory:
+
+`anvi-summarize -p SI072_MERGED_Profile/PROFILE.db -c SI072_Dedupe_contigs.db -o SI072_SUMMARY_MERGE_Pre_Ref -C dastool`
+
+make a directory to put the fasta files to put your bins into 
+
+`mkdir SI072_Bins_Pre_Man`
+
+Copy the fasta files into your new directory:
+
+`cp SI072_SUMMARY_MERGE_Pre_Ref/bin_by_bin/*/*.fa SI072_Bins_Pre_Man`
+
+## Assess genome quality with CheckM and manual refinement
+
+### CheckM usage
+
+`checkm lineage_wf -t 8 --pplacer_threads 8 -f SI072_Bins_Pre_Man /SI072_Bins_ Pre_Man_CheckM.tsv --tab_table -x .fa SI072_Bins_Pre_Man/ SI072_Pre_Man/checkm_output`
+
+
+Open the tab separated file, checkm_out.tsv in a spreadsheet viewer and study the completion and contamination column. We are looking for medium to high-quality MAGs [Bowers et al. 2017](https://rdcu.be/b9JqO).
+
+For this exercise, we aim to have bins with less than 10 % contamination and more than 50 % completion. We will now use the “anvi-refine” feature to manually refine the bins which have more than 10 % contamination. Please make a note of all the bins which are more than 50 % complete and have more than 10 % contamination.
+
+### Manual refinement
+
+Now, you’re good to download your contig database, merged profile directory, and CheckM table onto your local machine for further manual refinement since you’ll need the power of an internet browser to visually do the refinement. Make sure anvi'o is installed on that local machine. Also, keep an extra copy of these in case you make a mistake during manual refinement.
+
+Manual refinement on anvi’o is described in great detail [here](http://merenlab.org/2017/05/11/anvi-refine-by-veronika/)
+
+``` {r, echo=FALSE,  results='hide', message=FALSE, warning=FALSE}
+knitr::include_app('http://merenlab.org/2017/05/11/anvi-refine-by-veronika/', height = '600px')
+```
+
+### Iterative assessment and refinement
+
+After manual refinement of the bins using anvi’o, iteratively run quality assessment and manual refinement of high contamination bins until you have a list of bins which are more than 90 % complete and less than 10 % contaminated. 
+
+### Store bins on the server
+
+Once your done, repeat the following:
+
+`anvi-summarize -p SI072_MERGED_Profile/PROFILE.db -c SI072_Dedupe_contigs.db -o SI072_SUMMARY_Ref_X -C dastool`
+
+Make a directory to put the fasta files to put your bins into: 
+
+`mkdir SI072_Bins_Ref_X`
+
+Copy the fasta files into your new directory:
+
+`cp SI072_SUMMARY_MERGE_Ref_X /bin_by_bin/*/*.fa SI072_Bins_Ref_X`
+
+Copy the directory SI072_Bins_Ref_X back to your server with:
+
+`scp -r SI072_Bins_Ref_X username@server:/path`
+
+## Assigning GTDB taxonomy to your bins
+
+Once you’ve got the final version of your bins on the server, you’re well positioned to assign taxonomy to your bins:
+
+## Make sure to echo the GTDB-Tk data pathecho 
+
+`"export GTDBTK_DATA_PATH= /mnt/nfs/sharknado/LimsData/Hallam_Databases/formatted/GTDB-TK/release95/" > /miniconda3/envs/gtdbtk-1.3.0/etc/conda/activate.d/gtdbtk.sh`
+
+`gtdbtk classify_wf --genome_dir ~/SI072_Data/SI072_Dedupe/SI072_Bins_Ref_5/ --out_dir ~/SI072_Data/SI072_Dedupe/SI072_Bins_Ref_5_GTDB_r95/ -x .fa --cpus 4`
+
+## Working with TreeSAPP 
+
+Now that we have medium and high quality bins and their taxonomic identity, we move on to work with TreeSAPP for automated reconstruction of the nitrogen cycle.
+
+## TreeSAPP script
+
+Please use this script to work with TreeSAPP. The file paths are provided in the `.csv` file [`treesapp_paths.csv`](treesapp_paths.csv).
+
+Run this script from the same folder as your path file.
+
+```{}
+!/bin/bash
+
+
+#activate conda treesapp environment prior to running w/
+
+conda activate treesapp_cenv
+
+
+#set file reading in for path info
+
+paths_file="treesapp_paths.csv"
+
+#make variable for ref pkg directory path
+
+refpkg_path="/projects/micb405/resources/metagenomics_data/MICB405_Project_Files/12_MICB405_refpkgs"
+
+#make main directory for TreeSAPP outputs
+#corresponds to .csv main output directory
+#TreeSAPP will make individual iteration output subdirectories
+#w/in this main directory based on paths_file
+
+mkdir TreeSAPP_Outputs
+
+#change permissions so everyone has rwx privilege
+
+chmod -R 777 TreeSAPP_Outputs
+
+#loop through each line of paths_file
+#each line represents an interation of TreeSAPP
+#use fields in each line to run an iteration of TreeSAPP
+#$f1 is the assembly file (fasta). Please assign the variable f1 the path to the assembly fasta file
+#$f2 is the reads file (fastq). Please assign the variable f2 the path to the fastq file
+#$f3 is the output directory. Please assign the variable f3 the path to the output directory
+
+while IFS=, read -r f1 f2 f3
+do
+
+#debugging echoes
+#  echo "assembly file:${f1}"
+#  echo "reads file: ${f2}"
+#  echo "output directory: ${f3}"
+
+treesapp assign -i ${f1} -n 4 -m dna -r ${f2} -p pe -o ${f3} --refpkg_dir $refpkg_path --rpkm --trim_align --verbose --delete
+
+#change permissions on output subdirectories to rwx for everyone
+
+chmod -R 777 ${f3}
+done < $paths_file
+
+##remember to deactivate conda treesapp environment after running
+
+conda deactivate
+```
+
+
+
