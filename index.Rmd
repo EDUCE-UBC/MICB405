@@ -1,6 +1,6 @@
 ---
 title: "anvi'o binning and refinement tutorial"
-author: "Pranav Sampara and Steven Hallam"
+author: "Pranav Sampara, Steven Hallam, Stefanie Christen Sternagel, Julia Anstett, Stephan Koenig"
 date: "16/11/2020"
 site: bookdown::bookdown_site
 documentclass: book

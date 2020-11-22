@@ -1,56 +1,56 @@
----
-title: "06-protocols"
-author: "Julia Anstett, Stefanie Christen Sternagel, Pranav Sampara"
-date: "20/11/2020"
-output: html_document
----
-
 # Protocol and scripts
+
 The following scripts and commands were used in the generation of the files available for data processing. 
 
 In short, the protocol used is: 
 
-1) Quality filter reads with Trimmomatic (v.0.35) ([Bolger et al., (2014)](https://doi.org/10.1093/bioinformatics/btu170))
+1) Quality filter reads with Trimmomatic (v.0.35) ([Bolger et al., (2014)](https://doi.org/10.1093/bioinformatics/btu170)).
 2) Assemble QC reads Megahit (v.1.1.3) ([Li et al., (2015)](https://doi.org/10.1093/bioinformatics/btv033))
-3) Annotate contigs with Prokka
-4) Deduplicate contigs with BBtools ([BBtools](https://jgi.doe.gov/data-and-tools/bbtools/))
-5) Map the deduplicated contigs to the QC reads with bwa-mem ([Li H. (2013)](https://arxiv.org/pdf/1303.3997.pdf))
-6) Create anvi'o contigs and profile databases ([Eren et al. 2015](https://peerj.com/articles/1319/))
-7) Construct metagenome-assembled genomes (MAGs) using binning tools such as Metabat2 ([Kang et al. 2019](https://peerj.com/articles/7359/)), Maxbin2 ([Wu et al. 2016](https://academic.oup.com/bioinformatics/article/32/4/605/1744462)), Concoct ([Alneberg et al. 2014](https://www.nature.com/articles/nmeth.3103)), and DASTool ([Sieber et al. 2018](https://www.nature.com/articles/s41564-018-0171-1))
+3) Annotate contigs with Prokka.
+4) Deduplicate contigs with BBtools ([BBtools](https://jgi.doe.gov/data-and-tools/bbtools/)).
+5) Map the deduplicated contigs to the QC reads with bwa-mem ([Li H. (2013)](https://arxiv.org/pdf/1303.3997.pdf)).
+6) Create anvi'o contigs and profile databases ([Eren et al. 2015](https://peerj.com/articles/1319/)).
+7) Construct metagenome-assembled genomes (MAGs) using binning tools such as Metabat2 ([Kang et al. 2019](https://peerj.com/articles/7359/)), Maxbin2 ([Wu et al. 2016](https://academic.oup.com/bioinformatics/article/32/4/605/1744462)), Concoct ([Alneberg et al. 2014](https://www.nature.com/articles/nmeth.3103)), and DASTool ([Sieber et al. 2018](https://www.nature.com/articles/s41564-018-0171-1)).
 8) Use CheckM ([Parks et al. 2015](https://genome.cshlp.org/content/25/7/1043)) for estimating genome completion and contamination. 
 9) Revisit anvi'o for manual refinement using the program `anvi-refine`
-10) Identify taxonomy using GTDB-Tk ([Chaumeil et al. 2020](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182))
-11) Downstream processing of MAGs using TreeSAPP ([Morgan-Lang et al. 2020](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa588/5868555)) to identify genes and functions of interest
+10) Identify taxonomy using GTDB-Tk ([Chaumeil et al. 2020](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182)).
+11) Downstream processing of MAGs using TreeSAPP ([Morgan-Lang et al. 2020](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa588/5868555)) to identify genes and functions of interest.
 
 ## Project files
-In case you are stuck and need to access project files, please look through the file structure system, "project_structure_level.txt".
+
+In case you are stuck and need to access project files, please look through the file structure system, [`project_structure_level.txt`](project_structure_level.txt).
 
 The path to the project files -
 `/projects/micb405/resources/metagenomics_data/MICB405_Project_Files`
 
 
 ## Quality filtering and assembly
-Quality filtered reads and assembled contigs are available on the server. Quality filtering was performed using Trimmomatic and Assembly was performed using Megahit
+
+Quality filtered reads and assembled contigs are available on the server. Quality filtering was performed using Trimmomatic and Assembly was performed using Megahit.
 
 ## Deduplication of contigs
+
 `dedupe.sh in=SI072_Combined_contigs.fa out=SI072_Dedupe_Contigs.fa outd=duplicates.fa`
 
 ## Prokka annotation
 
-If you want to leverage the anvi-import-function with Prokka annotations, you will need to do this first. Prokka takes a long time to run, but this needs to happen first before you had anything over to the students. This protocol follows tutorial listed [here](http://merenlab.org/2017/05/18/working-with-prokka/)
+If you want to leverage the anvi-import-function with Prokka annotations, you will need to do this first. Prokka takes a long time to run, but this needs to happen first before you had anything over to the students. This protocol follows tutorial listed [here](http://merenlab.org/2017/05/18/working-with-prokka/).
 
 Download and install the following:
 
-`wget https://raw.githubusercontent.com/karkman/gff_parser/master/gff_parser.py -O gff_parser.py`
+```
+wget https://raw.githubusercontent.com/karkman/gff_parser/master/gff_parser.py -O gff_parser.py`
 
-`pip install gffutils`
+pip install gffutils
+```
 
 Before you begin, you’ll need to modify the Prokka code a little bit before running the tool to ensure you get partial gene calls from Prodigal since we’re working with metagenomes. For Prokka v1.14.6 you’ll want to take away the -c flag on line 717 of the prodigal command.
-Run Prokka on your deduplicated combined assembly
+
+Run Prokka on your deduplicated combined assembly:
 
 `prokka --prefix PROKKA --outdir PROKKA --cpus 4 --metagenome  SI072_Dedupe_Contigs.fa`
 
-Prokka takes a really long time to run, but you only really need the .gff file that it produces. Once the job gets to the tbl2asn step, just kill it (it will make you cry inside, but it’ll be fine I promise! Have solace in knowing that there’s a good chance that it would have crashed on its own anyway).
+Prokka takes a really long time to run, but you only really need the `.gff` file that it produces. Once the job gets to the tbl2asn step, just kill it (it will make you cry inside, but it’ll be fine I promise! Have solace in knowing that there’s a good chance that it would have crashed on its own anyway).
 Next you’ll use that custom script you just downloaded and installed:
 
 `python gff_parser.py PROKKA/PROKKA.gff --gene-calls gene_calls.txt  --annotation gene_annot.txt`
@@ -62,6 +62,7 @@ This script parses the gff file to give you the inputs that you’ll need. Howev
 ## Mapping
 
 This step can happen in parallel with running Prokka or building your contigs database if you have the RAM, but as long as this happens before you make your profile databases, you’ll be fine.
+
 First, you need to index the input fasta file:
 
 `bwa index SI072_Dedupe_Contigs.fa`
@@ -75,7 +76,8 @@ Then follow the following steps for each sample:
 `samtools index SI072_(depth_here)m_Dedupe_contigs_sorted.mapped.bam`
 
 ## Create anvi'o databases
-You would need to create a contigs database to store all information related to the contigs and a profile database to store sample specific information about the contigs
+
+You would need to create a contigs database to store all information related to the contigs and a profile database to store sample specific information about the contigs.
 
 ### Building contigs database
 
@@ -85,7 +87,7 @@ You would need to create a contigs database to store all information related to 
 
 `anvi-run-hmms -c SI072_Dedupe_contigs.db --num-threads 8`
 
-You could annotate the contigs with NCBI cogs, but since we used Prokka, we will skip any more annotation
+You could annotate the contigs with NCBI cogs, but since we used Prokka, we will skip any more annotation.
 
 ### Building profile databases
 
@@ -156,7 +158,7 @@ Once your done, repeat the following:
 
 `anvi-summarize -p SI072_MERGED_Profile/PROFILE.db -c SI072_Dedupe_contigs.db -o SI072_SUMMARY_Ref_X -C dastool`
 
-make a directory to put the fasta files to put your bins into 
+Make a directory to put the fasta files to put your bins into: 
 
 `mkdir SI072_Bins_Ref_X`
 
@@ -172,7 +174,7 @@ Copy the directory SI072_Bins_Ref_X back to your server with:
 
 Once you’ve got the final version of your bins on the server, you’re well positioned to assign taxonomy to your bins:
 
-#Make sure to echo the GTDB-TK data pathecho 
+## Make sure to echo the GTDB-Tk data pathecho 
 
 `"export GTDBTK_DATA_PATH= /mnt/nfs/sharknado/LimsData/Hallam_Databases/formatted/GTDB-TK/release95/" > /miniconda3/envs/gtdbtk-1.3.0/etc/conda/activate.d/gtdbtk.sh`
 
@@ -184,9 +186,9 @@ Now that we have medium and high quality bins and their taxonomic identity, we m
 
 ## TreeSAPP script
 
-Please use this script to work with TreeSAPP. The file paths are provided in the .csv file "treesapp_paths.csv"
+Please use this script to work with TreeSAPP. The file paths are provided in the `.csv` file [`treesapp_paths.csv`](treesapp_paths.csv).
 
-Run this script from the same folder as your path file
+Run this script from the same folder as your path file.
 
 ```{}
 !/bin/bash
