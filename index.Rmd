@@ -31,8 +31,6 @@ Finally, example scripts are provided to construct MAGs, conduct taxonomic class
 
 Clearly, this book is a basic introduction to binning and refinement. To maximize the benefit of the tutorial provided, please read the supporting scientific literature wherever provided and look beyond for opportunities to exercise your scientific imagination.
 
-## Brief introduction to 'omics methods
-
 ## Some key features of metagenomic analysis
 
 Environmental genomics, also known as metagenomics is the study of uncultivated microbial communities in natural and engineered environments using high-throughput sequencing and mass spectrometry methods. Application of metagenomic methods can provide insights into the ecophysiology, ecology and evolution of microorganisms at different levels of biological organization. At the same time these insights can help us uncover design principles for rational design of microbial communities and uncover a deep reservoir of sequence information useful in pathway engineering and biotechnology innovation. 

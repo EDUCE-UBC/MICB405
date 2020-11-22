@@ -1,0 +1,93 @@
+/projects/micb405/resources/metagenomics_data/MICB405_Project_Files
+├── 01_Start_Point
+│   ├── Base_MetaG_Assemblies
+│   ├── SI072_100m_raw_reads.fastq.gz
+│   ├── SI072_120m_raw_reads.fastq.gz
+│   ├── SI072_200m_raw_reads.fastq.gz
+│   └── SI072_Dedupe_Contigs.fa
+├── 02_BAMs
+│   ├── BWA_Index_files
+│   ├── SI072_100m
+│   ├── SI072_120m
+│   └── SI072_200m
+├── 03_Import_To_Files_For_Contig_DB
+│   ├── Centrifuge_Taxonomy
+│   └── Prokka_Functions
+├── 04_Completed_Contig_DB
+│   └── SI072_Dedupe_contigs.db
+├── 05_Profiles_To_Merge
+│   ├── SI072_100m_Profile
+│   ├── SI072_120m_Profile
+│   └── SI072_200m_Profile
+├── 06_Ready_For_Refining
+│   ├── SI072_Bins_Pre_Man
+│   ├── SI072_MERGED_Profile
+│   └── SI072_MERGED_SUMMARY
+├── 07_Refining_Intermediates
+│   ├── SI072_Bins_Ref_1
+│   ├── SI072_Bins_Ref_2
+│   ├── SI072_Bins_Ref_3
+│   ├── SI072_Bins_Ref_4
+│   ├── SI072_SUMMARY_Ref_1
+│   ├── SI072_SUMMARY_Ref_2
+│   ├── SI072_SUMMARY_Ref_3
+│   ├── SI072_SUMMARY_Ref_4
+│   └── SI072_SUMMARY_Ref_5
+├── 08_Refined_From_Anvio
+│   ├── SI072_Bins_Final_Bins
+│   ├── SI072_MERGED_Profile
+│   └── SI072_SUMMARY_Ref_5
+├── 09_Bins_Sorted_By_Quality
+│   ├── HighQ_Bins
+│   ├── LowQ_Bins
+│   └── Med_HQ_Bins
+├── 10_SI072_Bins_GTDB_r95
+│   ├── align
+│   ├── classify
+│   ├── gtdbtk.ar122.classify.tree
+│   ├── gtdbtk.ar122.filtered.tsv
+│   ├── gtdbtk.ar122.markers_summary.tsv
+│   ├── gtdbtk.ar122.msa.fasta
+│   ├── gtdbtk.ar122.summary.tsv
+│   ├── gtdbtk.ar122.user_msa.fasta
+│   ├── gtdbtk.bac120.classify.tree
+│   ├── gtdbtk.bac120.filtered.tsv
+│   ├── gtdbtk.bac120.markers_summary.tsv
+│   ├── gtdbtk.bac120.msa.fasta
+│   ├── gtdbtk.bac120.summary.tsv
+│   ├── gtdbtk.bac120.user_msa.fasta
+│   ├── gtdbtk.log
+│   ├── gtdbtk.translation_table_summary.tsv
+│   ├── gtdbtk.warnings.log
+│   └── identify
+├── 11_Combined_Fastas_For_TreeSAPP
+│   ├── Combined_MAGs.fa
+│   ├── High_Quality_Bins.fa
+│   ├── Low_Quality_Bins.fa
+│   └── Med_High_Quality_Bins.fa
+├── 12_MICB405_refpkgs
+│   ├── DsrAB_build.pkl
+│   ├── DsrC_build.pkl
+│   ├── HgcA_build.pkl
+│   ├── McrA_build.pkl
+│   ├── McrB_build.pkl
+│   ├── McrG_build.pkl
+│   ├── NapA_build.pkl
+│   ├── NifD_build.pkl
+│   ├── NirK_build.pkl
+│   ├── NirS_build.pkl
+│   ├── NorB_build.pkl
+│   ├── NorC_build.pkl
+│   ├── NosZ_build.pkl
+│   ├── NxrA_build.pkl
+│   ├── NxrB_build.pkl
+│   ├── PuhA_build.pkl
+│   └── XmoA_build.pkl
+└── 13_TreeSAPP_Output
+    ├── All_Bins
+    ├── All_Contigs
+    ├── High_Quality_Bins
+    ├── Low_Quality_Bins
+    └── Med_High_Quality_Bins
+
+49 directories, 41 files

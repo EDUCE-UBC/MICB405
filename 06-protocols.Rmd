@@ -1,6 +1,6 @@
 ---
-title: "00-protocols"
-author: "Julia Anstett, Pranav Sampara"
+title: "06-protocols"
+author: "Julia Anstett, Stefanie Christen Sternagel, Pranav Sampara"
 date: "20/11/2020"
 output: html_document
 ---
@@ -21,6 +21,13 @@ In short, the protocol used is:
 9) Revisit anvi'o for manual refinement using the program `anvi-refine`
 10) Identify taxonomy using GTDB-Tk ([Chaumeil et al. 2020](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182))
 11) Downstream processing of MAGs using TreeSAPP ([Morgan-Lang et al. 2020](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa588/5868555)) to identify genes and functions of interest
+
+## Project files
+In case you are stuck and need to access project files, please look through the file structure system, "project_structure_level.txt".
+
+The path to the project files -
+`/projects/micb405/resources/metagenomics_data/MICB405_Project_Files`
+
 
 ## Quality filtering and assembly
 Quality filtered reads and assembled contigs are available on the server. Quality filtering was performed using Trimmomatic and Assembly was performed using Megahit
@@ -171,11 +178,70 @@ Once you’ve got the final version of your bins on the server, you’re well po
 
 `gtdbtk classify_wf --genome_dir ~/SI072_Data/SI072_Dedupe/SI072_Bins_Ref_5/ --out_dir ~/SI072_Data/SI072_Dedupe/SI072_Bins_Ref_5_GTDB_r95/ -x .fa --cpus 4`
 
+## Working with TreeSAPP 
+
+Now that we have medium and high quality bins and their taxonomic identity, we move on to work with TreeSAPP for automated reconstruction of the nitrogen cycle.
+
+## TreeSAPP script
+
+Please use this script to work with TreeSAPP. The file paths are provided in the .csv file "treesapp_paths.csv"
+
+Run this script from the same folder as your path file
+
+```{}
+!/bin/bash
 
 
+#activate conda treesapp environment prior to running w/
+
+conda activate treesapp_cenv
 
 
+#set file reading in for path info
 
+paths_file="treesapp_paths.csv"
+
+#make variable for ref pkg directory path
+
+refpkg_path="/projects/micb405/resources/metagenomics_data/MICB405_Project_Files/12_MICB405_refpkgs"
+
+#make main directory for TreeSAPP outputs
+#corresponds to .csv main output directory
+#TreeSAPP will make individual iteration output subdirectories
+#w/in this main directory based on paths_file
+
+mkdir TreeSAPP_Outputs
+
+#change permissions so everyone has rwx privilege
+
+chmod -R 777 TreeSAPP_Outputs
+
+#loop through each line of paths_file
+#each line represents an interation of TreeSAPP
+#use fields in each line to run an iteration of TreeSAPP
+#$f1 is the assembly file (fasta). Please assign the variable f1 the path to the assembly fasta file
+#$f2 is the reads file (fastq). Please assign the variable f2 the path to the fastq file
+#$f3 is the output directory. Please assign the variable f3 the path to the output directory
+
+while IFS=, read -r f1 f2 f3
+do
+
+#debugging echoes
+#  echo "assembly file:${f1}"
+#  echo "reads file: ${f2}"
+#  echo "output directory: ${f3}"
+
+treesapp assign -i ${f1} -n 4 -m dna -r ${f2} -p pe -o ${f3} --refpkg_dir $refpkg_path --rpkm --trim_align --verbose --delete
+
+#change permissions on output subdirectories to rwx for everyone
+
+chmod -R 777 ${f3}
+done < $paths_file
+
+##remember to deactivate conda treesapp environment after running
+
+conda deactivate
+```
 
 
 
