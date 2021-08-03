@@ -9,22 +9,22 @@ rmd_files:
 # Providing array as YAML sequence, so it's easier to comment out Rmd files that
 # are not needed.
   - index.Rmd
-  # - under_construction.Rmd
-  - part_introduction.Rmd # separator for TOC navigation
-  - introduction.Rmd
-  - part_tutorials.Rmd # separator for TOC navigation
-  - tutorials.Rmd
-  - bash.Rmd
-  - scripts.Rmd
-  - fastqc.Rmd
-  - samtools_bcftools.Rmd
-  - chip-seq.Rmd
-  - star.Rmd
-  - htseq_deseq2.Rmd
-  - part_capstone.Rmd # separator for TOC navigation
-  - capstone.Rmd
-  - assessment.Rmd
-  - appendix.Rmd # separator for TOC navigation
-  - data.Rmd
-  - cheat_sheet.Rmd
-  - references.Rmd
+  - under_construction.Rmd
+  # - part_introduction.Rmd # separator for TOC navigation
+  # - introduction.Rmd
+  # - part_tutorials.Rmd # separator for TOC navigation
+  # - tutorials.Rmd
+  # - bash.Rmd
+  # - scripts.Rmd
+  # - fastqc.Rmd
+  # - samtools_bcftools.Rmd
+  # - chip-seq.Rmd
+  # - star.Rmd
+  # - htseq_deseq2.Rmd
+  # - part_capstone.Rmd # separator for TOC navigation
+  # - capstone.Rmd
+  # - assessment.Rmd
+  # - appendix.Rmd # separator for TOC navigation
+  # - data.Rmd
+  # - cheat_sheet.Rmd
+  # - references.Rmd
