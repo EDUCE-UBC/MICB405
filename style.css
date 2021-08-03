@@ -1,14 +1,69 @@
-p.caption {
-  color: #777;
-  margin-top: 10px;
+:root {
+  /* colors must given for use with rgb() */
+  --exercise: 255, 153, 51;
+  --instructions: 0, 255, 204;
+  --question: 153, 51, 102;
 }
-p code {
-  white-space: inherit;
+
+body {
+  counter-reset: exercise 0 question 0;
 }
-pre {
-  word-break: normal;
-  word-wrap: normal;
+
+.exercise, .instructions, .question {
+  position: relative;
+  margin: 2em;
+  padding: 2em 20px 1em 20px;
 }
-pre code {
-  white-space: inherit;
+
+.exercise {
+  counter-increment: exercise;
+  background: rgba(var(--exercise), 0.2);
+}
+
+.instructions {
+  background: rgba(var(--instructions), 0.1);
+}
+
+.question {
+  counter-increment: question;
+  background: rgba(var(--question), 0.2);
+}
+
+.exercise::before, .instructions::before, .question::before {
+  position: absolute;
+  top: -1em;
+  left: -2em;
+  width: 7em;
+  padding: 5px 0;
+  color: #ffffff;
+    font-weight: bold;
+  font-family: "Century Gothic", Arial, sans-serif;
+  text-align: center;
+}
+
+.exercise::before {
+  content: "Exercise " counter(exercise);
+  background: rgb(var(--exercise));
+}
+
+.instructions::before {
+  content: "Instructions";
+  background: rgb(var(--instructions));
+}
+
+.question::before {
+  content: "Question " counter(question);
+  background: rgb(var(--question));
+}
+
+kbd {
+  background-color: #333;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, .25) 0 -1px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: monospace;
+  font-size: 90%;
+  line-height: 18px;
+  padding: 2px 4px;
 }

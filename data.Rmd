@@ -1,0 +1,21 @@
+# The data set
+
+## Description 
+
+## Data on the server
+
+The  data is located on the Orca server at `<add path>`.
+
+```{r echo = FALSE, comment = NA}
+cat(paste(readLines("data/directory_structure.txt"),
+          collapse = "\n"),
+    fill = TRUE)
+```
+
+## Description of input data
+
+List of directories and their contents
+
+## Methods
+
+### Sample Collection
