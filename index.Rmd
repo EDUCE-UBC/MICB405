@@ -1,61 +1,35 @@
 ---
-title: "anvi'o binning and refinement tutorial"
-author: "Pranav Sampara, Steven Hallam, Stefanie Christen Sternagel, Julia Anstett, Stephan Koenig"
-date: "16/11/2020"
+title: "MICB405 Bioinformatics"
+subtitle: "2021.22 MICB405 Bioinformatics"
+author: "Axel Hauduc, Stephan Koenig"
+date: "version `r format(Sys.time(), '%B %d, %Y')`"
 site: bookdown::bookdown_site
+output:
+  bookdown::gitbook:
+    css: style.css
+    split_bib: no
+    config:
+      toc:
+        collapse: section
+        scroll_highlight: yes
+bibliography: book.bib
+csl: american-society-for-microbiology.csl
 documentclass: book
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+link-citations: true
+description: | 
+  | A collection of tutorials and the capstone project information for MICB405.
+# For further configuration, see `_bookdown.yml`
 ---
 
-# Introduction
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+# Saving the default settings for code chunks to use to reset settings.
+default_chunk_options <- knitr::opts_chunk$get()
 
-The following book provides a basic tutorial and background information for constructing metagenome assembled genomes (MAGs) with manual refinement using anvi'o. The tutorial leverages four binning tools---METABAT2, MAXBIN2, CONCOCT, and DASTool. CheckM is used for MAG quality assessment and GTDB-Tk is used for taxonomic classification. Finally, prokka is used for gene finding and annotation and TreeSAPP is used for fast phylogenetic mapping of functional anchor genes. Collectively, application of these tools is intended to help you answer the following foundational questions:
+# library(readr)
+# library(dplyr)
+# library(kableExtra)
+```
 
-1.  What is the taxonomic and functional structure of the microbial community? 
+# Overview {-}
 
-2.  How does this structure change along a gradient or in response to environmental perturbation? 
-
-3.  What are the ecological and biogeochemical consequences of this change?
-
-4.  What are relevant units of selection, conservation or utilization within microbial communities?
-
-## Guide to the book
-
-An introduction to 'omics methods is provided with a commentary and focus on metagenomics. Typical workflows, key points, and common challenges are described. 
-
-The next chapter of the book contains the capstone project description and grading rubric as well as information on the data sets to be used for analysis.
-
-A brief introduction and installation guide to anvi'o and binning tools follows based on information provided by the Meren lab at the University of Chicago.
-
-Finally, example scripts are provided to construct MAGs, conduct taxonomic classification, and complete functional annotations at the individual population and community levels of biological organization.
-
-Clearly, this book is a basic introduction to binning and refinement. To maximize the benefit of the tutorial provided, please read the supporting scientific literature wherever provided and look beyond for opportunities to exercise your scientific imagination.
-
-## Some key features of metagenomic analysis
-
-Environmental genomics, also known as metagenomics is the study of uncultivated microbial communities in natural and engineered environments using high-throughput sequencing and mass spectrometry methods. Application of metagenomic methods can provide insights into the ecophysiology, ecology and evolution of microorganisms at different levels of biological organization. At the same time these insights can help us uncover design principles for rational design of microbial communities and uncover a deep reservoir of sequence information useful in pathway engineering and biotechnology innovation. 
-
-1.  Ecophysiology: Enables us to identify who in the community of microorganisms is capable of doing what by linking taxonomic and functional information at the individual, population and community levels of biological organization. Read [Spang et al. 2019](https://www.nature.com/articles/s41564-019-0406-9)
-
-2.  Ecology: Estimate community-level properties and interactions between organisms and their environment -- richness, diversity, redundancy, degeneracy and resilience. Read [Louca et al. 2016](https://www.pnas.org/content/113/40/E5925.long)
-
-3.  Evolution: Investigate how individuals, populations and communities evolve in response to ecological and environmental state changes with an emphasis on defining ancestry and selective pressures in space and time. Read [Sun et al. 2016](https://www.nature.com/articles/ismej2015162)
-
-
-## Basic outline of a metagenomics pipeline
-
-Metagenomic analysis is inherently heterogeneous given the complexity of the input data and the different types of processing steps available. However, certain common steps can be identified that define a conventional workflow consisting of the following processing steps:
-
-1.  Quality control, or polishing, of the raw reads
-
-2.  Assembly of the raw reads into contiguous sequences, or contigs, and scaffolds
-
-3.  Generation of coverage information by mapping the assembled reads to the polished reads
-
-4.  Using sequence composition and coverage information to group, or bin, similar contigs. These bins are referred to as metagenome-assembled genomes (MAGs)
-
-5.  Quality control of the MAGs to assess completion and contamination
-
-6.  Taxonomic classification and functional annotation of MAGs to identify who is present and what their metabolic potential is (see foundation questions in introduction)
-
-7. Metabolic pathway inference to predict given a set of genes what are the likely pathways present at different levels of biological organization. 
+This document introduces bioinformatics workflows useful in systems immunology.

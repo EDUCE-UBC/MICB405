@@ -1,0 +1,33 @@
+# Project description
+
+
+
+## Guiding research questions
+
+
+
+## Resources
+
+
+
+## Your submission
+
+Your final submission will consist of 3 separate files: the report itself (`docx` or `pdf`), one shell script `treesapp_analysis.sh`, and one R script `treesapp_analysis.R` (both script files must be in plain text format). The report should not contain any code, but should contain versions of software tools used and a high-level description of your workflow (i.e describe *what* was done and NOT *how*).
+
+## Timeline
+
+The following provides an outline as well as some specific milestones within the project.
+
+```{r child = "child_Rmds/timeline.Rmd"}
+```
+
+## Reports
+
+Reports should be formatted as per the [Instructions to Authors](https://jb.asm.org/sites/default/files/additional-assets/JB-ITA.pdf) for the [Journal of Bacteriology](https://jb.asm.org/).
+
+Each group will submit **one** report with the sections below.
+
+```{r child = "child_Rmds/report_structure.Rmd"}
+```
+
+

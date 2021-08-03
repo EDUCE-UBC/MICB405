@@ -1,0 +1,21 @@
+# Assessment
+
+Reports will account for  of the course marks distributed as follows.
+
+## Report (20%)
+
+**Total: <points> pts**
+
+Each group will submit an electronic copy of their group's final report (due **April 24**). Reports will be assessed on:
+
+-   Completion of relevant analyses toward answering biological questions
+-   Logic and completeness of conclusions made from these analyses
+-   Writing clarity, grammar, and style
+-   Figure clarity, effectiveness, and relevance
+
+```{r child = "child_Rmds/rubric.Rmd"}
+```
+
+## UJEMI submission
+
+Outstanding reports will be invited to submit to The Undergraduate Journal of Experimental Microbiology and Immunology ([UJEMI](https://jemi.microbiology.ubc.ca/)). More information on this will be provided near the end of the Finals Period.

@@ -1,0 +1,10 @@
+# Tutorials
+
+## Introduction and goals
+
+## Formatting
+
+```{r child = "child_Rmds/formatting.Rmd"}
+```
+
+## Data
