@@ -3,20 +3,36 @@ on:
      branches:
        - main
 
-name: renderbook
+name: deploy_bookdown
 
 jobs:
   bookdown:
-    name: Render-Book
+    name: bookdown
     runs-on: macOS-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@v1
       - uses: r-lib/actions/setup-pandoc@v1
+      - name: Cache Renv packages
+        uses: actions/cache@v2
+        with:
+          path: ~/Library/Caches/org.R-project.R/R/renv
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+            
+      - name: Cache bookdown outputs
+        uses: actions/cache@v2
+        with:
+          path: _book
+          key: bookdown-${{ hashFiles('**/*Rmd') }}
+          restore-keys: ${{ runner.os }}-bookdown-
+          
       - name: Install R packages
-        run: >-
-          Rscript -e 'install.packages(c("rmarkdown","bookdown",
-                                         "bslib", "downlit", "xml2"))'
+        run: |
+          R -e 'install.packages("renv")'
+          R -e 'renv::restore()'
+
       - name: Render Book
         run: Rscript -e 'bookdown::render_book()'
       - uses: actions/upload-artifact@v1
@@ -30,19 +46,16 @@ jobs:
    needs: bookdown
    steps:
      - name: Checkout
-       uses: actions/checkout@master
+       uses: actions/checkout@v2
      - name: Download artifact
-       uses: actions/download-artifact@v1.0.0
+       uses: actions/download-artifact@v2
        with:
          # Optional artifact name
          name: _book
          # Optional destination path
          path: _book
      - name: Deploy to GitHub Pages
-       uses: Cecilapp/GitHub-Pages-deploy@v3
-       env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       uses: JamesIves/github-pages-deploy-action@4.1.4
        with:
-         email:  ${{ secrets.EMAIL }}
-         build_dir: _book
-         
+         branch: gh-pages # The branch the action should deploy to.
+         folder: _book # The folder the action should deploy.
