@@ -35,7 +35,7 @@ jobs:
 
       - name: Render Book
         run: Rscript -e 'bookdown::render_book()'
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2.2.4
         with:
           name: _book
           path: _book/
