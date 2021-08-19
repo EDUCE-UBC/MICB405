@@ -55,15 +55,3 @@ body {
   content: "Question " counter(question);
   background: rgb(var(--question));
 }
-
-kbd {
-  background-color: #333;
-  border-radius: 3px;
-  box-shadow: rgba(0, 0, 0, .25) 0 -1px 0 inset;
-  box-sizing: border-box;
-  color: #fff;
-  font-family: monospace;
-  font-size: 90%;
-  line-height: 18px;
-  padding: 2px 4px;
-}
