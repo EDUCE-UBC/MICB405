@@ -1,0 +1,7 @@
+bookdown::bs4_book:
+  css: style.css
+  split_bib: no
+  config:
+    toc:
+      collapse: section
+      scroll_highlight: yes

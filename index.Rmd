@@ -1,24 +1,17 @@
 ---
 title: "MICB405 Bioinformatics"
-subtitle: "2021.22 MICB405 Bioinformatics"
+subtitle: "2021.22"
 author: "Axel Hauduc, Stephan Koenig"
-date: "version `r format(Sys.time(), '%B %d, %Y')`"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
 site: bookdown::bookdown_site
-output:
-  bookdown::gitbook:
-    css: style.css
-    split_bib: no
-    config:
-      toc:
-        collapse: section
-        scroll_highlight: yes
 bibliography: book.bib
 csl: american-society-for-microbiology.csl
 documentclass: book
 link-citations: true
-description: | 
-  | A collection of tutorials and the capstone project information for MICB405.
-# For further configuration, see `_bookdown.yml`
+description: >-
+  A collection of tutorials and the capstone project information for MICB405.
+# See `_output.yml` for output configuration
+# See `_bookdown.yml` for other configurations
 ---
 
 ```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
