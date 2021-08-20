@@ -1,5 +1,8 @@
 bookdown::bs4_book:
-  css: style.css
+  css: ["bs4_style.css", "style.css"]
+  repo:
+    base: https://github.com/EDUCE-UBC/MICB405
+    branch: main
   split_bib: no
   config:
     toc:
