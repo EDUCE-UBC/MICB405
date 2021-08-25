@@ -128,6 +128,13 @@
       "Repository": "CRAN",
       "Hash": "d447b40982c576a72b779f0a3b3da227"
     },
+    "fastmap": {
+      "Package": "fastmap",
+      "Version": "1.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "77bd60a6157420d4ffa93b27cf6a58b8"
+    },
     "foreign": {
       "Package": "foreign",
       "Version": "0.8-81",
@@ -158,10 +165,10 @@
     },
     "htmltools": {
       "Package": "htmltools",
-      "Version": "0.5.1.1",
+      "Version": "0.5.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "af2c2531e55df5cf230c4b5444fc973c"
+      "Hash": "526c484233f42522278ab06fb185cb26"
     },
     "jquerylib": {
       "Package": "jquerylib",
@@ -284,10 +291,10 @@
     },
     "stringi": {
       "Package": "stringi",
-      "Version": "1.7.3",
+      "Version": "1.7.4",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "7943cfae120c77a255025e5f63856532"
+      "Hash": "ebaccb577da50829a3bb1b8296f318a5"
     },
     "stringr": {
       "Package": "stringr",
@@ -298,10 +305,10 @@
     },
     "survival": {
       "Package": "survival",
-      "Version": "3.2-12",
+      "Version": "3.2-13",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "dcdc241a75d17656fec8d02cd8215c39"
+      "Hash": "6f0a0fadc63bc6570fe172770f15bbc4"
     },
     "tinytex": {
       "Package": "tinytex",
