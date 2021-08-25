@@ -4,9 +4,9 @@ subtitle: "2021.22"
 author: "Axel Hauduc, Stephan Koenig"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 site: bookdown::bookdown_site
-bibliography: book.bib
-csl: american-society-for-microbiology.csl
 documentclass: book
+bibliography: biblio/book.bib
+csl: biblio/american-society-for-microbiology.csl
 link-citations: true
 description: >-
   A collection of tutorials and the capstone project information for MICB405.
