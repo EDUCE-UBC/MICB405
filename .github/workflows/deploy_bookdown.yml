@@ -25,8 +25,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: _book
-          key: bookdown-${{ hashFiles('**/*Rmd') }}
-          restore-keys: ${{ runner.os }}-bookdown-
+          key: ${{ runner.os }}-bookdown-${{ hashFiles('**/*Rmd') }}
+          restore-keys: |
+            ${{ runner.os }}-bookdown-
           
       - name: Install R packages
         run: |
