@@ -4,7 +4,3 @@ bookdown::bs4_book:
     base: https://github.com/EDUCE-UBC/MICB405
     branch: main
   split_bib: no
-  config:
-    toc:
-      collapse: section
-      scroll_highlight: yes
