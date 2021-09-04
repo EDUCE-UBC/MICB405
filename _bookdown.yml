@@ -10,6 +10,9 @@ rmd_files:
   - Rmds/under_construction.Rmd
   # - Rmds/part_introduction.Rmd # separator for TOC navigation
   # - Rmds/introduction.Rmd
+  # - Rmds/part_setup.Rmd # separator for TOC navigation
+  # - Rmds/windows.Rmd
+  # - Rmds/macos.Rmd
   # - Rmds/part_tutorials.Rmd # separator for TOC navigation
   # - Rmds/tutorials.Rmd
   # - Rmds/bash.Rmd

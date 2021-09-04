@@ -10,8 +10,11 @@ csl: biblio/american-society-for-microbiology.csl
 link-citations: true
 description: >-
   A collection of tutorials and the capstone project information for MICB405.
-# See `_output.yml` for output configuration
-# See `_bookdown.yml` for other configurations
+params:
+  windows_version: 21H1
+  windows_version_release_date: "the first half---May---of 2021"
+  macos_version: Big Sur
+  macos_version_link: https://support.apple.com/en-us/HT201475
 ---
 
 ```{r setup, include = FALSE}
