@@ -1,0 +1,57 @@
+---
+title: "MICB405 Bioinformatics"
+subtitle: "2021.22"
+author: "Axel Hauduc and Stephan Koenig"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: biblio/book.bib
+csl: biblio/american-society-for-microbiology.csl
+link-citations: true
+description: >-
+  A collection of tutorials and the capstone project information for MICB405.
+params:
+  windows_version: 21H1
+  windows_version_release_date: "the first half---May---of 2021"
+  macos_version: Big Sur
+  macos_version_link: https://support.apple.com/en-us/HT201475
+---
+---
+title: "MICB405 Bioinformatics"
+subtitle: "2021.22"
+author: "Axel Hauduc and Stephan Koenig"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: biblio/book.bib
+csl: biblio/american-society-for-microbiology.csl
+link-citations: true
+description: >-
+  A collection of tutorials and the capstone project information for MICB405.
+params:
+  windows_version: 21H1
+  windows_version_release_date: "the first half---May---of 2021"
+  macos_version: Big Sur
+  macos_version_link: https://support.apple.com/en-us/HT201475
+---
+
+```{r setup, include = FALSE}
+library(here)
+```
+
+# Overview {-}
+
+This document introduces bioinformatics workflows useful in systems immunology.
+
+<!--chapter:end:index.Rmd-->
+
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Under construction
+<font size="48">Bookdown is under construction</font>
+
+<!--chapter:end:Rmds/under_construction.Rmd-->
+
