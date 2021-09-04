@@ -21,9 +21,9 @@
 +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
 | `less <filename>`                 | Look at text file                                                                                                              |
 |                                   |                                                                                                                                |
-|                                   | Press <kbd>H</kbd>elp for navigation                                                                                           |
+|                                   | <kbd>h</kbd>elp for navigation                                                                                                 |
 |                                   |                                                                                                                                |
-|                                   | Press <kbd>Q</kbd>uit to leave                                                                                                 |
+|                                   | <kbd>q</kbd>uit                                                                                                                |
 +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
 | `scp <source> <target>`           | Copy files between local and server                                                                                            |
 |                                   |                                                                                                                                |
@@ -43,7 +43,7 @@
 |                                   |                                                                                                                                |
 | `<command> --help`                |                                                                                                                                |
 +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| `screen`                          | Create a virtual terminal that continues to run jobs even when your connection to server terminates                            |
+| `screen`                          | Create a virtual terminal that continues to run jobs even when your connection to the server terminates                        |
 |                                   |                                                                                                                                |
 |                                   | `-S <session name>` create a session with `<session name>`                                                                     |
 |                                   |                                                                                                                                |
