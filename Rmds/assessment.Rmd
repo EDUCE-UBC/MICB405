@@ -13,7 +13,7 @@ Each group will submit an electronic copy of their group's final report (due **A
 -   Writing clarity, grammar, and style
 -   Figure clarity, effectiveness, and relevance
 
-```{r child = "child_Rmds/rubric.Rmd"}
+```{r child = here("Rmds", "child_Rmds", "rubric.Rmd")}
 ```
 
 ## UJEMI submission

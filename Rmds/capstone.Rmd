@@ -18,7 +18,7 @@ Your final submission will consist of 3 separate files: the report itself (`docx
 
 The following provides an outline as well as some specific milestones within the project.
 
-```{r child = "child_Rmds/timeline.Rmd"}
+```{r child = here("Rmds", "child_Rmds", "timeline.Rmd")}
 ```
 
 ## Reports
@@ -27,7 +27,7 @@ Reports should be formatted as per the [Instructions to Authors](https://jb.asm.
 
 Each group will submit **one** report with the sections below.
 
-```{r child = "child_Rmds/report_structure.Rmd"}
+```{r child = here("Rmds", "child_Rmds", "report_structure.Rmd")}
 ```
 
 
