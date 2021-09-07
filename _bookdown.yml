@@ -10,12 +10,12 @@ rmd_files:
   - Rmds/under_construction.Rmd
   # - Rmds/part_introduction.Rmd # separator for TOC navigation
   # - Rmds/introduction.Rmd
-  # - Rmds/part_setup.Rmd # separator for TOC navigation
-  # - Rmds/windows.Rmd
-  # - Rmds/macos.Rmd
-  # - Rmds/part_tutorials.Rmd # separator for TOC navigation
-  # - Rmds/tutorials.Rmd
-  # - Rmds/bash.Rmd
+  - Rmds/part_setup.Rmd # separator for TOC navigation
+  - Rmds/windows.Rmd
+  - Rmds/macos.Rmd
+  - Rmds/part_tutorials.Rmd # separator for TOC navigation
+  - Rmds/tutorials.Rmd
+  - Rmds/bash.Rmd
   # - Rmds/scripts.Rmd
   # - Rmds/fastqc.Rmd
   # - Rmds/samtools_bcftools.Rmd
@@ -25,7 +25,7 @@ rmd_files:
   # - Rmds/part_capstone.Rmd # separator for TOC navigation
   # - Rmds/capstone.Rmd
   # - Rmds/assessment.Rmd
-  # - Rmds/appendix.Rmd # separator for TOC navigation
+  - Rmds/appendix.Rmd # separator for TOC navigation
   # - Rmds/data.Rmd
-  # - Rmds/cheat_sheet.Rmd
+  - Rmds/cheat_sheet.Rmd
   # - Rmds/references.Rmd
