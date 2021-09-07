@@ -24,7 +24,9 @@ These instructions will ensure that your local computer can connect to a Linux s
 
 -   OpenSSH comes pre-installed if you have Windows 10 version 1803 or newer. If you updated to the latest Windows 10 version, you should already have OpenSSH available to you. If your Windows 10 version is older because you cannot update, follow the [official Microsoft documentation on installing OpenSSH Client](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse).
 
--   Go to [Microsoft Store Windows Terminal website](https://aka.ms/terminal) > click the "Get" button to install the app.
+-   The easiest way to access the ORCA server on Windows is to open the "Command Prompt" application and type in ssh
+
+-   If you would like to customize the  to [Microsoft Store Windows Terminal website](https://aka.ms/terminal) > click the "Get" button to install the app.
 
 ## Resources {-}
 
