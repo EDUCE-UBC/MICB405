@@ -1,0 +1,13 @@
+# Useful Resources
+## These are OPTIONAL resources if you want to dive into course topics in more depth. You will not be tested 
+
+## Bash
+-   [Software Carpentry - UNIX Novice Course](https://swcarpentry.github.io/shell-novice/)
+-   [sandbox.bio Interactive Online Shell w/ Tutorials](https://sandbox.bio/)
+-   [Bioinformatics Data Skills Online Textbook (also includes R content)](https://ebookcentral.proquest.com/lib/ubc/reader.action?docID=3564550&ppg=1)
+
+## R
+-   [Software Carpentry - Programming in R](http://swcarpentry.github.io/r-novice-inflammation)
+-   [Software Carpentry - R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder)
+
+## Bioinformatics T
