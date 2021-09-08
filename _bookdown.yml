@@ -13,6 +13,7 @@ rmd_files:
   - Rmds/part_setup.Rmd # separator for TOC navigation
   - Rmds/windows.Rmd
   - Rmds/macos.Rmd
+  - Rmds/linux.Rmd
   - Rmds/part_tutorials.Rmd # separator for TOC navigation
   # - Rmds/tutorials.Rmd
   - Rmds/bash.Rmd
@@ -28,5 +29,5 @@ rmd_files:
   - Rmds/appendix.Rmd # separator for TOC navigation
   # - Rmds/data.Rmd
   - Rmds/cheat_sheet.Rmd
-  - Rmds/useful_resources.Rmd
+  - Rmds/resources.Rmd
   # - Rmds/references.Rmd

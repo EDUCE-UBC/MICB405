@@ -1,0 +1,16 @@
+# Linux  {-}
+
+## Updating the operating system {-}
+
+```{r child = here("Rmds", "child_Rmds", "os_warning.Rmd")}
+```
+
+-   It is always best practice to keep your software packages up to date on Linux as well.
+
+-   On Debian-based (apt) distributions, a simple `sudo apt update` + `sudo apt upgrade` will do, but commands will vary on distributions.
+
+## Accessing a terminal to connect with the server {-}
+
+-   Use your preferred Terminal app. The location may vary depending on your distribution. On most GUIs, you should be able to find it by searching for "Terminal".
+
+-   Once here, you can proceed to Tutorial 1.

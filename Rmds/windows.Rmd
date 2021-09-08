@@ -18,15 +18,23 @@ Please update to the latest version of Windows 10: version `r params$windows_ver
 
 - If Windows Update does not offer the latest version, then manually update by going to [Windows 10 Downloads](https://www.microsoft.com/software-download/windows10) and choosing the latest version.
 
-## Working on a server with OpenSSH {-}
+## Accessing a terminal to connect with the server {-}
 
 These instructions will ensure that your local computer can connect to a Linux server and copy files between them using a suite of software tools called OpenSSH and the Windows Terminal app.
 
 -   OpenSSH comes pre-installed if you have Windows 10 version 1803 or newer. If you updated to the latest Windows 10 version, you should already have OpenSSH available to you. If your Windows 10 version is older because you cannot update, follow the [official Microsoft documentation on installing OpenSSH Client](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse).
 
--   The easiest way to access the ORCA server on Windows is to open the "Command Prompt" application and type in ssh
+-   The simplest way to access OpenSSH on Windows is to open the "Command Prompt" application, discoverable through the search bar. This application will provide sufficient functionality for all server-based work you will do in MICB405.
 
--   If you would like to customize the  to [Microsoft Store Windows Terminal website](https://aka.ms/terminal) > click the "Get" button to install the app.
+-   Once here, you can proceed to Tutorial 1.
+
+## Additional considerations for Windows {-}
+
+-   Be aware that on Windows Command Prompt, you will be accessing a Linux server through a multi-platform software package, OpenSSH, that exists in both Windows and bash/Linux/Unix. Functionality will be identical once you are connected, but before you are connected, your terminal is entirely different from bash/Linux/Unix and [uses a different language](http://www.cs.columbia.edu/~sedwards/classes/2015/1102-fall/Command%20Prompt%20Cheatsheet.pdf). Tread with caution if executing commands other than `ssh` on Command Prompt!!
+
+-   If you would like to make your terminal more customizeable and easy to use, you can download [Windows Terminal](https://aka.ms/terminal) (click the "Get" button to install the app) and access Command Prompt through there.
+
+-   Finally, you can create a true Linux environment at the command line by setting up [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10). You can then access this virtualized Linux shell on Windows Terminal, and `ssh` onto the server as you would on a Linux machine's terminal. This is entirely optional, but will allow you practice and run Linux commands on your machine without connecting to the server, just like on macOS and Linux.
 
 ## Resources {-}
 

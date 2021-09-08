@@ -5,11 +5,16 @@
 ```{r child = here("Rmds", "child_Rmds", "os_warning.Rmd")}
 ```
 
-Please upgrade to the latest version of macOS, `r params$macos_version`.
+-   Please upgrade to the latest version of macOS, `r params$macos_version`.
 
-Check your [current version of macOS](https://support.apple.com/en-ca/HT201260). If you do not have the latest version, follow the upgrade instructions on the [Apple support page](`r params$macos_version_link`).
+-   Check your [current version of macOS](https://support.apple.com/en-ca/HT201260). If you do not have the latest version, follow the upgrade instructions on the [Apple support page](`r params$macos_version_link`).
 
-If you cannot upgrade to the latest version, follow [these instructions](https://support.apple.com/en-us/HT211683) to find the system requirements and upgrade to latest versions available to you. If you need to maintain [32-bit compatibility](https://support.apple.com/en-us/HT208436) for any of your software, then upgrade to no higher than macOS 10.14 Mojave.
+-   If you cannot upgrade to the latest version, follow [these instructions](https://support.apple.com/en-us/HT211683) to find the system requirements and upgrade to latest versions available to you. If you need to maintain [32-bit compatibility](https://support.apple.com/en-us/HT208436) for any of your software, then upgrade to no higher than macOS 10.14 Mojave.
+
+## Accessing a terminal to connect with the server {-}
+-   macOS will come pre-installed with the Terminal app located at `/Applications/Utilities/Terminal`.
+
+-   Once here, you can proceed to Tutorial 1.
 
 ## Resources {-}
 
