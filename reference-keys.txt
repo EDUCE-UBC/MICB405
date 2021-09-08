@@ -1,0 +1,16 @@
+tab:commands
+optional-windows-subsystem-for-linux
+introduction-linux-server-accounts
+logging-in
+bonus-work
+delve-into-man-pages-and-help
+terminal-keyboard-shortcuts
+basics
+navigating-text
+advanced
+additonal-resources
+bash-cheat-sheet
+resources-2
+unix
+r
+bioinformatics
