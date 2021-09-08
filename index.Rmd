@@ -1,5 +1,5 @@
 ---
-title: "MICB405 Bioinformatics"
+title: "MICB 405 Bioinformatics"
 subtitle: "2021.22"
 author: "Axel Hauduc and Stephan Koenig"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
@@ -9,7 +9,7 @@ bibliography: biblio/book.bib
 csl: biblio/american-society-for-microbiology.csl
 link-citations: true
 description: >-
-  A collection of tutorials and the capstone project information for MICB405.
+  A collection of tutorials and the capstone project information for MICB 405.
 params:
   windows_version: 21H1
   windows_version_release_date: "the first half---May---of 2021"
@@ -23,4 +23,6 @@ library(here)
 
 # Overview {-}
 
-Welcome to the MICB405 Tutorials website! You will find all tutorials and tutorial worksheets uploaded here each week ahead of the Friday tutorials.
+Welcome to the MICB 405 Tutorials website! You will find all tutorials and tutorial worksheets uploaded here each week ahead of the Friday tutorials.
+
+MICB 405 introduces you to the concepts and applications of sequence-based bioinformatics research across several broad topic areas, including Unix/Linux and the command line and massively parallel sequencing and their applications. From a biological perspective, we will discuss the main considerations and applications of the computational tools used in these subject areas. In team projects supplementing lecture materials, you will work within groups to apply those bioinformatics tools to experimental data sets.
