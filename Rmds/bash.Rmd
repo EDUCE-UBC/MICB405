@@ -2,6 +2,18 @@
 
 Welcome to the first MICB 405 lab! Today, we're going to get started with the essential skills and tools you'll be using for the rest of the course.
 
+## Slides
+
+You can download the slides for this tutorial below.
+
+```{r echo = FALSE}
+downloadthis::download_file(
+  path         = here("slides", "tutorials", "bash.pdf"),
+  output_name  = "introduction_and_linux_server_accounts",
+  button_label = "Download slides"
+)
+```
+
 ## Logging in
 
 Once you have followed the Setup steps and have a terminal open on the operating system of your choice, you should be ready to log in!
