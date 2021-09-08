@@ -23,4 +23,4 @@ library(here)
 
 # Overview {-}
 
-This document introduces bioinformatics workflows useful in systems immunology.
+Welcome to the MICB405 Tutorials website! You will find all tutorials and tutorial worksheets uploaded here each week ahead of the Friday tutorials.

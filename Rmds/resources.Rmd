@@ -1,0 +1,14 @@
+# Resources
+These are OPTIONAL resources if you want to dive into course topics in more depth. You will not be tested on content that does not appear in the lecture material.
+
+## Unix
+-   [Software Carpentry - UNIX Novice Course](https://swcarpentry.github.io/shell-novice/)
+-   [sandbox.bio Online Shell & Tutorials](https://sandbox.bio/)
+
+## R
+-   [R for Data Science](https://r4ds.had.co.nz/index.html)
+-   [Software Carpentry - Programming in R](http://swcarpentry.github.io/r-novice-inflammation)
+-   [Software Carpentry - R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder)
+
+## Bioinformatics
+-   [Bioinformatics Data Skills (Unix, R, & much, much more)](https://ebookcentral.proquest.com/lib/ubc/reader.action?docID=3564550)
