@@ -30,11 +30,11 @@ These instructions will ensure that your local computer can connect to a Linux s
 
 ## Additional considerations for Windows {-}
 
--   Be aware that on Windows Command Prompt, you will be accessing a Linux server through a multi-platform software package, OpenSSH, that exists in both Windows and bash/Linux/Unix. Functionality will be identical once you are connected, but before you are connected, your terminal is entirely different from bash/Linux/Unix and [uses a different language](http://www.cs.columbia.edu/~sedwards/classes/2015/1102-fall/Command%20Prompt%20Cheatsheet.pdf). Tread with caution if executing commands other than `ssh` on Command Prompt!!
+Be aware that when you open a new Windows Terminal window that you will initially use an entirely different shell/language (called [PowerShell](https://docs.microsoft.com/en-us/powershell/)) on your computer. Only after you are connected to the server (using OpenSSH, see above) will you be using Bash. Tread with caution if executing commands other than `ssh` or `scp` from the tutorials while still in PowerShell (i.e. while not connected to the server).
 
--   If you would like to make your terminal more customizeable and easy to use, you can download [Windows Terminal](https://aka.ms/terminal) (click the "Get" button to install the app) and access Command Prompt through there.
+## Optional: Windows Subsystem for Linux
 
--   Finally, you can create a true Linux environment at the command line by setting up [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10). You can then access this virtualized Linux shell on Windows Terminal, and `ssh` onto the server as you would on a Linux machine's terminal. This is entirely optional, but will allow you practice and run Linux commands on your machine without connecting to the server, just like on macOS and Linux.
+You can create a true Linux environment at the command line by setting up [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10). You can then access Bash of this virtualized Linux to practice and run Linux commands on your machine without connecting to the server.
 
 ## Resources {-}
 
