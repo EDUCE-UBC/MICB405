@@ -24,17 +24,19 @@ These instructions will ensure that your local computer can connect to a Linux s
 
 -   OpenSSH comes pre-installed if you have Windows 10 version 1803 or newer. If you updated to the latest Windows 10 version, you should already have OpenSSH available to you. If your Windows 10 version is older because you cannot update, follow the [official Microsoft documentation on installing OpenSSH Client](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse).
 
--   The simplest way to access OpenSSH on Windows is to open the "Command Prompt" application, discoverable through the search bar. This application will provide sufficient functionality for all server-based work you will do in MICB405.
+-   The simplest way to access OpenSSH on Windows is to open either the "Command Prompt" or "PowerShell" applications, discoverable through the search bar. These applications will provide sufficient functionality for all server-based work you will do in MICB405.
 
 -   Once here, you can proceed to Tutorial 1.
 
 ## Additional considerations for Windows {-}
 
-Be aware that when you open a new Windows Terminal window that you will initially use an entirely different shell/language (called [PowerShell](https://docs.microsoft.com/en-us/powershell/)) on your computer. Only after you are connected to the server (using OpenSSH, see above) will you be using Bash. Tread with caution if executing commands other than `ssh` or `scp` from the tutorials while still in PowerShell (i.e. while not connected to the server).
+You can make your command line experience more modern and customizeable on Windows with the use of [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/get-started). 
+
+Be aware that when you open Command Prompt or Powershell, either directly through the associated app or in a new Windows Terminal tab, that you are using an entirely different local shell [with its own set of commands](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands) unique from Linux. Only after you are connected to the server (using OpenSSH, see above) will you be using Bash. Tread with caution if executing commands other than `ssh` or `scp` from the tutorials while still in Command Prompt or PowerShell (i.e. while not connected to the server).
 
 ## Optional: Windows Subsystem for Linux
 
-You can create a true Linux environment at the command line by setting up [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10). You can then access Bash of this virtualized Linux to practice and run Linux commands on your machine without connecting to the server.
+You can create a true Linux environment at the command line by setting up [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10). You can then access Bash on a virtualized Linux distribution, either directly through that distribution's Windows app or on Windows Terminal, to practice and run Linux commands on your machine without connecting to the server.
 
 ## Resources {-}
 
