@@ -1,0 +1,12 @@
+Imports:
+  bookdown,
+  bslib,
+  downlit,
+  xml2
+Suggests:
+  devtools,
+  reprex,
+  styler,
+  testthis,
+  thematic,
+  usethis
