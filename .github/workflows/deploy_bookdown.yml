@@ -1,0 +1,62 @@
+on:
+  push:
+     branches:
+       - main
+
+name: deploy_bookdown
+
+jobs:
+  bookdown:
+    name: bookdown
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      - name: Cache Renv packages
+        uses: actions/cache@v2
+        with:
+          path: ~/Library/Caches/org.R-project.R/R/renv
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+            
+      - name: Cache bookdown outputs
+        uses: actions/cache@v2
+        with:
+          path: _book
+          key: ${{ runner.os }}-bookdown-${{ hashFiles('**/*Rmd') }}
+          restore-keys: |
+            ${{ runner.os }}-bookdown-
+          
+      - name: Install R packages
+        run: |
+          R -e 'install.packages("renv")'
+          R -e 'renv::restore()'
+
+      - name: Render Book
+        run: Rscript -e 'bookdown::render_book()'
+      - uses: actions/upload-artifact@v2.2.4
+        with:
+          name: _book
+          path: _book/
+  
+# Published to `gh-pages` branch
+  checkout-and-deploy:
+   runs-on: ubuntu-latest
+   needs: bookdown
+   steps:
+     - name: Checkout
+       uses: actions/checkout@v2
+     - name: Download artifact
+       uses: actions/download-artifact@v2
+       with:
+         # Optional artifact name
+         name: _book
+         # Optional destination path
+         path: _book
+     - name: Deploy to GitHub Pages
+       uses: JamesIves/github-pages-deploy-action@4.1.5
+       with:
+         branch: gh-pages # The branch the action should deploy to.
+         folder: _book # The folder the action should deploy.
