@@ -32,7 +32,7 @@ These instructions will ensure that your local computer can connect to a Linux s
 
 Be aware that when you open a new Windows Terminal window that you will initially use an entirely different shell/language (called [PowerShell](https://docs.microsoft.com/en-us/powershell/)) on your computer. Only after you are connected to the server (using OpenSSH, see above) will you be using Bash. Tread with caution if executing commands other than `ssh` or `scp` from the tutorials while still in PowerShell (i.e. while not connected to the server).
 
-## Optional: Windows Subsystem for Linux
+## Optional: Windows Subsystem for Linux {-}
 
 You can create a true Linux environment at the command line by setting up [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10). You can then access Bash of this virtualized Linux to practice and run Linux commands on your machine without connecting to the server.
 
