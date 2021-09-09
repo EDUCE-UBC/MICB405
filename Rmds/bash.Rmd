@@ -16,7 +16,7 @@ downloadthis::download_file(
 
 ## Logging in
 
-Once you have followed the Setup steps and have a terminal open on the operating system of your choice, you should be ready to log in!
+Once you have followed the setup steps and have opened Command Prompt (Windows) or Terminal (macOS, Linux), you should be ready to log in!
 
 ![](https://media2.giphy.com/media/LcfBYS8BKhCvK/giphy.gif?cid=ecf05e4747b1d69a24ea3b94dd23c9634105af0c7416ebb9&rid=giphy.gif).
 
@@ -28,7 +28,7 @@ ssh <username>@orca1.bcgsc.ca
 
 Enter your password when prompted. Don't worry when characters don't appear - this is an intentional security feature.
 
-You may have to respond to additonal prompts by typing in an answer (such as `yes`) and pressing <kbd>Enter</kbd>
+You may have to respond to additonal prompts by typing in an answer (such as `yes`) and pressing <kbd>Enter</kbd>.
 
 Let’s break this command down: `ssh` is the command and stands for "secure shell". It allows users to log on to remote (opposite of "local", which is your computer in this instance) servers. All following text is the argument. There may be many arguments and each of these would be separated by spaces. `<username>` is mostly obvious, but crucially this positions your shell in the `home` directory of username on the server’s system with the correct permissions. If everyone were to log on as `root` ("Administrator" in Windows-speak) this would be bad. `orca1.bcgsc.ca` (everything after the `@`) is known as the hostname or domain name and is the name of the device on the network it is connected to. Super-nerds sometimes replace this with the IP address.
 
