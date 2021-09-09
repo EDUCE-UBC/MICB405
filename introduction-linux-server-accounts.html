@@ -75,13 +75,13 @@
 <h2>
 <span class="header-section-number">1.2</span> Logging in<a class="anchor" aria-label="anchor" href="#logging-in"><i class="fas fa-link"></i></a>
 </h2>
-<p>Once you have followed the Setup steps and have a terminal open on the operating system of your choice, you should be ready to log in!</p>
+<p>Once you have followed the setup steps and have opened Command Prompt (Windows) or Terminal (macOS, Linux), you should be ready to log in!</p>
 <div class="inline-figure">
 <img src="https://media2.giphy.com/media/LcfBYS8BKhCvK/giphy.gif?cid=ecf05e4747b1d69a24ea3b94dd23c9634105af0c7416ebb9&amp;rid=giphy.gif">.</div>
 <p>Use the following command, replacing <code>&lt;username&gt;</code> with your actual username:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="introduction-linux-server-accounts.html#cb1-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@orca1.bcgsc.ca</span></code></pre></div>
 <p>Enter your password when prompted. Don’t worry when characters don’t appear - this is an intentional security feature.</p>
-<p>You may have to respond to additonal prompts by typing in an answer (such as <code>yes</code>) and pressing <kbd>Enter</kbd></p>
+<p>You may have to respond to additonal prompts by typing in an answer (such as <code>yes</code>) and pressing <kbd>Enter</kbd>.</p>
 <p>Let’s break this command down: <code>ssh</code> is the command and stands for “secure shell”. It allows users to log on to remote (opposite of “local”, which is your computer in this instance) servers. All following text is the argument. There may be many arguments and each of these would be separated by spaces. <code>&lt;username&gt;</code> is mostly obvious, but crucially this positions your shell in the <code>home</code> directory of username on the server’s system with the correct permissions. If everyone were to log on as <code>root</code> (“Administrator” in Windows-speak) this would be bad. <code>orca1.bcgsc.ca</code> (everything after the <code><a href="https://rdrr.io/r/base/slotOp.html">@</a></code>) is known as the hostname or domain name and is the name of the device on the network it is connected to. Super-nerds sometimes replace this with the IP address.</p>
 </div>
 <div id="bonus-work" class="section level2">
@@ -235,7 +235,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>MICB 405 Bioinformatics</strong>: 2021.22" was written by Axel Hauduc and Stephan Koenig. It was last built on September 08, 2021.</p>
+    <p>"<strong>MICB 405 Bioinformatics</strong>: 2021.22" was written by Axel Hauduc and Stephan Koenig. It was last built on September 09, 2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
