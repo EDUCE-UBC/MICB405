@@ -21,8 +21,24 @@ params:
 library(here)
 ```
 
-# Overview {-}
+# Overview {.unnumbered}
 
 Welcome to the MICB 405 Tutorials website! You will find all tutorials and tutorial worksheets uploaded here each week ahead of the Friday tutorials.
 
 MICB 405 introduces you to the concepts and applications of sequence-based bioinformatics research across several broad topic areas, including Unix/Linux and the command line and massively parallel sequencing and their applications. From a biological perspective, we will discuss the main considerations and applications of the computational tools used in these subject areas. In team projects supplementing lecture materials, you will work within groups to apply those bioinformatics tools to experimental data sets.
+
+:::: {style="display: flex; align-items: center;"}
+
+::: {.column width="10%"}
+[![](`r here("images", "canvas.svg")`)](https://canvas.ubc.ca/courses/79973)
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="85%"}
+[Please visit the Canvas MICB 405 site](https://canvas.ubc.ca/courses/79973) for the syllabus, schedule (via calendar), lectures, module quizzes and team project details.
+:::
+
+::::
+ 
