@@ -18,7 +18,7 @@ downloadthis::download_file(
 
 Once you have followed the setup steps and have opened Command Prompt (Windows) or Terminal (macOS, Linux), you should be ready to log in!
 
-![](https://media2.giphy.com/media/LcfBYS8BKhCvK/giphy.gif?cid=ecf05e4747b1d69a24ea3b94dd23c9634105af0c7416ebb9&rid=giphy.gif).
+![](https://media2.giphy.com/media/LcfBYS8BKhCvK/giphy.gif?cid=ecf05e4747b1d69a24ea3b94dd23c9634105af0c7416ebb9&rid=giphy.gif){style="display: block; margin-left: auto; margin-right: auto;"}
 
 Use the following command, replacing `<username>` with your actual username:
 
