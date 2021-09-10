@@ -55,3 +55,7 @@ body {
   content: "Question " counter(question);
   background: rgb(var(--question));
 }
+
+.inline-figure {
+  border: none;
+}
