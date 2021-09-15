@@ -1,0 +1,80 @@
+---
+title: "Tutorial 1 --- Introduction & Linux Server Accounts"
+subtitle: "MICB 405 --- Bioinformatics 2021W1"
+author: "Axel Hauduc"
+institute: "University of British Columbia"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+---
+
+```{r share-again, echo=FALSE}
+xaringanExtra::use_share_again()
+xaringanExtra::style_share_again(
+  share_buttons = c("twitter", "linkedin", "pocket")
+)
+```
+
+## About me
+
+---
+
+## Course Expectations for Tutorials
+
+Tutorials are delivered every Friday at 10am or 2pm
+
+- Review & reinforce concepts introduced in the lecture
+- Material may be examinable
+
+Groups
+
+- Breakout groups
+- Project groups
+    
+Review the syllabus!
+
+---
+
+## Virtual office hours start next week
+
+- **11am – 12pm Tuesdays<sup>*</sup>**  
+  Accessible on Zoom tab in Canvas
+
+- Email: ahauduc@bcgsc.ca
+
+  - Please start subject line with "MICB405: "
+  - Please ask your classmates/teammates & check online resources first
+  - I will do my best to get back to you within 48 hours
+
+.footnote[[*] may be subject to change]
+
+---
+
+## Online resources for help
+
+---
+
+## General tutorial logistics
+
+Presentation → demonstrations → worksheet
+
+Worksheets will be posted to the course website:  
+https://educe-ubc.github.io/MICB405/index.html
+
+Tutorials Website link at the bottom of Canvas home page & in Modules
+
+---
+
+## Today’s tutorial
+
+I will pass out your server credentials on slips of paper – please keep these safe
+
+Check the Setup page for your operating system, then go through the worksheet
+
+If you connected to the server and completed the worksheet, you may leave the tutorial
+
+Please let me know if you want to change tutorial sections
+
+---
+
+class: center middle
+
+## Questions?
