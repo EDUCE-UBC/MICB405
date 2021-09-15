@@ -43,6 +43,9 @@ jobs:
       - name: Render Book
         run: Rscript -e 'bookdown::render_book()'
         
+      - name: Copy slides libs
+        run: rsync -a slides/tutorials/libs/ _book/slides/tutorials/libs/
+        
       - uses: actions/upload-artifact@v2.2.4
         with:
           name: _book
