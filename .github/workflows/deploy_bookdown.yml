@@ -37,8 +37,8 @@ jobs:
       - name: Render slides
         run: >
           Rscript -e
-            'fs::dir_ls("slides", recurse = 1, type = "file", glob = "*.Rmd") |>
-               purrr::walk(rmarkdown::render)'
+          'fs::dir_ls("slides", recurse = 1, type = "file", glob = "*.Rmd") |>
+          purrr::walk(rmarkdown::render)'
       
       - name: Render Book
         run: Rscript -e 'bookdown::render_book()'
