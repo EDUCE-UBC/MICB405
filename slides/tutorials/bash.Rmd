@@ -15,6 +15,30 @@ xaringanExtra::style_share_again(
 
 ## About me
 
+```{r echo = FALSE, fig.show = "hold", out.width = "20%", fig.align = "default"}
+knitr::include_graphics(here::here("images", "axel_hauduc.jpg"))
+knitr::include_graphics(here::here("images", "seattle.jpg"))
+knitr::include_graphics(here::here("images", "uc_berkeley.jpg"))
+knitr::include_graphics(here::here("images", "dna.png"))
+knitr::include_graphics(here::here("images", "mouse.png"))
+```
+
+???
+
+A bit about my background:
+
+I grew up in Seattle, Washington, and went to school at UC Berkeley where I studied Neurobiology and French Literature.
+
+I did my undergraduate research work on mouse models of Alzheimer’s disease at the Gladstone Institute for Neurological Disease at UCSF
+
+I graduated from Cal in 2018 and worked for a year at a biotech company in Bothell, Washington.
+
+I started my graduate studies at UBC last September. I’m currently working on a bioinformatics project at the Hirst Lab related to reference genome customization to improve the quality of epigenomic data.
+
+I like to cycle and ski in my free time
+
+This is my first experience TAing so any feedback would be welcome!
+
 ---
 
 ## Course Expectations for Tutorials
@@ -45,6 +69,10 @@ Review the syllabus!
   - I will do my best to get back to you within 48 hours
 
 .footnote[[*] may be subject to change]
+
+???
+
+Please work with your group members 
 
 ---
 
