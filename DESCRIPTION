@@ -2,9 +2,12 @@ Imports:
   bookdown,
   bslib,
   downlit,
+  xaringan,
+  xaringanExtra,
   xml2
 Suggests:
   devtools,
+  miniUI,
   reprex,
   styler,
   testthis,

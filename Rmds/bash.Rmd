@@ -4,6 +4,11 @@ Welcome to the first MICB 405 lab! Today, we're going to get started with the es
 
 ## Slides
 
+```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "slides/tutorials/bash.html",
+                              ratio = "4:3")
+```
+
 You can download the slides for this tutorial below.
 
 ```{r echo = FALSE}
