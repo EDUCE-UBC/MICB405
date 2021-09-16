@@ -1,12 +1,12 @@
 ---
-title: "Tutorial 1 --- Introduction & Linux Server Accounts"
+title: "Tutorial 1 --- Introduction & Linux server accounts"
 subtitle: "MICB 405 --- Bioinformatics 2021W1"
 author: "Axel Hauduc"
 institute: "University of British Columbia"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 ---
 
-```{r share-again, echo=FALSE}
+```{r setup, echo=FALSE}
 xaringanExtra::use_share_again()
 xaringanExtra::style_share_again(
   share_buttons = c("twitter", "linkedin", "pocket")
@@ -77,6 +77,13 @@ Please work with your group members
 ---
 
 ## Online resources for help
+
+```{r echo = FALSE, fig.show = "hold", out.width = "50%", fig.align = "default"}
+knitr::include_graphics("../../images/biostars_logo.png")
+knitr::include_graphics("../../images/stack_exchange_logo.svg")
+knitr::include_graphics("../../images/stack_overflow_logo.svg")
+knitr::include_graphics("../../images/google_logo.svg")
+```
 
 ---
 
