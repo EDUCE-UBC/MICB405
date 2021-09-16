@@ -31,7 +31,7 @@ F01_R1_1M.fastq does not contain the sequence
 F01_R2.fastq does not contain the sequence
 F01_R2_1M.fastq does not contain the sequence
 ```
-
+ 
 ## For more help...
 Check out chapters 2--5, 8, & 10 of [A Practical Guide to Linux Commands Editors and Shell Programming]( https://www.asfa.k12.al.us/ourpages/auto/2016/8/10/55689107/A-Practical-Guide-to-Linux-Commands-Editors-and-Shell-Programming-2nd-Edition.pdf)
 
