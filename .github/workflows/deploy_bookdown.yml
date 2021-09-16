@@ -17,17 +17,17 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/Library/Caches/org.R-project.R/R/renv
-          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          key: renv-${{ hashFiles('**/renv.lock') }}
           restore-keys: |
-            ${{ runner.os }}-renv-
+            renv-
             
       - name: Cache bookdown outputs
         uses: actions/cache@v2
         with:
           path: _book
-          key: ${{ runner.os }}-bookdown-${{ hashFiles('**/*Rmd') }}
+          key: bookdown-${{ hashFiles('**/*Rmd') }}
           restore-keys: |
-            ${{ runner.os }}-bookdown-
+            bookdown-
           
       - name: Install R packages
         run: |
