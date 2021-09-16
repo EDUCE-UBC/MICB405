@@ -16,11 +16,11 @@ xaringanExtra::style_share_again(
 ## About me
 
 ```{r echo = FALSE, fig.show = "hold", out.width = "20%", fig.align = "default"}
-knitr::include_graphics(here::here("images", "axel_hauduc.jpg"))
-knitr::include_graphics(here::here("images", "seattle.jpg"))
-knitr::include_graphics(here::here("images", "uc_berkeley.jpg"))
-knitr::include_graphics(here::here("images", "dna.png"))
-knitr::include_graphics(here::here("images", "mouse.png"))
+knitr::include_graphics("../../images/axel_hauduc.jpg")
+knitr::include_graphics("../../images/seattle.jpg")
+knitr::include_graphics("../../images/uc_berkeley.jpg")
+knitr::include_graphics("../../images/dna.png")
+knitr::include_graphics("../../images/mouse.png")
 ```
 
 ???
