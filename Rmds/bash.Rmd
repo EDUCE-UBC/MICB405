@@ -55,67 +55,43 @@ To exit the `man` page, press <kbd>q</kbd>.
 
 ### Terminal keyboard shortcuts
 
-#### Basics
+After typing some text, can you navigate, copy, and paste text without using the mouse? With some practice, this will be a lot faster.
 
--   Autocomplete command:
++---------------------------------------------------+---------------------------------------------+
+| <kbd>keyboard</kbd>                               | Action                                      |
++===================================================+=============================================+
+| <kbd>TAB</kbd>                                    | Autocomplete                                |
++---------------------------------------------------+---------------------------------------------+
+| <kbd>↑</kbd> / <kbd>↓</kbd>                       | Navigate command history backwards/forwards |
++---------------------------------------------------+---------------------------------------------+
+| <kbd>Ctrl</kbd> + <kbd>c</kbd>                    | Kill process                                |
++---------------------------------------------------+---------------------------------------------+
+| <kbd>Ctrl</kbd> + <kbd>d</kbd>                    | End terminal or ssh session (or use `exit`) |
++---------------------------------------------------+---------------------------------------------+
+| <kbd>Ctrl</kbd> + <kbd>r</kbd>                    | Search command history                      |
++---------------------------------------------------+---------------------------------------------+
+| <kbd>Ctrl</kbd> + <kbd>a</kbd>                    | Move to beginning of line                   |
++---------------------------------------------------+---------------------------------------------+
+| <kbd>Ctrl</kbd> + <kbd>e</kbd>                    | Move to end of line                         |
++---------------------------------------------------+---------------------------------------------+
+| <kbd>Alt</kbd> + <kbd>b</kbd>                     | Move back one word                          |
++---------------------------------------------------+---------------------------------------------+
+| <kbd>Alt</kbd> + <kbd>f</kbd>                     | Move forward one word                       |
++---------------------------------------------------+---------------------------------------------+
+| <kbd>Ctrl</kbd> + <kbd>u</kbd>                    | Cut/kill text before cursor                 |
++---------------------------------------------------+---------------------------------------------+
+| <kbd>Ctrl</kbd> + <kbd>k</kbd>                    | Cut/kill text after cursor:                 |
++---------------------------------------------------+---------------------------------------------+
+| <kbd>Ctrl</kbd> + <kbd>y</kbd>                    | Paste/yank (previously cut) text            |
++---------------------------------------------------+---------------------------------------------+
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> | Undo typing                                 |
++---------------------------------------------------+---------------------------------------------+
 
-    <kbd>TAB</kbd>
-    
--   Navigate command history:
+: Terminal keyboard shortcuts
 
-    <kbd>↑</kbd> or <kbd>↓</kbd>
-    
--   Kill process:
-
-    <kbd>Ctrl</kbd> + <kbd>c</kbd>
-    
--   End terminal or ssh session:
-
-    <kbd>Ctrl</kbd> + <kbd>d</kbd>
-    
--   Search command history:
-
-    <kbd>Ctrl</kbd> + <kbd>r</kbd>
-
-#### Navigating Text
-
--   Move to beginning of line:
-
-    <kbd>Ctrl</kbd> + <kbd>a</kbd>
-    
--   Move to end of line:
-
-    <kbd>Ctrl</kbd> + <kbd>e</kbd>
-    
--   Move back one word:
-
-    <kbd>Alt</kbd> + <kbd>b</kbd>
-    
--   Move forward one word:
-
-    <kbd>Alt</kbd> + <kbd>f</kbd>
-
-#### Advanced
-
--   Terminal Cut (Kill) text before cursor:
-
-    <kbd>Ctrl</kbd> + <kbd>u</kbd>
-    
--   Terminal Cut (Kill) text after cursor:
-
-    <kbd>Ctrl</kbd> + <kbd>k</kbd>
-    
--   Terminal Paste (Yank):
-
-    <kbd>Ctrl</kbd> + <kbd>y</kbd>
-    
--   Undo in-line action:
-
-    <kbd>Ctrl</kbd> + <kbd>_</kbd>
+### Advanced
 
 Create a new file by running `nano testfile.txt` in your home directory or on your local machine (Use <kbd>Ctrl</kbd> + <kbd>o</kbd> to save and <kbd>Ctrl</kbd> + <kbd>x</kbd> to exit `nano`).
-
-After typing some text, can you navigate, copy, and paste text without using the mouse? With some practice this will be a lot faster.
 
 ## Additonal resources
 
