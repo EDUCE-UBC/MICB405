@@ -43,13 +43,13 @@ Create a script that searches the files in
 
 for the following sequence
 
-```
+::: {style="overflow-wrap: break-word;"}
 GCGCGCCTGGGCCCGGGCCTGCCCGCGATCGGCGCGGCGCACGATCAAGGGCATGGCGACATTGTCCAGCGCCGTGAACTCCGGCAGCAGGTGATGGAACTGGTAGACAAAGCCCAGGCTGCGATTGCGCAAGGCGCTCTTGCGGGATTCGGACAGGCCGTCGGCCGAGGTGCCGTCGACCACGACCGAGCCGCTGCTGGGCACATCCAGCAGGCCCAGGATGTGCAGCAGCGTGCTCTTGCCCGACCCC
-```
+:::
 
 and produces the following (or similar) output:
 
-```{bash, eval = FALSE}
+```
 ahauduc_mb20@orca01:~$ bash script.bash
 F01_R1.fastq contains the sequence
 F01_R1_1M.fastq does not contain the sequence
