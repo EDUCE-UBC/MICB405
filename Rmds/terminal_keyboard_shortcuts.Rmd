@@ -1,0 +1,4 @@
+# Terminal keyboard shortcuts
+
+```{r child = here("Rmds", "child_Rmds", "terminal_keyboard_shortcuts.Rmd")}
+```
