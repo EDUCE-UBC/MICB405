@@ -62,7 +62,7 @@ After typing some text, can you navigate, copy, and paste text without using the
 
 ### Advanced
 
-Create a new file by running `nano testfile.txt` in your home directory or on your local machine (Use <kbd>Ctrl</kbd> + <kbd>o</kbd> to save and <kbd>Ctrl</kbd> + <kbd>x</kbd> to exit `nano`).
+Create a new file by running `nano testfile.txt` in your home directory or on your local machine (Use <kbd>ctrl</kbd> + <kbd>o</kbd> to save and <kbd>ctrl</kbd> + <kbd>x</kbd> to exit `nano`).
 
 ## Additonal resources
 

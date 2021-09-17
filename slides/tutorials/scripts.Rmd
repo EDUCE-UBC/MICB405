@@ -105,9 +105,9 @@ Example: `nano <filename>`
 
 command creates a new file, or edits an existing one of that name
 
-<kbd>Ctrl</kbd> + <kbd>o</kbd> overwrite (i.e. save)
+<kbd>ctrl</kbd> + <kbd>o</kbd> overwrite (i.e. save)
 
-<kbd>Ctrl</kbd> + <kbd>x</kbd> exit
+<kbd>ctrl</kbd> + <kbd>x</kbd> exit
 
 ---
 

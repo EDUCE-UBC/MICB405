@@ -51,7 +51,7 @@
 |                                   |                                                                                                                                |
 |                                   | `-r <session name>` resume a session                                                                                           |
 |                                   |                                                                                                                                |
-|                                   | To leave a session but keep it running, first <kbd>Ctrl</kbd>+<kbd>a</kbd>ctivate commands to `screen`, then <kbd>d</kbd>etach |
+|                                   | To leave a session but keep it running, first <kbd>ctrl</kbd>+<kbd>a</kbd>ctivate commands to `screen`, then <kbd>d</kbd>etach |
 +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
 
 : (\#tab:commands) Shell cheat sheet
