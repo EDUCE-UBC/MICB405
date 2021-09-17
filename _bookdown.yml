@@ -17,7 +17,7 @@ rmd_files:
   - Rmds/part_tutorials.Rmd # separator for TOC navigation
   # - Rmds/tutorials.Rmd
   - Rmds/bash.Rmd
-  # - Rmds/scripts.Rmd
+  - Rmds/scripts.Rmd
   # - Rmds/fastqc.Rmd
   # - Rmds/samtools_bcftools.Rmd
   # - Rmds/chip-seq.Rmd
