@@ -9,6 +9,7 @@ basics
 navigating-text
 advanced
 additonal-resources
+bash-and-scripting
 bash-cheat-sheet
 resources-2
 unix

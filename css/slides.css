@@ -1,0 +1,13 @@
+kbd {
+  background-color: #212529;
+  border-collapse: collapse;
+  border-radius: .2rem;
+  border-spacing: 2px;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  font-size: 87.5%;
+  line-height: 25.2px;
+  padding: .2rem .4rem;
+  text-align: left;
+}
