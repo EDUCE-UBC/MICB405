@@ -1,0 +1,351 @@
+---
+title: "Tutorial 2 --- Bash & scripting"
+subtitle: "MICB 405 --- Bioinformatics 2021W1"
+author: "Axel Hauduc"
+institute: "University of British Columbia"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+---
+
+```{r setup, echo=FALSE}
+xaringanExtra::use_share_again()
+xaringanExtra::style_share_again(
+  share_buttons = c("twitter", "linkedin", "pocket")
+)
+```
+
+## The Unix Philosophy
+
+1. Make each program do one thing well. To do a new job, build a new program rather than complicate old programs.
+
+1. The output of any program should easily become the input for another.
+
+---
+
+## Utilities review
+
+`cd` change directory
+
+`ls` list files (`-l` long)
+
+`pwd` print working directory
+
+`cp` copy
+
+`rm` remove (`-r` recursive)
+
+`mv` move
+
+`cat` concatenate
+
+`echo` print content you provided as argument
+
+---
+
+## More utilities...
+
+`grep` global regular expression print
+
+`less` read text files
+
+`head`/`tail` print first/last
+
+`wc` wordcount `-l` lines, `-w` word, `-m` character
+
+`sort` sort lines
+
+`uniq` return unique lines
+
+`chmod` change mode a.k.a. permissions
+
+`mkdir` make directory
+
+---
+
+## `awk` command
+
+Less Unix-y than previous commands
+
+More of a multi-tool for dealing with data files
+
+Not short for anything – does file processing based on lines & columns
+
+Follows the format:
+
+`awk '<filter> { <action }' <file>`
+  
+e.g.
+  
+`awk 'NR >= 2 { print $0 }' mtcars.tsv`
+
+---
+
+## Special characters
+
+`>` redirect
+
+`>>` append
+
+`|` pipe (not `1`, `l`, or `I`)
+
+`;` separate command
+
+`&&` AND
+
+`||` OR
+
+`*` wildcard
+
+---
+
+## In-terminal text editing
+
+`nano` = easiest to use & sufficient for most purposes
+
+Example: `nano <filename>`
+
+command creates a new file, or edits an existing one of that name
+
+<kbd>Ctrl</kbd> + <kbd>o</kbd> overwrite (i.e. save)
+
+<kbd>Ctrl</kbd> + <kbd>x</kbd> exit
+
+---
+
+## Scripting
+
+Helps repeat repetitive tasks
+
+Scripts the form of a text file that can be "executed" when you need them
+
+---
+
+## Script headers
+
+All script files need a header to indicate how the script file should be run
+
+First line specifies the program that will interpret the rest of the script
+
+```{bash eval = FALSE}
+#!/bin/bash
+```
+
+- Program should interpret following text using Bash
+
+- Other programs = other headers, if run by calling the script directly
+
+---
+
+## Script variables
+
+We can create a variable and assign it a value with
+
+```{bash eval = FALSE}
+results_dir="results/"
+```
+
+Note that spaces matter when setting Bash variables. Do **NOT** use spaces around the equal sign `=`.
+
+---
+
+## Variables
+
+
+To access a variable's value, we use a dollar sign in front of the variable's name.
+
+Suppose we want to create a directory for a sample's alignment data, called `<sample>_aln/`, where `<sample>` is replaced by the samples name.
+
+```{bash eval = FALSE}
+sample="Individual_2A"
+mkdir "${sample}_data/"
+```
+
+This will create a directory with the name `Individual_2A_data`.
+Curly braces `{ }` indicate where variable name starts and ends.
+
+---
+
+## Command line arguments
+
+```{bash eval = FALSE}
+grep -c "<string>" <file>
+
+bash <script> <path/to/file>
+```
+Arguments added after calling a script are assigned to the default variables `$1`, `$2`, `$3`, and so forth within the script.
+
+---
+
+## `for` loops
+
+In bioinformatics, most of our data is split across multiple files.
+
+Many processing pipelines need a way to apply the same workflow on each file, taking care to keep track of sample names.
+
+Looping over files with Bash’s `for` loop = simplest way to accomplish this
+
+Three essential parts to creating a pipeline to process a set of files:
+
+1. Selecting which files to apply the commands to
+1. Looping over the data and applying the commands
+1. Keeping track of the names of any output files created
+
+---
+
+## `for` loops template
+
+```{bash eval = FALSE}
+#!/bin/bash
+for a_file in </path/to/dir/>*
+do
+  <action on> $a_file
+  <another action on> $a_file
+done
+```
+
+---
+
+## `for` looping through directories
+
+Creating for loops that loop through an entire directory
+
+```{bash eval = FALSE}
+#!/bin/bash
+
+for foo in /home/ahauduc_mb20/test_directory/*
+do
+  head $foo > ${foo}.head.and.tail.txt
+  tail $foo >> ${foo}.head.and.tail.txt
+done
+```
+
+---
+
+## `if` statements
+
+Use if you want to perform commands on a subset of files, or only if an action meets certain conditions.
+
+The basic syntax is:
+
+```{bash eval = FALSE}
+if <condition is true>
+then
+  <DO THIS>
+else
+  <DO THAT>
+fi
+```
+
+---
+
+## `if` statements
+
+```{bash eval = FALSE}
+#!/bin/bash
+
+if cat $1
+then
+  echo "The file exists!"
+else
+  echo "The file doesn't exist!"
+fi
+```
+
+---
+
+## Return codes
+
+`0` Command executed successfully
+
+`1`+ Command did not execute successfully
+
+There can by many different error types denoted by specific numbers
+
+---
+
+## Return codes are invisible
+
+```{bash eval = FALSE}
+#!/bin/bash
+
+if cat $1
+then
+  echo "The file exists!"
+else
+  echo "The file doesn't exist!"
+fi
+```
+
+---
+
+## `test` statements: `[[ <condition> ]]`
+
+Like other programs, `test` exits with either `0` or `1`.
+
+Test statements can be included at the beginning of the `if` program to make producing the right return code easier
+
+`test` supports numerous helpful comparisons you might need
+
+---
+
+## `test` summary comparisons
+
+```{r echo = FALSE, message = FALSE}
+readr::read_tsv("../../data/test_summary.tsv") |>
+  dplyr::slice(1:9) |>
+  knitr::kable(format = 'html', table.attr = "style='width:100%;'") |>
+  kableExtra::column_spec(1, width = "25%")
+```
+
+---
+
+## `test` summary for files/directories
+
+```{r echo = FALSE, message = FALSE}
+readr::read_tsv("../../data/test_summary.tsv") |>
+  dplyr::slice(10:15) |>
+  knitr::kable(format = 'html', table.attr = "style='width:100%;'") |>
+  kableExtra::column_spec(1, width = "25%")
+```
+
+---
+
+## `if` + `test` statements
+
+Combining `test` with `if` statements is simple:
+
+```{bash eval = FALSE}
+#!/bin/bash
+if [[ <condition> ]]
+then
+  <this action>
+else
+  <that action>
+fi
+```
+
+Note the spaces around and within the brackets `[[ ]]`: these are required.
+
+---
+
+class: middle
+
+## Putting it all together...
+
+---
+
+## `for` looping through directories
+
+```{bash eval = FALSE}
+#!/bin/bash
+
+for foo in /home/axel/Documents/data/*
+do
+  if [[ -f ${foo} ]]
+  then
+    head ${foo} > ${foo}.head.and.tail.txt
+    tail ${foo} >> ${foo}.head.and.tail.txt
+  else
+    echo “${foo} is not a file to summarize!”
+  fi
+done
+```

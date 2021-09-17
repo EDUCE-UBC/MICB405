@@ -1,0 +1,16 @@
+Condition	Description
+-z <str>	string <str> is null
+<str1> = <str2>	<str1> and <str2> are identical
+<str1> != <str2>	<str1> and <str2> are different
+<int1> -eq <int2>	Integers <int1> and <int2> are equal
+<int1> -ne <int2>	<int1> and <int2> are not equal
+<int1> -lt <int2>	<int1> is less than <int2>
+<int1> -gt <int2>	<int1> is greater than <int2>
+<int1> -le <int2>	<int1> is less than or equal to <int2>
+<int1> -ge <int2>	<int1> is greater than or equal to <int2>
+-d <dir>	<dir> is a directory
+-f <file>	<file> is a file
+-e <file>	<file> exists
+-r <file>	<file> is readable
+-w <file>	<file> is writeable
+-x <file>	<file> is executable

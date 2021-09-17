@@ -1,6 +1,8 @@
 xaringan::moon_reader:
-    lib_dir: libs
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
+  css: ["default", "default-fonts", "../../css/slides.css"]
+  # self_contained: true
+  lib_dir: libs
+  nature:
+    highlightStyle: github
+    highlightLines: true
+    countIncrementalSlides: false

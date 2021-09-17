@@ -43,10 +43,11 @@ jobs:
       - name: Render Book
         run: Rscript -e 'bookdown::render_book()'
         
-      - name: Copy slides libs and images
+      - name: Copy slides libs, images and CSS
         run: |
           rsync -a slides/tutorials/libs/ _book/slides/tutorials/libs/
           rsync -a images/ _book/images/
+          rsync -a css/ _book/css/
         
       - uses: actions/upload-artifact@v2.2.4
         with:

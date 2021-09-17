@@ -2,6 +2,9 @@ Imports:
   bookdown,
   bslib,
   downlit,
+  dplyr,
+  kableExtra,
+  readr,
   xaringan,
   xaringanExtra,
   xml2
