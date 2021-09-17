@@ -40,17 +40,19 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="index.html">About</a></li>
 <li class="book-part">Setup</li>
 <li><a class="" href="windows-10.html">Windows 10</a></li>
 <li><a class="" href="macos.html">macOS</a></li>
 <li><a class="" href="linux.html">Linux</a></li>
 <li class="book-part">Tutorials</li>
+<li><a class="" href="overview.html">Overview</a></li>
 <li><a class="" href="introduction-linux-server-accounts.html"><span class="header-section-number">1</span> Introduction &amp; Linux Server Accounts</a></li>
 <li><a class="active" href="bash-and-scripting.html"><span class="header-section-number">2</span> Bash and scripting</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="bash-cheat-sheet.html"><span class="header-section-number">A</span> Bash cheat sheet</a></li>
-<li><a class="" href="resources-2.html"><span class="header-section-number">B</span> Resources</a></li>
+<li><a class="" href="terminal-keyboard-shortcuts-1.html"><span class="header-section-number">B</span> Terminal keyboard shortcuts</a></li>
+<li><a class="" href="resources-2.html"><span class="header-section-number">C</span> Resources</a></li>
 </ul>
 
         <div class="book-extra">
@@ -101,13 +103,15 @@ Now modify the shell script to include a variable. The variable will hold the co
 <p>Create a script that searches the files in</p>
 <p><code>/projects/micb405/data/bordetella/*</code> or<br><code>/projects/micb405/data/bordetella/Full_Run/*</code></p>
 <p>for the following sequence</p>
-<pre><code>GCGCGCCTGGGCCCGGGCCTGCCCGCGATCGGCGCGGCGCACGATCAAGGGCATGGCGACATTGTCCAGCGCCGTGAACTCCGGCAGCAGGTGATGGAACTGGTAGACAAAGCCCAGGCTGCGATTGCGCAAGGCGCTCTTGCGGGATTCGGACAGGCCGTCGGCCGAGGTGCCGTCGACCACGACCGAGCCGCTGCTGGGCACATCCAGCAGGCCCAGGATGTGCAGCAGCGTGCTCTTGCCCGACCCC</code></pre>
+<div style="overflow-wrap: break-word;">
+<p>GCGCGCCTGGGCCCGGGCCTGCCCGCGATCGGCGCGGCGCACGATCAAGGGCATGGCGACATTGTCCAGCGCCGTGAACTCCGGCAGCAGGTGATGGAACTGGTAGACAAAGCCCAGGCTGCGATTGCGCAAGGCGCTCTTGCGGGATTCGGACAGGCCGTCGGCCGAGGTGCCGTCGACCACGACCGAGCCGCTGCTGGGCACATCCAGCAGGCCCAGGATGTGCAGCAGCGTGCTCTTGCCCGACCCC</p>
+</div>
 <p>and produces the following (or similar) output:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="bash-and-scripting.html#cb3-1"></a><span class="ex">ahauduc_mb20@orca01</span>:~$ bash script.bash</span>
-<span id="cb3-2"><a href="bash-and-scripting.html#cb3-2"></a><span class="ex">F01_R1.fastq</span> contains the sequence</span>
-<span id="cb3-3"><a href="bash-and-scripting.html#cb3-3"></a><span class="ex">F01_R1_1M.fastq</span> does not contain the sequence</span>
-<span id="cb3-4"><a href="bash-and-scripting.html#cb3-4"></a><span class="ex">F01_R2.fastq</span> does not contain the sequence</span>
-<span id="cb3-5"><a href="bash-and-scripting.html#cb3-5"></a><span class="ex">F01_R2_1M.fastq</span> does not contain the sequence</span></code></pre></div>
+<pre><code>ahauduc_mb20@orca01:~$ bash script.bash
+F01_R1.fastq contains the sequence
+F01_R1_1M.fastq does not contain the sequence
+F01_R2.fastq does not contain the sequence
+F01_R2_1M.fastq does not contain the sequence</code></pre>
 </div>
 <div id="for-more-help" class="section level2 unnumbered">
 <h2>For more help…<a class="anchor" aria-label="anchor" href="#for-more-help"><i class="fas fa-link"></i></a>

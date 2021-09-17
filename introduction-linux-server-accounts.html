@@ -40,17 +40,19 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="index.html">About</a></li>
 <li class="book-part">Setup</li>
 <li><a class="" href="windows-10.html">Windows 10</a></li>
 <li><a class="" href="macos.html">macOS</a></li>
 <li><a class="" href="linux.html">Linux</a></li>
 <li class="book-part">Tutorials</li>
+<li><a class="" href="overview.html">Overview</a></li>
 <li><a class="active" href="introduction-linux-server-accounts.html"><span class="header-section-number">1</span> Introduction &amp; Linux Server Accounts</a></li>
 <li><a class="" href="bash-and-scripting.html"><span class="header-section-number">2</span> Bash and scripting</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="bash-cheat-sheet.html"><span class="header-section-number">A</span> Bash cheat sheet</a></li>
-<li><a class="" href="resources-2.html"><span class="header-section-number">B</span> Resources</a></li>
+<li><a class="" href="terminal-keyboard-shortcuts-1.html"><span class="header-section-number">B</span> Terminal keyboard shortcuts</a></li>
+<li><a class="" href="resources-2.html"><span class="header-section-number">C</span> Resources</a></li>
 </ul>
 
         <div class="book-extra">
@@ -83,7 +85,7 @@
 <p>Once you have followed the setup steps and have opened Command Prompt (Windows) or Terminal (macOS, Linux), you should be ready to log in!</p>
 <div class="inline-figure"><img src="https://media2.giphy.com/media/LcfBYS8BKhCvK/giphy.gif?cid=ecf05e4747b1d69a24ea3b94dd23c9634105af0c7416ebb9&amp;rid=giphy.gif" style="display: block; margin-left: auto; margin-right: auto;"></div>
 <p>Use the following command, replacing <code>&lt;username&gt;</code> with your actual username:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="introduction-linux-server-accounts.html#cb1-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@orca1.bcgsc.ca</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="introduction-linux-server-accounts.html#cb2-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@orca1.bcgsc.ca</span></code></pre></div>
 <p>Enter your password when prompted. Don’t worry when characters don’t appear - this is an intentional security feature.</p>
 <p>You may have to respond to additonal prompts by typing in an answer (such as <code>yes</code>) and pressing <kbd>Enter</kbd>.</p>
 <p>Let’s break this command down: <code>ssh</code> is the command and stands for “secure shell”. It allows users to log on to remote (opposite of “local”, which is your computer in this instance) servers. All following text is the argument. There may be many arguments and each of these would be separated by spaces. <code>&lt;username&gt;</code> is mostly obvious, but crucially this positions your shell in the <code>home</code> directory of username on the server’s system with the correct permissions. If everyone were to log on as <code>root</code> (“Administrator” in Windows-speak) this would be bad. <code>orca1.bcgsc.ca</code> (everything after the <code><a href="https://rdrr.io/r/base/slotOp.html">@</a></code>) is known as the hostname or domain name and is the name of the device on the network it is connected to. Super-nerds sometimes replace this with the IP address.</p>
@@ -114,81 +116,102 @@
 <h3>
 <span class="header-section-number">1.3.2</span> Terminal keyboard shortcuts<a class="anchor" aria-label="anchor" href="#terminal-keyboard-shortcuts"><i class="fas fa-link"></i></a>
 </h3>
-<div id="basics" class="section level4">
-<h4>
-<span class="header-section-number">1.3.2.1</span> Basics<a class="anchor" aria-label="anchor" href="#basics"><i class="fas fa-link"></i></a>
-</h4>
-<ul>
-<li>
-<p>Autocomplete command:</p>
-<p><kbd>TAB</kbd></p>
-</li>
-<li>
-<p>Navigate command history:</p>
-<p><kbd>↑</kbd> or <kbd>↓</kbd></p>
-</li>
-<li>
-<p>Kill process:</p>
-<p><kbd>Ctrl</kbd> + <kbd>c</kbd></p>
-</li>
-<li>
-<p>End terminal or ssh session:</p>
-<p><kbd>Ctrl</kbd> + <kbd>d</kbd></p>
-</li>
-<li>
-<p>Search command history:</p>
-<p><kbd>Ctrl</kbd> + <kbd>r</kbd></p>
-</li>
-</ul>
+<p>After typing some text, can you navigate, copy, and paste text without using the mouse? With some practice, this will be a lot faster.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>Terminal keyboard shortcuts</caption>
+<colgroup>
+<col width="53%">
+<col width="46%">
+</colgroup>
+<thead><tr class="header">
+<th><kbd>keyboard</kbd></th>
+<th>Action</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><kbd>TAB</kbd></td>
+<td>Autocomplete</td>
+</tr>
+<tr class="even">
+<td>
+<kbd>↑</kbd> / <kbd>↓</kbd>
+</td>
+<td>Navigate command history backwards/forwards</td>
+</tr>
+<tr class="odd">
+<td>
+<kbd>Ctrl</kbd> + <kbd>c</kbd>
+</td>
+<td>Kill process</td>
+</tr>
+<tr class="even">
+<td>
+<kbd>Ctrl</kbd> + <kbd>d</kbd>
+</td>
+<td>End terminal or ssh session (or use <code>exit</code>)</td>
+</tr>
+<tr class="odd">
+<td>
+<kbd>Ctrl</kbd> + <kbd>r</kbd>
+</td>
+<td>Search command history</td>
+</tr>
+<tr class="even">
+<td>
+<kbd>Ctrl</kbd> + <kbd>a</kbd>
+</td>
+<td>Move to beginning of line</td>
+</tr>
+<tr class="odd">
+<td>
+<kbd>Ctrl</kbd> + <kbd>e</kbd>
+</td>
+<td>Move to end of line</td>
+</tr>
+<tr class="even">
+<td>
+<kbd>Alt</kbd> + <kbd>b</kbd>
+</td>
+<td>Move back one word</td>
+</tr>
+<tr class="odd">
+<td>
+<kbd>Alt</kbd> + <kbd>f</kbd>
+</td>
+<td>Move forward one word</td>
+</tr>
+<tr class="even">
+<td>
+<kbd>Ctrl</kbd> + <kbd>u</kbd>
+</td>
+<td>Cut/kill text before cursor</td>
+</tr>
+<tr class="odd">
+<td>
+<kbd>Ctrl</kbd> + <kbd>k</kbd>
+</td>
+<td>Cut/kill text after cursor:</td>
+</tr>
+<tr class="even">
+<td>
+<kbd>Ctrl</kbd> + <kbd>y</kbd>
+</td>
+<td>Paste/yank (previously cut) text</td>
+</tr>
+<tr class="odd">
+<td>
+<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd>
+</td>
+<td>Undo typing</td>
+</tr>
+</tbody>
+</table></div>
 </div>
-<div id="navigating-text" class="section level4">
-<h4>
-<span class="header-section-number">1.3.2.2</span> Navigating Text<a class="anchor" aria-label="anchor" href="#navigating-text"><i class="fas fa-link"></i></a>
-</h4>
-<ul>
-<li>
-<p>Move to beginning of line:</p>
-<p><kbd>Ctrl</kbd> + <kbd>a</kbd></p>
-</li>
-<li>
-<p>Move to end of line:</p>
-<p><kbd>Ctrl</kbd> + <kbd>e</kbd></p>
-</li>
-<li>
-<p>Move back one word:</p>
-<p><kbd>Alt</kbd> + <kbd>b</kbd></p>
-</li>
-<li>
-<p>Move forward one word:</p>
-<p><kbd>Alt</kbd> + <kbd>f</kbd></p>
-</li>
-</ul>
-</div>
-<div id="advanced" class="section level4">
-<h4>
-<span class="header-section-number">1.3.2.3</span> Advanced<a class="anchor" aria-label="anchor" href="#advanced"><i class="fas fa-link"></i></a>
-</h4>
-<ul>
-<li>
-<p>Terminal Cut (Kill) text before cursor:</p>
-<p><kbd>Ctrl</kbd> + <kbd>u</kbd></p>
-</li>
-<li>
-<p>Terminal Cut (Kill) text after cursor:</p>
-<p><kbd>Ctrl</kbd> + <kbd>k</kbd></p>
-</li>
-<li>
-<p>Terminal Paste (Yank):</p>
-<p><kbd>Ctrl</kbd> + <kbd>y</kbd></p>
-</li>
-<li>
-<p>Undo in-line action:</p>
-<p><kbd>Ctrl</kbd> + <kbd>_</kbd></p>
-</li>
-</ul>
+<div id="advanced" class="section level3">
+<h3>
+<span class="header-section-number">1.3.3</span> Advanced<a class="anchor" aria-label="anchor" href="#advanced"><i class="fas fa-link"></i></a>
+</h3>
 <p>Create a new file by running <code>nano testfile.txt</code> in your home directory or on your local machine (Use <kbd>Ctrl</kbd> + <kbd>o</kbd> to save and <kbd>Ctrl</kbd> + <kbd>x</kbd> to exit <code>nano</code>).</p>
-<p>After typing some text, can you navigate, copy, and paste text without using the mouse? With some practice this will be a lot faster.</p>
-</div>
 </div>
 </div>
 <div id="additonal-resources" class="section level2">
@@ -200,7 +223,7 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="linux.html">Linux</a></div>
+<div class="prev"><a href="overview.html">Overview</a></div>
 <div class="next"><a href="bash-and-scripting.html"><span class="header-section-number">2</span> Bash and scripting</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
@@ -212,6 +235,7 @@
 <a class="nav-link" href="#bonus-work"><span class="header-section-number">1.3</span> Bonus work</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#delve-into-man-pages-and-help"><span class="header-section-number">1.3.1</span> Delve into man pages and help</a></li>
 <li><a class="nav-link" href="#terminal-keyboard-shortcuts"><span class="header-section-number">1.3.2</span> Terminal keyboard shortcuts</a></li>
+<li><a class="nav-link" href="#advanced"><span class="header-section-number">1.3.3</span> Advanced</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#additonal-resources"><span class="header-section-number">1.4</span> Additonal resources</a></li>

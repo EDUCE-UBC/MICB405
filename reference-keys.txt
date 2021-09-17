@@ -5,12 +5,11 @@ logging-in
 bonus-work
 delve-into-man-pages-and-help
 terminal-keyboard-shortcuts
-basics
-navigating-text
 advanced
 additonal-resources
 bash-and-scripting
 bash-cheat-sheet
+terminal-keyboard-shortcuts-1
 resources-2
 unix
 r
