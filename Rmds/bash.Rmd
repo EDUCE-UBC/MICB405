@@ -35,7 +35,7 @@ Enter your password when prompted. Don't worry when characters don't appear - th
 
 You may have to respond to additonal prompts by typing in an answer (such as `yes`) and pressing <kbd>Enter</kbd>.
 
-Let’s break this command down: `ssh` is the command and stands for "secure shell". It allows users to log on to remote (opposite of "local", which is your computer in this instance) servers. All following text is the argument. There may be many arguments and each of these would be separated by spaces. `<username>` is mostly obvious, but crucially this positions your shell in the `home` directory of username on the server’s system with the correct permissions. If everyone were to log on as `root` ("Administrator" in Windows-speak) this would be bad. `orca1.bcgsc.ca` (everything after the `@`) is known as the hostname or domain name and is the name of the device on the network it is connected to. Super-nerds sometimes replace this with the IP address.
+Let's break this command down: `ssh` is the command and stands for "secure shell". It allows users to log on to remote (opposite of "local", which is your computer in this instance) servers. All following text is the argument. There may be many arguments and each of these would be separated by spaces. `<username>` is mostly obvious, but crucially this positions your shell in the `home` directory of username on the server's system with the correct permissions. If everyone were to log on as `root` ("Administrator" in Windows-speak) this would be bad. `orca1.bcgsc.ca` (everything after the `@`) is known as the hostname or domain name and is the name of the device on the network it is connected to. Super-nerds sometimes replace this with the IP address.
 
 ## Bonus work
 
@@ -45,13 +45,13 @@ To exit the `man` page, press <kbd>q</kbd>.
 
 ### Delve into man pages and help
 
-1.	What is the difference between the `man` page, and `--help` or `-h` argument added to a command? When would you use either option? (try it on some commands, or look through StackExchange if you're confused)
+1.  What is the difference between the `man` page, and `--help` or `-h` argument added to a command? When would you use either option? (try it on some commands, or look through StackExchange if you're confused)
 
-1.	Here is a list of Bash commands often used in bioinformatics. Look up the `man` page for at least one of them. What do you think they do? Hypothetically, in what way do you think they could be used in a bioinformatics context? Which arguments would be the most handy? Discuss within your group!
-    1. `grep`
-    1. `tr`
-    1. `awk`
+1.  Here is a list of Bash commands often used in bioinformatics. Look up the `man` page for at least one of them. What do you think they do? Hypothetically, in what way do you think they could be used in a bioinformatics context? Which arguments would be the most handy? Discuss within your group!
 
+    1.  `grep`
+    1.  `tr`
+    1.  `awk`
 
 ### Terminal keyboard shortcuts
 
