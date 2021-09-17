@@ -15,7 +15,7 @@ rmd_files:
   - Rmds/macos.Rmd
   - Rmds/linux.Rmd
   - Rmds/part_tutorials.Rmd # separator for TOC navigation
-  # - Rmds/tutorials.Rmd
+  - Rmds/tutorials.Rmd
   - Rmds/bash.Rmd
   - Rmds/scripts.Rmd
   # - Rmds/fastqc.Rmd

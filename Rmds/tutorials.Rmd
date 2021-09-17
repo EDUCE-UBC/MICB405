@@ -1,10 +1,6 @@
-# Tutorials
+# Overview {-}
 
-## Introduction and goals
-
-## Formatting
+## Formatting {-}
 
 ```{r child = here("Rmds", "child_Rmds", "formatting.Rmd")}
 ```
-
-## Data

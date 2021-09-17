@@ -21,7 +21,7 @@ params:
 library(here)
 ```
 
-# Overview {.unnumbered}
+# About {.unnumbered}
 
 Welcome to the MICB 405 Tutorials website! You will find all tutorials and tutorial worksheets uploaded here each week ahead of the Friday tutorials.
 
