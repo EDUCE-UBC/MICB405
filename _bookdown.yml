@@ -18,7 +18,7 @@ rmd_files:
   # - Rmds/tutorials.Rmd
   - Rmds/bash.Rmd
   - Rmds/scripts.Rmd
-  # - Rmds/fastqc.Rmd
+  - Rmds/fastqc.Rmd
   # - Rmds/samtools_bcftools.Rmd
   # - Rmds/chip-seq.Rmd
   # - Rmds/star.Rmd
