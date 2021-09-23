@@ -22,6 +22,8 @@ Take a look at "Per sequence GC content". What went wrong here? Would shifting t
 
 Look at "Sequence Duplication Levels". This pattern is very distinct, and it's highly unusual for a whole-genome sequencing (DNA) run. However, let's say you know that this sequencing run was done perfectly. What kind of genetic or epigenetic material could have been sequenced here, rather than the simple DNA that FastQC expects, which causes some of the same sequences to appear many times?
 
+Look at the `help` page for `fastp` and choose one trimming or filtering step. Apply this filtering to the Ebola fastqs and output the filtered fastq to a folder in your home directory. When you run `fastqc` on these filtered fastqs, can you observe the difference in the report stemming from the filtering steps you enacted? You can also use https://fastq.sandbox.bio/ to play around with different `fastp` parameters!
+
 ##  Additonal resources
 
 https://rtsf.natsci.msu.edu/genomics/tech-notes/fastqc-tutorial-and-faq/
