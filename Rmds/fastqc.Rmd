@@ -1,6 +1,6 @@
 # FastQC
 
-## Main Excercise - Part 1
+## Main Exercise - Part 1
 
 Navigate to `/projects/micb405/data/Ebola`. You should see paired-end FASTQ files. Let's say these files just came off the sequencer, and you want to take a quick look ensure nothing went awry during the sequencing process. You're not interested in the exact stats, but you still want to take a look at all the modules in the graphical HTML report.
 
@@ -10,7 +10,7 @@ Next, `scp` just the .html files to your computer. (Hint: remember how * refers 
 
 Now, find the resulting pair of HTML files on your computer and open them with the web browser of your choice!
 
-## Main Excercise - Part 2
+## Main Exercise - Part 2
 
 Take a look at the different modules in the FastQC output. Check out "Per base sequence quality", "Per sequence quality scores", and "Per base sequence content"
 Describe why are these considered acceptable by FastQC.
