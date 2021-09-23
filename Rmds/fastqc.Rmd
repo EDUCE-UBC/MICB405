@@ -1,4 +1,4 @@
-# FastQC (Axel Hauduc)
+# FastQC
 
 ## Main Excercise - Part 1
 
