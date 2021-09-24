@@ -1,0 +1,4 @@
+# `less` and `man` navigation
+
+```{r eval = TRUE, child = here("Rmds", "child_Rmds", "less_navigation.Rmd")}
+```
