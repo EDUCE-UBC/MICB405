@@ -3,7 +3,7 @@
 ## Slides
 
 ```{r, echo = FALSE, out.width = "100%", out.height = "388px"}
-knitr::include_graphics(here("slides", "tutorials", "fastqc.pdf"))
+knitr::include_graphics("slides/tutorials/fastqc.pdf")
 ```
 
 You can download the slides for this tutorial below.
