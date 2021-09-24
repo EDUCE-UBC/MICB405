@@ -57,6 +57,6 @@ F01_R2.fastq does not contain the sequence
 F01_R2_1M.fastq does not contain the sequence
 ```
  
-## For more help... {-}
+## Additional resources {-}
 
-Check the [looping](https://swcarpentry.github.io/shell-novice/05-loop/index.html) and [scripting](https://swcarpentry.github.io/shell-novice/06-script/index.html) chapters of Software Carpentry!
+For more help, check the [looping](https://swcarpentry.github.io/shell-novice/05-loop/index.html) and [scripting](https://swcarpentry.github.io/shell-novice/06-script/index.html) chapters of Software Carpentry!

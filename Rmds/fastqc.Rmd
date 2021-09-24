@@ -1,6 +1,6 @@
 # FastQC
 
-## Slides
+## Slides {-}
 
 ```{r, echo = FALSE, out.width = "100%", out.height = "388px"}
 knitr::include_graphics("slides/tutorials/fastqc.pdf")
@@ -16,7 +16,7 @@ downloadthis::download_file(
 )
 ```
 
-## Main Exercise - Part 1 {-}
+## Exercise 1 {-}
 
 Navigate to `/projects/micb405/data/Ebola`. You should see paired-end FASTQ files. Let's say these files just came off the sequencer, and you want to take a quick look ensure nothing went awry during the sequencing process. You're not interested in the exact stats, but you still want to take a look at all the modules in the graphical HTML report.
 
@@ -26,7 +26,7 @@ Next, `scp` just the HTML files to your computer. (Hint: remember how `*` refers
 
 Now, find the transferred pair of HTML files on your computer and open them with the web browser of your choice!
 
-## Main Exercise - Part 2 {-}
+## Exercise 2 {-}
 
 Take a look at the different modules in the FastQC output. Check out "Per base sequence quality", "Per sequence quality scores", and "Per base sequence content" Describe why are these considered acceptable by FastQC. For "Per base sequence content", what would you need to change for FastQC to flag that module with a warning?
 
@@ -38,7 +38,7 @@ Look at "Sequence Duplication Levels". This pattern is very distinct, and it's h
 
 Look at the `help` page for `fastp` and choose one trimming or filtering step. Apply this filtering to the Ebola FASTQs and output the filtered FASTQ to a directory in your home directory. When you run `fastqc` on these filtered FASTQs, can you observe the difference in the report stemming from the filtering steps you enacted? You can also use this [sandbox](https://fastq.sandbox.bio/) to play around with different `fastp` parameters!
 
-## Additonal resources
+## Additonal resources {-}
 
 -   [FastQC tutorial and FAQ](https://rtsf.natsci.msu.edu/genomics/tech-notes/fastqc-tutorial-and-faq/)
 

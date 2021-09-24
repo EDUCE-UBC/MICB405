@@ -2,7 +2,7 @@
 
 Welcome to the first MICB 405 lab! Today, we're going to get started with the essential skills and tools you'll be using for the rest of the course.
 
-## Slides
+## Slides {-}
 
 ```{r echo=FALSE}
 xaringanExtra::embed_xaringan(url = "slides/tutorials/bash.html",
@@ -19,7 +19,7 @@ downloadthis::download_file(
 )
 ```
 
-## Logging in
+## Logging in {-}
 
 Once you have followed the setup steps and have opened Command Prompt (Windows) or Terminal (macOS, Linux), you should be ready to log in!
 
@@ -37,13 +37,13 @@ You may have to respond to additonal prompts by typing in an answer (such as `ye
 
 Let's break this command down: `ssh` is the command and stands for "secure shell". It allows users to log on to remote (opposite of "local", which is your computer in this instance) servers. All following text is the argument. There may be many arguments and each of these would be separated by spaces. `<username>` is mostly obvious, but crucially this positions your shell in the `home` directory of username on the server's system with the correct permissions. If everyone were to log on as `root` ("Administrator" in Windows-speak) this would be bad. `orca1.bcgsc.ca` (everything after the `@`) is known as the hostname or domain name and is the name of the device on the network it is connected to. Super-nerds sometimes replace this with the IP address.
 
-## Bonus work
+## Bonus {-}
 
 Review the manual pages for `ls`, `cd`, and `pwd` by typing `man` followed by the command. Can you use them to move through your local machine's folder system and find out where you are? How about the Orca server?
 
 To exit the `man` page, press <kbd>q</kbd>.
 
-### Delve into man pages and help
+### Delve into man pages and help {-}
 
 1.  What is the difference between the `man` page, and `--help` or `-h` argument added to a command? When would you use either option? (try it on some commands, or look through StackExchange if you're confused)
 
@@ -53,17 +53,17 @@ To exit the `man` page, press <kbd>q</kbd>.
     1.  `tr`
     1.  `awk`
 
-### Terminal keyboard shortcuts
+### Terminal keyboard shortcuts {-}
 
 After typing some text, can you navigate, copy, and paste text without using the mouse? With some practice, this will be a lot faster.
 
 ```{r child = here("Rmds", "child_Rmds", "terminal_keyboard_shortcuts.Rmd")}
 ```
 
-### Advanced
+### Advanced {-}
 
 Create a new file by running `nano testfile.txt` in your home directory or on your local machine (Use <kbd>ctrl</kbd> + <kbd>o</kbd> to save and <kbd>ctrl</kbd> + <kbd>x</kbd> to exit `nano`).
 
-## Additonal resources
+## Additonal resources {-}
 
 If you complete these tasks, [check this page out for further reading and practice!](https://educe-ubc.github.io/MICB405/resources.html)!
