@@ -8,6 +8,9 @@ terminal-keyboard-shortcuts
 advanced
 additonal-resources
 bash-and-scripting
+fastqc
+slides-2
+additonal-resources-1
 bash-cheat-sheet
 terminal-keyboard-shortcuts-1
 resources-2
