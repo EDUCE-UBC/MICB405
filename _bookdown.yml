@@ -19,7 +19,7 @@ rmd_files:
   - Rmds/bash.Rmd
   - Rmds/scripts.Rmd
   - Rmds/fastqc.Rmd
-  # - Rmds/samtools_bcftools.Rmd
+  - Rmds/samtools_bcftools.Rmd
   # - Rmds/chip-seq.Rmd
   # - Rmds/star.Rmd
   # - Rmds/htseq_deseq2.Rmd
