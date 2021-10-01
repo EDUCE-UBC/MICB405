@@ -1,26 +1,50 @@
-# Working with Samtools and Bcftools (Axel Hauduc)
+# Working with SAMtools and BCFtools
 
-## Main Excercise
+## Slides {-}
 
-1. Create a new SAM file for the downsampled FASTQ files
+```{r, echo = FALSE, out.width = "100%", out.height = "388px"}
+knitr::include_graphics("slides/tutorials/samtools_bcftools.pdf")
+```
+
+You can download the slides for this tutorial below.
+
+```{r echo = FALSE}
+downloadthis::download_file(
+  path         = here("slides", "tutorials", "samtools_bcftools.pdf"),
+  output_name  = "bwa_samtools_and_bcftools",
+  button_label = "Download slides"
+)
+```
+
+## Main Exercise {-}
+
+1. Create a new SAM file by aligning the following FASTQ files against your bordetella reference genome using `bwa aln` in a script.
 
     ```
+    # FASTA
+    /projects/micb405/analysis/references/ASM107827v1/GCA_001078275.1_ASM107827v1_genomic.fna
+    
+    # FASTQ
     /projects/micb405/data/bordetella/F01_R1_1M.fastq
     /projects/micb405/data/bordetella/F01_R2_1M.fastq
     ```
 
-    aligned against your bordetella reference genome using `bwa aln` in a script.
+1. Run `samtools flagstat` on your resulting SAM file. What do the different lines mean?
 
-2. Run `samtools flagstat` on your resulting SAM file. What do the different lines mean?
+1. Next, create a script that processes the resulting SAM into an indexed, sorted BAM with duplicates removed.
 
-3. Next, create a script that processes the resulting SAM into an indexed, sorted BAM with duplicates removed.
+1. For sorting and duplicate removal, what is a "sanity check" step you could perform on the output (hint... what function within `samtools` can allow you to check your binary BAM file by eye) to verify that reads have been sorted (easier), or that duplicates have been removed (harder)? What would you be looking for to confirm that your commands worked as intended?
 
-4. For sorting and duplicate removal, what is a "sanity check" step you could perform on the output (hint... what function within `samtools` can allow you to check your binary BAM file by eye) to verify that reads have been sorted (easier), or that duplicates have been removed (harder)? What would you be looking for to confirm that your commands worked as intended?
+1. Then, add a line in your script to call variants using `bcftools`! This may take a while, so how could you run it so that it happens in the background and you could check back on it later?
 
-5. Then, add a line in your script to call variants using `bcftools`! This may take a while, so how could you run it so that it happens in the background and you could check back on it later?
+## Bonus {-}
+Download your reference, `bam`, `bam.bai`, `vcf.gz`, and `vc.gz.tbi` files and view them in IGV viewer. Go to one of the areas marked as a variant by `bcftools call`. Do you agree with this "call"?
 
-## Additional resources
+## Additional resources {-}
 
-http://www.htslib.org/doc/samtools.html
+[SAMtools manual pages](http://www.htslib.org/doc/samtools.html)
 
-http://www.htslib.org/doc/bcftools.html
+[BCFtools manual pages](http://www.htslib.org/doc/bcftools.html)
+
+[IGV download](https://software.broadinstitute.org/software/igv/download)
+
