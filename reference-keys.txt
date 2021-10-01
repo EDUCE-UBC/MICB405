@@ -2,6 +2,7 @@ tab:commands
 introduction-linux-server-accounts
 bash-and-scripting
 fastqc
+working-with-samtools-and-bcftools
 bash-cheat-sheet
 terminal-keyboard-shortcuts-1
 less-and-man-navigation
