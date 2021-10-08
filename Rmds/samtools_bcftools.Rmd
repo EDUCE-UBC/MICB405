@@ -1,4 +1,4 @@
-# Working with SAMtools and BCFtools
+# Working with SAMtools and BCFtools Part 1
 
 ## Slides {-}
 
@@ -18,7 +18,7 @@ downloadthis::download_file(
 
 ## Main Exercise {-}
 
-1. Create a new SAM file by aligning the following FASTQ files against your bordetella reference genome using `bwa aln` in a script.
+1. Create a new SAM file by aligning the following FASTQ files against your bordetella reference genome using `bwa mem` in a script.
 
     ```
     # FASTA
@@ -42,9 +42,16 @@ Download your reference, `bam`, `bam.bai`, `vcf.gz`, and `vc.gz.tbi` files and v
 
 ## Additional resources {-}
 
+[BWA manual pages](http://bio-bwa.sourceforge.net/bwa.shtml)
+
 [SAMtools manual pages](http://www.htslib.org/doc/samtools.html)
 
 [BCFtools manual pages](http://www.htslib.org/doc/bcftools.html)
 
+[Introduction to the BAM file format](https://github.com/davetang/learning_bam_file)
+
+[Introduction to the VCF file format](https://github.com/davetang/learning_vcf_file)
+
 [IGV download](https://software.broadinstitute.org/software/igv/download)
 
+[IGV user guide](http://software.broadinstitute.org/software/igv/UserGuide)
