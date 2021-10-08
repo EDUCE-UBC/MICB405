@@ -18,11 +18,11 @@ downloadthis::download_file(
 
 ## Exercise {-}
 
-1. Create a new alignment using ```bwa aln```
-1. Do a quick comparison using the SN metrics from ```samtools stats``` of the ```bwa aln``` BAM and the previous ```bwa mem``` BAM. What is one metric that changed the most and why might this be?
-1. Filter the ```bwa aln```alignment in order to only keep reads with a mapping quality above a threshold of your choice.
-    - Do a quick side-by-side comparison of coverage of your new and old ```bwa aln``` alignments using ```bwa stats```. How does introducing a quality threshold lead to a difference here? Can you explain the pros and cons of filtering by mapping quality in terms of [sensitivity and specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity)?
-    - Choosing an arbitrary area along *Bordetella*'s single contig, what is one difference you can spot between your new and old ```bwa aln``` alignments besides read depth? (Hint: take a look at bit flags and positions, and [consult IGV's coloring scheme](http://software.broadinstitute.org/software/igv/interpreting_insert_size).)
+1. Create a new alignment using `bwa aln`.
+1. Do a quick comparison using the SN metrics from `samtools stats` of the `bwa aln` BAM and the previous `bwa mem` BAM. What is one metric that changed the most and why might this be?
+1. Filter the `bwa aln` alignment in order to only keep reads with a mapping quality above a threshold of your choice.
+    - Do a quick side-by-side comparison of coverage of your new and old `bwa aln` alignments using `bwa stats`. How does introducing a quality threshold lead to a difference here? Can you explain the pros and cons of filtering by mapping quality in terms of [sensitivity and specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity)?
+    - Choosing an arbitrary area along *Bordetella*'s single contig, what is one difference you can spot between your new and old `bwa aln` alignments besides read depth? (Hint: take a look at bit flags and positions, and [consult IGV's coloring scheme](http://software.broadinstitute.org/software/igv/interpreting_insert_size).)
 
 ## Additional resources {-}
 
