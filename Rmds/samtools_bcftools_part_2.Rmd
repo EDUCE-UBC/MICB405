@@ -1,0 +1,41 @@
+# Working with SAMtools and BCFtools Part 2
+
+## Slides {-}
+
+```{r, echo = FALSE, out.width = "100%", out.height = "388px"}
+knitr::include_graphics("slides/tutorials/samtools_bcftools_part_2.pdf")
+```
+
+You can download the slides for this tutorial below.
+
+```{r echo = FALSE}
+downloadthis::download_file(
+  path         = here("slides", "tutorials", "samtools_bcftools_part_2.pdf"),
+  output_name  = "bwa_samtools_and_bcftools_part_2",
+  button_label = "Download slides"
+)
+```
+
+## Main Exercise {-}
+
+1. Create a new alignment using ```bwa aln```
+2. Do a quick comparison using the SN metrics from ```samtools stats``` of the ```bwa aln``` BAM and the previous ```bwa mem``` BAM. What is one metric that changed the most and why might this be?
+3. Filter the ```bwa aln```alignment in order to only keep reads with a mapping quality above a threshold of your choice.
+  + Do a quick side-by-side comparison of coverage of your new and old ```bwa aln``` alignments using ```bwa stats```. How does introducing a quality threshold lead to a difference here? Can you explain the pros and cons of filtering by mapping quality in terms of [sensitivity and specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity)?
+  + Choosing an arbitrary area along *Bordetella*'s single contig, what is one difference you can spot between your new and old ```bwa aln``` alignments besides read depth? (Hint: take a look at bit flags and positions, and [consult IGV's coloring scheme](http://software.broadinstitute.org/software/igv/interpreting_insert_size))
+
+## Additional resources {-}
+
+[BWA manual pages](http://bio-bwa.sourceforge.net/bwa.shtml)
+
+[SAMtools manual pages](http://www.htslib.org/doc/samtools.html)
+
+[BCFtools manual pages](http://www.htslib.org/doc/bcftools.html)
+
+[Introduction to the BAM file format](https://github.com/davetang/learning_bam_file)
+
+[Introduction to the VCF file format](https://github.com/davetang/learning_vcf_file)
+
+[IGV download](https://software.broadinstitute.org/software/igv/download)
+
+[IGV user guide](http://software.broadinstitute.org/software/igv/UserGuide)

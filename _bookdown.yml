@@ -20,6 +20,7 @@ rmd_files:
   - Rmds/scripts.Rmd
   - Rmds/fastqc.Rmd
   - Rmds/samtools_bcftools.Rmd
+  - Rmds/samtools_bcftools_part_2.Rmd
   # - Rmds/chip-seq.Rmd
   # - Rmds/star.Rmd
   # - Rmds/htseq_deseq2.Rmd
