@@ -20,22 +20,23 @@ downloadthis::download_file(
 
 1. Make sure you have [IGV](http://software.broadinstitute.org/software/igv/download) installed on your laptop
 
-2. Check the ```macs2``` is installed and in your ```$PATH``` by running ```which macs2```
+1. Check the `macs2` is installed and in your `$PATH` by running `which macs2`
 
-3. If you do not see the folder where ```macs2``` is installed, run:
+1. If you do not see the folder where `macs2` is installed, run:
 
-```
-pip3 install macs2
-pip3 install --upgrade numpy
-```
+    ```{bash eval = FALSE}
+    pip3 install macs2
+    pip3 install --upgrade numpy
+    ```
 
-4. Set up a new folder to work with in the tutorial:
-```
-mkdir ~/ChIP_tutorial
-cd ~/ChIP_tutorial
-```
+1. Set up a new folder to work with in the tutorial:
 
-  - Check the files needed for the tutorial using `ls -lh /projects/micb405/data/mouse/chip_tutorial`. These are the ChIP-seq reads that constitute the main input of your analysis.
+    ```{bash eval = FALSE}
+    mkdir ~/ChIP_tutorial
+    cd ~/ChIP_tutorial
+    ```
+
+1. Check the files needed for the tutorial using `ls -lh /projects/micb405/data/mouse/chip_tutorial`. These are the ChIP-seq reads that constitute the main input of your analysis.
 
 ## Suggested workflow
 
@@ -46,18 +47,18 @@ The (recommended) tools that you will working with to complete this project incl
 - MACS2
 - IGV (installed on your computer)
 
-## Aligning using BWA MEM
+## Aligning using BWA-MEM
 
-We will now process and map the reads using `bwa mem`.  Note the run time command syntax for `bwa mem` is different (easier and faster) from `bwa aln` introduced in class. The alignment process will take ~20 min to complete depending on server load. It is highly recommended to construct your commands within a shell script and generated associated log files by redirecting STDOUT as described in class. To make your subsequent commands easier, remember that you can define paths to commonly used files/resources in your script or shell as variables. For example, you can define the path to where the indexed mm10 genome is and the directory to where the tutorial input files are stored (see below). Best practice is to use the explict (a.k.a. absolute) rather than implicit (a.k.a. relative) path when defining these variables, as that will ensure that your script will behave similarly no matter where it is located on your filesystem.
+We will now process and map the reads using `bwa mem`.  Note the run time command syntax for `bwa mem` is different (easier and faster) from `bwa aln` introduced in class. The alignment process will take ~20 min to complete depending on server load. It is highly recommended to construct your commands within a shell script and generated associated log files by redirecting STDOUT as described in class. To make your subsequent commands easier, remember that you can define paths to commonly used files/resources in your script or shell as variables. For example, you can define the path to where the indexed mm10 genome is and the directory to where the tutorial input files are stored (see below). Best practice is to use the absolute rather than relative path when defining these variables, as that will ensure that your script will behave similarly no matter where it is located on your filesystem.
 
-```
+```{bash eval = FALSE}
 GENOME=/projects/micb405/analysis/references/mm10/mm10.fa
 DATA=/projects/micb405/data/mouse/chip_tutorial
 ```
 
 You only need to `export` a variable if you want to add it to your current shell and have it persist between sessions. Since a script runs a subshell in a continuous session with its own unique variables, it's not necessary to `export` variables within it.
 
-As should now be familiar, once defined you can call these paths in your script/shell by entering the special character `$` followed by the variable name as shown below. The following command will run `bwa mem` and stream the ```sam``` file into ```samtools view```, which will then automatically convert it into a ```bam``` file. You can use this or design your own.
+As should now be familiar, once defined you can call these paths in your script/shell by entering the special character `$` followed by the variable name as shown below. The following command will run `bwa mem` and stream the `sam` file into `samtools view`, which will then automatically convert it into a `bam` file. You can use this or design your own.
 
 ```{bash eval = FALSE}
 # Input a.k.a. control alignment
@@ -65,20 +66,19 @@ bwa mem \
   -t 8 \
   $GENOME \
   $DATA/Naive_Input_1.fastq \
-  $DATA/Naive_Input_2.fastq | \
-samtools view -h -b - -o Naive_Input.bam
+  $DATA/Naive_Input_2.fastq \
+  | samtools view -h -b - -o Naive_Input.bam
 
 # Treatment a.k.a. immunoprecipitated a.k.a. IP alignment
 bwa mem \
   -t 8 \
   $GENOME \
   $DATA/Naive_H3K27ac_1.fastq \
-  $DATA/Naive_H3K27ac_2.fastq | \
-samtools view -h -b - -o Naive_H3K27ac.bam
-
+  $DATA/Naive_H3K27ac_2.fastq \
+  | samtools view -h -b - -o Naive_H3K27ac.bam
 ```
 
-Note that the ```-t 8``` is to do multithreaded processing to improve speed. The `$GENOME` specifies the location of reference genome to use. The `$DATA/Naive_H3K27ac_1.fastq` `$DATA/Naive_H3K27ac_2.fastq` specifies the location of the reads. This step will take some time. Expect the program to run for about 20 mins or longer depending on the server load. You can add ```nohup``` in front of each command, or in in front of your command running the script with these commands, in order to assure that if you are disconnected from the server, these analysis steps do not stop.
+Note that the `-t 8` is to do multithreaded processing to improve speed. The `$GENOME` specifies the location of reference genome to use. The `$DATA/Naive_H3K27ac_1.fastq` `$DATA/Naive_H3K27ac_2.fastq` specifies the location of the reads. This step will take some time. Expect the program to run for about 20 mins or longer depending on the server load. You can add `nohup` in front of each command, or in in front of your command running the script with these commands, in order to assure that if you are disconnected from the server, these analysis steps do not stop.
 
 ## Check files
 
@@ -94,7 +94,7 @@ total 8.7G
 
 ## Sort, mark duplicates, and index alignments using SAMBAMBA
 
-The output from ```bwa mem``` is an unsorted SAM file. Downstream tools require a sorted BAM file as input, so an intermediate step is to sort and index the alignment to facilitate future steps, similar to what was covered in our samtools/bcftools tutorial.
+The output from `bwa mem` is an unsorted SAM file. Downstream tools require a sorted BAM file as input, so an intermediate step is to sort and index the alignment to facilitate future steps, similar to what was covered in our samtools/bcftools tutorial.
 
 ```{bash eval = FALSE}
 # Tag mates
@@ -111,13 +111,13 @@ samtools index Naive_Input.final.bam
 
 Repeat this for the treatment file as well.
 
-### Clean-up intermediate files
+## Clean-up intermediate files
 
 Now is the time to clean-up any intermediate files that are not needed downstream, keeping only the `.final.bam` files needed by MACS2. When you are finished cleaning your files the working directory should be ~2.5G total.
 
-### Call peaks using MACS2
+## Call peaks using MACS2
 
-Before doing peak calling, it is necessary to have a sample dataset, as well as a control dataset. While MACS2 offers the option to perform both regular (narrow) and broad peak-calling, in this case, we will only be doing regular peak calling, however the instructions are similar for broad peak-calling just add the additional flag `--broad` to the command.
+Before doing peak calling, it is necessary to have a sample data set, as well as a control data set. While MACS2 offers the option to perform both regular (narrow) and broad peak-calling, in this case, we will only be doing regular peak calling, however the instructions are similar for broad peak-calling just add the additional flag `--broad` to the command.
 
 We will call peaks on sample `Naive_H3K27ac.final.bam` and we will be using the `Naive_Input.final.bam` as a control (background). Once you have the sorted, duplicate-marked `bam` files for all samples, you can perform the MACS2 peakcalling like this:
 
@@ -141,7 +141,7 @@ macs2 callpeak \
    - The `-B` indicates that the program should create a BedGraph (`.bdg`) file with the results
    - The `-q` is the FDR cutoff for which to call peaks
 
-### Check files
+## Check files
 
 At the end, you should have something similar to:
 
@@ -160,7 +160,7 @@ total 3.2G
 -rw------- 1 mhirst orca_users   58 Oct  4 05:36 nohup.out
 ```
 
-### Final Processing
+## Final Processing
 
 Convert to bigWig and sort (on the Orca server).
 
@@ -174,19 +174,19 @@ bedGraphToBigWig Naive_H3K27ac_treat_pileup.sort.bdg mm10.chrom.sizes Naive_H3K2
 bedGraphToBigWig Naive_H3K27ac_control_lambda.sort.bdg mm10.chrom.sizes Naive_H3K27ac_control_lambda.sort.bw
 ```
 
-### Transfer all relevant output files to your local computer
+## Transfer all relevant output files to your local computer
 
 Using a different terminal window that is not connected to the server, retrieve the bigWig and narrowPeak files
 
 ```{bash eval = FALSE}
-scp user01@orca1.bcgsc.ca:/home/user01/ChIP_tutorial/*{.bw,.narrowPeak} /your/local/folder
+scp user01@orca1.bcgsc.ca:/home/<user name>/ChIP_tutorial/*{.bw,.narrowPeak} /your/local/folder
 ```
 
 Pre-run analysis can be found here:
 ```{bash eval = FALSE}
 /projects/micb405/analysis/ChIP_tutorial
 ```
-You can replace this folder for your own ~/ChIP_tutorial folder if your script doesn't finish running in time.
+You can replace this folder for your own `~/ChIP_tutorial` folder if your script doesn't finish running in time.
 
 Launch IGV and load in the bigWigs and bed (narrowPeak) files.
 
@@ -195,6 +195,7 @@ If you haven’t installed it yet, please get it here IGV download. Make sure yo
 CONGRATULATIONS! You have now completed your first ChIP-seq analysis.  
 
 Questions:
+
 1. What do each of the files outputted by MACS2 represent?
 1. Find one H3K27ac peak, either by displaying a text file in your terminal or looking at your files through IGV. You can also use the text file to file a location to jump to within IGV. What is its chromosomal position?
 1. How many total peaks were called in this analysis?
