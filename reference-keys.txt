@@ -4,6 +4,17 @@ bash-and-scripting
 fastqc
 working-with-samtools-and-bcftools-part-1
 working-with-samtools-and-bcftools-part-2
+chip-seq-analysis
+setup
+suggested-workflow
+aligning-using-bwa-mem
+check-files
+sort-mark-duplicates-and-index-alignments-using-sambamba
+clean-up-intermediate-files
+call-peaks-using-macs2
+check-files-1
+final-processing
+transfer-all-relevant-output-files-to-your-local-computer
 bash-cheat-sheet
 terminal-keyboard-shortcuts-1
 less-and-man-navigation
