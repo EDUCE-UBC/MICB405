@@ -15,6 +15,9 @@ params:
   windows_version_release_date: "the first half---May---of 2021"
   macos_version: Big Sur
   macos_version_link: https://support.apple.com/en-us/HT201475
+  r_legacy_version: 3.3.3
+  rstudio_version: 2021.09.0
+  rstudio_legacy_version: 1.1.463
 ---
 
 ```{r setup, include = FALSE}
