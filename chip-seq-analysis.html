@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Slides You can download the slides for this tutorial below.  Download slides   6.1 Setup Make sure you have IGV installed on your laptop Check the macs2 is installed and in your $PATH by running...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/fitvids-2.1.1/fitvids.min.js"></script><script src="libs/font-awesome-5.13.0/js/script.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="css/style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
@@ -45,6 +45,7 @@
 <li><a class="" href="windows-10.html">Windows 10</a></li>
 <li><a class="" href="macos.html">macOS</a></li>
 <li><a class="" href="linux.html">Linux</a></li>
+<li><a class="" href="r-and-rstudio.html">R and RStudio</a></li>
 <li class="book-part">Tutorials</li>
 <li><a class="" href="overview.html">Overview</a></li>
 <li><a class="" href="introduction-linux-server-accounts.html"><span class="header-section-number">1</span> Introduction &amp; Linux Server Accounts</a></li>
@@ -86,13 +87,13 @@
 <li><p>Check the <code>macs2</code> is installed and in your <code>$PATH</code> by running <code>which macs2</code></p></li>
 <li>
 <p>If you do not see the folder where <code>macs2</code> is installed, run:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="chip-seq-analysis.html#cb5-1"></a><span class="ex">pip3</span> install macs2</span>
-<span id="cb5-2"><a href="chip-seq-analysis.html#cb5-2"></a><span class="ex">pip3</span> install --upgrade numpy</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="chip-seq-analysis.html#cb7-1"></a><span class="ex">pip3</span> install macs2</span>
+<span id="cb7-2"><a href="chip-seq-analysis.html#cb7-2"></a><span class="ex">pip3</span> install --upgrade numpy</span></code></pre></div>
 </li>
 <li>
 <p>Set up a new folder to work with in the tutorial:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="chip-seq-analysis.html#cb6-1"></a><span class="fu">mkdir</span> ~/ChIP_tutorial</span>
-<span id="cb6-2"><a href="chip-seq-analysis.html#cb6-2"></a><span class="bu">cd</span> ~/ChIP_tutorial</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="chip-seq-analysis.html#cb8-1"></a><span class="fu">mkdir</span> ~/ChIP_tutorial</span>
+<span id="cb8-2"><a href="chip-seq-analysis.html#cb8-2"></a><span class="bu">cd</span> ~/ChIP_tutorial</span></code></pre></div>
 </li>
 <li><p>Check the files needed for the tutorial using <code>ls -lh /projects/micb405/data/mouse/chip_tutorial</code>. These are the ChIP-seq reads that constitute the main input of your analysis.</p></li>
 </ol>
@@ -114,25 +115,25 @@
 <span class="header-section-number">6.3</span> Aligning using BWA-MEM<a class="anchor" aria-label="anchor" href="#aligning-using-bwa-mem"><i class="fas fa-link"></i></a>
 </h2>
 <p>We will now process and map the reads using <code>bwa mem</code>. Note the run time command syntax for <code>bwa mem</code> is different (easier and faster) from <code>bwa aln</code> introduced in class. The alignment process will take ~20 min to complete depending on server load. It is highly recommended to construct your commands within a shell script and generated associated log files by redirecting STDOUT as described in class. To make your subsequent commands easier, remember that you can define paths to commonly used files/resources in your script or shell as variables. For example, you can define the path to where the indexed mm10 genome is and the directory to where the tutorial input files are stored (see below). Best practice is to use the absolute rather than relative path when defining these variables, as that will ensure that your script will behave similarly no matter where it is located on your filesystem.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="chip-seq-analysis.html#cb7-1"></a><span class="va">GENOME=</span>/projects/micb405/analysis/references/mm10/mm10.fa</span>
-<span id="cb7-2"><a href="chip-seq-analysis.html#cb7-2"></a><span class="va">DATA=</span>/projects/micb405/data/mouse/chip_tutorial</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="chip-seq-analysis.html#cb9-1"></a><span class="va">GENOME=</span>/projects/micb405/analysis/references/mm10/mm10.fa</span>
+<span id="cb9-2"><a href="chip-seq-analysis.html#cb9-2"></a><span class="va">DATA=</span>/projects/micb405/data/mouse/chip_tutorial</span></code></pre></div>
 <p>You only need to <code>export</code> a variable if you want to add it to your current shell and have it persist between sessions. Since a script runs a subshell in a continuous session with its own unique variables, it’s not necessary to <code>export</code> variables within it.</p>
 <p>As should now be familiar, once defined you can call these paths in your script/shell by entering the special character <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> followed by the variable name as shown below. The following command will run <code>bwa mem</code> and stream the <code>sam</code> file into <code>samtools view</code>, which will then automatically convert it into a <code>bam</code> file. You can use this or design your own.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="chip-seq-analysis.html#cb8-1"></a><span class="co"># Input a.k.a. control alignment</span></span>
-<span id="cb8-2"><a href="chip-seq-analysis.html#cb8-2"></a><span class="ex">bwa</span> mem \</span>
-<span id="cb8-3"><a href="chip-seq-analysis.html#cb8-3"></a>  -t 8 \</span>
-<span id="cb8-4"><a href="chip-seq-analysis.html#cb8-4"></a>  <span class="va">$GENOME</span> \</span>
-<span id="cb8-5"><a href="chip-seq-analysis.html#cb8-5"></a>  <span class="va">$DATA</span>/Naive_Input_1.fastq \</span>
-<span id="cb8-6"><a href="chip-seq-analysis.html#cb8-6"></a>  <span class="va">$DATA</span>/Naive_Input_2.fastq \</span>
-<span id="cb8-7"><a href="chip-seq-analysis.html#cb8-7"></a>  <span class="kw">|</span> <span class="ex">samtools</span> view -h -b - -o Naive_Input.bam</span>
-<span id="cb8-8"><a href="chip-seq-analysis.html#cb8-8"></a></span>
-<span id="cb8-9"><a href="chip-seq-analysis.html#cb8-9"></a><span class="co"># Treatment a.k.a. immunoprecipitated a.k.a. IP alignment</span></span>
-<span id="cb8-10"><a href="chip-seq-analysis.html#cb8-10"></a><span class="ex">bwa</span> mem \</span>
-<span id="cb8-11"><a href="chip-seq-analysis.html#cb8-11"></a>  -t 8 \</span>
-<span id="cb8-12"><a href="chip-seq-analysis.html#cb8-12"></a>  <span class="va">$GENOME</span> \</span>
-<span id="cb8-13"><a href="chip-seq-analysis.html#cb8-13"></a>  <span class="va">$DATA</span>/Naive_H3K27ac_1.fastq \</span>
-<span id="cb8-14"><a href="chip-seq-analysis.html#cb8-14"></a>  <span class="va">$DATA</span>/Naive_H3K27ac_2.fastq \</span>
-<span id="cb8-15"><a href="chip-seq-analysis.html#cb8-15"></a>  <span class="kw">|</span> <span class="ex">samtools</span> view -h -b - -o Naive_H3K27ac.bam</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="chip-seq-analysis.html#cb10-1"></a><span class="co"># Input a.k.a. control alignment</span></span>
+<span id="cb10-2"><a href="chip-seq-analysis.html#cb10-2"></a><span class="ex">bwa</span> mem \</span>
+<span id="cb10-3"><a href="chip-seq-analysis.html#cb10-3"></a>  -t 8 \</span>
+<span id="cb10-4"><a href="chip-seq-analysis.html#cb10-4"></a>  <span class="va">$GENOME</span> \</span>
+<span id="cb10-5"><a href="chip-seq-analysis.html#cb10-5"></a>  <span class="va">$DATA</span>/Naive_Input_1.fastq \</span>
+<span id="cb10-6"><a href="chip-seq-analysis.html#cb10-6"></a>  <span class="va">$DATA</span>/Naive_Input_2.fastq \</span>
+<span id="cb10-7"><a href="chip-seq-analysis.html#cb10-7"></a>  <span class="kw">|</span> <span class="ex">samtools</span> view -h -b - -o Naive_Input.bam</span>
+<span id="cb10-8"><a href="chip-seq-analysis.html#cb10-8"></a></span>
+<span id="cb10-9"><a href="chip-seq-analysis.html#cb10-9"></a><span class="co"># Treatment a.k.a. immunoprecipitated a.k.a. IP alignment</span></span>
+<span id="cb10-10"><a href="chip-seq-analysis.html#cb10-10"></a><span class="ex">bwa</span> mem \</span>
+<span id="cb10-11"><a href="chip-seq-analysis.html#cb10-11"></a>  -t 8 \</span>
+<span id="cb10-12"><a href="chip-seq-analysis.html#cb10-12"></a>  <span class="va">$GENOME</span> \</span>
+<span id="cb10-13"><a href="chip-seq-analysis.html#cb10-13"></a>  <span class="va">$DATA</span>/Naive_H3K27ac_1.fastq \</span>
+<span id="cb10-14"><a href="chip-seq-analysis.html#cb10-14"></a>  <span class="va">$DATA</span>/Naive_H3K27ac_2.fastq \</span>
+<span id="cb10-15"><a href="chip-seq-analysis.html#cb10-15"></a>  <span class="kw">|</span> <span class="ex">samtools</span> view -h -b - -o Naive_H3K27ac.bam</span></code></pre></div>
 <p>Note that the <code>-t 8</code> is to do multithreaded processing to improve speed. The <code>$GENOME</code> specifies the location of reference genome to use. The <code>$DATA/Naive_H3K27ac_1.fastq</code> <code>$DATA/Naive_H3K27ac_2.fastq</code> specifies the location of the reads. This step will take some time. Expect the program to run for about 20 mins or longer depending on the server load. You can add <code>nohup</code> in front of each command, or in in front of your command running the script with these commands, in order to assure that if you are disconnected from the server, these analysis steps do not stop.</p>
 </div>
 <div id="check-files" class="section level2">
@@ -140,27 +141,27 @@
 <span class="header-section-number">6.4</span> Check files<a class="anchor" aria-label="anchor" href="#check-files"><i class="fas fa-link"></i></a>
 </h2>
 <p>At the end, you should have something similar to:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="chip-seq-analysis.html#cb9-1"></a><span class="ex">user01@orca01</span>:~/ChIP_tutorial$ ls -lh</span>
-<span id="cb9-2"><a href="chip-seq-analysis.html#cb9-2"></a><span class="ex">total</span> 8.7G</span>
-<span id="cb9-3"><a href="chip-seq-analysis.html#cb9-3"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 1.2G Oct  4 05:33 Naive_H3K27ac.bam</span>
-<span id="cb9-4"><a href="chip-seq-analysis.html#cb9-4"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 1.2G Oct  4 05:36 Naive_Input.bam</span>
-<span id="cb9-5"><a href="chip-seq-analysis.html#cb9-5"></a><span class="ex">-rw-------</span> 1 mhirst orca_users   58 Oct  4 05:36 nohup.out</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="chip-seq-analysis.html#cb11-1"></a><span class="ex">user01@orca01</span>:~/ChIP_tutorial$ ls -lh</span>
+<span id="cb11-2"><a href="chip-seq-analysis.html#cb11-2"></a><span class="ex">total</span> 8.7G</span>
+<span id="cb11-3"><a href="chip-seq-analysis.html#cb11-3"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 1.2G Oct  4 05:33 Naive_H3K27ac.bam</span>
+<span id="cb11-4"><a href="chip-seq-analysis.html#cb11-4"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 1.2G Oct  4 05:36 Naive_Input.bam</span>
+<span id="cb11-5"><a href="chip-seq-analysis.html#cb11-5"></a><span class="ex">-rw-------</span> 1 mhirst orca_users   58 Oct  4 05:36 nohup.out</span></code></pre></div>
 </div>
 <div id="sort-mark-duplicates-and-index-alignments-using-sambamba" class="section level2">
 <h2>
 <span class="header-section-number">6.5</span> Sort, mark duplicates, and index alignments using SAMBAMBA<a class="anchor" aria-label="anchor" href="#sort-mark-duplicates-and-index-alignments-using-sambamba"><i class="fas fa-link"></i></a>
 </h2>
 <p>The output from <code>bwa mem</code> is an unsorted SAM file. Downstream tools require a sorted BAM file as input, so an intermediate step is to sort and index the alignment to facilitate future steps, similar to what was covered in our samtools/bcftools tutorial.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="chip-seq-analysis.html#cb10-1"></a><span class="co"># Tag mates</span></span>
-<span id="cb10-2"><a href="chip-seq-analysis.html#cb10-2"></a><span class="ex">samtools</span> fixmate -m Naive_Input.bam Naive_Input.fixmate.bam</span>
-<span id="cb10-3"><a href="chip-seq-analysis.html#cb10-3"></a><span class="co"># Position sort for markdup</span></span>
-<span id="cb10-4"><a href="chip-seq-analysis.html#cb10-4"></a><span class="ex">samtools</span> sort Naive_Input.fixmate.bam -o Naive_Input.fixmate.sort.bam</span>
-<span id="cb10-5"><a href="chip-seq-analysis.html#cb10-5"></a><span class="co"># Mark duplicates. Note that you don't have to remove them as this is done by MACS2 automatically</span></span>
-<span id="cb10-6"><a href="chip-seq-analysis.html#cb10-6"></a><span class="ex">samtools</span> markdup -S Naive_Input.fixmate.sort.bam Naive_Input.markdup.bam</span>
-<span id="cb10-7"><a href="chip-seq-analysis.html#cb10-7"></a><span class="co"># Sort again</span></span>
-<span id="cb10-8"><a href="chip-seq-analysis.html#cb10-8"></a><span class="ex">samtools</span> sort Naive_Input.markdup.bam -o Naive_Input.final.bam</span>
-<span id="cb10-9"><a href="chip-seq-analysis.html#cb10-9"></a><span class="co"># Index BAM</span></span>
-<span id="cb10-10"><a href="chip-seq-analysis.html#cb10-10"></a><span class="ex">samtools</span> index Naive_Input.final.bam</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="chip-seq-analysis.html#cb12-1"></a><span class="co"># Tag mates</span></span>
+<span id="cb12-2"><a href="chip-seq-analysis.html#cb12-2"></a><span class="ex">samtools</span> fixmate -m Naive_Input.bam Naive_Input.fixmate.bam</span>
+<span id="cb12-3"><a href="chip-seq-analysis.html#cb12-3"></a><span class="co"># Position sort for markdup</span></span>
+<span id="cb12-4"><a href="chip-seq-analysis.html#cb12-4"></a><span class="ex">samtools</span> sort Naive_Input.fixmate.bam -o Naive_Input.fixmate.sort.bam</span>
+<span id="cb12-5"><a href="chip-seq-analysis.html#cb12-5"></a><span class="co"># Mark duplicates. Note that you don't have to remove them as this is done by MACS2 automatically</span></span>
+<span id="cb12-6"><a href="chip-seq-analysis.html#cb12-6"></a><span class="ex">samtools</span> markdup -S Naive_Input.fixmate.sort.bam Naive_Input.markdup.bam</span>
+<span id="cb12-7"><a href="chip-seq-analysis.html#cb12-7"></a><span class="co"># Sort again</span></span>
+<span id="cb12-8"><a href="chip-seq-analysis.html#cb12-8"></a><span class="ex">samtools</span> sort Naive_Input.markdup.bam -o Naive_Input.final.bam</span>
+<span id="cb12-9"><a href="chip-seq-analysis.html#cb12-9"></a><span class="co"># Index BAM</span></span>
+<span id="cb12-10"><a href="chip-seq-analysis.html#cb12-10"></a><span class="ex">samtools</span> index Naive_Input.final.bam</span></code></pre></div>
 <p>Repeat this for the treatment file as well.</p>
 </div>
 <div id="clean-up-intermediate-files" class="section level2">
@@ -175,14 +176,14 @@
 </h2>
 <p>Before doing peak calling, it is necessary to have a sample data set, as well as a control data set. While MACS2 offers the option to perform both regular (narrow) and broad peak-calling, in this case, we will only be doing regular peak calling, however the instructions are similar for broad peak-calling just add the additional flag <code>--broad</code> to the command.</p>
 <p>We will call peaks on sample <code>Naive_H3K27ac.final.bam</code> and we will be using the <code>Naive_Input.final.bam</code> as a control (background). Once you have the sorted, duplicate-marked <code>bam</code> files for all samples, you can perform the MACS2 peakcalling like this:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="chip-seq-analysis.html#cb11-1"></a><span class="ex">macs2</span> callpeak \</span>
-<span id="cb11-2"><a href="chip-seq-analysis.html#cb11-2"></a>  -t Naive_H3K27ac.final.bam \</span>
-<span id="cb11-3"><a href="chip-seq-analysis.html#cb11-3"></a>  -c Naive_Input.final.bam \</span>
-<span id="cb11-4"><a href="chip-seq-analysis.html#cb11-4"></a>  -f BAMPE \</span>
-<span id="cb11-5"><a href="chip-seq-analysis.html#cb11-5"></a>  -g mm \</span>
-<span id="cb11-6"><a href="chip-seq-analysis.html#cb11-6"></a>  -n Naive_H3K27ac \</span>
-<span id="cb11-7"><a href="chip-seq-analysis.html#cb11-7"></a>  -B \</span>
-<span id="cb11-8"><a href="chip-seq-analysis.html#cb11-8"></a>  -q 0.01</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="chip-seq-analysis.html#cb13-1"></a><span class="ex">macs2</span> callpeak \</span>
+<span id="cb13-2"><a href="chip-seq-analysis.html#cb13-2"></a>  -t Naive_H3K27ac.final.bam \</span>
+<span id="cb13-3"><a href="chip-seq-analysis.html#cb13-3"></a>  -c Naive_Input.final.bam \</span>
+<span id="cb13-4"><a href="chip-seq-analysis.html#cb13-4"></a>  -f BAMPE \</span>
+<span id="cb13-5"><a href="chip-seq-analysis.html#cb13-5"></a>  -g mm \</span>
+<span id="cb13-6"><a href="chip-seq-analysis.html#cb13-6"></a>  -n Naive_H3K27ac \</span>
+<span id="cb13-7"><a href="chip-seq-analysis.html#cb13-7"></a>  -B \</span>
+<span id="cb13-8"><a href="chip-seq-analysis.html#cb13-8"></a>  -q 0.01</span></code></pre></div>
 <ul>
 <li>The <code>-t</code> is the treatment or IP (ImmunoPrecipitated) aligned and dup-marked bam file</li>
 <li>The <code>-c</code> is the control or INPUT aligned and dup-marked bam file</li>
@@ -198,40 +199,40 @@
 <span class="header-section-number">6.8</span> Check files<a class="anchor" aria-label="anchor" href="#check-files-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>At the end, you should have something similar to:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="chip-seq-analysis.html#cb12-1"></a><span class="ex">user01@orca01</span>:~/ChIP_tutorial$ ls -lh</span>
-<span id="cb12-2"><a href="chip-seq-analysis.html#cb12-2"></a><span class="ex">total</span> 3.2G</span>
-<span id="cb12-3"><a href="chip-seq-analysis.html#cb12-3"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 958M Oct  4 15:20 Naive_H3K27ac.final.bam</span>
-<span id="cb12-4"><a href="chip-seq-analysis.html#cb12-4"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 5.6M Oct  4 15:20 Naive_H3K27ac.final.bam.bai</span>
-<span id="cb12-5"><a href="chip-seq-analysis.html#cb12-5"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 815M Oct  4 15:57 Naive_H3K27ac_control_lambda.bdg</span>
-<span id="cb12-6"><a href="chip-seq-analysis.html#cb12-6"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 1.1M Oct  4 15:57 Naive_H3K27ac_peaks.narrowPeak</span>
-<span id="cb12-7"><a href="chip-seq-analysis.html#cb12-7"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 1.3M Oct  4 15:57 Naive_H3K27ac_peaks.xls</span>
-<span id="cb12-8"><a href="chip-seq-analysis.html#cb12-8"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 754K Oct  4 15:57 Naive_H3K27ac_summits.bed</span>
-<span id="cb12-9"><a href="chip-seq-analysis.html#cb12-9"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 310M Oct  4 15:57 Naive_H3K27ac_treat_pileup.bdg</span>
-<span id="cb12-10"><a href="chip-seq-analysis.html#cb12-10"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 1.1G Oct  4 15:30 Naive_Input.final.bam</span>
-<span id="cb12-11"><a href="chip-seq-analysis.html#cb12-11"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 5.8M Oct  4 15:30 Naive_Input.final.bam.bai</span>
-<span id="cb12-12"><a href="chip-seq-analysis.html#cb12-12"></a><span class="ex">-rw-------</span> 1 mhirst orca_users   58 Oct  4 05:36 nohup.out</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="chip-seq-analysis.html#cb14-1"></a><span class="ex">user01@orca01</span>:~/ChIP_tutorial$ ls -lh</span>
+<span id="cb14-2"><a href="chip-seq-analysis.html#cb14-2"></a><span class="ex">total</span> 3.2G</span>
+<span id="cb14-3"><a href="chip-seq-analysis.html#cb14-3"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 958M Oct  4 15:20 Naive_H3K27ac.final.bam</span>
+<span id="cb14-4"><a href="chip-seq-analysis.html#cb14-4"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 5.6M Oct  4 15:20 Naive_H3K27ac.final.bam.bai</span>
+<span id="cb14-5"><a href="chip-seq-analysis.html#cb14-5"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 815M Oct  4 15:57 Naive_H3K27ac_control_lambda.bdg</span>
+<span id="cb14-6"><a href="chip-seq-analysis.html#cb14-6"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 1.1M Oct  4 15:57 Naive_H3K27ac_peaks.narrowPeak</span>
+<span id="cb14-7"><a href="chip-seq-analysis.html#cb14-7"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 1.3M Oct  4 15:57 Naive_H3K27ac_peaks.xls</span>
+<span id="cb14-8"><a href="chip-seq-analysis.html#cb14-8"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 754K Oct  4 15:57 Naive_H3K27ac_summits.bed</span>
+<span id="cb14-9"><a href="chip-seq-analysis.html#cb14-9"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 310M Oct  4 15:57 Naive_H3K27ac_treat_pileup.bdg</span>
+<span id="cb14-10"><a href="chip-seq-analysis.html#cb14-10"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 1.1G Oct  4 15:30 Naive_Input.final.bam</span>
+<span id="cb14-11"><a href="chip-seq-analysis.html#cb14-11"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 5.8M Oct  4 15:30 Naive_Input.final.bam.bai</span>
+<span id="cb14-12"><a href="chip-seq-analysis.html#cb14-12"></a><span class="ex">-rw-------</span> 1 mhirst orca_users   58 Oct  4 05:36 nohup.out</span></code></pre></div>
 </div>
 <div id="final-processing" class="section level2">
 <h2>
 <span class="header-section-number">6.9</span> Final Processing<a class="anchor" aria-label="anchor" href="#final-processing"><i class="fas fa-link"></i></a>
 </h2>
 <p>Convert to bigWig and sort (on the Orca server).</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="chip-seq-analysis.html#cb13-1"></a><span class="fu">wget</span> http://hgdownload.cse.ucsc.edu/goldenPath/mm10/bigZips/mm10.chrom.sizes</span>
-<span id="cb13-2"><a href="chip-seq-analysis.html#cb13-2"></a></span>
-<span id="cb13-3"><a href="chip-seq-analysis.html#cb13-3"></a><span class="ex">bedtools</span> sort -i Naive_H3K27ac_treat_pileup.bdg <span class="op">&gt;</span> Naive_H3K27ac_treat_pileup.sort.bdg</span>
-<span id="cb13-4"><a href="chip-seq-analysis.html#cb13-4"></a><span class="ex">bedtools</span> sort -i Naive_H3K27ac_control_lambda.bdg <span class="op">&gt;</span> Naive_H3K27ac_control_lambda.sort.bdg</span>
-<span id="cb13-5"><a href="chip-seq-analysis.html#cb13-5"></a></span>
-<span id="cb13-6"><a href="chip-seq-analysis.html#cb13-6"></a><span class="ex">bedGraphToBigWig</span> Naive_H3K27ac_treat_pileup.sort.bdg mm10.chrom.sizes Naive_H3K27ac_treat_pileup.sort.bw</span>
-<span id="cb13-7"><a href="chip-seq-analysis.html#cb13-7"></a><span class="ex">bedGraphToBigWig</span> Naive_H3K27ac_control_lambda.sort.bdg mm10.chrom.sizes Naive_H3K27ac_control_lambda.sort.bw</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="chip-seq-analysis.html#cb15-1"></a><span class="fu">wget</span> http://hgdownload.cse.ucsc.edu/goldenPath/mm10/bigZips/mm10.chrom.sizes</span>
+<span id="cb15-2"><a href="chip-seq-analysis.html#cb15-2"></a></span>
+<span id="cb15-3"><a href="chip-seq-analysis.html#cb15-3"></a><span class="ex">bedtools</span> sort -i Naive_H3K27ac_treat_pileup.bdg <span class="op">&gt;</span> Naive_H3K27ac_treat_pileup.sort.bdg</span>
+<span id="cb15-4"><a href="chip-seq-analysis.html#cb15-4"></a><span class="ex">bedtools</span> sort -i Naive_H3K27ac_control_lambda.bdg <span class="op">&gt;</span> Naive_H3K27ac_control_lambda.sort.bdg</span>
+<span id="cb15-5"><a href="chip-seq-analysis.html#cb15-5"></a></span>
+<span id="cb15-6"><a href="chip-seq-analysis.html#cb15-6"></a><span class="ex">bedGraphToBigWig</span> Naive_H3K27ac_treat_pileup.sort.bdg mm10.chrom.sizes Naive_H3K27ac_treat_pileup.sort.bw</span>
+<span id="cb15-7"><a href="chip-seq-analysis.html#cb15-7"></a><span class="ex">bedGraphToBigWig</span> Naive_H3K27ac_control_lambda.sort.bdg mm10.chrom.sizes Naive_H3K27ac_control_lambda.sort.bw</span></code></pre></div>
 </div>
 <div id="transfer-all-relevant-output-files-to-your-local-computer" class="section level2">
 <h2>
 <span class="header-section-number">6.10</span> Transfer all relevant output files to your local computer<a class="anchor" aria-label="anchor" href="#transfer-all-relevant-output-files-to-your-local-computer"><i class="fas fa-link"></i></a>
 </h2>
 <p>Using a different terminal window that is not connected to the server, retrieve the bigWig and narrowPeak files</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="chip-seq-analysis.html#cb14-1"></a><span class="fu">scp</span> user01@orca1.bcgsc.ca:/home/<span class="op">&lt;</span>user name<span class="op">&gt;</span>/ChIP_tutorial/*<span class="dt">{.bw,.narrowPeak}</span> /your/local/folder</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="chip-seq-analysis.html#cb16-1"></a><span class="fu">scp</span> user01@orca1.bcgsc.ca:/home/<span class="op">&lt;</span>user name<span class="op">&gt;</span>/ChIP_tutorial/*<span class="dt">{.bw,.narrowPeak}</span> /your/local/folder</span></code></pre></div>
 <p>Pre-run analysis can be found here:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="chip-seq-analysis.html#cb15-1"></a><span class="ex">/projects/micb405/analysis/ChIP_tutorial</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="chip-seq-analysis.html#cb17-1"></a><span class="ex">/projects/micb405/analysis/ChIP_tutorial</span></span></code></pre></div>
 <p>You can replace this folder for your own <code>~/ChIP_tutorial</code> folder if your script doesn’t finish running in time.</p>
 <p>Launch IGV and load in the bigWigs and bed (narrowPeak) files.</p>
 <p>If you haven’t installed it yet, please get it here IGV download. Make sure you are loading the Mouse (mm10) reference genome by clicking on the drop-down menu on the top left hand corner (Genomes &gt; Load Genome from Server &gt; mm10).</p>
@@ -295,7 +296,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>MICB 405 Bioinformatics</strong>: 2021.22" was written by Axel Hauduc and Stephan Koenig. It was last built on October 15, 2021.</p>
+    <p>"<strong>MICB 405 Bioinformatics</strong>: 2021.22" was written by Axel Hauduc and Stephan Koenig. It was last built on October 18, 2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

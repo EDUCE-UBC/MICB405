@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>R and RStudio | MICB 405 Bioinformatics</title>
+<meta name="author" content="Axel Hauduc and Stephan Koenig">
+<meta name="description" content="To complete the installs of R and RStudio, you must have administrator privileges on your machine. Choose the version appropriate for your operating system. You can also watch a video for a Mac or...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="R and RStudio | MICB 405 Bioinformatics">
+<meta property="og:type" content="book">
+<meta property="og:description" content="To complete the installs of R and RStudio, you must have administrator privileges on your machine. Choose the version appropriate for your operating system. You can also watch a video for a Mac or...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="R and RStudio | MICB 405 Bioinformatics">
+<meta name="twitter:description" content="To complete the installs of R and RStudio, you must have administrator privileges on your machine. Choose the version appropriate for your operating system. You can also watch a video for a Mac or...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/fitvids-2.1.1/fitvids.min.js"></script><script src="libs/font-awesome-5.13.0/js/script.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="css/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="2021.22">MICB 405 Bioinformatics</a>:
+        <small class="text-muted">2021.22</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">About</a></li>
+<li class="book-part">Setup</li>
+<li><a class="" href="windows-10.html">Windows 10</a></li>
+<li><a class="" href="macos.html">macOS</a></li>
+<li><a class="" href="linux.html">Linux</a></li>
+<li><a class="active" href="r-and-rstudio.html">R and RStudio</a></li>
+<li class="book-part">Tutorials</li>
+<li><a class="" href="overview.html">Overview</a></li>
+<li><a class="" href="introduction-linux-server-accounts.html"><span class="header-section-number">1</span> Introduction &amp; Linux Server Accounts</a></li>
+<li><a class="" href="bash-and-scripting.html"><span class="header-section-number">2</span> Bash and scripting</a></li>
+<li><a class="" href="fastqc.html"><span class="header-section-number">3</span> FastQC</a></li>
+<li><a class="" href="working-with-samtools-and-bcftools-part-1.html"><span class="header-section-number">4</span> Working with SAMtools and BCFtools Part 1</a></li>
+<li><a class="" href="working-with-samtools-and-bcftools-part-2.html"><span class="header-section-number">5</span> Working with SAMtools and BCFtools Part 2</a></li>
+<li><a class="" href="chip-seq-analysis.html"><span class="header-section-number">6</span> ChIP-seq analysis</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="bash-cheat-sheet.html"><span class="header-section-number">A</span> Bash cheat sheet</a></li>
+<li><a class="" href="terminal-keyboard-shortcuts-1.html"><span class="header-section-number">B</span> Terminal keyboard shortcuts</a></li>
+<li><a class="" href="less-and-man-navigation.html"><span class="header-section-number">C</span> less and man navigation</a></li>
+<li><a class="" href="resources-2.html"><span class="header-section-number">D</span> Resources</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/EDUCE-UBC/MICB405">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="r-and-rstudio" class="section level1 unnumbered">
+<h1>R and RStudio<a class="anchor" aria-label="anchor" href="#r-and-rstudio"><i class="fas fa-link"></i></a>
+</h1>
+<p>To complete the installs of R and RStudio, you must have administrator privileges on your machine. Choose the version appropriate for your operating system. You can also watch a video for a <a href="https://youtu.be/Oy9BPxt8gQ0?t=270">Mac</a> or a <a href="https://youtu.be/7f9ADV2v7CI?t=336">Windows</a> install (you only need to install R and RStudio, and none of the other programs mentioned in the videos). Please also note that the versions of R and RStudio in the video are older. Instead, install or update to the <strong>latest version</strong> supported by your operating system.</p>
+<div id="install-r" class="section level2 unnumbered">
+<h2>Install R<a class="anchor" aria-label="anchor" href="#install-r"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li><p>Go to <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></p></li>
+<li>
+<p>Choose among “Download and Install R” section (<strong>not</strong> “Source Code for all Platforms”).</p>
+<p><strong>Latest version: 4.1.1</strong></p>
+<p>(only for macOS Yosemite or older: legacy version 3.3.3)</p>
+</li>
+</ol>
+<div class="rmdcaution">
+<p><strong>Note for Mac users</strong></p>
+<p>If you have an M1 (and higher) Mac, you <strong>must</strong> install the Intel version of R (Bioconductor packages installed below are not yet compatible with the arm64 version).</p>
+</div>
+<div class="rmdcaution">
+<p><strong>Note for all users</strong></p>
+<p>You <strong>must</strong> have R installed before proceeding to the next step.</p>
+</div>
+</div>
+<div id="install-rstudio" class="section level2 unnumbered">
+<h2>Install RStudio<a class="anchor" aria-label="anchor" href="#install-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li><p>Go to <a href="https://rstudio.com/products/rstudio/download/#download" class="uri">https://rstudio.com/products/rstudio/download/#download</a></p></li>
+<li><p>Select the FREE Desktop version.</p></li>
+<li>
+<p>Choose among “Installers for Supported Platforms” section (<strong>not</strong> “Zip/Tarballs”) or follow the link to older versions of RStudio if you need a legacy version.</p>
+<p><strong>Latest version: 2021.09.0</strong></p>
+<p>(only for macOS El Capitan and older: legacy version 1.1.463)</p>
+</li>
+</ol>
+</div>
+<div id="install-r-packages" class="section level2 unnumbered">
+<h2>Install R packages<a class="anchor" aria-label="anchor" href="#install-r-packages"><i class="fas fa-link"></i></a>
+</h2>
+<p>Open RStudio, then:</p>
+<ol style="list-style-type: decimal">
+<li><div class="inline-figure">Select the “Console” tab of the left panel <img src="images/one.png" style="width:3.0%">.</div></li>
+<li>
+<p>Copy the following code after the prompt <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;</a></code> <img src="images/two.png" style="width:3.0%"> to install all necessary packages:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span><span class="op">)</span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span>
+<span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">pheatmap</span><span class="op">)</span><span class="op">)</span>     <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"pheatmap"</span><span class="op">)</span>
+<span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"RColorBrewer"</span><span class="op">)</span>
+<span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">BiocManager</span><span class="op">)</span><span class="op">)</span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span>
+<span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mikelove/DESeq2">DESeq2</a></span><span class="op">)</span><span class="op">)</span>       <span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"DESeq2"</span><span class="op">)</span></code></pre></div>
+<p>While installing (or updating, see below) packages, you might be prompted:</p>
+<pre><code>  There is a binary version available, but the source version is later:
+
+&lt;table of package names&gt;
+
+Do you want to install from sources the package which need compilation? (Yes/no/cancel)</code></pre>
+<p>Always enter <code>no</code> followed by <kbd>enter</kbd>.</p>
+</li>
+<li>
+<p>Update packages by selecting the “Packages” tab of the bottom right panel <img src="images/three.png" style="width:3.0%"> and then click on “Update” <img src="images/four.png" style="width:3.0%">.</p>
+<div class="inline-figure"><img src="images/update_packages.png" style="width:100.0%"></div>
+</li>
+<li>
+<p>If any packages are listed, first click on “Select All” <img src="images/one.png" style="width:3.0%"> and then “Install Updates” <img src="images/two.png" style="width:3.0%">.</p>
+<div class="inline-figure"><img src="images/update_packages_window.png" style="width:100.0%"></div>
+</li>
+</ol>
+</div>
+<div id="check-that-it-worked" class="section level2 unnumbered">
+<h2>Check that it worked<a class="anchor" aria-label="anchor" href="#check-that-it-worked"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-figure">After you open RStudio, it should look like the screenshot below with the left panel (the “console”) listing the most current R version for your operating system <img src="images/one.png" style="width:3.0%">.</div>
+<div class="inline-figure"><img src="images/version.png" style="width:100.0%"></div>
+</div>
+<div id="troubleshooting" class="section level2 unnumbered">
+<h2>Troubleshooting<a class="anchor" aria-label="anchor" href="#troubleshooting"><i class="fas fa-link"></i></a>
+</h2>
+<div id="rstudio-looks-incorrect" class="section level3 unnumbered">
+<h3>RStudio looks incorrect<a class="anchor" aria-label="anchor" href="#rstudio-looks-incorrect"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-figure">If you only see a single panel instead of 3 like in the example image, you likely opened base R instead of RStudio. Look for the RStudio logo <img src="images/rstudio_logo.png" style="width:2.0%"> to open the correct program.</div>
+<p>If you confirmed RStudio is open but don’t see the same panels as depicted above, then in the RStudio menu bar, select View &gt; Panes &gt; Show all panes.</p>
+</div>
+<div id="my-computer-wont-let-me-open-the-downloaded-files-to-install-them" class="section level3 unnumbered">
+<h3>My computer won’t let me open the downloaded files to install them<a class="anchor" aria-label="anchor" href="#my-computer-wont-let-me-open-the-downloaded-files-to-install-them"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Mac</strong>: right-click and choose “Open With” &gt; “Installer.app (default)” and select “Open” when prompted if you are sure you want to open the file</p>
+<p><strong>Windows</strong>: right-click and choose “Run as administrator”</p>
+</div>
+<div id="still-doesnt-work" class="section level3 unnumbered">
+<h3>Still doesn’t work<a class="anchor" aria-label="anchor" href="#still-doesnt-work"><i class="fas fa-link"></i></a>
+</h3>
+<p>Please come to one of the office hours to get help.</p>
+</div>
+</div>
+<div id="further-resources" class="section level2 unnumbered">
+<h2>Further resources<a class="anchor" aria-label="anchor" href="#further-resources"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><a href="http://cran.stat.sfu.ca/doc/FAQ/R-FAQ.html#How-can-R-be-installed_003f">How to Install R</a></li>
+<li><a href="http://cran.r-project.org/doc/FAQ/R-FAQ.html">R FAQ</a></li>
+<li><a href="http://cran.r-project.org/doc/manuals/R-admin.html">R Installation and Administration Manual</a></li>
+<li><a href="https://support.rstudio.com/hc/en-us/sections/200107586-Using-RStudio">How to Use RStudio</a></li>
+<li><a href="https://support.rstudio.com/hc/en-us/sections/203994097-RStudio-IDE">RStudio Public Discussion &amp; Troubleshooting Guide</a></li>
+</ul>
+</div>
+</div>
+
+
+
+<div class="chapter-nav">
+<div class="prev"><a href="linux.html">Linux</a></div>
+<div class="next"><a href="overview.html">Overview</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-and-rstudio">R and RStudio</a></li>
+<li><a class="nav-link" href="#install-r">Install R</a></li>
+<li><a class="nav-link" href="#install-rstudio">Install RStudio</a></li>
+<li><a class="nav-link" href="#install-r-packages">Install R packages</a></li>
+<li><a class="nav-link" href="#check-that-it-worked">Check that it worked</a></li>
+<li>
+<a class="nav-link" href="#troubleshooting">Troubleshooting</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#rstudio-looks-incorrect">RStudio looks incorrect</a></li>
+<li><a class="nav-link" href="#my-computer-wont-let-me-open-the-downloaded-files-to-install-them">My computer won’t let me open the downloaded files to install them</a></li>
+<li><a class="nav-link" href="#still-doesnt-work">Still doesn’t work</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#further-resources">Further resources</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/EDUCE-UBC/MICB405/blob/main/Rmds/r_and_rstudio.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/EDUCE-UBC/MICB405/edit/main/Rmds/r_and_rstudio.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+</div>
+  
+
+  
+
+</div>
+ <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>MICB 405 Bioinformatics</strong>: 2021.22" was written by Axel Hauduc and Stephan Koenig. It was last built on October 18, 2021.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
