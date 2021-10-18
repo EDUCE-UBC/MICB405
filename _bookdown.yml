@@ -14,6 +14,7 @@ rmd_files:
   - Rmds/windows.Rmd
   - Rmds/macos.Rmd
   - Rmds/linux.Rmd
+  - Rmds/r_and_rstudio.Rmd
   - Rmds/part_tutorials.Rmd # separator for TOC navigation
   - Rmds/tutorials.Rmd
   - Rmds/bash.Rmd

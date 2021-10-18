@@ -1,0 +1,78 @@
+# R and RStudio {-}
+
+To complete the installs of R and RStudio, you must have administrator privileges on your machine. Choose the version appropriate for your operating system. You can also watch a video for a [Mac](https://youtu.be/Oy9BPxt8gQ0?t=270) or a [Windows](https://youtu.be/7f9ADV2v7CI?t=336) install (you only need to install R and RStudio, and none of the other programs mentioned in the videos). Please also note that the versions of R and RStudio in the video are older. Instead, install or update to the latest version supported by your operating system.
+
+1. R https://cran.r-project.org/
+    - version `r getRversion()` (only for macOS Yosemite or older: legacy version `r params$r_legacy_version`)
+    - Choose among "Download and Install R" section (**not** "Source Code for all Platforms").
+    
+        **Note for Mac users:** If you have an M1 (and higher) Mac, you **must** install the Intel version of R (Bioconductor packages installed below are not yet compatible with the arm64 version).
+        
+    - You **must** have R installed before proceeding to step 2.
+1. RStudio https://rstudio.com/products/rstudio/download/#download
+    - Version `r params$rstudio_version` (only for macOS El Capitan and older: legacy version `r params$rstudio_legacy_version`)
+    - Select FREE Desktop version.
+    - Choose among "Installers for Supported Platforms" section (**not** "Zip/Tarballs") or follow the link to older versions of RStudio if you need a legacy version.
+1. In RStudio:
+    - Select the "Console" tab of the left panel ![](`r here("images", "one.png")`){width=3%}.
+    - Copy the following code after the prompt `>` ![](`r here("images", "two.png")`){width=3%} to install all necessary packages:
+ 
+        ```{r install-packages, eval = FALSE}
+        if (!require(tidyverse))    install.packages("tidyverse")
+        if (!require(pheatmap))     install.packages("pheatmap")
+        if (!require(RColorBrewer)) install.packages("RColorBrewer")
+        if (!require(BiocManager))  install.packages("BiocManager")
+        if (!require(DESeq2))       BiocManager::install("DESeq2")
+        ```
+
+        While installing (or updating, see below) packages, you might be prompted:
+
+        ```
+          There is a binary version available, but the source version is later:
+        
+        <table of package names>
+        
+        Do you want to install from sources the package which need compilation? (Yes/no/cancel)
+        ```
+
+        Always enter `no` followed by <kbd>enter</kbd>.
+
+    - Update packages by selecting the "Packages" tab of the bottom right panel ![](`r here("images", "three.png")`){width=3%} and then click on "Update" ![](`r here("images", "four.png")`){width=3%}.
+    
+        ![](`r here("images", "update_packages.png")`){width=100%}
+
+    - If any packages are listed, first click on "Select All" ![](`r here("images", "one.png")`){width=3%} and then "Install Updates" ![](`r here("images", "two.png")`){width=3%}.
+    
+        ![](`r here("images", "update_packages_window.png")`){width=100%}
+
+## Check that it worked {-}
+
+After you open RStudio, it should look like the screenshot below with the left panel (the "console") listing the most current R version for your operating system ![](`r here("images", "one.png")`){width=3%}.
+
+![](`r here("images", "version.png")`){width=100%}
+
+## Troubleshooting {-}
+
+### RStudio looks incorrect {-}
+
+If you only see a single panel instead of 3 like in the example image, you likely opened base R instead of RStudio. Look for the RStudio logo ![](`r here("images", "rstudio_logo.png")`){width=2%} to open the correct program.
+
+If you confirmed RStudio is open but don't see the same panels as depicted above, then in the RStudio menu bar, select View > Panes > Show all panes.
+
+### My computer won't let me open the downloaded files to install them {-}
+
+**Mac**: right-click and choose "Open With" > "Installer.app (default)" and select "Open" when prompted if you are sure you want to open the file
+
+**Windows**: right-click and choose "Run as administrator"
+
+### Still doesn't work {-}
+
+Please come to one of the office hours to get help.
+
+## Further resources {-}
+
+- [How to Install R](http://cran.stat.sfu.ca/doc/FAQ/R-FAQ.html#How-can-R-be-installed_003f)
+- [R FAQ](http://cran.r-project.org/doc/FAQ/R-FAQ.html)
+- [R Installation and Administration Manual](http://cran.r-project.org/doc/manuals/R-admin.html)
+- [How to Use RStudio](https://support.rstudio.com/hc/en-us/sections/200107586-Using-RStudio)
+- [RStudio Public Discussion & Troubleshooting Guide](https://support.rstudio.com/hc/en-us/sections/203994097-RStudio-IDE)
