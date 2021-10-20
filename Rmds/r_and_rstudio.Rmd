@@ -38,6 +38,7 @@ You **must** have R installed before proceeding to the next step.
 Open RStudio, then:
 
 1. Select the "Console" tab of the left panel ![](`r here("images", "one.png")`){width=3%}.
+
 1. Copy the following code after the prompt `>` ![](`r here("images", "two.png")`){width=3%} to install all necessary packages:
  
     ```{r install-packages, eval = FALSE}
