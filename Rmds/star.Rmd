@@ -1,37 +1,45 @@
-# STAR (Axel Hauduc)
+# RNA-seq alignment with STAR 
+
+## Slides {-}
+
+```{r, echo = FALSE, out.width = "100%", out.height = "388px"}
+knitr::include_graphics("slides/tutorials/star.pdf")
+```
+
+You can download the slides for this tutorial below.
+
+```{r echo = FALSE}
+downloadthis::download_file(
+  path         = here("slides", "tutorials", "star.pdf"),
+  output_name  = "star.pdf",
+  button_label = "Download slides"
+)
+```
 
 ## STAR workflow
 
-1. Download mouse reference genome (FASTA, mm10) and gene annotation file (GTF)
+1. Normally, you can download mouse genomic data (in this case, the mm10 FASTA and GTF files) from [Ensembl](https://ftp.ensembl.org/pub/release-84/), but we have prepared this for you in advance at `/projects/micb405/analysis/STAR_tutorial`. Simply create a new working directory and a subdirectory for your STAR index.
 
     ```{bash eval = FALSE}
     mkdir ~/star && cd ~/star
-    wget ftp://ftp.ensembl.org/pub/release-84/fasta/mus_musculus/dna/Mus_musculus.GRCm38.dna.primary_assembly.fa.gz
-    wget ftp://ftp.ensembl.org/pub/release-84/gtf/mus_musculus/Mus_musculus.GRCm38.84.gtf.gz
+    mkdir STARIndex
     ```
 
-2. Unzip just the fasta reference and gtf file, and make directories for your STAR index and for each of your sample files, which you will need to name
-
-    ```{bash eval = FALSE}
-    gunzip *{gtf,fa}.gz
-    mkdir STARIndex sample1 sample2 sample3 sample4 sample_n # Make sure to rename these based on your FASTQ files
-    ```
-
-3. Generate a STAR index based on your mm10 FASTA and your GTF files, **then proceed to Step 4 while it runs**
+2. Before you begin your alignment, STAR must generate its own format of index based on the genomic information you provide it with. Generate a STAR index based on the mm10 FASTA and your GTF files, **then proceed to Step 3 while it runs**:
 
     ```{bash eval = FALSE}
     STAR \
       --runMode genomeGenerate \
       --genomeDir STARIndex \
-      --genomeFastaFiles Mus_musculus.GRCm38.dna.primary_assembly.fa \
-      --sjdbGTFfile Mus_musculus.GRCm38.84.gtf \
+      --genomeFastaFiles /projects/micb405/analysis/STAR_tutorial/Mus_musculus.GRCm38.dna.primary_assembly.fa \
+      --sjdbGTFfile /projects/micb405/analysis/STAR_tutorial/Mus_musculus.GRCm38.84.gtf \
       --sjdbOverhang 49 \
       --runThreadN 16
     ```
 
-4. Download healthy tissue RNAseq FASTQ files
+3. Download healthy tissue RNAseq FASTQ files from the paper ["An RNA-Seq atlas of gene expression in mouse and rat normal tissues"](https://www.nature.com/articles/sdata2017185). These are located in the associated [ArrayExpress](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6081/samples/) that can be located in the data citations from the article's NCBI page.
 
-    **Discuss among your group an idea for what you could investigate given the data you have available.** Download the FASTQ files that will allow you to accomplish this. Which ones did you choose, and for what purpose?
+    **Discuss among your group an idea for what you could investigate given the data you have available.** Download the FASTQ files that will allow you to accomplish this. Recall that RNA-seq should indicate relative expression at gene intervals you provide, which can later be quantified and normalized by HTseq & DESeq2.
 
     ```{bash eval = FALSE}
     # In my case, I'm downloading 4 tissue types from the first individual mouse in order to observe differential gene expression in these areas.
@@ -42,7 +50,7 @@
     wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR213/004/ERR2130614/ERR2130614.fastq.gz
     ```
 
-5. When the STAR index is ready, run STAR, outputting into a separate directory for each of the samples you wish to align. Since you won't have time for the whole process to run today, create a script that runs this STAR command for each of your samples and run it in a way so that it won't stop when you exit your shell.
+4. When the STAR index is ready, run STAR, outputting into a separate directory for each sample you wish to align. You can control the output directory with the string provided to `--outFileNamePrefix`. These directories will have to be created by you beforehand - STAR does not create directories for you. Since you won't have time for the whole process to run today, create a script that runs this STAR command for each of your samples and run it in a way so that it won't stop when you exit your shell (Group Assignment part #2 below).
 
     Be sure that `--readFilesIn`, `--outFileNamePrefix`, and `--outSAMattrRGline` changes for each of your samples
 
@@ -63,8 +71,11 @@
       --genomeLoad NoSharedMemory
     ```
 
-## Resources
+## Group assignment
 
-Original paper: [An RNA-Seq atlas of gene expression in mouse and rat normal tissues](https://www.nature.com/articles/sdata2017185)
+1. Which samples from the paper did you choose, and what did you want to test with them?
+2. Create a script that performs the STAR alignment for your files, avoiding excessive repetition, and can be run so that it is not interrupted when you close your connection with the server.
+
+## Resources
 
 [STAR documentation](https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf)

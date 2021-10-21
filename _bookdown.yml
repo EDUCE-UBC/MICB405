@@ -23,7 +23,7 @@ rmd_files:
   - Rmds/samtools_bcftools.Rmd
   - Rmds/samtools_bcftools_part_2.Rmd
   - Rmds/chip-seq.Rmd
-  # - Rmds/star.Rmd
+  - Rmds/star.Rmd
   # - Rmds/htseq_deseq2.Rmd
   # - Rmds/part_capstone.Rmd # separator for TOC navigation
   # - Rmds/capstone.Rmd
