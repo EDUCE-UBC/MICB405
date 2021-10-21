@@ -54,11 +54,12 @@
 <li><a class="" href="working-with-samtools-and-bcftools-part-1.html"><span class="header-section-number">4</span> Working with SAMtools and BCFtools Part 1</a></li>
 <li><a class="" href="working-with-samtools-and-bcftools-part-2.html"><span class="header-section-number">5</span> Working with SAMtools and BCFtools Part 2</a></li>
 <li><a class="active" href="chip-seq-analysis.html"><span class="header-section-number">6</span> ChIP-seq analysis</a></li>
+<li><a class="" href="rna-seq-alignment-with-star.html"><span class="header-section-number">7</span> RNA-seq alignment with STAR</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="bash-cheat-sheet.html"><span class="header-section-number">A</span> Bash cheat sheet</a></li>
 <li><a class="" href="terminal-keyboard-shortcuts-1.html"><span class="header-section-number">B</span> Terminal keyboard shortcuts</a></li>
 <li><a class="" href="less-and-man-navigation.html"><span class="header-section-number">C</span> less and man navigation</a></li>
-<li><a class="" href="resources-2.html"><span class="header-section-number">D</span> Resources</a></li>
+<li><a class="" href="resources-3.html"><span class="header-section-number">D</span> Resources</a></li>
 </ul>
 
         <div class="book-extra">
@@ -147,9 +148,9 @@
 <span id="cb11-4"><a href="chip-seq-analysis.html#cb11-4"></a><span class="ex">-rw-r--r--</span> 1 mhirst orca_users 1.2G Oct  4 05:36 Naive_Input.bam</span>
 <span id="cb11-5"><a href="chip-seq-analysis.html#cb11-5"></a><span class="ex">-rw-------</span> 1 mhirst orca_users   58 Oct  4 05:36 nohup.out</span></code></pre></div>
 </div>
-<div id="sort-mark-duplicates-and-index-alignments-using-sambamba" class="section level2">
+<div id="sort-mark-duplicates-and-index-alignments-using-samtools" class="section level2">
 <h2>
-<span class="header-section-number">6.5</span> Sort, mark duplicates, and index alignments using SAMBAMBA<a class="anchor" aria-label="anchor" href="#sort-mark-duplicates-and-index-alignments-using-sambamba"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.5</span> Sort, mark duplicates, and index alignments using SAMtools<a class="anchor" aria-label="anchor" href="#sort-mark-duplicates-and-index-alignments-using-samtools"><i class="fas fa-link"></i></a>
 </h2>
 <p>The output from <code>bwa mem</code> is an unsorted SAM file. Downstream tools require a sorted BAM file as input, so an intermediate step is to sort and index the alignment to facilitate future steps, similar to what was covered in our samtools/bcftools tutorial.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="chip-seq-analysis.html#cb12-1"></a><span class="co"># Tag mates</span></span>
@@ -253,12 +254,9 @@
 
 </div>
 </div>
-
-
-
-<div class="chapter-nav">
+  <div class="chapter-nav">
 <div class="prev"><a href="working-with-samtools-and-bcftools-part-2.html"><span class="header-section-number">5</span> Working with SAMtools and BCFtools Part 2</a></div>
-<div class="next"><a href="bash-cheat-sheet.html"><span class="header-section-number">A</span> Bash cheat sheet</a></div>
+<div class="next"><a href="rna-seq-alignment-with-star.html"><span class="header-section-number">7</span> RNA-seq alignment with STAR</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -268,7 +266,7 @@
 <li><a class="nav-link" href="#suggested-workflow"><span class="header-section-number">6.2</span> Suggested workflow</a></li>
 <li><a class="nav-link" href="#aligning-using-bwa-mem"><span class="header-section-number">6.3</span> Aligning using BWA-MEM</a></li>
 <li><a class="nav-link" href="#check-files"><span class="header-section-number">6.4</span> Check files</a></li>
-<li><a class="nav-link" href="#sort-mark-duplicates-and-index-alignments-using-sambamba"><span class="header-section-number">6.5</span> Sort, mark duplicates, and index alignments using SAMBAMBA</a></li>
+<li><a class="nav-link" href="#sort-mark-duplicates-and-index-alignments-using-samtools"><span class="header-section-number">6.5</span> Sort, mark duplicates, and index alignments using SAMtools</a></li>
 <li><a class="nav-link" href="#clean-up-intermediate-files"><span class="header-section-number">6.6</span> Clean-up intermediate files</a></li>
 <li><a class="nav-link" href="#call-peaks-using-macs2"><span class="header-section-number">6.7</span> Call peaks using MACS2</a></li>
 <li><a class="nav-link" href="#check-files-1"><span class="header-section-number">6.8</span> Check files</a></li>
@@ -285,13 +283,9 @@
 </div>
     </nav>
 </div>
-</div>
-  
-
-  
 
 </div>
- <!-- .container -->
+</div> <!-- .container -->
 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
