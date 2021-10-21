@@ -18,7 +18,7 @@ downloadthis::download_file(
 
 ## STAR workflow
 
-1. Normally, you can download mouse genomic data (in this case the mm10 FASTA and GTF files) from [Ensembl](https://ftp.ensembl.org/pub/release-84/), but we have prepared this for you in advance at `/projects/micb405/analysis/STAR_tutorial`. Simply create a new working directory and a subdirectory for your STAR index.
+1. Normally, you can download mouse genomic data (in this case, the mm10 FASTA and GTF files) from [Ensembl](https://ftp.ensembl.org/pub/release-84/), but we have prepared this for you in advance at `/projects/micb405/analysis/STAR_tutorial`. Simply create a new working directory and a subdirectory for your STAR index.
 
     ```{bash eval = FALSE}
     mkdir ~/star && cd ~/star
@@ -39,7 +39,7 @@ downloadthis::download_file(
 
 3. Download healthy tissue RNAseq FASTQ files from the paper ["An RNA-Seq atlas of gene expression in mouse and rat normal tissues"](https://www.nature.com/articles/sdata2017185). These are located in the associated [ArrayExpress](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6081/samples/) that can be located in the data citations from the article's NCBI page.
 
-    **Discuss among your group an idea for what you could investigate given the data you have available.** Download the FASTQ files that will allow you to accomplish this. Recall that RNA-seq should indicate relative expression at gene intervals you provide, which can later be quantified and normalized by HTseq & DEseq2.
+    **Discuss among your group an idea for what you could investigate given the data you have available.** Download the FASTQ files that will allow you to accomplish this. Recall that RNA-seq should indicate relative expression at gene intervals you provide, which can later be quantified and normalized by HTseq & DESeq2.
 
     ```{bash eval = FALSE}
     # In my case, I'm downloading 4 tissue types from the first individual mouse in order to observe differential gene expression in these areas.
@@ -50,7 +50,7 @@ downloadthis::download_file(
     wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR213/004/ERR2130614/ERR2130614.fastq.gz
     ```
 
-4. When the STAR index is ready, run STAR, outputting into a separate directory for each of the samples you wish to align. This is controlled by the string you provide in `--outFileNamePrefix`. These directories will have to be created by you beforehand - STAR does not create directories for you. Since you won't have time for the whole process to run today, create a script that runs this STAR command for each of your samples and run it in a way so that it won't stop when you exit your shell (Group Assignment part #2 below).
+4. When the STAR index is ready, run STAR, outputting into a separate directory for each sample you wish to align. You can control the output directory with the string provided to `--outFileNamePrefix`. These directories will have to be created by you beforehand - STAR does not create directories for you. Since you won't have time for the whole process to run today, create a script that runs this STAR command for each of your samples and run it in a way so that it won't stop when you exit your shell (Group Assignment part #2 below).
 
     Be sure that `--readFilesIn`, `--outFileNamePrefix`, and `--outSAMattrRGline` changes for each of your samples
 
@@ -72,8 +72,9 @@ downloadthis::download_file(
     ```
 
 ## Group assignment
+
 1. Which samples from the paper did you choose, and what did you want to test with them?
-2. Create a script that performs the STAR alignment for your files, avoiding excessive repetition, and can be run in a way that it is not interrupted when you close your connection with the server.
+2. Create a script that performs the STAR alignment for your files, avoiding excessive repetition, and can be run so that it is not interrupted when you close your connection with the server.
 
 ## Resources
 
