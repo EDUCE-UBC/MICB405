@@ -92,7 +92,7 @@ total 8.7G
 -rw------- 1 mhirst orca_users   58 Oct  4 05:36 nohup.out
 ```
 
-## Sort, mark duplicates, and index alignments using SAMBAMBA
+## Sort, mark duplicates, and index alignments using SAMtools
 
 The output from `bwa mem` is an unsorted SAM file. Downstream tools require a sorted BAM file as input, so an intermediate step is to sort and index the alignment to facilitate future steps, similar to what was covered in our samtools/bcftools tutorial.
 
