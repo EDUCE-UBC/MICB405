@@ -1,0 +1,104 @@
+---
+title: "7.1 Introduction to R and RStudio"
+subtitle: "MICB 405 101 2021W1 Bioinformatics"
+author: "[Stephan Koenig](mailto:stephan.koenig@ubc.ca)"
+institute: "University of British Columbia"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+---
+
+```{r setup, echo = FALSE}
+xaringanExtra::use_share_again()
+xaringanExtra::style_share_again(
+  share_buttons = c("twitter", "linkedin", "pocket")
+)
+
+testable <- fontawesome::fa("fas fa-pencil-alt", fill = "FireBrick")
+```
+
+
+# Module outline
+
+- **Oct 26** Introduction to R and RStudio
+
+- **Oct 28** Differential analysis with DEseq2
+
+- **Nov 2** R tidyverse: Wrangling data I
+
+- **Nov 4** R tidyverse: Wrangling data II
+
+- **Nov 9** R tidyverse: Visualizing data
+
+- **Nov 16** R Markdown: Reproducibility in R
+
+Most classes will be live-coding or R tutorial
+
+All content in R tutorials is testable.
+
+On slides, testable content is indicated by a pencil `r testable`.
+
+To get PDF of slides, open share link in Google Chrome, then print to PDF.
+
+---
+
+# Learning outcomes
+
+- Identify the different components of RStudio.
+
+- Declare variables in R.
+
+- Identify common data types and structures used in R.
+
+- Recognize and use functions.
+
+- Install and load R packages.
+
+- Interpret documentation for functions and packages.
+
+---
+
+# Why [R](https://cran.rproject.org/)? `r testable`
+
+- Open source
+
+--
+
+- Reproducible research with R Markdown
+
+--
+
+- Huge community of developers around the world
+
+--
+
+- Custom packages (as of Sep 13, 2021)
+    - 18,177 on [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) (The Comprehensive R Archive Network)
+    - 2,042 on [Bioconductor](https://www.bioconductor.org/packages)
+    - More on individual GitHub accounts
+
+???
+
+Numbers of packages are not testable.
+
+---
+
+# Why [RStudio](https://www.rstudio.com/)?
+
+Integrated development environment (IDE) for R
+
+- User friendly (particularly for novices)
+
+- Customizable visual interface
+
+- Integrated file, package, and plot management
+
+- Local help pages
+
+- Integration with other data science resources like Git/GitHub, Shiny apps, etc.
+
+---
+
+class: center middle
+background-image: url(../../images/rstudio.png)
+background-size: cover
+
+# A tour of RStudio
