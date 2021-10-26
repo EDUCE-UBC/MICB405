@@ -45,6 +45,7 @@ jobs:
         
       - name: Copy slides libs, images and CSS
         run: |
+          rsync -a slides/lectures/libs/ _book/slides/lectures/libs/
           rsync -a slides/tutorials/libs/ _book/slides/tutorials/libs/
           rsync -a images/ _book/images/
           rsync -a css/ _book/css/
