@@ -30,13 +30,13 @@ testable <- fontawesome::fa("fas fa-pencil-alt", fill = "FireBrick")
 
 - **Nov 16** R Markdown: Reproducibility in R
 
-Most classes will be live-coding or R tutorial
+Most classes will be live-coding of R tutorials.
 
 All content in R tutorials is testable.
 
 On slides, testable content is indicated by a pencil `r testable`.
 
-To get PDF of slides, open share link in Google Chrome, then print to PDF.
+To get PDF of slides, download HTML, open in Google Chrome, then print to PDF.
 
 ---
 
