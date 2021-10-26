@@ -1,6 +1,6 @@
 xaringan::moon_reader:
   css: ["default", "default-fonts", "../../css/slides.css"]
-  # self_contained: true
+  self_contained: true
   lib_dir: libs
   nature:
     highlightStyle: github
