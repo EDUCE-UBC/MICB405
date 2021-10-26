@@ -1,0 +1,3 @@
+**Help for `log()` function**
+
+Using help to identify the necessary arguments for the `log()` function, compute the natural logarithm of 4, base 2 logarithm of 4, and base 4 logarithm of 4.

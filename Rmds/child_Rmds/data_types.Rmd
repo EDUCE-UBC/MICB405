@@ -1,0 +1,42 @@
+## Data types
+
+When working with data in R, you might have noticed that not all data are the same, and these different forms of data are called *data types*. As part of this tutorial, you will encounter three basic data types:
+
+| Data type | Description                                                  |
+|-----------|--------------------------------------------------------------|
+| character | Any type of text. Must be enclosed in quotes `"<your text>"` |
+| numeric   | Decimal numbers                                              |
+| logical   | Can only take `TRUE` or `FALSE`                              |
+
+Let's look at a few examples of different data types. Below is a simple example of the type *character*. Character types are always enclosed by quotes.
+
+```{r}
+salutation <- "Hello, World!"
+salutation
+```
+
+Here an example of a *numeric*:
+
+```{r}
+some_number <- 6
+some_number
+```
+
+It is important to use the correct data type for a function or other operations in R. For example, the operator `+` only works with numeric data
+
+```{r}
+6 + 2
+```
+
+but not character data
+
+```{r error = TRUE}
+"6" + "2"
+```
+
+*Logicals* can take either `TRUE` or `FALSE`. You might have already encountered them as values for arguments in functions.
+
+```{r}
+microbiology_is_awesome <- TRUE
+microbiology_is_awesome
+```

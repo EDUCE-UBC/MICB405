@@ -1,0 +1,15 @@
+## A Tour of RStudio
+
+When you start RStudio, you will see something like the following window appear:
+
+![](`r here::here("images", "rstudio.png")`){width="100%"}
+
+Notice that the window has three "panes":
+
+-   Console (lower left side): this is your view of the R engine. You can type in R commands here and see the output printed by R. (To tell them apart, your input is in blue, and the output is black.) There are several editing conveniences available: use up and down arrow keys to go back to previously entered commands, which you then can edit and re-run; TAB for completing the name before the cursor; see more in [online docs](http://www.rstudio.com/ide/docs/using/keyboard_shortcuts).
+
+-   Environment/History (tabbed in the upper right): view current user-defined objects and previously-entered commands, respectively.
+
+-   Files/Help/Plots/Packages (tabbed in the lower right): as their names suggest, you can view the contents of the current directory, the built-in help pages, and the graphics you created, as well as manage R packages.
+
+To change the look of RStudio, you can go to Tools \> Global Options \> Appearance and select colours, font size, etc. If you plan to be working for longer periods, we suggest choosing a dark background colour scheme to save your computer battery and your eyes.

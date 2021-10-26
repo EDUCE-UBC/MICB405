@@ -1,0 +1,11 @@
+### R Scripts
+
+R script files are the primary way in which R facilitates reproducible research. They contain the code that loads your raw data, cleans it, performs the analyses, and creates and saves visualizations. R scripts maintain a record of everything that is done to the raw data to reach the final result. That way, it is very easy to write up and communicate your methods because you have a document listing the precise steps you used to conduct your analyses. This is one of R's primary advantages compared to traditional tools like Excel, where it may be unclear how to reproduce the results.
+
+Generally, if you are testing an operation (e.g. what would my data look like if I applied a log-transformation to it?), you should do it in the console (left pane of RStudio). If you are committing a step to your analysis (e.g. I want to apply a log-transformation to my data and then conduct the rest of my analyses on the log-transformed data), you should add it to your R script so that it is saved for future use.
+
+Additionally, you should annotate your R scripts with comments. In each line of code, any text preceded by the `#` symbol will not execute. Comments can be useful to remind yourself and to tell other readers what a specific chunk of code does.
+
+Let's create an R script (File \> New File \> R Script) and save it as `` `r params$project`.R`` in your `` `r params$project` `` project directory. If you again look to the project directory on your computer, you will see `` `r params$project`.R`` is now saved there.
+
+We can copy and paste the previous `library()` commands in this tutorial and aggregate it in our R script.

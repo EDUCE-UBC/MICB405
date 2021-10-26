@@ -1,0 +1,21 @@
+<!-- Parent Rmd must contain `params$project` -->
+
+### RStudio Projects
+
+Projects are a great feature of RStudio. When you create a project, RStudio creates an `.Rproj` file that links all of your files and outputs to the project directory. When you import data from a file, R automatically looks for it in the project directory instead of you having to specify a full file path on your computer. R also automatically saves any output to the project directory. Finally, projects allow you to save your R environment in `.RData` so that when you close RStudio and then re-open it, you can start right where you left off without re-importing any data or re-calculating any intermediate steps.
+
+RStudio has a simple interface to create and switch between projects, accessed from the button in the top-right corner of the RStudio window. (Labeled "Project: (None)", initially.)
+
+Let's create a project to work in for this tutorial. Start by choosing from the menu File \> New Project. Select "New Project", and the following will appear:
+
+![](`r here::here("images", "new_project.png")`){width="75%"}
+
+Choose "New Directory" followed by "New Project" and click on "Browse...". Navigate to your Desktop, and name the directory `` `r params$project` `` for this project.
+
+After your project is created, navigate to its directory using your Finder (macOS) or File Explorer (Windows). You will see the `` `r params$project`.Rproj`` file has been created.
+
+You can open this project in the future in one of three ways:
+
+-   In your file browser (e.g. Finder or Explorer), simply double-click on the `` `r params$project`.Rproj`` file.
+-   In an open RStudio window, choose File \> Open Project.
+-   Switch among projects by clicking on the R project symbol in the upper left corner of RStudio.

@@ -18,6 +18,7 @@ params:
   r_legacy_version: 3.3.3
   rstudio_version: 2021.09.0
   rstudio_legacy_version: 1.1.463
+  project: deseq
 ---
 
 ```{r setup, include = FALSE}

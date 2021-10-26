@@ -1,0 +1,5 @@
+#### Installing packages from Bioconductor
+
+Bioconductor specializes on distributing R packages for the analysis of high-throughput genomic data. Unfortunately, `install.packages()` is limited to installing packages from CRAN only and cannot install any from Bioconductor. Luckily, we can download the package BiocManager from CRAN that then in turn provides an interface to access packages from Bioconductor.
+
+This will be our first example of using a function provided by a package. In many situation, you just want to use a single function for a single time during your coding session. You can access the function by calling it with `<package>::<function>()`. As a concrete example, we can use the `install()` function of the BiocManager by using `BiocManager::install()` to install a Bioconductor package.
