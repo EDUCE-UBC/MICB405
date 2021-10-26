@@ -1,0 +1,108 @@
+## Data structures
+
+The data types in R are the elements to build more complex objects called *data structures*. The most basic structures are *vector*, *lists*, *matrix* and *data frame*.
+
+### Vector
+
+We can use the `c()` function to create a vector. All vector elements have to be of the same data type (a so-called *atomic* vector).
+
+```{r}
+vector_example <- c("This", "vector", "has", "5", "elements!")
+vector_example
+```
+
+::: rmdwarning
+**Coercion**
+
+Since all vector elements have to be of the same type, what happens if we use `c()` with dissimilar ones? To test R's behaviour, create several vectors of all possible pairwise combinations of `character`, `numeric` (use any integer), and `logical`, then determine the type of the object using `typeof(<your vector>)`. In addition, test the combination of (a) `logical` with either the numbers `0` or `1` or (b) `logical` and an integer larger than 1 or smaller than -1.
+
+The behaviour you will observe is called *coercion*. Why do you think this particular set of behaviours were selected for the design of R?
+:::
+
+You can also assign each element a name using `<name> = <value>`
+
+```{r}
+vector_example <- c(first = "Hi", second = "there")
+vector_example
+```
+
+### List
+
+In R, a list is a special kind of vector whose elements can be any combination of objects (i.e. they also do not have to be the same).
+
+```{r}
+list_example <- list(c("gene_a", "gene_b"),
+                     c("untreated", "control"))
+```
+
+You can also assign a name to elements of a list.
+
+```{r}
+list_example <- list(gene_names = c("gene_a", "gene_b"),
+                     treatments = c("untreated", "control"))
+```
+
+### Matrix
+
+The data is provided as a vector to `matrix()` and filled either column- or row-wise into the matrix. Rows and columns can also be assigned names.
+
+```{r}
+matrix_example <- matrix(
+  data = c(
+    10, 20,
+    3,  6
+  ),
+  byrow = TRUE,
+  ncol = 2,
+  dimnames = list(
+    c("gene_a", "gene_b"),
+    c("control", "treated")
+  )
+)
+
+matrix_example
+```
+
+### Data frame
+
+A data frame is another data structure that contains elements in columns and rows and it is a list of vectors, with each column being one vector of a single data type but the data type may differ among vectors. Data frames are a big part of working with data in R. Data is always provided by column `<column name> = <data>`
+
+```{r}
+data_frame_example <- data.frame(
+  gene_name = c("gene_a", "gene_b"),
+  control = c(10, 3),
+  treated = c(20, 3)
+)
+
+data_frame_example
+```
+
+Although the data frame and matrix conain the same information, they are not the same *class* of object. You can determine the class with `class()`.
+
+```{r}
+class(matrix_example)
+class(data_frame_example)
+```
+
+### Subsetting
+
+We often want to use only part of the data and have to subset them accordingly. In base R, subsetting is done with brackets `[ ]`. For example, a vector can be subset by the index or the name of the position.
+
+```{r}
+vector_example[1]
+vector_example["first"]
+```
+
+Matrices and data frames can also be subset that way by first specifying rows then columns `[<rows>, <columns>]`.
+
+```{r}
+matrix_example[,  "control"]
+matrix_example[1, "control"]
+```
+
+We can extract a single column (vector) from a data frame using the `$` operator.
+
+```{r}
+data_frame_example[, "control"]
+data_frame_example$control
+```

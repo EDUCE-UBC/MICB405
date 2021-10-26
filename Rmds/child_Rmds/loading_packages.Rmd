@@ -1,0 +1,5 @@
+#### Loading packages
+
+We sometimes will use functions of a package multiple times. To access the package's functions and *every time* you open a new RStudio session, you need to first load (open) the packages you want to use with the `library()` function.
+
+Packages can be loaded like this:

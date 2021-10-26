@@ -1,0 +1,115 @@
+# Introduction to R and RStudio
+
+## Slides
+
+```{r echo=FALSE}
+xaringanExtra::embed_xaringan(url = "slides/lectures/intro_r.html",
+                              ratio = "4:3")
+```
+
+You can download the slides for this tutorial below.
+
+```{r echo = FALSE}
+downloadthis::download_file(
+  path         = here("slides", "lectures", "intro_r.html"),
+  output_name  = "7_1_introduction_to_r_and_rstudio",
+  button_label = "Download slides"
+)
+```
+
+## Learning outcomes
+
+By the end of this tutorial you should be able to:
+
+-   Identify the different components of RStudio.
+-   Declare variables in R.
+-   Identify common data types and structures used in R.
+-   Recognize and use functions.
+-   Install and load R packages.
+-   Interpret documentation for functions and packages.
+
+::: rmdtip
+You should have both [R and RStudio] installed. Please open RStudio and work along the examples.
+:::
+
+```{r include = FALSE}
+library(tidyverse)
+library(pheatmap)
+library(BiocManager)
+library(DESeq2)
+```
+
+```{r child = here("Rmds", "child_Rmds", "rstudio.Rmd")}
+```
+
+## Setup
+
+```{r child = here("Rmds", "child_Rmds", "rproj.Rmd")}
+```
+
+```{r child = here("Rmds", "child_Rmds", "packages.Rmd")}
+```
+
+In the following tutorials, we will be using the tidyverse, pheatmap, BiocManager, and DESeq2 packages. tidyverse contains a versatile set of functions designed for easy manipulation of data. pheatmap visualizes gene expression levels and groups genes with similar patterns across treatments. BiocManager allows us to install packages from the Bioconductor platform (see below). Finally, DESeq2 compares gene expression across treatments.
+
+These packages are distributed on two different platforms, CRAN (Comprehensive R Archive Network) and Bioconductor (think of those platforms as two different app stores for R packages).
+
+```{r child = here("Rmds", "child_Rmds", "cran.Rmd")}
+```
+
+```{r eval = FALSE}
+install.packages(c("tidyverse", "pheatmap", "BiocManager"))
+```
+
+```{r child = here("Rmds", "child_Rmds", "bioconductor.Rmd")}
+```
+
+```{r eval = FALSE}
+BiocManager::install("DESeq2")
+```
+
+```{r child = here("Rmds", "child_Rmds", "loading_packages.Rmd")}
+```
+
+```{r eval = FALSE}
+library(tidyverse)
+```
+
+```{r child = here("Rmds", "child_Rmds", "r_scripts.Rmd")}
+```
+
+```{r child = here("Rmds", "child_Rmds", "data_types.Rmd")}
+```
+
+```{r child = here("Rmds", "child_Rmds", "functions.Rmd")}
+```
+
+Sometimes, you want to confirm the data type (see above) of a variable, and you can do so by using the `typeof()` function.
+
+```{r}
+typeof(microbiology_is_awesome)
+```
+
+```{r child = here("Rmds", "child_Rmds", "help.Rmd")}
+```
+
+:::rmdwarning
+```{r child = here("Rmds", "child_Rmds", "exercises", "help_for_log_ex.Rmd")}
+```
+:::
+
+::: rmdwarning
+You have never used the function `inner_join()` of the dplyr package before. Take a look at the help documentation for `inner_join()` in RStudio (**Hint**: You can only look at the documentation for functions of packages you have loaded). In the list below, identify all of the arguments of the function that are mandatory and have to be specified by you.
+
+-   `x`
+-   `y`
+-   `by`
+-   `copy`
+-   `suffix`
+-   `keep`
+
+What data type is accepted by the `keep` argument?
+:::
+
+```{r child = here("Rmds", "child_Rmds", "data_structures.Rmd")}
+```

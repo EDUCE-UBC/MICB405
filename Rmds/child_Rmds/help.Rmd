@@ -1,0 +1,28 @@
+## Getting Help
+
+### The help function
+
+You can get help with any function in R by inputting `?function_name` into the Console. If the function is part of a package, then you need to load the package first (i.e. with `library()`). This will open a window in the bottom right under the Help tab with information on that function, including input options and example code.
+
+```{r eval = FALSE}
+?read_delim
+```
+
+The **Description** section tells us that `read_delim()` is a general case of the function we used, `read_csv()`, and `read_tsv()`.
+
+The **Usage** section tells us the inputs that need to be specified and default inputs of read\_delim:
+
+-   `file` and `delim` need to be specified by you as they do not have a default value (i.e. they are not followed by `=`).
+-   All other parameters followed by `=` and a value have a default (e.g. `quote = "\"`) and do not have to be specified to run the function.
+
+Reading technical documentation can be very confusing at first. It can be very helpful to first focus on the arguments of a function that have to be provided by you.
+
+The **Arguments** Section describes the requirements of each input argument in detail.
+
+The **Examples** Section has examples of the function that can be directly copy and pasted into your terminal and ran.
+
+You can also get the description for a package itself, for example `?tidyverse`. At the bottom you will find a link to an index that often will provide you with links to more documentation.
+
+### Vignettes
+
+A lot of packages also provide a long-form guide called vignette to their functionality often giving examples of use-cases or more information on methods used. You can browse all vignettes with `browseVignettes()` or get the vignette for a particular package with `browseVignettes("<package name>")` (replace `<package name>` with name of your package).

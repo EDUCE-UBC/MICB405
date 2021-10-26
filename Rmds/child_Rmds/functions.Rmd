@@ -1,0 +1,21 @@
+## Functions
+
+Functions are one of the basic units in programming. Generally speaking, a function takes some input and generates some output. Every R function follows the same basic syntax, where `function()` is the name of the function and `arguments` are the different parameters you can specify (i.e. your input):
+
+`function(argument1 = ..., argument2 = ..., ...)`
+
+You can treat functions as a black box and do not necessarily need to know how it works under the hood as long as your provided input conforms to a specific shape.
+
+![](`r here::here("images", "function.png")`){width="75%"}
+
+For example, the function `sum()` expects numbers:
+
+```{r}
+sum(3, 5, 9, 18)
+```
+
+If you instead pass text as arguments to `sum()` you will receive an error:
+
+```{r error = TRUE}
+sum("Sum", "does", "not", "accept", "text!")
+```
