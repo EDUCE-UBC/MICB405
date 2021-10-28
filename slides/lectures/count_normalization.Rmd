@@ -27,36 +27,32 @@ class: center middle
 
 ---
 
-## Challenges to identify differntially expressed genes
+## Challenges to identify differentially expressed genes
 
 - Distinguish technical variation from variation due to treatment
 
 - Majority of genes do not change between treatments
 
-- Only few replicates per treatment, difficult to esstimate variance
+- Only a few replicates per treatment, difficult to estimate variance
 
 ---
 
 ## Why count normalization?
 
-The numerical value of non-differentially expressed genes should not vary due to sampling depth
-
-or RNA composition. We need to determine a sample-specific size factor for each sample
+The numerical value of non-differentially expressed genes should not vary due to sampling depth or RNA composition. We need to determine a sample-specific size factor for each sample.
 
 ---
 
 ## Count normalization in DESeq2
 
-1. Determine natural logarithm of gene counts.
+1. Determine the natural logarithm of gene counts.
 
-2. Calculate mean of each row (called geometric mean).
+2. Calculate the mean of each row (called geometric mean).
 
 3. Remove infinite values.
 
-4. Subtract geometric mean from log of counts.
+4. Subtract the geometric mean from the log of counts.
 
 5. Calculate median for each sample
 
 6. Convert log of median to number.
-
-

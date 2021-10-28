@@ -1,6 +1,6 @@
 # DESeq2: count normalization
 
-In this tutorial we will use many tools found in the tidyverse package to reproduce how DESeq2 calculates the size factors to normalize the the count data.
+This tutorial will use many tools found in the tidyverse package to reproduce how DESeq2 calculates the size factors to normalize the count data.
 
 ```{r include = FALSE}
 counts <- read_csv(here("data", "pasilla_gene_counts.csv"))
@@ -98,7 +98,7 @@ Let's explore the data that we've imported into R by clicking on the triangle of
 str(counts, give.attr = FALSE)
 ```
 
-If we directly click on `OTU_metadata_table` in our Environment tab on the top-right pane, we can view the table. Row and column names are in grey boxes, and data is in white boxes.
+If we directly click on `counts` in our Environment tab on the top-right pane, we can view the table. Row and column names are in grey boxes, and data is in white boxes.
 
 Using different functions, we can look at the dimensions of our data, number of rows, and number of columns:
 
@@ -137,7 +137,7 @@ dplyr code is very readable because all operations are based on using dplyr func
 
 ### Creating of modifying variables with `mutate()`
 
-Use `mutate()` to apply a transformation to some variable and assign it to a new variable. In a first step to determine the size factor for each sample. DESeq2 determines the natural logarithm of each gene count,
+Use `mutate()` to apply a transformation to some variable and assign it to a new variable. As the first step for determining the size factor for each sample, DESeq2 calculates the natural logarithm of each gene count.
 
 ```{r}
 counts_single_log_column <- mutate(counts, log_untreated1 = log(untreated1))
@@ -165,17 +165,38 @@ log_counts <- mutate(counts, across(!gene_id, log))
 
 ### Summarizing across variables with `rowwise()` and `c_across()`
 
-We can group our data with `rowwise()`. By using `c_across()` we can calculate the mean across multiple columns (step 2 of DESeq2 normalization). The mean of the log values is not as sensitive to outliers compared to the means of the count values themselves.
+We can group our data with `rowwise()` and then use `c_across()`,to calculate the mean across multiple columns (step 2 of DESeq2 normalization). The mean of the log values is not as sensitive to outliers compared to the means of the count values themselves.
+
+```{r}
+log_counts_grouped <- rowwise(log_counts)
+geometric_means <- mutate(log_counts_grouped,
+                          mean = mean(c_across(treated1:untreated4)))
+```
+
+### Piping with `%>%`
+
+Because of the basic dplyr verb syntax, these functions lend themselves to piping, i.e. taking the output of one function and passing it in as a (by default the first) argument of the following function.
 
 ```{r}
 geometric_means <- log_counts %>% 
-  rowwise(gene_id) %>% 
-  mutate(mean = mean(c_across(treated1:last_col())))
+  rowwise() %>% 
+  mutate(gm = mean(c_across(treated1:untreated4)))
+```
+
+### Remove groupings with `ungroup()`
+
+Because we are finished with the row-wise operation, we should remove the grouping with `ungroup()`.
+
+```{r}
+geometric_means <- log_counts %>% 
+  rowwise() %>% 
+  mutate(gm = mean(c_across(treated1:untreated4))) %>% 
+  ungroup()
 ```
 
 ### `filter()`
 
-Conditional statements and logical operators are important when working with data in R. You can use `filter()` to select specific rows based on a logical condition of a variable. For quick reference, here are the most commonly used statements and operators.
+Conditional statements and logical operators are essential when working with data in R. You can use `filter()` to select specific rows based on a logical condition of a variable. For quick reference, here are the most commonly used statements and operators.
 
 R code     | meaning
 ---------- | ---------------
@@ -188,49 +209,28 @@ R code     | meaning
 `&`        | and
 `|`        | or
 
-As step 3 of DESeq2 normalization, all infinite values are removed`is.infinite()` returns rows where the variable is infinite.
+As step 3 of DESeq2 count normalization, all rows that contain an infinite value for their geometric mean are removed. `is.infinite()` would return rows where the variable is infinite. `!is.infinite()` returns rows where it is not.
 
 ```{r}
-### 
-# Step 3
-# Filter genes with -Inf
-geometric_mean <- geometric_mean %>% 
-  filter(!is.infinite(mean))
-```
-
-### Piping with `%>%`
-
-Because of the basic dplyr verb syntax, these functions lend themselves to piping, i.e. taking the output of one function and passing it in as a (by default the first) argument of the following function.
-
-```{r}
-### 
-# Step 3
-# Filter genes with -Inf
-geometric_mean <- log_counts %>% 
-  mutate(mean = mean(c_across(treated1:untreated4))) %>% 
-  filter(!is.infinite(mean))
-```
-
-```{r}
-# Step 4
-# subtract geometric mean from log(counts)
-# Equivalent of log(counts) - log(gm) = log(counts/gm), i.e.
-# Looks at ratio of sample to mean.
-ratio <- log_counts %>% 
-  rowwise(gene_id) %>% 
-  mutate(mean = mean(c_across(treated1:last_col()))) %>% 
+geometric_means <- log_counts %>% 
+  rowwise() %>% 
+  mutate(gm = mean(c_across(treated1:untreated4))) %>% 
   ungroup() %>% 
-  mutate(across(treated1:untreated4, ~ . - mean))
+  filter(!is.infinite(gm))
+```
 
+In step 4 of DESeq2 of count normalization, the geometric mean is subtracted of each $log(count) - log(gm) = log\left(\frac{{counts}}{{gm}}\right)$, i.e. it looks at the ratio of the sample to the mean.
 
-# Step 5
-# Calculate median for each sample
-# Step 6
-# Convert median log number to regular (i.e. as power to e) to get scaling factor
-# Step 7
+```{r}
+ratio <- geometric_means %>% 
+  mutate(across(treated1:untreated4, ~ . - gm))
+```
 
-scaling_factor <- ratio_filtered %>% 
-  summarise(across(treated1:untreated4, ~ exp(median(.x))))
+### Column-wise operation with `summarise()`
 
-# Divide original read count by scaling
+Now that we know the ratio of sample to mean, we select the `median()` across all remaining genes for each sample. To calculate a summary statistic for a column, we use `summarise()`. Finally, we take the inverse logarithm to receive the size factor.
+
+```{r}
+size_factors <- ratio %>% 
+  summarise(across(treated1:untreated4, ~ exp(median(.))))
 ```
