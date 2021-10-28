@@ -15,8 +15,7 @@ xaringanExtra::style_share_again(
 testable <- fontawesome::fa("fas fa-pencil-alt", fill = "FireBrick")
 ```
 
-
-# Module outline
+## Module outline
 
 - **Oct 26** Introduction to R and RStudio
 
@@ -40,7 +39,7 @@ To get PDF of slides, download HTML, open in Google Chrome, then print to PDF.
 
 ---
 
-# Learning outcomes
+## Learning outcomes
 
 - Identify the different components of RStudio.
 
@@ -56,7 +55,7 @@ To get PDF of slides, download HTML, open in Google Chrome, then print to PDF.
 
 ---
 
-# Why [R](https://cran.rproject.org/)? `r testable`
+## Why [R](https://cran.rproject.org/)? `r testable`
 
 - Open source
 
@@ -81,7 +80,7 @@ Numbers of packages are not testable.
 
 ---
 
-# Why [RStudio](https://www.rstudio.com/)?
+## Why [RStudio](https://www.rstudio.com/)?
 
 Integrated development environment (IDE) for R
 
