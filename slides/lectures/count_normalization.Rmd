@@ -1,0 +1,62 @@
+---
+title: "7.2 Differential analysis with DESeq2: count normalization"
+subtitle: "MICB 405 101 2021W1 Bioinformatics"
+author: "[Stephan Koenig](mailto:stephan.koenig@ubc.ca)"
+institute: "University of British Columbia"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+---
+
+```{r setup, echo = FALSE}
+xaringanExtra::use_share_again()
+xaringanExtra::style_share_again(
+  share_buttons = c("twitter", "linkedin", "pocket")
+)
+```
+
+## Learning outcomes
+
+- Define the challenges of differential analysis.
+- Apply different count normalization strategies.
+- Reproduce count normalization of DESeq2 in R using tidyverse
+
+---
+
+class: center middle
+
+## Goal: Determine significant changes in gene expression between conditions
+
+---
+
+## Challenges to identify differntially expressed genes
+
+- Distinguish technical variation from variation due to treatment
+
+- Majority of genes do not change between treatments
+
+- Only few replicates per treatment, difficult to esstimate variance
+
+---
+
+## Why count normalization?
+
+The numerical value of non-differentially expressed genes should not vary due to sampling depth
+
+or RNA composition. We need to determine a sample-specific size factor for each sample
+
+---
+
+## Count normalization in DESeq2
+
+1. Determine natural logarithm of gene counts.
+
+2. Calculate mean of each row (called geometric mean).
+
+3. Remove infinite values.
+
+4. Subtract geometric mean from log of counts.
+
+5. Calculate median for each sample
+
+6. Convert log of median to number.
+
+

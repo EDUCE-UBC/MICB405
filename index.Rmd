@@ -23,6 +23,7 @@ params:
 
 ```{r setup, include = FALSE}
 library(here)
+library(tidyverse)
 ```
 
 # About {.unnumbered}
@@ -45,4 +46,3 @@ MICB 405 introduces you to the concepts and applications of sequence-based bioin
 :::
 
 ::::
- 

@@ -27,6 +27,7 @@ rmd_files:
   # - Rmds/htseq_deseq2.Rmd
   - Rmds/part_r_lectures.Rmd # separator for TOC navigation
   - Rmds/intro_r.Rmd
+  - Rmds/count_normalization.Rmd
   # - Rmds/part_capstone.Rmd # separator for TOC navigation
   # - Rmds/capstone.Rmd
   # - Rmds/assessment.Rmd
@@ -36,4 +37,4 @@ rmd_files:
   - Rmds/terminal_keyboard_shortcuts.Rmd
   - Rmds/less.Rmd
   - Rmds/resources.Rmd
-  # - Rmds/references.Rmd
+  - Rmds/references.Rmd
