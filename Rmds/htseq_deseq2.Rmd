@@ -1,4 +1,4 @@
-# HTseq and DESeq2 tutorial (Axel Hauduc and adapted from Andrew Wilson)
+# HTseq and DESeq2
 
 ## Slides {-}
 
