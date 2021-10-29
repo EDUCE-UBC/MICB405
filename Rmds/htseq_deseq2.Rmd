@@ -1,5 +1,21 @@
 # HTseq and DESeq2 tutorial (Axel Hauduc and adapted from Andrew Wilson)
 
+## Slides {-}
+
+```{r, echo = FALSE, out.width = "100%", out.height = "388px"}
+knitr::include_graphics("slides/tutorials/htseq_deseq2.pdf")
+```
+
+You can download the slides for this tutorial below.
+
+```{r echo = FALSE}
+downloadthis::download_file(
+  path         = here("slides", "tutorials", "htseq_deseq2.pdf"),
+  output_name  = "htseq_deseq2.pdf",
+  button_label = "Download slides"
+)
+```
+
 ## Overview
 
 In this tutorial, we will use DESeq2 to analyze some RNA-Seq data. This tutorial covers how to:
@@ -15,9 +31,7 @@ In this tutorial, we will use DESeq2 to analyze some RNA-Seq data. This tutorial
 Normally, you would use HTSeq to create your own count files from the STAR alignments you produced, using the following code:
 
 ```
-conda create -n my_htseq_env python=2.7.18
-conda activate my_htseq_env
-conda install htseq
+pip3 install htseq
 
 htseq-count \
 <sample_id>/<sample_id>.fastq.gzAligned.sortedByCoord.out.bam \
@@ -35,7 +49,11 @@ However, due to constraints on time and available disk space on the server, we w
 
 ## Setup
 
-All of the data for this tutorial is located on the Orca1 server in `/projects/micb405/resources/DESeq2_tutorial/`. Use `scp` to copy the entire directory to your computer, and move the directory to where you keep your MICB405 files.
+All of the data for this tutorial is located on the Orca1 server in `/projects/micb405/resources/DESeq2_tutorial`. Use `scp` to copy the entire directory to your computer, and move the directory to where you keep your MICB405 files.
+
+```
+scp -r <username>@orca1.bcgsc.ca:/projects/micb405/resources/DESeq2_tutorial .
+```
 
 Open RStudio and create a new R project (File > New Project).
 
