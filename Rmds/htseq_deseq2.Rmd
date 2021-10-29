@@ -1,41 +1,64 @@
-# HTseq and DESeq2 tutorial (Axel Hauduc and adapted from Andrew Wilson)
+# HTSeq and DESeq2
+
+## Slides {-}
+
+```{r, echo = FALSE, out.width = "100%", out.height = "388px"}
+knitr::include_graphics("slides/tutorials/htseq_deseq2.pdf")
+```
+
+You can download the slides for this tutorial below.
+
+```{r echo = FALSE}
+downloadthis::download_file(
+  path         = here("slides", "tutorials", "htseq_deseq2.pdf"),
+  output_name  = "htseq_deseq2.pdf",
+  button_label = "Download slides"
+)
+```
 
 ## Overview
 
 In this tutorial, we will use DESeq2 to analyze some RNA-Seq data. This tutorial covers how to:
 
-1. Review how to use HTSeq on data you generated on your own
-1. Load counts from new data (not your own) into R  
-2. Set controls for DESeq2 by changing factor levels  
-3. Run sanity checks to ensure your results make biological sense  
-4. Filter differential expression tables by Padj and Log2 fold change 
+1. Use HTSeq on data you generated on your own.
+
+1. Load counts from new data (not your own) into R.
+
+1. Set controls for DESeq2 by changing factor levels.
+
+1. Run sanity checks to ensure your results make biological sense.
+
+1. Filter differential expression tables by Padj and Log2 fold change.
 
 ## HTSeq Overview
 
-Normally, you would use HTSeq to create your own count files from the STAR alignments you produced, using the following code:
+Normally, you would use HTSeq to create your count files from the STAR alignments you produced, using the following code:
 
-```
-conda create -n my_htseq_env python=2.7.18
-conda activate my_htseq_env
-conda install htseq
+```{bash eval = FALSE}
+pip3 install htseq
 
 htseq-count \
-<sample_id>/<sample_id>.fastq.gzAligned.sortedByCoord.out.bam \
-Mus_musculus.GRCm38.84.gtf \
--f bam \
--r pos \
---stranded=no \
-> <sample_id>.htseq.out
-``` 
+  <sample_id>/<sample_id>.fastq.gzAligned.sortedByCoord.out.bam \
+  Mus_musculus.GRCm38.84.gtf \
+  -f bam \
+  -r pos \
+  --stranded=no \
+  > <sample_id>.htseq.out
+```
+
 ...and repeat for every sample.
 
-However, due to constraints on time and available disk space on the server, we will be downloading existing count data from an experiment containing 6 samples grouped into control and treatment categories.
+However, due to constraints on time and available disk space on the server, we will be downloading existing count data from an experiment containing six samples grouped into control and treatment categories.
 
 ## DESeq2
 
-## Setup
+### Setup
 
-All of the data for this tutorial is located on the Orca1 server in `/projects/micb405/resources/DESeq2_tutorial/`. Use `scp` to copy the entire directory to your computer, and move the directory to where you keep your MICB405 files.
+All of the data for this tutorial is located on the Orca1 server in `/projects/micb405/resources/DESeq2_tutorial`. Use `scp` to copy the entire directory to your computer and move the directory to where you keep your MICB405 files.
+
+```{bash eval = FALSE}
+scp -r <username>@orca1.bcgsc.ca:/projects/micb405/resources/DESeq2_tutorial .
+```
 
 Open RStudio and create a new R project (File > New Project).
 
@@ -43,7 +66,7 @@ Since we want all of our DESeq2 tutorial materials together, click on 'Existing 
 
 ### Scripting in R
 
-One of the most important aspects of any bioinformatics is making sure that your code is easy to read and well documented. This means that scripts should be organized and you should use comments to split your code into different sections.
+One of the most critical aspects of bioinformatics is ensuring that your code is easy to read and well documented. This means that you should organize scripts and use comments to split your code into different sections.
 
 #### Setting up your script
 
@@ -72,13 +95,13 @@ library(RColorBrewer)
 
 It is best practice to collect all input files in a folder (most often called "data") from which files will only be loaded but not overwritten.
 
-Since there are multiple input files, we can use R to automatically generate paths to the files we want to open. All of the data files are in the same directory, so to save us some typing we can assign the path to that directory as a variable.
+Since there are multiple input files, we can use R to generate paths to the files we want to open automatically. All of the data files are in the same directory, so to save us some typing, we can assign the path to that directory as a variable.
 
 ```{r set-data-directory, message = FALSE, warning = FALSE, eval = FALSE}
 dir <- "data"
 ```
 
-Each filename is generated from the sample name and a common suffix. In order to get a vector of sample names, we can use the `samples.csv` metadata file which we will need also to assign conditions to samples. When you are going to work on your own projects you would enter the filenames and the corresponding conditions yourself into a csv file.
+Each filename is generated from the sample name and a common suffix. To get a vector of sample names, we can use the `samples.csv` metadata file, which we will also need to assign conditions to samples. When you work on your projects, you will enter the filenames and the corresponding conditions yourself into a CSV file.
 
 ```{r load-metadata, message = FALSE, eval = FALSE}
 #  file.path constructs filepath with the correct separator dependent of OS
@@ -86,7 +109,7 @@ sample_metadata <- read_csv(file.path(dir,"samples.csv"))
 sample_metadata
 ```
 
-As you can see, the metadata has 2 columns: sample names and conditions. We can generate filenames from `sample_metadata$sample` for each element in the vector (e.g. the first element is TODO: Make back into an r code chunk "` sample_metadata$sample[1]`") by adding the directory TODO: Make back into an r code chunk "` dir`" as prefix and ".htseq.out" as suffix.
+As you can see, the metadata has two columns: sample names and conditions. We can generate filenames from `sample_metadata$sample` for each element in the vector (e.g. the first element is TODO: Make back into an r code chunk "` sample_metadata$sample[1]`") by adding the directory TODO: Make back into an r code chunk "` dir`" as prefix and ".htseq.out" as suffix.
 
 ```{r generate-filepaths, eval = FALSE}
 #  paste0 appends (i.e. adds together) character objects
@@ -94,7 +117,7 @@ files <- paste0(file.path(dir, sample_metadata$sample), ".htseq.out")
 files
 ```
 
-Then, as a quick test, you can run `all(file.exists(files))`, which should return `TRUE` to your console if the file paths are correct. First, `files.exists(files)` checks for each filename in `files` if that file  exists and returns `TRUE` or `FALSE`, resulting in a logical vector. If all files are present, then all elements in the logical vector will be `TRUE`.
+Then, as a quick test, you can run `all(file.exists(files))`, which should return `TRUE` to your console if the file paths are correct. First, `files.exists(files)` checks for each filename in `files` if that file exists and returns `TRUE` or `FALSE`, resulting in a logical vector. If all files are present, then all elements in the logical vector will be `TRUE`.
 
 ```{r logical-vector, eval = FALSE}
 file.exists(files)
@@ -108,9 +131,9 @@ all(file.exists(files))
 
 ### Running DESeq2
 
-DESeq2 requires that all of your data be in the shape of a SummarizedExperiment object. Since reshaping your input data with your own code would be complicated, there are functions within DESeq2 specific for the source of your counts file, which will prepare your data for use in DESeq2. Since we are using HTSeq to generate our counts data in this class, the function we need is called `DESeqDataSetFromHTSeqCount()`. One of the required arguments is `sampleTable`, which must be provided a data table with columns for `sampleName`, `fileName`, and for any of the independent variables you changed in your experiment (eg. sex, treatment, tissue). For that purpose, we can quickly build `sample_df` from the loaded metadata `sample_metadata` and the vector of file paths `files`, that we defined earlier.
+DESeq2 requires that all of your data be in the shape of a SummarizedExperiment object. Since reshaping your input data with your code would be complicated, there are functions within DESeq2 specific for the source of your counts file, which will prepare your data for use in DESeq2. Since we are using HTSeq to generate our counts data in this class, the function we need is called `DESeqDataSetFromHTSeqCount()`. One of the required arguments is `sampleTable`, which must provide a data table with columns for `sampleName`, `fileName`, and any of the independent variables you changed in your experiment (e.g. sex, treatment, tissue). For that purpose, we can quickly build `sample_df` from the loaded metadata `sample_metadata` and the vector of file paths `files` that we defined earlier.
 
-The other required argument for `DESeqDataSetFromHTSeqCount()` is `design`. The design argument is a formula, designated by the tilde symbol `~`, and identifies which independent variable(s) you want to investigate. In our data, we have only a single independent variable, i.e. "condition". Experiments with multifactorial experimental design are a lot more complicated to investigate.
+The other required argument for `DESeqDataSetFromHTSeqCount()` is `design`. The design argument is a formula designated by the tilde symbol `~` and identifies which independent variable(s) you want to investigate. In our data, we have only a single independent variable, i.e. "condition." Experiments with multifactorial experimental design are a lot more complicated to investigate.
 
 ```{r deseq-dataset, eval = FALSE}
 # Creates a new data table with the variables sampleName, fileName and condition
@@ -122,7 +145,7 @@ ddsHTSeq <- DESeqDataSetFromHTSeqCount(sampleTable = sample_df,
                                        design = ~ condition)
 ```
 
-In a DESeq data set, the design variables are stored as a factor (a data type in R), which by default are organized alphabetically. Without further information, DESeq2 will use the condition that comes first alphabetically as reference. If you would be using "treated" and "untreated", for example, DESeq2 would incorrectly assume that the "treated" samples are the reference. To prevent any confusion, we can set the name used as reference explicitly with the argument `ref` inside of the `relevel()` function.
+In a DESeq data set, the design variables are stored as a factor (a data type in R), which by default are organized alphabetically. Without further information, DESeq2 will use the condition that comes first alphabetically as a reference. If you were using "treated" and "untreated," for example, DESeq2 would incorrectly assume that the "treated" samples are the reference. To prevent any confusion, we can set the name used as reference explicitly with the argument `ref` inside the `relevel()` function.
 
 ```{r set-controls, eval = FALSE}
 ## Set control condition using the relevel function
@@ -135,14 +158,14 @@ dds <- DESeq(ddsHTSeq)
 ```
 
 ### Sample Clustering
-Because the distribution of RNA Seq data is highly skewed, with a few high abundance genes and many low abundance genes, it is helpful to transform our data to visualize clustering. DESeq2 comes with a function `rlog()`, which log-transforms your count data. After transformation, we can use PCA to identify which samples are more similar and if they group by one or more of the independent variables (in our case, we  have only a single variable that can take "control" or "treated").
+Because the distribution of RNA Seq data is highly skewed, with a few high abundance genes and many low abundance genes, it is helpful to transform our data to visualize clustering. DESeq2 comes with the function `rlog()`, which log-transforms your count data. After transformation, we can use PCA to identify which samples are more similar and if they group by one or more of the independent variables (in our case, we have only a single variable that can take "control" or "treated").
 
 ```{r pca, eval = FALSE} 
 rld <- rlog(dds)
 plotPCA(rld, intgroup = "condition")
 ```
 
-A distance matrix is another way to examine how samples cluster. The code chunk below calculates distances between each of the samples and then maps a colour palette (defined with `colorRampPalette`) onto it, so that more similar samples display darker colours.
+A distance matrix is another way to examine how samples cluster. The code chunk below calculates distances between each sample and then maps a colour palette (defined with `colorRampPalette`) onto it so that more similar samples display darker colours.
 
 ```{r distance-matrix, eval = FALSE}
 sample_dists <- dist(t(assay(rld)))
@@ -155,11 +178,11 @@ pheatmap(sample_dist_matrix,
          col = colours)
 ```
 
-If the samples don't cluster together the way that you would expect them to, check for batch effects.
+If the samples don't cluster together like you would expect them to, check for batch effects.
 
 ### Filtering and data export
 
-Since our samples cluster according to the independent variable, we can move forward with our analysis. To examine our results, we can to save them to our global environment. DESeq2 calculates results for all combinations of levels in your experimental design. The `resultsNames()` function tells us the name of each result that DESeq2 has calculated, so we can choose which one to look at by specifying "name = " in `results()`. The `results()` function will output a matrix of all genes, including those with similar or differential expression between the two conditions.
+Since our samples cluster according to the independent variable, we can move forward with our analysis. To examine our results, we can save them to our global environment. DESeq2 calculates results for all combinations of levels in your experimental design. The `resultsNames()` function tells us the name of each result that DESeq2 has calculated, so we can choose which one to look at by specifying "name = " in `results()`. The `results()` function will output a matrix of all genes, including those with similar or differential expression between the two conditions.
 
 ```{r generate-result-table, eval = FALSE}
 resultsNames(dds)
@@ -167,7 +190,7 @@ res <- results(dds, name = "condition_treatment_vs_control")
 head(res)
 ```
 
-Since we are only interested in genes which are differentially expressed, we can use the `subset()` function from base R to only keep results with an adjusted P value < 0.05, and then save the results to a CSV file.
+Since we are only interested in differentially expressed genes, we can use the `subset()` function from base R to keep results with an adjusted *p*-value < 0.05 and then save the results to a CSV file.
 
 ```{r subset-and-export-results, eval = FALSE}
 significant_res <- subset(res, padj < 0.05)
