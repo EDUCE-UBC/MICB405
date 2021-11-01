@@ -32,13 +32,6 @@ By the end of this tutorial you should be able to:
 You should have both [R and RStudio] installed. Please open RStudio and work along the examples.
 :::
 
-```{r include = FALSE}
-library(tidyverse)
-library(pheatmap)
-library(BiocManager)
-library(DESeq2)
-```
-
 ```{r child = here("Rmds", "child_Rmds", "rstudio.Rmd")}
 ```
 

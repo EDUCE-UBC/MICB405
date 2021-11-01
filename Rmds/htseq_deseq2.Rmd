@@ -84,7 +84,7 @@ Be sure to install any packages you have not installed previously on your laptop
 
 [DESeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) will need to be downloaded with BiocManager:
 
-```{r load-packages, message = FALSE, warning = FALSE, eval = FALSE}
+```{r load-packages, message = FALSE, warning = FALSE}
 library(DESeq2)
 library(tidyverse)
 library(pheatmap)
@@ -97,21 +97,21 @@ It is best practice to collect all input files in a folder (most often called "d
 
 Since there are multiple input files, we can use R to generate paths to the files we want to open automatically. All of the data files are in the same directory, so to save us some typing, we can assign the path to that directory as a variable.
 
-```{r set-data-directory, message = FALSE, warning = FALSE, eval = FALSE}
+```{r set-data-directory}
 dir <- "data"
 ```
 
 Each filename is generated from the sample name and a common suffix. To get a vector of sample names, we can use the `samples.csv` metadata file, which we will also need to assign conditions to samples. When you work on your projects, you will enter the filenames and the corresponding conditions yourself into a CSV file.
 
-```{r load-metadata, message = FALSE, eval = FALSE}
+```{r load-metadata, message = FALSE}
 #  file.path constructs filepath with the correct separator dependent of OS
-sample_metadata <- read_csv(file.path(dir,"samples.csv"))
+sample_metadata <- read_csv(file.path(dir, "samples.csv"))
 sample_metadata
 ```
 
-As you can see, the metadata has two columns: sample names and conditions. We can generate filenames from `sample_metadata$sample` for each element in the vector (e.g. the first element is TODO: Make back into an r code chunk "` sample_metadata$sample[1]`") by adding the directory TODO: Make back into an r code chunk "` dir`" as prefix and ".htseq.out" as suffix.
+As you can see, the metadata has two columns: sample names and conditions. We can generate filenames from `sample_metadata$sample` for each element in the vector (e.g. the first element is ``"`r sample_metadata$sample[1]`"``) by adding the directory ``"`r dir`"`` as prefix and `".htseq.out"` as suffix.
 
-```{r generate-filepaths, eval = FALSE}
+```{r generate-filepaths}
 #  paste0 appends (i.e. adds together) character objects
 files <- paste0(file.path(dir, sample_metadata$sample), ".htseq.out")
 files
@@ -119,13 +119,13 @@ files
 
 Then, as a quick test, you can run `all(file.exists(files))`, which should return `TRUE` to your console if the file paths are correct. First, `files.exists(files)` checks for each filename in `files` if that file exists and returns `TRUE` or `FALSE`, resulting in a logical vector. If all files are present, then all elements in the logical vector will be `TRUE`.
 
-```{r logical-vector, eval = FALSE}
+```{r logical-vector}
 file.exists(files)
 ```
 
- The function `all` only returns `TRUE` if all elements of a logical vector are `TRUE`.
+ The function `all()` only returns `TRUE` if all elements of a logical vector are `TRUE`.
  
-```{r check-if-all-is-there, eval = FALSE}
+```{r check-if-all-is-there}
 all(file.exists(files))
 ```
 
@@ -133,9 +133,9 @@ all(file.exists(files))
 
 DESeq2 requires that all of your data be in the shape of a SummarizedExperiment object. Since reshaping your input data with your code would be complicated, there are functions within DESeq2 specific for the source of your counts file, which will prepare your data for use in DESeq2. Since we are using HTSeq to generate our counts data in this class, the function we need is called `DESeqDataSetFromHTSeqCount()`. One of the required arguments is `sampleTable`, which must provide a data table with columns for `sampleName`, `fileName`, and any of the independent variables you changed in your experiment (e.g. sex, treatment, tissue). For that purpose, we can quickly build `sample_df` from the loaded metadata `sample_metadata` and the vector of file paths `files` that we defined earlier.
 
-The other required argument for `DESeqDataSetFromHTSeqCount()` is `design`. The design argument is a formula designated by the tilde symbol `~` and identifies which independent variable(s) you want to investigate. In our data, we have only a single independent variable, i.e. "condition." Experiments with multifactorial experimental design are a lot more complicated to investigate.
+The other required argument for `DESeqDataSetFromHTSeqCount()` is `design`. The design argument is a formula designated by the tilde symbol `~` and identifies which independent variable(s) you want to investigate. In our data, we have only a single independent variable, i.e. `condition`. Experiments with multifactorial experimental design are a lot more complicated to investigate.
 
-```{r deseq-dataset, eval = FALSE}
+```{r deseq-dataset, warning = FALSE}
 # Creates a new data table with the variables sampleName, fileName and condition
 sample_df <- data.frame(sampleName = sample_metadata$sample,
                         fileName = files,
@@ -145,29 +145,30 @@ ddsHTSeq <- DESeqDataSetFromHTSeqCount(sampleTable = sample_df,
                                        design = ~ condition)
 ```
 
-In a DESeq data set, the design variables are stored as a factor (a data type in R), which by default are organized alphabetically. Without further information, DESeq2 will use the condition that comes first alphabetically as a reference. If you were using "treated" and "untreated," for example, DESeq2 would incorrectly assume that the "treated" samples are the reference. To prevent any confusion, we can set the name used as reference explicitly with the argument `ref` inside the `relevel()` function.
+In a DESeq data set, the design variables are stored as a factor (a data type in R), which by default are organized alphabetically. Without further information, DESeq2 will use the condition that comes first alphabetically as reference. If you were using `"treated"` and `"untreated"`, for example, DESeq2 would incorrectly assume that the `"treated"` samples are the reference. To prevent any confusion, we can set the name used as reference explicitly with the argument `ref` inside the `relevel()` function.
 
-```{r set-controls, eval = FALSE}
+```{r set-controls}
 ## Set control condition using the relevel function
 ddsHTSeq$condition <- relevel(ddsHTSeq$condition, ref = "control")
 ```
 
 Now that the reference level has been set, we can run DESeq2 on the dataset.
-```{r deseq2, message = FALSE, warning = FALSE, eval = FALSE}
+```{r deseq2, message = FALSE, warning = FALSE}
 dds <- DESeq(ddsHTSeq)
 ```
 
 ### Sample Clustering
+
 Because the distribution of RNA Seq data is highly skewed, with a few high abundance genes and many low abundance genes, it is helpful to transform our data to visualize clustering. DESeq2 comes with the function `rlog()`, which log-transforms your count data. After transformation, we can use PCA to identify which samples are more similar and if they group by one or more of the independent variables (in our case, we have only a single variable that can take "control" or "treated").
 
-```{r pca, eval = FALSE} 
+```{r pca} 
 rld <- rlog(dds)
 plotPCA(rld, intgroup = "condition")
 ```
 
 A distance matrix is another way to examine how samples cluster. The code chunk below calculates distances between each sample and then maps a colour palette (defined with `colorRampPalette`) onto it so that more similar samples display darker colours.
 
-```{r distance-matrix, eval = FALSE}
+```{r distance-matrix}
 sample_dists <- dist(t(assay(rld)))
 sample_dist_matrix <- as.matrix(sample_dists)
 colnames(sample_dist_matrix) <- NULL
@@ -184,7 +185,7 @@ If the samples don't cluster together like you would expect them to, check for b
 
 Since our samples cluster according to the independent variable, we can move forward with our analysis. To examine our results, we can save them to our global environment. DESeq2 calculates results for all combinations of levels in your experimental design. The `resultsNames()` function tells us the name of each result that DESeq2 has calculated, so we can choose which one to look at by specifying "name = " in `results()`. The `results()` function will output a matrix of all genes, including those with similar or differential expression between the two conditions.
 
-```{r generate-result-table, eval = FALSE}
+```{r generate-result-table}
 resultsNames(dds)
 res <- results(dds, name = "condition_treatment_vs_control")
 head(res)
