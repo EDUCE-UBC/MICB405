@@ -161,19 +161,33 @@
 <p>Each filename is generated from the sample name and a common suffix. To get a vector of sample names, we can use the <code>samples.csv</code> metadata file, which we will also need to assign conditions to samples. When you work on your projects, you will enter the filenames and the corresponding conditions yourself into a CSV file.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#  file.path constructs filepath with the correct separator dependent of OS</span>
-<span class="va">sample_metadata</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">dir</span>,<span class="st">"samples.csv"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">sample_metadata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">dir</span>, <span class="st">"samples.csv"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">sample_metadata</span></code></pre></div>
-<p>As you can see, the metadata has two columns: sample names and conditions. We can generate filenames from <code>sample_metadata$sample</code> for each element in the vector (e.g. the first element is TODO: Make back into an r code chunk “<code>sample_metadata$sample[1]</code>”) by adding the directory TODO: Make back into an r code chunk “<code>dir</code>” as prefix and “.htseq.out” as suffix.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<pre><code>## # A tibble: 6 × 2
+##   sample    condition
+##   &lt;chr&gt;     &lt;chr&gt;    
+## 1 control_1 control  
+## 2 control_2 control  
+## 3 control_3 control  
+## 4 treat_1   treatment
+## 5 treat_2   treatment
+## 6 treat_3   treatment</code></pre>
+<p>As you can see, the metadata has two columns: sample names and conditions. We can generate filenames from <code>sample_metadata$sample</code> for each element in the vector (e.g. the first element is <code>"control_1"</code>) by adding the directory <code>"data"</code> as prefix and <code>".htseq.out"</code> as suffix.</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#  paste0 appends (i.e. adds together) character objects</span>
 <span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">dir</span>, <span class="va">sample_metadata</span><span class="op">$</span><span class="va">sample</span><span class="op">)</span>, <span class="st">".htseq.out"</span><span class="op">)</span>
 <span class="va">files</span></code></pre></div>
-<p>Then, as a quick test, you can run <code><a href="https://rdrr.io/r/base/all.html">all(file.exists(files))</a></code>, which should return <code>TRUE</code> to your console if the file paths are correct. First, <code>files.exists(files)</code> checks for each filename in <code>files</code> if that file exists and returns <code>TRUE</code> or <code>FALSE</code>, resulting in a logical vector. If all files are present, then all elements in the logical vector will be <code>TRUE</code>.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<pre><code>## [1] "data/control_1.htseq.out" "data/control_2.htseq.out"
+## [3] "data/control_3.htseq.out" "data/treat_1.htseq.out"  
+## [5] "data/treat_2.htseq.out"   "data/treat_3.htseq.out"</code></pre>
+<p>Then, as a quick test, you can run <code>all(file.exists(files))</code>, which should return <code>TRUE</code> to your console if the file paths are correct. First, <code>files.exists(files)</code> checks for each filename in <code>files</code> if that file exists and returns <code>TRUE</code> or <code>FALSE</code>, resulting in a logical vector. If all files are present, then all elements in the logical vector will be <code>TRUE</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span><span class="op">(</span><span class="va">files</span><span class="op">)</span></code></pre></div>
-<p>The function <code>all</code> only returns <code>TRUE</code> if all elements of a logical vector are <code>TRUE</code>.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<pre><code>## [1] TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+<p>The function <code><a href="https://rdrr.io/r/base/all.html">all()</a></code> only returns <code>TRUE</code> if all elements of a logical vector are <code>TRUE</code>.</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span><span class="op">(</span><span class="va">files</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
 </div>
 </div>
 <div id="running-deseq2" class="section level3">
@@ -181,8 +195,8 @@
 <span class="header-section-number">8.3.3</span> Running DESeq2<a class="anchor" aria-label="anchor" href="#running-deseq2"><i class="fas fa-link"></i></a>
 </h3>
 <p>DESeq2 requires that all of your data be in the shape of a SummarizedExperiment object. Since reshaping your input data with your code would be complicated, there are functions within DESeq2 specific for the source of your counts file, which will prepare your data for use in DESeq2. Since we are using HTSeq to generate our counts data in this class, the function we need is called <code><a href="https://rdrr.io/pkg/DESeq2/man/DESeqDataSet.html">DESeqDataSetFromHTSeqCount()</a></code>. One of the required arguments is <code>sampleTable</code>, which must provide a data table with columns for <code>sampleName</code>, <code>fileName</code>, and any of the independent variables you changed in your experiment (e.g. sex, treatment, tissue). For that purpose, we can quickly build <code>sample_df</code> from the loaded metadata <code>sample_metadata</code> and the vector of file paths <code>files</code> that we defined earlier.</p>
-<p>The other required argument for <code><a href="https://rdrr.io/pkg/DESeq2/man/DESeqDataSet.html">DESeqDataSetFromHTSeqCount()</a></code> is <code>design</code>. The design argument is a formula designated by the tilde symbol <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code> and identifies which independent variable(s) you want to investigate. In our data, we have only a single independent variable, i.e. “condition.” Experiments with multifactorial experimental design are a lot more complicated to investigate.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<p>The other required argument for <code><a href="https://rdrr.io/pkg/DESeq2/man/DESeqDataSet.html">DESeqDataSetFromHTSeqCount()</a></code> is <code>design</code>. The design argument is a formula designated by the tilde symbol <code>~</code> and identifies which independent variable(s) you want to investigate. In our data, we have only a single independent variable, i.e. <code>condition</code>. Experiments with multifactorial experimental design are a lot more complicated to investigate.</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Creates a new data table with the variables sampleName, fileName and condition</span>
 <span class="va">sample_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>sampleName <span class="op">=</span> <span class="va">sample_metadata</span><span class="op">$</span><span class="va">sample</span>,
                         fileName <span class="op">=</span> <span class="va">files</span>,
@@ -190,12 +204,12 @@
 
 <span class="va">ddsHTSeq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeqDataSet.html">DESeqDataSetFromHTSeqCount</a></span><span class="op">(</span>sampleTable <span class="op">=</span> <span class="va">sample_df</span>,
                                        design <span class="op">=</span> <span class="op">~</span> <span class="va">condition</span><span class="op">)</span></code></pre></div>
-<p>In a DESeq data set, the design variables are stored as a factor (a data type in R), which by default are organized alphabetically. Without further information, DESeq2 will use the condition that comes first alphabetically as a reference. If you were using “treated” and “untreated,” for example, DESeq2 would incorrectly assume that the “treated” samples are the reference. To prevent any confusion, we can set the name used as reference explicitly with the argument <code>ref</code> inside the <code><a href="https://rdrr.io/r/stats/relevel.html">relevel()</a></code> function.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<p>In a DESeq data set, the design variables are stored as a factor (a data type in R), which by default are organized alphabetically. Without further information, DESeq2 will use the condition that comes first alphabetically as reference. If you were using <code>"treated"</code> and <code>"untreated"</code>, for example, DESeq2 would incorrectly assume that the <code>"treated"</code> samples are the reference. To prevent any confusion, we can set the name used as reference explicitly with the argument <code>ref</code> inside the <code><a href="https://rdrr.io/r/stats/relevel.html">relevel()</a></code> function.</p>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Set control condition using the relevel function</span>
 <span class="va">ddsHTSeq</span><span class="op">$</span><span class="va">condition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/relevel.html">relevel</a></span><span class="op">(</span><span class="va">ddsHTSeq</span><span class="op">$</span><span class="va">condition</span>, ref <span class="op">=</span> <span class="st">"control"</span><span class="op">)</span></code></pre></div>
 <p>Now that the reference level has been set, we can run DESeq2 on the dataset.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeq.html">DESeq</a></span><span class="op">(</span><span class="va">ddsHTSeq</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="sample-clustering" class="section level3">
@@ -203,19 +217,21 @@
 <span class="header-section-number">8.3.4</span> Sample Clustering<a class="anchor" aria-label="anchor" href="#sample-clustering"><i class="fas fa-link"></i></a>
 </h3>
 <p>Because the distribution of RNA Seq data is highly skewed, with a few high abundance genes and many low abundance genes, it is helpful to transform our data to visualize clustering. DESeq2 comes with the function <code><a href="https://rdrr.io/pkg/DESeq2/man/rlog.html">rlog()</a></code>, which log-transforms your count data. After transformation, we can use PCA to identify which samples are more similar and if they group by one or more of the independent variables (in our case, we have only a single variable that can take “control” or “treated”).</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rld</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/rlog.html">rlog</a></span><span class="op">(</span><span class="va">dds</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/plotPCA.html">plotPCA</a></span><span class="op">(</span><span class="va">rld</span>, intgroup <span class="op">=</span> <span class="st">"condition"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/pca-1.png" width="672"></div>
 <p>A distance matrix is another way to examine how samples cluster. The code chunk below calculates distances between each sample and then maps a colour palette (defined with <code>colorRampPalette</code>) onto it so that more similar samples display darker colours.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sample_dists</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html">dist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="fu">assay</span><span class="op">(</span><span class="va">rld</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sample_dists</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html">dist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">assay</a></span><span class="op">(</span><span class="va">rld</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="va">sample_dist_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">sample_dists</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">sample_dist_matrix</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
-<span class="va">colours</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span><span class="fl">9</span>, <span class="st">"Blues"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">(</span><span class="fl">255</span><span class="op">)</span>
+<span class="va">colours</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span><span class="fl">9</span>, <span class="st">"Blues"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">(</span><span class="fl">255</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/pheatmap/man/pheatmap.html">pheatmap</a></span><span class="op">(</span><span class="va">sample_dist_matrix</span>,
          clustering_distance_rows <span class="op">=</span> <span class="va">sample_dists</span>,
          clustering_distance_cols <span class="op">=</span> <span class="va">sample_dists</span>, 
          col <span class="op">=</span> <span class="va">colours</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/distance-matrix-1.png" width="672"></div>
 <p>If the samples don’t cluster together like you would expect them to, check for batch effects.</p>
 </div>
 <div id="filtering-and-data-export" class="section level3">
@@ -223,16 +239,37 @@
 <span class="header-section-number">8.3.5</span> Filtering and data export<a class="anchor" aria-label="anchor" href="#filtering-and-data-export"><i class="fas fa-link"></i></a>
 </h3>
 <p>Since our samples cluster according to the independent variable, we can move forward with our analysis. To examine our results, we can save them to our global environment. DESeq2 calculates results for all combinations of levels in your experimental design. The <code><a href="https://rdrr.io/pkg/DESeq2/man/results.html">resultsNames()</a></code> function tells us the name of each result that DESeq2 has calculated, so we can choose which one to look at by specifying “name =” in <code><a href="https://rdrr.io/pkg/DESeq2/man/results.html">results()</a></code>. The <code><a href="https://rdrr.io/pkg/DESeq2/man/results.html">results()</a></code> function will output a matrix of all genes, including those with similar or differential expression between the two conditions.</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/results.html">resultsNames</a></span><span class="op">(</span><span class="va">dds</span><span class="op">)</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/results.html">results</a></span><span class="op">(</span><span class="va">dds</span>, name <span class="op">=</span> <span class="st">"condition_treatment_vs_control"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
-<p>Since we are only interested in differentially expressed genes, we can use the <code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code> function from base R to keep results with an adjusted <em>p</em>-value &lt; 0.05 and then save the results to a CSV file.</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">significant_res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">padj</span> <span class="op">&lt;</span> <span class="fl">0.05</span><span class="op">)</span>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/results.html">resultsNames</a></span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "Intercept"                      "condition_treatment_vs_control"</code></pre>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/results.html">results</a></span><span class="op">(</span><span class="va">dds</span>, name <span class="op">=</span> <span class="st">"condition_treatment_vs_control"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">head</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
+<pre><code>## log2 fold change (MLE): condition treatment vs control 
+## Wald test p-value: condition treatment vs control 
+## DataFrame with 6 rows and 6 columns
+##                      baseMean log2FoldChange     lfcSE       stat      pvalue
+##                     &lt;numeric&gt;      &lt;numeric&gt; &lt;numeric&gt;  &lt;numeric&gt;   &lt;numeric&gt;
+## ENSMUSG00000000001 299.611431       -1.15529 0.0952683 -12.126645 7.63122e-34
+## ENSMUSG00000000003   0.217348        1.75589 4.0804729   0.430316 6.66966e-01
+## ENSMUSG00000000028  10.401452        1.75564 0.5135561   3.418600 6.29442e-04
+## ENSMUSG00000000031   0.000000             NA        NA         NA          NA
+## ENSMUSG00000000037   2.760919        2.66847 1.1572396   2.305895 2.11165e-02
+## ENSMUSG00000000049   0.900647        1.37848 2.6339604   0.523348 6.00732e-01
+##                           padj
+##                      &lt;numeric&gt;
+## ENSMUSG00000000001 3.52493e-32
+## ENSMUSG00000000003          NA
+## ENSMUSG00000000028 3.32121e-03
+## ENSMUSG00000000031          NA
+## ENSMUSG00000000037 6.23462e-02
+## ENSMUSG00000000049          NA</code></pre>
+<p>Since we are only interested in differentially expressed genes, we can use the <code><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">subset()</a></code> function from base R to keep results with an adjusted <em>p</em>-value &lt; 0.05 and then save the results to a CSV file.</p>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">significant_res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">subset</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">padj</span> <span class="op">&lt;</span> <span class="fl">0.05</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">significant_res</span><span class="op">)</span>, file <span class="op">=</span> <span class="st">"treat_vs_control_05.csv"</span><span class="op">)</span></code></pre></div>
 <p>If you want more information about DESeq2, you can access the package vignette by running:</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span><span class="op">(</span><span class="st">"DESeq2"</span><span class="op">)</span></code></pre></div>
 <p>Now that you have a distance matrix and a list of significant genes, what is one downstream analysis you could do that could inform you about a biological difference between the two treatment groups?</p>
 </div>
@@ -293,7 +330,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>MICB 405 Bioinformatics</strong>: 2021.22" was written by Axel Hauduc and Stephan Koenig. It was last built on October 29, 2021.</p>
+    <p>"<strong>MICB 405 Bioinformatics</strong>: 2021.22" was written by Axel Hauduc and Stephan Koenig. It was last built on November 01, 2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

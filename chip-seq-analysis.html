@@ -124,7 +124,7 @@
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="chip-seq-analysis.html#cb9-1"></a><span class="va">GENOME=</span>/projects/micb405/analysis/references/mm10/mm10.fa</span>
 <span id="cb9-2"><a href="chip-seq-analysis.html#cb9-2"></a><span class="va">DATA=</span>/projects/micb405/data/mouse/chip_tutorial</span></code></pre></div>
 <p>You only need to <code>export</code> a variable if you want to add it to your current shell and have it persist between sessions. Since a script runs a subshell in a continuous session with its own unique variables, it’s not necessary to <code>export</code> variables within it.</p>
-<p>As should now be familiar, once defined you can call these paths in your script/shell by entering the special character <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> followed by the variable name as shown below. The following command will run <code>bwa mem</code> and stream the <code>sam</code> file into <code>samtools view</code>, which will then automatically convert it into a <code>bam</code> file. You can use this or design your own.</p>
+<p>As should now be familiar, once defined you can call these paths in your script/shell by entering the special character <code>$</code> followed by the variable name as shown below. The following command will run <code>bwa mem</code> and stream the <code>sam</code> file into <code>samtools view</code>, which will then automatically convert it into a <code>bam</code> file. You can use this or design your own.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="chip-seq-analysis.html#cb10-1"></a><span class="co"># Input a.k.a. control alignment</span></span>
 <span id="cb10-2"><a href="chip-seq-analysis.html#cb10-2"></a><span class="ex">bwa</span> mem \</span>
 <span id="cb10-3"><a href="chip-seq-analysis.html#cb10-3"></a>  -t 8 \</span>
@@ -295,7 +295,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>MICB 405 Bioinformatics</strong>: 2021.22" was written by Axel Hauduc and Stephan Koenig. It was last built on October 29, 2021.</p>
+    <p>"<strong>MICB 405 Bioinformatics</strong>: 2021.22" was written by Axel Hauduc and Stephan Koenig. It was last built on November 01, 2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
