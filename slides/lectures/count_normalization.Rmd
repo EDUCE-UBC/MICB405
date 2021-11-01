@@ -17,7 +17,7 @@ xaringanExtra::style_share_again(
 
 - Define the challenges of differential analysis.
 - Apply different count normalization strategies.
-- Reproduce count normalization of DESeq2 in R using tidyverse
+- Reproduce count normalization of DESeq2 in R using tidyverse.
 
 ---
 
