@@ -14,9 +14,9 @@
   "Packages": {
     "AnnotationDbi": {
       "Package": "AnnotationDbi",
-      "Version": "1.56.0",
+      "Version": "1.56.1",
       "Source": "Bioconductor",
-      "Hash": "bd738216ddf37aa028f8e43098df490b"
+      "Hash": "22bea46247d14aef1b3271ccf6e8daf1"
     },
     "BH": {
       "Package": "BH",
@@ -270,10 +270,10 @@
     },
     "broom": {
       "Package": "broom",
-      "Version": "0.7.9",
+      "Version": "0.7.10",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "9b1e2c1f75b349e3ffa7e9c69eec0c52"
+      "Hash": "ddf8bc55ea050f984835dd2d23cd6828"
     },
     "bslib": {
       "Package": "bslib",
@@ -340,10 +340,10 @@
     },
     "crayon": {
       "Package": "crayon",
-      "Version": "1.4.1",
+      "Version": "1.4.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "e75525c55c70e5f4f78c9960a4b402e9"
+      "Hash": "0a6a65d92bd45b47b94b84244b528d17"
     },
     "curl": {
       "Package": "curl",
@@ -366,6 +366,13 @@
       "Repository": "CRAN",
       "Hash": "1f37fa4ab2f5f7eded42f78b9a887182"
     },
+    "desc": {
+      "Package": "desc",
+      "Version": "1.4.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "28763d08fadd0b733e3cee9dab4e12fe"
+    },
     "digest": {
       "Package": "digest",
       "Version": "0.6.28",
@@ -375,10 +382,10 @@
     },
     "downlit": {
       "Package": "downlit",
-      "Version": "0.2.1",
+      "Version": "0.4.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f24f1e44320a978c03050b8403a83793"
+      "Hash": "ba63dc9ab5a31f3209892437e40c5f60"
     },
     "downloadthis": {
       "Package": "downloadthis",
@@ -744,9 +751,9 @@
     },
     "pasilla": {
       "Package": "pasilla",
-      "Version": "1.21.0",
+      "Version": "1.22.0",
       "Source": "Bioconductor",
-      "Hash": "e93c18f8e700c7c613207c7070c6773b"
+      "Hash": "7a3e7b4613586557c4f0e71951ce6ebd"
     },
     "pheatmap": {
       "Package": "pheatmap",
@@ -1037,10 +1044,10 @@
     },
     "uuid": {
       "Package": "uuid",
-      "Version": "1.0-2",
+      "Version": "1.0-3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "a24851e188aeed413d469d7f4f229000"
+      "Hash": "2097822ba5e4440b81a0c7525d0315ce"
     },
     "vctrs": {
       "Package": "vctrs",
