@@ -24,6 +24,7 @@ params:
 ```{r setup, include = FALSE}
 library(here)
 library(tidyverse)
+library(broom)
 ```
 
 # About {.unnumbered}

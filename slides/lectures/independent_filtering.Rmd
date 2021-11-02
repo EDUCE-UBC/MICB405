@@ -1,0 +1,175 @@
+---
+title: "7.3 Differential analysis with DESeq2: independent filtering"
+subtitle: "MICB 405 101 2021W1 Bioinformatics"
+author: "[Stephan Koenig](mailto:stephan.koenig@ubc.ca)"
+institute: "University of British Columbia"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+---
+  
+```{r setup, echo = FALSE, message = FALSE}
+xaringanExtra::use_share_again()
+xaringanExtra::style_share_again(
+  share_buttons = c("twitter", "linkedin", "pocket")
+)
+
+testable <- fontawesome::fa("fas fa-pencil-alt", fill = "FireBrick")
+
+library(tidyverse)
+library(bayestestR)
+set.seed(212)
+```
+
+## Learning outcomes
+
+- Explain how a large number of negatives and controlling FDR affects retention of positives.
+
+- Produce a toy data set in R to explore the relationship among FDR-controlling procedure, negatives and positives.
+
+- Visualize population and probability distributions in R.
+
+- Refactor code into functions for repeated use.
+
+---
+
+class: center middle
+
+## Goal: Determine significant changes in gene expression between conditions
+
+---
+
+## Challenges to identify differentially expressed genes `r testable`
+
+- Distinguish technical variation from variation due to treatment.
+
+- Majority of genes do not change between treatments.
+
+- Only a few replicates per treatment, difficult to estimate variance.
+
+---
+
+## Challenges to identify differentially expressed genes `r testable`
+
+- Distinguish technical variation from variation due to treatment.
+
+- **Majority of genes do not change between treatments.**
+
+- Only a few replicates per treatment, difficult to estimate variance.
+
+---
+
+## Limits to FDR-controlling procedures `r testable`
+
+- Multiple testing (tens of thousands of genes) causes false positives.
+
+- When FDR corrected, the more negatives the more false negatives.
+
+---
+
+## Modeling gene expression `r testable`
+
+- If a gene is not differentially expressed in two different conditions, then the samples come from the same distribution.
+
+- If a gene is differentially expressed in two different conditions, then samples come from two different distributions.
+
+--
+
+### Caveats
+
+- We will use *t*-test although **NOT** used by DESeq2.
+
+- We will use continuous normal distributions to generate our data although gene counts are discrete.
+
+---
+
+## Same distributions (non-differentially expressed genes)
+
+```{r echo = FALSE, fig.width = 12}
+tibble(
+  population =  rep(c("population_1", "population_2"), each = 100),
+  value      =  c(distribution_normal(n = 100, mean = 4, sd = 1),
+                  distribution_normal(n = 100, mean = 4, sd = 1))) %>% 
+
+ggplot(aes(x = value, fill = population, colour = population)) +
+  geom_density(alpha = 0.3) +
+  lims(x = c(0, 12),
+       y = c(0, 0.4)) +
+  theme_bw()
+```
+
+---
+
+## Two distribution (differenitally expressed genes)
+
+```{r echo = FALSE, fig.width = 12}
+tibble(
+  population =  rep(c("population_1", "population_2"), each = 1000),
+  value      =  c(distribution_normal(n = 1000, mean = 4, sd = 1),
+                  distribution_normal(n = 1000, mean = 7, sd = 1))) %>% 
+
+ggplot(aes(x = value, fill = population, colour = population)) +
+  geom_density(alpha = 0.3) +
+  lims(x = c(0, 12),
+       y = c(0, 0.4)) +
+  theme_bw()
+```
+
+---
+
+## Modeling gene expression `r testable`
+
+- If a gene is not differentially expressed in two different conditions, then the samples come from the same distribution  and the **probability distribution is uniform** from 0 to 1.
+
+- If a gene is differentially expressed in two different conditions, then samples come from two different distributions and the **probability distribution is skewed toward 0** with most samples below 0.05.
+
+---
+
+## Bejamini-Hochberg method
+
+- Adjust *p*-values (i.e. make them larger)
+
+--
+
+### Procedure
+
+1. Rank *p*-values (order from smallest to largest) and start from largest.
+
+1. Leave largest *p*-value (highest rank) **unchanged**.
+
+1. Adjust *p*-value
+
+    Any rank *p*-value is calculated by taking the smaller of
+  
+    - The *p*-value of the next higher rank, or
+    
+    - Its $pvalue \cdot \frac{{\operatorname{total number of p-values}}}{{rank}}$
+    
+---
+
+## Limits to FDR-controlling procedures `r testable`
+
+- Multiple testing (tens of thousands of genes) causes false positives.
+
+- When FDR corrected, the more negatives the more false negatives.
+
+--
+
+### Solution
+
+- Low-expressed genes variance cannot be estimated.
+
+- Remove low-expressed genes.
+
+---
+
+## Independent Filtering `r testable`
+
+- Remove gene with low counts because it is hard to get accurate count.
+
+    sample mean > CPM cutoff
+
+- Plot significant genes vs quantiles.
+
+- Fit curve.
+
+- Determine CPM cutoff based on max of curve - one standard deviation.
+

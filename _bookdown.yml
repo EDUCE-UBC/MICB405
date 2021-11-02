@@ -28,6 +28,7 @@ rmd_files:
   - Rmds/part_r_lectures.Rmd # separator for TOC navigation
   - Rmds/intro_r.Rmd
   - Rmds/count_normalization.Rmd
+  - Rmds/independent_filtering.Rmd
   # - Rmds/part_capstone.Rmd # separator for TOC navigation
   # - Rmds/capstone.Rmd
   # - Rmds/assessment.Rmd

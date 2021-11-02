@@ -1,0 +1,43 @@
+[*ggplot2*](http://docs.ggplot2.org/current/) is an add-on package to R. It is an alternative to base graphics that has become very popular, to the point where it is recommended/preferred unless you have old code that already uses a different graphing package.
+
+### Why ggplot?
+
+-   Wilkinson, *Grammar of Graphics* (1999)
+-   ggplot2 is an implementation of GoG for R
+-   Benefits:
+
+    -   Handsome default settings
+    -   Snap-together building block approach
+    -   Automatic legends, colours, facets
+    -   Statistical overlays: regressions lines and smoothers (with confidence intervals)
+
+-   Drawbacks:
+
+    -   It can be hard to get it to look *exactly* the way you want
+    -   Requires having the input data in a certain format
+
+### ggplot building blocks
+
++-----------------+-------------------------------------------------------------------------------------------------------+
+| Component       | Description                                                                                           |
++=================+=======================================================================================================+
+| data            | 2D table (`data.frame`) of variables.                                                                 |
++-----------------+-------------------------------------------------------------------------------------------------------+
+| *aesthetics*    | Map variables to visual attributes (*e.g.* position).                                                 |
++-----------------+-------------------------------------------------------------------------------------------------------+
+| *geoms*         | Graphical representation of data (points, lines, etc.).                                               |
++-----------------+-------------------------------------------------------------------------------------------------------+
+| *stats*         | Statistical transformations to get from data to points in the plot (binning, summarizing, smoothing). |
++-----------------+-------------------------------------------------------------------------------------------------------+
+| *scales*        | Control *how* to map a variable to an aesthetic.                                                      |
++-----------------+-------------------------------------------------------------------------------------------------------+
+| *facets*        | Juxtapose mini-plots of data subsets, split by variable(s).                                           |
++-----------------+-------------------------------------------------------------------------------------------------------+
+| *guides*        | Axes, legend, etc. reflect the variables and their values.                                            |
++-----------------+-------------------------------------------------------------------------------------------------------+
+
+The organizing idea of ggplot is to independently specify and combine the blocks to create the plot you want. There are at least three things we have to specify to create a plot:
+
+1.  Data
+2.  Aesthetic mappings from data variables to visual properties
+3.  A layer describing how to draw those properties

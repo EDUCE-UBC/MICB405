@@ -1,0 +1,9 @@
+-   [ggplot  FAQ](https://ggplot2.tidyverse.org/articles/)
+
+-   [R cheatsheets](https://www.rstudio.com/resources/cheatsheets/) also available in RStudio under Help \> Cheatsheets
+
+-   [ggplot tutorial 1](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html)
+
+-   [ggplot tutorial 2](https://rpubs.com/g_jw/ggplot2_tutorial)
+
+-   [ggplot tutorial 3](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html#the_1_faq)
