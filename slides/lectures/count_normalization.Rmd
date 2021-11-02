@@ -11,12 +11,16 @@ xaringanExtra::use_share_again()
 xaringanExtra::style_share_again(
   share_buttons = c("twitter", "linkedin", "pocket")
 )
+
+testable <- fontawesome::fa("fas fa-pencil-alt", fill = "FireBrick")
 ```
 
 ## Learning outcomes
 
 - Define the challenges of differential analysis.
+
 - Apply different count normalization strategies.
+
 - Reproduce count normalization of DESeq2 in R using tidyverse.
 
 ---
@@ -27,32 +31,52 @@ class: center middle
 
 ---
 
-## Challenges to identify differentially expressed genes
+## Challenges to identify differentially expressed genes `r testable`
 
-- Distinguish technical variation from variation due to treatment
+- Distinguish technical variation from variation due to treatment.
 
-- Majority of genes do not change between treatments
+- Majority of genes do not change between treatments.
 
-- Only a few replicates per treatment, difficult to estimate variance
-
----
-
-## Why count normalization?
-
-The numerical value of non-differentially expressed genes should not vary due to sampling depth or RNA composition. We need to determine a sample-specific size factor for each sample.
+- Only a few replicates per treatment, difficult to estimate variance.
 
 ---
 
-## Count normalization in DESeq2
+## Challenges to identify differentially expressed genes `r testable`
+
+- **Distinguish technical variation from variation due to treatment.**
+
+- Majority of genes do not change between treatments.
+
+- Only a few replicates per treatment, difficult to estimate variance.
+
+---
+
+## Why count normalization? `r testable`
+
+The numerical value of non-differentially expressed genes should not vary due to **sampling depth** or **RNA composition**. We need to determine a sample-specific **size factor** for each sample.
+
+???
+
+We are not normalizing for gene length since we do only within gene comparisons.
+
+---
+
+## Count normalization in DESeq2 `r testable`
 
 1. Determine the natural logarithm of gene counts.
 
-2. Calculate the mean of each row (called geometric mean).
+2. Calculate he geometric mean of each row to use as a pseudo-reference sample.
 
 3. Remove infinite values.
 
-4. Subtract the geometric mean from the log of counts.
+4. Subtract the reference from the log of counts (equivalent to log of ratio of counts to reference).
 
-5. Calculate median for each sample
+    $$log(counts) - log(reference) = log\left(\frac{{counts}}{{reference}}\right)$$
+
+5. Calculate median for each sample.
 
 6. Convert log of median to number.
+
+???
+
+The combination of these steps removes outliers from the data set and at the same time each step is less sensitive to outliers.

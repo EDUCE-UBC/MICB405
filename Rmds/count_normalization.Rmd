@@ -228,9 +228,24 @@ ratio <- geometric_means %>%
 
 ### Column-wise operation with `summarise()`
 
-Now that we know the ratio of sample to mean, we select the `median()` across all remaining genes for each sample. To calculate a summary statistic for a column, we use `summarise()`. Finally, we take the inverse logarithm to receive the size factor.
+Now that we know the ratio of sample to mean, we select the `median()` across all remaining genes for each sample. To calculate a summary statistic for a column, we use `summarise()`. Finally, we take the inverse logarithm to receive the size factor for each sample.
 
 ```{r}
 size_factors <- ratio %>% 
   summarise(across(treated1:untreated4, ~ exp(median(.))))
 ```
+
+## Additional resources
+
+### Count normalization
+
+- [Introduction to DGE by the Harvard Chan Bioinformatics Core](https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/02_DGE_count_normalization.html)
+- [StatQuest: DESeq2 part 1: Library Normalization](https://statquest.org/statquest-deseq2-part-1-library-normalization/)
+
+### dplyr and tidyr
+
+- [R cheatsheets](https://www.rstudio.com/resources/cheatsheets/) also available in RStudio under Help > Cheatsheets
+- [Introduction to dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
+- [dplyr tutorial](https://rpubs.com/justmarkham/dplyr-tutorial)
+- [dplyr video tutorial](https://www.r-bloggers.com/hands-on-dplyr-tutorial-for-faster-data-manipulation-in-r/)
+- [More functions in dplyr and tidyr](https://rpubs.com/bradleyboehmke/data_wrangling)
