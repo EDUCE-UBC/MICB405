@@ -25,6 +25,11 @@ params:
 library(here)
 library(tidyverse)
 library(broom)
+
+# Render all xaringan slides
+options(knitr.duplicate.label = "allow")
+fs::dir_ls("slides", recurse = 1, type = "file", glob = "*.Rmd") %>% 
+  purrr::walk(rmarkdown::render)
 ```
 
 # About {.unnumbered}
