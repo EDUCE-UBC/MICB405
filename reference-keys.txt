@@ -74,6 +74,7 @@ additional-resources-5
 count-normalization
 dplyr-and-tidyr
 deseq2-independent-filtering
+slides-10
 learning-outcomes-2
 setup-4
 generating-random-numbers-with-normal-distribution
@@ -83,7 +84,13 @@ why-ggplot
 ggplot-building-blocks
 visualizing-distributions
 setting-random-numbers
-creating-functions
+data-set-containing-two-populations
+defining-functions
+probility-distributions-of-differentially-and-non-differntially-expressed-genes
+combining-data-frames
+benjamini-hochberg-method
+diy
+with-provided-function
 additional-resources-6
 independent-filtering
 ggplot2
