@@ -1,6 +1,7 @@
 # DESeq2: independent filtering
 
-In this tutorial, we will explore how a large number of non-differentially expressed genes (negatives) affects the discovery of differentially expressed ones (positives). To do so, we will generate our own toy data set, 
+In this tutorial, we will explore how a large number of non-differentially expressed genes (negatives) affects the discovery of differentially expressed ones (positives). To do so, we will generate our own toy data set.
+
 ## Slides
 
 ```{r echo=FALSE}
@@ -32,7 +33,7 @@ downloadthis::download_file(
 
 The {broom} package provides tools to format many standard R output as data frames.
 
-```{r}
+```{r eval = FALSE}
 library(tidyverse)
 library(broom)
 ```
@@ -40,9 +41,6 @@ library(broom)
 ## Generating random numbers with normal distribution 
 
 ```{r}
-library(broom)
-# Ctrl+shift+R
-# Cmd/Ctrl_shift_P
 head(rnorm(n = 1000, mean = 4, sd = 1))
 ```
 
@@ -85,7 +83,11 @@ set.seed(212)
 tibble(value = rnorm(n = 1000, mean = 4, sd = 1)) %>% 
   ggplot(aes(x = value)) +
   geom_density()
+```
 
+### Data set containing two populations
+
+```{r}
 # create 2 populations
 head(c(rnorm(n = 1000, mean = 4, sd = 1),
        rnorm(n = 1000, mean = 8, sd = 1)))
@@ -102,65 +104,105 @@ two_populations %>%
   geom_histogram(bins = 50)
 ```
 
-## Creating functions
+## Defining functions
+
+Previously, you have encountered for-loops if you had to run the same code repeatedly with minor variations (for example, the input to a command changes). This principle of avoiding repetitious code is called DRY ("**D**on't **R**epeat **Y**ourself"). Following the DRY principle has three advantages:
+
+1. Having fewer lines of code reduces the number of possible places for bugs.
+1. Maintaining code is easier because changing the for-loop will affect all iterations of the loop.
+1. Your code is easier to read. You need to understand a loop and its changes for iteration once (instead of reading very similar code repeatedly). For-loops allow you to organize your code into logical units.
+
+A different way to simplify code is by using functions following this general shape:
+
+```{r eval = FALSE}
+<function name> <- function(<variables>) {
+  <your code>
+}
+```
+
+You can easily set up the general structure of a function by using RStudio's code snippets, i.e. type `fun` and then one of the suggested autocompletion is `fun {snippet}`. Let's write a simple function that calculates the *p*-value for the expression of a single gene sampled from two different distributions. It is best to place functions at the beginning of a script after the `library()` calls. You can add a section header in your script with <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>R</kbd>. Even flexible, you can invoke the RStudio Command Palette with <kbd>ctrl</kbd>(Windows)/<kbd>command</kbd>(Mac) + <kbd>shift</kbd> + <kbd>P</kbd>and search for a specific command, e.g. enter `section` in Command Palette.
 
 ```{r}
-get_t_test_p_value_between_normal_distributions <- function() {
+# Functions ---------------------------------------------------------------
+get_p_value_for_gene_expression <- function() {
   sample_a <- rnorm(n = 3, mean = 4, sd = 1)
-  sample_b <- rnorm(n = 3, mean = 4, sd = 1)
+  sample_b <- rnorm(n = 3, mean = 8, sd = 1)
   result <- t.test(sample_a, sample_b)
   tidy(result)$p.value
 }
+```
 
-p_values_for_non_differentially_expressed_genes <- tibble(
-  differentially_expressed = rep(FALSE, each = 1000),
-  p.value = replicate(1000, get_t_test_p_value_between_normal_distributions())
-)
+To simulate a data set of p-values from multiple genes, we can repeatedly call the same function with `replicate()`.
 
-p_values_for_non_differentially_expressed_genes %>% 
-  ggplot(aes(x = p.value)) +
-  geom_histogram(boundary = 0, binwidth = 0.05)
-
-get_t_test_p_value_between_normal_distributions <- function(n,
-                                                            mean_1,
-                                                            sd_1,
-                                                            mean_2,
-                                                            sd_2) {
-  sample_a <- rnorm(n = n, mean = mean_1, sd = sd_1)
-  sample_b <- rnorm(n = n, mean = mean_2, sd = sd_2)
-  result <- t.test(sample_a, sample_b)
-  tidy(result)$p.value
-}
-
-# Provide default values
-get_t_test_p_value_between_normal_distributions <- function(n      = 3,
-                                                            mean_1 = 0,
-                                                            sd_1   = 1,
-                                                            mean_2 = 0,
-                                                            sd_2   = 1) {
-  sample_a <- rnorm(n = n, mean = mean_1, sd = sd_1)
-  sample_b <- rnorm(n = n, mean = mean_2, sd = sd_2)
-  result <- t.test(sample_a, sample_b)
-  tidy(result)$p.value
-}
-
-get_t_test_p_value_between_normal_distributions(3,
-                                               mean_1 = 4, sd_1 = 1,
-                                               mean_2 = 8, sd_2 = 1)
-
+```{r}
 p_values_for_differentially_expressed_genes <- tibble(
   differentially_expressed = rep(TRUE, each = 1000),
-  p.value = replicate(
-    1000,
-    get_t_test_p_value_between_normal_distributions(3,
-                                                    mean_1 = 4, sd_1 = 1,
-                                                    mean_2 = 8, sd_2 = 1))
+  p.value = replicate(1000, get_p_value_for_gene_expression())
 )
 
 p_values_for_differentially_expressed_genes %>% 
   ggplot(aes(x = p.value)) +
   geom_histogram(boundary = 0, binwidth = 0.05)
+```
 
+We can create a more flexible function by defining variables.
+
+```{r}
+get_p_value_for_gene_expression <- function(n,
+                                            mean_a,
+                                            sd_a,
+                                            mean_b,
+                                            sd_b) {
+  sample_a <- rnorm(n = n, mean = mean_a, sd = sd_a)
+  sample_b <- rnorm(n = n, mean = mean_b, sd = sd_b)
+  result <- t.test(sample_a, sample_b)
+  tidy(result)$p.value
+}
+
+get_p_value_for_gene_expression(3,
+                                mean_a = 4, sd_a = 1,
+                                mean_b = 8, sd_b = 1)
+
+p_values_for_non_differentially_expressed_genes <- tibble(
+  differentially_expressed = rep(FALSE, each = 1000),
+  p.value = replicate(1000,
+                      get_p_value_for_gene_expression(3,
+                                                      mean_a = 4, sd_a = 1,
+                                                      mean_b = 4, sd_b = 1))
+)
+```
+
+We can also provide default values for some or all variables with `<variable> = <default value>`.
+
+```{r}
+# Provide default values
+get_p_value_for_gene_expression <- function(n = 3,
+                                            mean_a = 4,
+                                            sd_a = 1,
+                                            mean_b = 8,
+                                            sd_b = 1) {
+  sample_a <- rnorm(n = n, mean = mean_a, sd = sd_a)
+  sample_b <- rnorm(n = n, mean = mean_b, sd = sd_b)
+  result <- t.test(sample_a, sample_b)
+  tidy(result)$p.value
+}
+```
+
+Let's plot the probablity distribution for non-differentially expressed genes.
+
+```{r}
+p_values_for_non_differentially_expressed_genes %>% 
+  ggplot(aes(x = p.value)) +
+  geom_histogram(boundary = 0, binwidth = 0.05)
+```
+
+## Probility distributions of differentially and non-differntially expressed genes
+
+### Combining data frames
+
+If two data frames share the same variables, then we can combine their rows with `bind_rows()`.
+
+```{r}
 # combine data set
 data_set <- bind_rows(p_values_for_non_differentially_expressed_genes,
                       p_values_for_differentially_expressed_genes)
@@ -168,19 +210,47 @@ data_set <- bind_rows(p_values_for_non_differentially_expressed_genes,
 data_set %>% 
   ggplot(aes(x = p.value)) +
   geom_histogram(boundary = 0, binwidth = 0.05)
+```
 
+We can use an additional aesthetic, `colour`, to visualize the contributions of each set of genes.
+
+```{r}
 # Use colour
 data_set %>% 
   ggplot(aes(x = p.value, fill = differentially_expressed)) +
   geom_histogram(boundary = 0, binwidth = 0.05)
+```
 
+It would be helpful to see the non-differentially expressed genes at the base. Before plotting, we can convert `differentially_expressed` from a logical to a categorial variable with `factor()` and define the sequence of its possible values with the `levels` argument. 
+
+```{r}
 # Fix sequence of plotting
 data_set %>% 
   mutate(differentially_expressed = factor(differentially_expressed,
                                            levels = c("TRUE", "FALSE"))) %>% 
   ggplot(aes(x = p.value, fill = differentially_expressed)) +
   geom_histogram(boundary = 0, binwidth = 0.05)
+```
 
+## Benjamini-Hochberg method
+
+### DIY
+
+You can arrange your data frame by a `<variable>` using `arrange(<data frame>, <variable>)`.
+
+```{r}
+data_set <- data_set %>%
+  arrange(p.value) %>% 
+  mutate(rank = row_number(),
+         higher_rank_p.value = lead(p.value),
+         ranked_p.value = p.value * nrow(data_set) / rank) %>% 
+  rowwise() %>% 
+  mutate(FDR = min(higher_rank_p.value, ranked_p.value, na.rm = TRUE))
+```
+
+### With provided function
+
+```{r}
 data_set <- data_set %>% 
   mutate(p.adj = p.adjust(p.value, method = "fdr"))
 
@@ -189,7 +259,11 @@ data_set %>%
                                            levels = c("TRUE", "FALSE"))) %>% 
   ggplot(aes(x = p.adj, fill = differentially_expressed)) +
   geom_histogram(boundary = 0, binwidth = 0.05)
+```
 
+Simulate many differnent data sets
+
+```{r}
 simluate_p_values_for_gene_expression <- function (
     set_seed = 212,
     number_differential_genes     = 1000,
@@ -198,22 +272,21 @@ simluate_p_values_for_gene_expression <- function (
     differentially_expressed = rep(FALSE, each = number_non_differential_genes),
     p.value = replicate(
       number_non_differential_genes,
-      get_t_test_p_value_between_normal_distributions(3,
-                                                      mean_1 = 4, sd_1 = 1,
-                                                      mean_2 = 4, sd_2 = 1))
+      get_p_value_for_gene_expression(3,
+                                                      mean_a = 4, sd_a = 1,
+                                                      mean_b = 4, sd_b = 1))
   )
   p_values_for_differentially_expressed_genes <- tibble(
     differentially_expressed = rep(TRUE, each = number_differential_genes),
     p.value = replicate(
       number_differential_genes,
-      get_t_test_p_value_between_normal_distributions(3,
-                                                      mean_1 = 4, sd_1 = 1,
-                                                      mean_2 = 8, sd_2 = 1))
+      get_p_value_for_gene_expression(3,
+                                                      mean_a = 4, sd_a = 1,
+                                                      mean_b = 8, sd_b = 1))
   )
   bind_rows(p_values_for_non_differentially_expressed_genes,
             p_values_for_differentially_expressed_genes) %>% 
     mutate(p.adj = p.adjust(p.value, method = "fdr"))
-  
 }
 
 data_set <- simluate_p_values_for_gene_expression()
@@ -222,17 +295,42 @@ data_set %>%
                                            levels = c("TRUE", "FALSE"))) %>% 
   ggplot(aes(x = p.adj, fill = differentially_expressed)) +
   geom_histogram(boundary = 0, binwidth = 0.05)
-
-
-simluate_p_values_for_gene_expression(number_differential_genes = 1000,
-                                      number_non_differential_genes = 5000) %>% 
-  mutate(differentially_expressed = factor(differentially_expressed,
-                                           levels = c("TRUE", "FALSE"))) %>% 
-  ggplot(aes(x = p.adj, fill = differentially_expressed)) +
-  geom_histogram(boundary = 0, binwidth = 0.05)
-
-# At one point do you not have any more True positives
 ```
+
+Add plotting to function.
+
+```{r}
+simluate_p_values_for_gene_expression <- function (
+    set_seed = 212,
+    number_differential_genes     = 1000,
+    number_non_differential_genes = 1000) {
+  p_values_for_non_differentially_expressed_genes <- tibble(
+    differentially_expressed = rep(FALSE, each = number_non_differential_genes),
+    p.value = replicate(
+      number_non_differential_genes,
+      get_p_value_for_gene_expression(3,
+                                                      mean_a = 4, sd_a = 1,
+                                                      mean_b = 4, sd_b = 1))
+  )
+  p_values_for_differentially_expressed_genes <- tibble(
+    differentially_expressed = rep(TRUE, each = number_differential_genes),
+    p.value = replicate(
+      number_differential_genes,
+      get_p_value_for_gene_expression(3,
+                                                      mean_a = 4, sd_a = 1,
+                                                      mean_b = 8, sd_b = 1))
+  )
+  bind_rows(p_values_for_non_differentially_expressed_genes,
+            p_values_for_differentially_expressed_genes) %>% 
+    mutate(p.adj = p.adjust(p.value, method = "fdr"))  %>% 
+    mutate(differentially_expressed = factor(differentially_expressed,
+                                           levels = c("TRUE", "FALSE"))) %>% 
+    ggplot(aes(x = p.adj, fill = differentially_expressed)) +
+    geom_histogram(boundary = 0, binwidth = 0.05)
+}
+```
+
+At one point do you not have any more True positives?
 
 ## Additional resources
 
