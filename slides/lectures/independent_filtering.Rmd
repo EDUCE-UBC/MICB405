@@ -61,13 +61,13 @@ class: center middle
 
 - Multiple testing (tens of thousands of genes) causes false positives.
 
-- When FDR corrected, the more negatives the more false negatives.
+- When FDR corrected, the more negatives, the more false negatives.
 
 ---
 
 ## Modeling gene expression `r testable`
 
-- If a gene is not differentially expressed in two different conditions, then the samples come from the same distribution.
+- If a gene is not differentially expressed in two different conditions, the samples come from the same distribution.
 
 - If a gene is differentially expressed in two different conditions, then samples come from two different distributions.
 
@@ -77,7 +77,7 @@ class: center middle
 
 - We will use *t*-test although **NOT** used by DESeq2.
 
-- We will use continuous normal distributions to generate our data although gene counts are discrete.
+- We will use continuous normal distributions to generate our data, although gene counts are discrete.
 
 ---
 
@@ -98,7 +98,7 @@ ggplot(aes(x = value, fill = population, colour = population)) +
 
 ---
 
-## Two distribution (differenitally expressed genes)
+## Two distribution (differentially expressed genes)
 
 ```{r echo = FALSE, fig.width = 12}
 tibble(
@@ -117,31 +117,25 @@ ggplot(aes(x = value, fill = population, colour = population)) +
 
 ## Modeling gene expression `r testable`
 
-- If a gene is not differentially expressed in two different conditions, then the samples come from the same distribution  and the **probability distribution is uniform** from 0 to 1.
+- If a gene is not differentially expressed in two different conditions, the samples come from the same distribution, and the **probability distribution is uniform** from 0 to 1.
 
-- If a gene is differentially expressed in two different conditions, then samples come from two different distributions and the **probability distribution is skewed toward 0** with most samples below 0.05.
+- If a gene is differentially expressed in two different conditions, samples come from two different distributions and the **probability distribution is skewed toward 0** with most samples below 0.05.
 
 ---
 
 ## Bejamini-Hochberg method
 
-- Adjust *p*-values (i.e. make them larger)
+Adjust *p*-values by making them larger:
 
---
+1. Rank *p*-values (from smallest to largest) and start with largest.
 
-### Procedure
-
-1. Rank *p*-values (order from smallest to largest) and start from largest.
-
-1. Leave largest *p*-value (highest rank) **unchanged**.
-
-1. Adjust *p*-value
-
-    Any rank *p*-value is calculated by taking the smaller of
+1. Adjust *p*-value by taking the smaller of
   
-    - The *p*-value of the next higher rank, or
+    - The *p*-value of the next higher rank (not applicable for highest rank)
     
-    - Its $pvalue \cdot \frac{{\operatorname{total number of p-values}}}{{rank}}$
+        $\operatorname{p-value}_{rank+1}$, or
+    
+    - $\operatorname{p-value}_{rank} \cdot \frac{{\operatorname{total number of p-values}}}{{rank}}$
     
 ---
 
@@ -149,7 +143,7 @@ ggplot(aes(x = value, fill = population, colour = population)) +
 
 - Multiple testing (tens of thousands of genes) causes false positives.
 
-- When FDR corrected, the more negatives the more false negatives.
+- When FDR corrected, the more negatives, the more false negatives.
 
 --
 
@@ -163,13 +157,14 @@ ggplot(aes(x = value, fill = population, colour = population)) +
 
 ## Independent Filtering `r testable`
 
-- Remove gene with low counts because it is hard to get accurate count.
+- Remove genes with low counts because it is hard to get an accurate count.
 
-    sample mean > CPM cutoff
+    $$\operatorname{sample mean} > \operatorname{CPM cutoff}$$
 
 - Plot significant genes vs quantiles.
 
 - Fit curve.
 
-- Determine CPM cutoff based on max of curve - one standard deviation.
+- Determine CPM cutoff
 
+    $$\operatorname{max of curve} - SD$$
