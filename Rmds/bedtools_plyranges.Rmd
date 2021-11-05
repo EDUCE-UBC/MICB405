@@ -19,19 +19,10 @@ downloadthis::download_file(
 ## Setting up for `plyranges`
 
 Create a new R project and load in the `tidyverse` and `plyranges` into your environment:
+
 ```{r eval = FALSE}
 library(tidyverse)
 library(plyranges)
-```
-
-If you do not have these installed on your machine already, you will encounter an error and will have to run their install commands:
-
-```{r eval = FALSE}
-install.packages("tidyverse")
-
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("plyranges")
 ```
 
 Download the files `MACS2` narrowPeak BED file (from the STAR tutorial), as well as a GTF (i.e. GFF3)-formatted file containing mouse gene information (from the ChIP tutorial) from the Orca server.  The files have been stripped of non-autosomal and non-canonical chromosomes for compatibility (different patches of mm10 will have different names for mitochondria and different "alternate" chromosomes, which makes plyranges angry).

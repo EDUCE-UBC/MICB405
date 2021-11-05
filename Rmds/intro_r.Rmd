@@ -43,7 +43,7 @@ You should have both [R and RStudio] installed. Please open RStudio and work alo
 ```{r child = here("Rmds", "child_Rmds", "packages.Rmd")}
 ```
 
-In the following tutorials, we will be using the tidyverse, pheatmap, BiocManager, and DESeq2 packages. tidyverse contains a versatile set of functions designed for easy manipulation of data. pheatmap visualizes gene expression levels and groups genes with similar patterns across treatments. BiocManager allows us to install packages from the Bioconductor platform (see below). Finally, DESeq2 compares gene expression across treatments.
+In the following tutorials, we will be using the {tidyverse}, {pheatmap}, {BiocManager}, {DESeq2} and {plyranges} packages. {tidyverse} contains a versatile set of functions designed for easy manipulation of data. {pheatmap} visualizes gene expression levels and groups genes with similar patterns across treatments. {BiocManager} allows us to install packages from the Bioconductor platform (see below). Finally, {DESeq2} compares gene expression across treatments and {plyranges} provides a {tidyverse}-like interface for working with genomic ranges.
 
 These packages are distributed on two different platforms, CRAN (Comprehensive R Archive Network) and Bioconductor (think of those platforms as two different app stores for R packages).
 
@@ -59,6 +59,7 @@ install.packages(c("tidyverse", "pheatmap", "BiocManager"))
 
 ```{r eval = FALSE}
 BiocManager::install("DESeq2")
+BiocManager::install("plyranges")
 ```
 
 ```{r child = here("Rmds", "child_Rmds", "loading_packages.Rmd")}

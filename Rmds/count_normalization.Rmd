@@ -1,6 +1,6 @@
-# DESeq2: count normalization
+# {DESeq2}: count normalization
 
-This tutorial will use many tools found in the tidyverse package to reproduce how DESeq2 calculates the size factors to normalize the count data.
+This tutorial will use many tools found in the {tidyverse} package to reproduce how {DESeq2} calculates the size factors to normalize the count data.
 
 ```{r include = FALSE}
 counts <- read_csv(here("data", "pasilla_gene_counts.csv"))
@@ -29,7 +29,7 @@ By the end of this tutorial, you should be able to:
 
 - Define the challenges of differential analysis.
 - Apply different count normalization strategies.
-- Reproduce count normalization of DESeq2 in R using tidyverse
+- Reproduce count normalization of {DESeq2} in R using {tidyverse}.
 
 ::: rmdtip
 You should have both [R and RStudio] installed. Please open RStudio and work with the examples by editing your `` `r params$project`.R`` script.
@@ -39,7 +39,7 @@ You should have both [R and RStudio] installed. Please open RStudio and work wit
 
 ## R packages
 
-We will work with the tidyverse package so make sure that it is loaded.
+We will work with the {tidyverse} package so make sure that it is loaded.
 
 ```{r eval = FALSE}
 library(tidyverse)
@@ -60,7 +60,7 @@ downloadthis::download_file(
 
 ### Loading tabular data from a file
 
-Data frames can be loaded into R using many different functions. In the tidyverse, they are called `read_*()`. For example, let's inspect `Spasilla_gene_counts.cs` which contains a table using Notepad (Windows) or TextEdit (macOS).
+Data frames can be loaded into R using many different functions. In the {tidyverse}, they are called `read_*()`. For example, let's inspect `Spasilla_gene_counts.cs` which contains a table using Notepad (Windows) or TextEdit (macOS).
 
 ```{r echo = FALSE, comment = NA}
 cat(paste(read_lines(here("data", "pasilla_gene_counts.csv"),
@@ -125,11 +125,11 @@ We can call specific columns using the `$` notation, which is useful for calling
 head(counts$untreated1)
 ```
 
-## Data wrangling with dplyr
+## Data wrangling with {dplyr}
 
-A popular package for data wrangling is *dplyr* in the tidyverse. This package is so good at what it does and integrates so well with other popular tools like *ggplot2* that it has rapidly become the de-facto standard.
+A popular package for data wrangling is {dplyr} in the {tidyverse}. This package is so good at what it does and integrates so well with other popular tools like {ggplot2} that it has rapidly become the de-facto standard.
 
-dplyr code is very readable because all operations are based on using dplyr functions or *verbs* (`mutate()`, `filter()`, ...). Each verb works similarly:
+{dplyr} code is very readable because all operations are based on using {dplyr} functions or *verbs* (`mutate()`, `filter()`, ...). Each verb works similarly:
 
 - Input data frame in the first argument.
 - Other arguments can refer to variables as if they were local objects (i.e. you do not need to use quotes around a `"<variable>"` name and can just directly refer to it with `<variable>`).
@@ -137,7 +137,7 @@ dplyr code is very readable because all operations are based on using dplyr func
 
 ### Creating of modifying variables with `mutate()`
 
-Use `mutate()` to apply a transformation to some variable and assign it to a new variable. As the first step for determining the size factor for each sample, DESeq2 calculates the natural logarithm of each gene count.
+Use `mutate()` to apply a transformation to some variable and assign it to a new variable. As the first step for determining the size factor for each sample, {DESeq2} calculates the natural logarithm of each gene count.
 
 ```{r}
 counts_single_log_column <- mutate(counts, log_untreated1 = log(untreated1))
@@ -165,7 +165,7 @@ log_counts <- mutate(counts, across(!gene_id, log))
 
 ### Summarizing across variables with `rowwise()` and `c_across()`
 
-We can group our data with `rowwise()` and then use `c_across()`,to calculate the mean across multiple columns (step 2 of DESeq2 normalization). The mean of the log values is not as sensitive to outliers compared to the means of the count values themselves.
+We can group our data with `rowwise()` and then use `c_across()`,to calculate the mean across multiple columns (step 2 of {DESeq2} normalization). The mean of the log values is not as sensitive to outliers compared to the means of the count values themselves.
 
 ```{r}
 log_counts_grouped <- rowwise(log_counts)
@@ -175,7 +175,7 @@ geometric_means <- mutate(log_counts_grouped,
 
 ### Piping with `%>%`
 
-Because of the basic dplyr verb syntax, these functions lend themselves to piping, i.e. taking the output of one function and passing it in as a (by default the first) argument of the following function.
+Because of the basic {dplyr} verb syntax, these functions lend themselves to piping, i.e. taking the output of one function and passing it in as a (by default the first) argument of the following function.
 
 ```{r}
 geometric_means <- log_counts %>% 
@@ -209,7 +209,7 @@ R code     | meaning
 `&`        | and
 `|`        | or
 
-As step 3 of DESeq2 count normalization, all rows that contain an infinite value for their geometric mean are removed. `is.infinite()` would return rows where the variable is infinite. `!is.infinite()` returns rows where it is not.
+As step 3 of {DESeq2} count normalization, all rows that contain an infinite value for their geometric mean are removed. `is.infinite()` would return rows where the variable is infinite. `!is.infinite()` returns rows where it is not.
 
 ```{r}
 geometric_means <- log_counts %>% 
@@ -219,7 +219,7 @@ geometric_means <- log_counts %>%
   filter(!is.infinite(gm))
 ```
 
-In step 4 of DESeq2 of count normalization, the geometric mean is subtracted of each $log(count) - log(gm) = log\left(\frac{{counts}}{{gm}}\right)$, i.e. it looks at the ratio of the sample to the mean.
+In step 4 of {DESeq2} of count normalization, the geometric mean is subtracted of each $log(count) - log(gm) = log\left(\frac{{counts}}{{gm}}\right)$, i.e. it looks at the ratio of the sample to the mean.
 
 ```{r}
 ratio <- geometric_means %>% 
@@ -240,12 +240,12 @@ size_factors <- ratio %>%
 ### Count normalization
 
 - [Introduction to DGE by the Harvard Chan Bioinformatics Core](https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/02_DGE_count_normalization.html)
-- [StatQuest: DESeq2 part 1: Library Normalization](https://statquest.org/statquest-deseq2-part-1-library-normalization/)
+- [StatQuest: {DESeq2} part 1: Library Normalization](https://statquest.org/statquest-deseq2-part-1-library-normalization/)
 
-### dplyr and tidyr
+### {dplyr} and {tidyr}
 
 - [R cheatsheets](https://www.rstudio.com/resources/cheatsheets/) also available in RStudio under Help > Cheatsheets
-- [Introduction to dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
-- [dplyr tutorial](https://rpubs.com/justmarkham/dplyr-tutorial)
-- [dplyr video tutorial](https://www.r-bloggers.com/hands-on-dplyr-tutorial-for-faster-data-manipulation-in-r/)
-- [More functions in dplyr and tidyr](https://rpubs.com/bradleyboehmke/data_wrangling)
+- [Introduction to {dplyr}](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
+- [{dplyr} tutorial](https://rpubs.com/justmarkham/dplyr-tutorial)
+- [{dplyr} video tutorial](https://www.r-bloggers.com/hands-on-dplyr-tutorial-for-faster-data-manipulation-in-r/)
+- [More functions in {dplyr} and {tidyr}](https://rpubs.com/bradleyboehmke/data_wrangling)
