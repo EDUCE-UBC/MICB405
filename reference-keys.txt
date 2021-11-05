@@ -31,8 +31,12 @@ running-deseq2
 sample-clustering
 filtering-and-data-export
 additional-resources-4
+bedtools-and-plyranges
+setting-up-for-plyranges
+genome-arithmetic
+additional-resources-5
 introduction-to-r-and-rstudio
-slides-8
+slides-9
 learning-outcomes
 a-tour-of-rstudio
 setup-2
@@ -54,7 +58,7 @@ matrix
 data-frame
 subsetting
 deseq2-count-normalization
-slides-9
+slides-10
 learning-outcomes-1
 setup-3
 r-packages-1
@@ -70,11 +74,11 @@ piping-with
 remove-groupings-with-ungroup
 filter
 column-wise-operation-with-summarise
-additional-resources-5
+additional-resources-6
 count-normalization
 dplyr-and-tidyr
 deseq2-independent-filtering
-slides-10
+slides-11
 learning-outcomes-2
 setup-4
 generating-random-numbers-with-normal-distribution
@@ -91,7 +95,7 @@ combining-data-frames
 benjamini-hochberg-method
 diy
 with-provided-function
-additional-resources-6
+additional-resources-7
 independent-filtering
 ggplot2
 bash-cheat-sheet
