@@ -11,7 +11,7 @@ You can download the slides for this tutorial below.
 ```{r echo = FALSE}
 downloadthis::download_file(
   path         = here("slides", "tutorials", "htseq_deseq2.pdf"),
-  output_name  = "htseq_deseq2.pdf",
+  output_name  = "htseq_deseq2",
   button_label = "Download slides"
 )
 ```
