@@ -25,6 +25,7 @@ rmd_files:
   - Rmds/chip-seq.Rmd
   - Rmds/star.Rmd
   - Rmds/htseq_deseq2.Rmd
+  - Rmds/bedtools_plyranges.Rmd
   - Rmds/part_r_lectures.Rmd # separator for TOC navigation
   - Rmds/intro_r.Rmd
   - Rmds/count_normalization.Rmd

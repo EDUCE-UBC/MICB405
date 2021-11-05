@@ -1,0 +1,63 @@
+# BEDtools and plyranges
+
+## Slides {-}
+
+```{r, echo = FALSE, out.width = "100%", out.height = "388px"}
+knitr::include_graphics("slides/tutorials/bedtools_plyranges.pdf")
+```
+
+You can download the slides for this tutorial below.
+
+```{r echo = FALSE}
+downloadthis::download_file(
+  path         = here("slides", "tutorials", "bedtools_plyranges.pdf"),
+  output_name  = "bedtools_plyranges",
+  button_label = "Download slides"
+)
+```
+
+## Setting up for `plyranges`
+
+Create a new R project and load in the `tidyverse` and `plyranges` into your environment:
+```{r eval = FALSE}
+library(tidyverse)
+library(plyranges)
+```
+
+If you do not have these installed on your machine already, you will encounter and error, and will have to run their install commands:
+```{r eval = FALSE}
+install.packages("tidyverse")
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("plyranges")
+```
+
+Download the following files from the Orca server:
+```{bash eval = FALSE}
+scp ahauduc_mb20@orca1.bcgsc.ca:/projects/micb405/analysis/ChIP_tutorial/Naive_H3K27ac_peaks.autosomes.narrowPeak .
+scp ahauduc_mb20@orca1.bcgsc.ca:/projects/micb405/analysis/STAR_tutorial/Mus_musculus.GRCm38.84.chr.autosomes.gtf .
+```
+
+These are the `MACS2` narrowPeak BED file from that tutorial, as well as a GTF (i.e. GFF3)-formatted file containing mouse gene information, which have been stripped of non-autosomal and non-canonical chromosomes for compatibility (different patches of mm10 will have different names for mitochondria and different "alternate" chromosomes, which makes `plyranges` angry).
+
+## Genome arithmetic
+
+1. Let's start simple: what is a command you can run to display what the unique seqnames (i.e. chromosomes) of each file are? Remember that these are annotations on a mouse genome!
+
+1. Perform a left join (i.e., keep the original records of GRanges A, and attach metadata of intersecting GRanges B) of Naive_H3K27ac_peaks.autosomes.narrowPeak and Mus_musculus.GRCm38.84.chr.autosomes.gtf, but keep the metadata columns `name`, `signalValue`, `qValue`, `type`, and `gene_id` of the combined `GRanges` object.
+
+1. Using the previous GRanges object, group the ranges by `type` and summarize the mean `signalValue` for each `type`. Remember that your `signalValue` comes from the H3K27ac peak calls, and your `type` column contains known classifications of genomic areas. What `type` has the highest mean `signalValue`? Does this make sense given the function of H3K27ac in mammalian genomes?
+
+1. Unfortunately, a left join means that some of your peaks will not have any genome information attached to it, as it did not overlap anything. What is a command that you could run to annotate the nearest genome information onto your peaks?
+
+1. Can you think of any applications for `plyranges` that might be useful in your final project? Discuss with your group!
+
+## Additional resources
+
+[BEDtools documentation](https://bedtools.readthedocs.io/en/latest/content/bedtools-suite.html)
+[Bedtools lecture from original creator](https://www.youtube.com/watch?v=1R1KocKEzYY&ab_channel=AaronQuinlan)
+[BEDtools tutorial with more commands](http://quinlanlab.org/tutorials/bedtools/bedtools.html)
+[plyranges vignette](https://www.bioconductor.org/packages/devel/bioc/vignettes/plyranges/inst/doc/an-introduction.html#8_Data_ImportOutput)
+[Getting started with plyranges](https://www.bioconductor.org/packages/devel/bioc/vignettes/plyranges/inst/doc/an-introduction.html)
+[plyranges original publication](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1597-8)
