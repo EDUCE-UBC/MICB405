@@ -59,8 +59,8 @@
 <li><a class="active" href="bedtools-and-plyranges.html"><span class="header-section-number">9</span> BEDtools and plyranges</a></li>
 <li class="book-part">R lectures</li>
 <li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">10</span> Introduction to R and RStudio</a></li>
-<li><a class="" href="deseq2-count-normalization.html"><span class="header-section-number">11</span> DESeq2: count normalization</a></li>
-<li><a class="" href="deseq2-independent-filtering.html"><span class="header-section-number">12</span> DESeq2: independent filtering</a></li>
+<li><a class="" href="deseq2-count-normalization.html"><span class="header-section-number">11</span> {DESeq2}: count normalization</a></li>
+<li><a class="" href="deseq2-independent-filtering.html"><span class="header-section-number">12</span> {DESeq2}: independent filtering</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="bash-cheat-sheet.html"><span class="header-section-number">A</span> Bash cheat sheet</a></li>
 <li><a class="" href="terminal-keyboard-shortcuts-1.html"><span class="header-section-number">B</span> Terminal keyboard shortcuts</a></li>
@@ -94,16 +94,9 @@
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">plyranges</span><span class="op">)</span></code></pre></div>
-<p>If you do not have these installed on your machine already, you will encounter an error and will have to run their install commands:</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span>
-
-<span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
-    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span>
-<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"plyranges"</span><span class="op">)</span></code></pre></div>
 <p>Download the files <code>MACS2</code> narrowPeak BED file (from the STAR tutorial), as well as a GTF (i.e. GFF3)-formatted file containing mouse gene information (from the ChIP tutorial) from the Orca server. The files have been stripped of non-autosomal and non-canonical chromosomes for compatibility (different patches of mm10 will have different names for mitochondria and different “alternate” chromosomes, which makes plyranges angry).</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb48-1"><a href="bedtools-and-plyranges.html#cb48-1"></a><span class="fu">scp</span> ahauduc_mb20@orca1.bcgsc.ca:/projects/micb405/analysis/ChIP_tutorial/Naive_H3K27ac_peaks.autosomes.narrowPeak .</span>
-<span id="cb48-2"><a href="bedtools-and-plyranges.html#cb48-2"></a><span class="fu">scp</span> ahauduc_mb20@orca1.bcgsc.ca:/projects/micb405/analysis/STAR_tutorial/Mus_musculus.GRCm38.84.chr.autosomes.gtf .</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="bedtools-and-plyranges.html#cb47-1"></a><span class="fu">scp</span> ahauduc_mb20@orca1.bcgsc.ca:/projects/micb405/analysis/ChIP_tutorial/Naive_H3K27ac_peaks.autosomes.narrowPeak .</span>
+<span id="cb47-2"><a href="bedtools-and-plyranges.html#cb47-2"></a><span class="fu">scp</span> ahauduc_mb20@orca1.bcgsc.ca:/projects/micb405/analysis/STAR_tutorial/Mus_musculus.GRCm38.84.chr.autosomes.gtf .</span></code></pre></div>
 </div>
 <div id="genome-arithmetic" class="section level2">
 <h2>
@@ -165,7 +158,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>MICB 405 Bioinformatics</strong>: 2021.22" was written by Axel Hauduc and Stephan Koenig. It was last built on November 05, 2021.</p>
+    <p>"<strong>MICB 405 Bioinformatics</strong>: 2021.22" was written by Axel Hauduc and Stephan Koenig. It was last built on November 08, 2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

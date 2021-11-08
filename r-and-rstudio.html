@@ -59,8 +59,8 @@
 <li><a class="" href="bedtools-and-plyranges.html"><span class="header-section-number">9</span> BEDtools and plyranges</a></li>
 <li class="book-part">R lectures</li>
 <li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">10</span> Introduction to R and RStudio</a></li>
-<li><a class="" href="deseq2-count-normalization.html"><span class="header-section-number">11</span> DESeq2: count normalization</a></li>
-<li><a class="" href="deseq2-independent-filtering.html"><span class="header-section-number">12</span> DESeq2: independent filtering</a></li>
+<li><a class="" href="deseq2-count-normalization.html"><span class="header-section-number">11</span> {DESeq2}: count normalization</a></li>
+<li><a class="" href="deseq2-independent-filtering.html"><span class="header-section-number">12</span> {DESeq2}: independent filtering</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="bash-cheat-sheet.html"><span class="header-section-number">A</span> Bash cheat sheet</a></li>
 <li><a class="" href="terminal-keyboard-shortcuts-1.html"><span class="header-section-number">B</span> Terminal keyboard shortcuts</a></li>
@@ -124,7 +124,8 @@
 <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">pheatmap</span><span class="op">)</span><span class="op">)</span>     <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"pheatmap"</span><span class="op">)</span>
 <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"RColorBrewer"</span><span class="op">)</span>
 <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">BiocManager</span><span class="op">)</span><span class="op">)</span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span>
-<span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mikelove/DESeq2">DESeq2</a></span><span class="op">)</span><span class="op">)</span>       <span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"DESeq2"</span><span class="op">)</span></code></pre></div>
+<span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mikelove/DESeq2">DESeq2</a></span><span class="op">)</span><span class="op">)</span>       <span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"DESeq2"</span><span class="op">)</span>
+<span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">plyranges</span><span class="op">)</span><span class="op">)</span>    <span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"plyranges"</span><span class="op">)</span></code></pre></div>
 <p>While installing (or updating, see below) packages, you might be prompted:</p>
 <pre><code>  There is a binary version available, but the source version is later:
 
@@ -225,7 +226,7 @@ Do you want to install from sources the package which need compilation? (Yes/no/
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>MICB 405 Bioinformatics</strong>: 2021.22" was written by Axel Hauduc and Stephan Koenig. It was last built on November 05, 2021.</p>
+    <p>"<strong>MICB 405 Bioinformatics</strong>: 2021.22" was written by Axel Hauduc and Stephan Koenig. It was last built on November 08, 2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
