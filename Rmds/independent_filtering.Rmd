@@ -252,7 +252,6 @@ test_differential_gene_expression <- function(n,
 Finally, we can also provide default values for some or all variables with `<variable> = <default value>`.
 
 ```{r}
-# Provide default values
 test_differential_gene_expression <- function(n = 3,
                                               mean_a = 4,
                                               sd_a = 1,
@@ -294,7 +293,6 @@ We now have the tools to generate the *p*-values for differentially expressed ge
 We first need to combine the data from differentially or non-differentially expressed genes. If two data frames share the same variables, we can combine their rows with `bind_rows()`.
 
 ```{r}
-# combine data set
 data_set <- bind_rows(p_values_for_non_differentially_expressed_genes,
                       p_values_for_differentially_expressed_genes)
 
@@ -314,7 +312,6 @@ data_set %>%
 It would be helpful to see the non-differentially expressed genes at the base. Before plotting, we can convert `differentially_expressed` from a logical to a categorical variable with `factor()` and define the sequence of its possible values with the `levels` argument. 
 
 ```{r}
-# Fix sequence of plotting
 data_set %>% 
   mutate(differentially_expressed = factor(differentially_expressed,
                                            levels = c("TRUE", "FALSE"))) %>% 
@@ -367,8 +364,8 @@ simulate_p_values_for_gene_expression <- function(
     p.value = replicate(
       n_differential,
       test_differential_gene_expression(3,
-                                                      mean_a = 4, sd_a = 1,
-                                                      mean_b = 8, sd_b = 1))
+                                        mean_a = 4, sd_a = 1,
+                                        mean_b = 8, sd_b = 1))
   )
   
   p_values_for_non_differentially_expressed_genes <- tibble(
