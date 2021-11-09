@@ -159,12 +159,12 @@ Adjust *p*-values by making them larger:
 
 - Remove genes with low counts because it is hard to get an accurate count.
 
-    $$\operatorname{sample mean} > \operatorname{CPM cutoff}$$
+    $$\operatorname{sample mean} > \operatorname{filter threshold}$$
 
-- Plot significant genes vs quantiles.
+- Determine significant genes for different thresholds (expressed as quantiles) and lot significant genes vs quantiles.
 
 - Fit curve.
 
-- Determine CPM cutoff
+- Determine filter threshold with SD of the fitted curve.
 
-    $$\operatorname{max of curve} - SD$$
+    $$\operatorname{filter threshold} = \operatorname{max of curve} - SD$$
