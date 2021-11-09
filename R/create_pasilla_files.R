@@ -15,11 +15,11 @@ metadata <- select(metadata, file, condition, type)
 metadata <- mutate(metadata,
                    condition = factor(condition),
                    type = factor(type),
-                   file = str_remove(file, "fb")) %>% 
-  column_to_rownames("file")
+                   file = str_remove(file, "fb"))
 
 # Rearrange matrix columns in counts so they match the metadata
 counts <- read_tsv(counts_file) %>%
   select(gene_id, rownames(metadata)) %>% 
   mutate(gene_id = str_replace(gene_id, "FBgn", ""))
-write_csv(counts, here::here("data", "pasilla_gene_counts.csv"))
+write_csv(counts,   here::here("data", "pasilla_gene_counts.csv"))
+write_csv(metadata, here::here("data", "pasilla_metadata.csv"))

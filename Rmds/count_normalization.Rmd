@@ -37,7 +37,7 @@ You should have both [R and RStudio] installed. Please open RStudio and work wit
 
 ## Setup
 
-## R packages
+### R packages
 
 We will work with the {tidyverse} package so make sure that it is loaded.
 
@@ -45,15 +45,9 @@ We will work with the {tidyverse} package so make sure that it is loaded.
 library(tidyverse)
 ```
 
-## Data
+### Data
 
-The RNAseq data were collected from *Drosophila melanogaster* in which the splicing regulator Pasilla was depleted by RNAi (`treated`) or not (`untreated`) [@brooks2011]. Download the data set `pasilla_gene_counts.csv` below and place it in your `r params$project` directory.
-
-```{r echo = FALSE}
-downloadthis::download_file(
-  path         = here("data", "pasilla_gene_counts.csv"),
-  button_label = "Download Pasilla data set"
-)
+```{r child = here("Rmds", "child_Rmds", "pasilla.Rmd")}
 ```
 
 ## Working with data frames
