@@ -81,6 +81,8 @@ deseq2-independent-filtering
 slides-11
 learning-outcomes-2
 setup-4
+r-packages-2
+data-1
 measuring-gene-expression-under-a-single-condition
 generating-random-numbers-with-normal-distribution
 creating-data-frames
@@ -102,8 +104,9 @@ combining-data-frames
 applying-benjamini-hochberg-method-to-p-values
 function-to-generate-data-sets-with-varying-numbers-of-non-differentially-and-differentially-expressed-genes
 faceting
-additional-resources-7
 independent-filtering
+additional-resources-7
+independent-filtering-1
 ggplot2
 bash-cheat-sheet
 terminal-keyboard-shortcuts-1
