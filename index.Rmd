@@ -25,6 +25,9 @@ params:
 library(here)
 library(tidyverse)
 library(broom)
+library(DESeq2)
+library(pheatmap)
+library(RColorBrewer)
 
 # Render all xaringan slides
 options(knitr.duplicate.label = "allow")

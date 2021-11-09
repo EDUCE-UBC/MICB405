@@ -84,7 +84,7 @@ Be sure to install any packages you have not installed previously on your laptop
 
 [DESeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) will need to be downloaded with BiocManager:
 
-```{r load-packages, message = FALSE, warning = FALSE}
+```{r eval = FALSE}
 library(DESeq2)
 library(tidyverse)
 library(pheatmap)
