@@ -111,7 +111,7 @@ ggplot(single_gene, aes(x = read_count)) +
   geom_density()
 ```
 
-It is possible to pipe the data frame, creating flexible code to adjust and test variables.
+It is possible to pipe the data frame into `ggplot()`, creating flexible code to adjust and test variables.
 
 ```{r}
 tibble(condition  = "condition_a",
@@ -352,14 +352,14 @@ Let's explore how increasing negatives will affect the number of true positives 
 
 ### Function to generate data sets with varying numbers of non-differentially and differentially expressed genes
 
-Since we will execute similar steps to generate data sets with increasing numbers of negatives (non-differentially expressed genes), this is another opportunity to define a function. In addition, we will create a variable `non_differential_genes` that indicates the data set (as the number of non-differentially expressed genes) and calculate the FDR-corrected *p*-value.
+Since we will execute similar steps to generate data sets with increasing numbers of negatives (non-differentially expressed genes), this is another opportunity to define a function. In addition, we will create a variable `negatives` that indicates the data set (as the number of non-differentially expressed genes) and calculate the FDR-corrected *p*-value.
 
 ```{r}
 simulate_p_values_for_gene_expression <- function(
     n_differential     = 1000,
     n_non_differential = 1000) {
   p_values_for_differentially_expressed_genes <- tibble(
-    non_differential_genes = n_non_differential,
+    negatives = n_non_differential,
     differentially_expressed = rep(TRUE, each = n_differential),
     p.value = replicate(
       n_differential,
@@ -369,7 +369,7 @@ simulate_p_values_for_gene_expression <- function(
   )
   
   p_values_for_non_differentially_expressed_genes <- tibble(
-    non_differential_genes = n_non_differential,
+    negatives = n_non_differential,
     differentially_expressed = rep(FALSE, each = n_non_differential),
     p.value = replicate(
       n_non_differential,
@@ -434,14 +434,14 @@ data_set %>%
                                            levels = c("TRUE", "FALSE"))) %>% 
   ggplot(aes(x = p.value, fill = differentially_expressed)) +
   geom_histogram(boundary = 0, binwidth = 0.05) +
-  facet_wrap(vars(non_differential_genes))
+  facet_wrap(vars(negatives))
 
 data_set %>%
   mutate(differentially_expressed = factor(differentially_expressed,
                                            levels = c("TRUE", "FALSE"))) %>% 
   ggplot(aes(x = p.adj, fill = differentially_expressed)) +
   geom_histogram(boundary = 0, binwidth = 0.05) +
-  facet_wrap(vars(non_differential_genes))
+  facet_wrap(vars(negatives))
 ```
 
 As you can see, at 4000 negatives, there are no more true positives left.
@@ -458,7 +458,7 @@ We want to count how many true or false positives are in each data subset (i.e. 
 ```{r}
 positives <- data_set %>%
   filter(p.adj < 0.05) %>% 
-  group_by(non_differential_genes, differentially_expressed) %>% 
+  group_by(negatives, differentially_expressed) %>% 
   summarise(n = n())
 ```
 
@@ -466,7 +466,7 @@ Finally, we can draw a line plot using `geom_line()`.
 
 ```{r}
 positives %>% 
-  ggplot(aes(x = non_differential_genes, y = n, colour = differentially_expressed)) +
+  ggplot(aes(x = negatives, y = n, colour = differentially_expressed)) +
   geom_point() +
   geom_line()
 ```
@@ -509,7 +509,7 @@ deseq <- deseq[keep, ]
 
 Let's perform the {DESeq2} model fitting and then define $\alpha$ as 0.5 to determine our results.
 
-```{r}
+```{r message = FALSE}
 deseq <- DESeq(deseq)
 deseq_results <- results(deseq, alpha = 0.05)
 ```

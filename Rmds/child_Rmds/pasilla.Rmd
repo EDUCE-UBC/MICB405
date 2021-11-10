@@ -1,4 +1,4 @@
-The RNAseq data were collected from *Drosophila melanogaster* in which the splicing regulator Pasilla was depleted by RNAi (`treated`) or not (`untreated`) [@brooks2011]. Download the data sets `pasilla_gene_counts.csv` and `pasilla_metadata.csv` below and place them in your `` r params$project` `` directory.
+The RNAseq data were collected from *Drosophila melanogaster* in which the splicing regulator Pasilla was depleted by RNAi (`treated`) or not (`untreated`) [@brooks2011]. Download the data sets `pasilla_gene_counts.csv` and `pasilla_metadata.csv` below and place them in your `` `r params$project` `` directory.
 
 ```{r echo = FALSE}
 downloadthis::download_file(
