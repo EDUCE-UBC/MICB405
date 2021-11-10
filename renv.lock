@@ -169,9 +169,9 @@
     },
     "S4Vectors": {
       "Package": "S4Vectors",
-      "Version": "0.32.0",
+      "Version": "0.32.2",
       "Source": "Bioconductor",
-      "Hash": "64feb769afc97c0207f55ad32857cd7e"
+      "Hash": "2bfbc9c5f5b1aafbfd61ea7ea47b7d9e"
     },
     "SummarizedExperiment": {
       "Package": "SummarizedExperiment",
@@ -534,10 +534,10 @@
     },
     "glue": {
       "Package": "glue",
-      "Version": "1.4.2",
+      "Version": "1.5.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "6efd734b14c6471cfe443345f3e35e29"
+      "Hash": "5ccb956a6d09b4ca448094582f8c7571"
     },
     "googledrive": {
       "Package": "googledrive",
@@ -1016,10 +1016,10 @@
     },
     "tibble": {
       "Package": "tibble",
-      "Version": "3.1.5",
+      "Version": "3.1.6",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "36eb05ad4cfdfeaa56f5a9b2a1311efd"
+      "Hash": "8a8f02d1934dfd6431c671361510dd0b"
     },
     "tidyr": {
       "Package": "tidyr",
