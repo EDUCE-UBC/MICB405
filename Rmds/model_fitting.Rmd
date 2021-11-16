@@ -1,0 +1,67 @@
+# {DESeq2}: model fitting
+
+```{r include = FALSE}
+library(here)
+```
+
+## Slides
+
+```{r echo=FALSE}
+xaringanExtra::embed_xaringan(url = "slides/lectures/model_fitting.html",
+                              ratio = "4:3")
+```
+
+You can download the slides for this tutorial below.
+
+```{r echo = FALSE}
+downloadthis::download_file(
+  path         = here("slides", "lectures", "model_fitting.html"),
+  output_name  = "7_4_deseq2_model_fitting",
+  button_label = "Download slides"
+)
+```
+
+## Learning outcomes
+
+- Describe properties of read count data and how DESeq models them.
+
+- Use R Markdown to create reproducible documents.
+
+## Setup
+
+### R packages
+
+Install the R Markdown package.
+
+```{r eval = FALSE}
+install.packages("rmarkdown")
+```
+
+## What is R Markdown?
+
+R Markdown allows you to create reproducible documents containing code. It both includes the information on content and formatting information "markup". R Markdown offers a simple way to markup your text using a simplified markup language called "Markdown".
+
+### Formatting for emphasis
+
+You get `*`*emphasis*`*` with single asterisk, and `**`**strong emphasis**`**` with two asterisks.
+
+### Superscript and subsript
+
+superscript`^`^2^`^` subscript`~`~2~`~`
+
+### Linbreaks and paragraphs
+
+A regular new line won't render as a new line in the formatted document. Ending a line with two spaces creates a line break  
+like so. Leaving a blank line, creates a new paragraph.
+
+This is a new paragraph.
+
+## Themes
+
+[Check out different Bootstrap themes](https://bootswatch.com/3/). You can use them in the YAML header with `theme:` followed by default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, or yeti.
+
+## Additional resources
+
+- [Interactive tutorial for learning Markdown](https://commonmark.org/help/tutorial/)
+
+- [Publishing with Netlify Drop](https://app.netlify.com/drop)
