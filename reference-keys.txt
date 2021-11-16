@@ -108,6 +108,17 @@ independent-filtering
 additional-resources-7
 independent-filtering-1
 ggplot2
+deseq2-model-fitting
+slides-12
+learning-outcomes-3
+setup-5
+r-packages-3
+what-is-r-markdown
+formatting-for-emphasis
+superscript-and-subsript
+linbreaks-and-paragraphs
+themes
+additional-resources-8
 bash-cheat-sheet
 terminal-keyboard-shortcuts-1
 less-and-man-navigation
