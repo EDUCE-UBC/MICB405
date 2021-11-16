@@ -12,11 +12,11 @@ xaringanExtra::style_share_again(
   share_buttons = c("twitter", "linkedin", "pocket")
 )
 
-testable <- fontawesome::fa("fas fa-pencil-alt", fill = "FireBrick")
-
 library(tidyverse)
 library(bayestestR)
 set.seed(212)
+
+testable <- fontawesome::fa("fas fa-pencil-alt", fill = "FireBrick")
 ```
 
 ## Learning outcomes
