@@ -14,9 +14,9 @@
   "Packages": {
     "AnnotationDbi": {
       "Package": "AnnotationDbi",
-      "Version": "1.56.1",
+      "Version": "1.56.2",
       "Source": "Bioconductor",
-      "Hash": "22bea46247d14aef1b3271ccf6e8daf1"
+      "Hash": "ae553c2779c85946f1452919cc3e71e3"
     },
     "AnnotationForge": {
       "Package": "AnnotationForge",
@@ -216,10 +216,10 @@
     },
     "RcppArmadillo": {
       "Package": "RcppArmadillo",
-      "Version": "0.10.7.0.0",
+      "Version": "0.10.7.3.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "76a46d0219364e5f6c8b04a148760acf"
+      "Hash": "82b411caa086a4f007ec43a288fba990"
     },
     "Rgraphviz": {
       "Package": "Rgraphviz",
@@ -241,9 +241,9 @@
     },
     "S4Vectors": {
       "Package": "S4Vectors",
-      "Version": "0.32.0",
+      "Version": "0.32.2",
       "Source": "Bioconductor",
-      "Hash": "64feb769afc97c0207f55ad32857cd7e"
+      "Hash": "2bfbc9c5f5b1aafbfd61ea7ea47b7d9e"
     },
     "SummarizedExperiment": {
       "Package": "SummarizedExperiment",
@@ -606,10 +606,10 @@
     },
     "glue": {
       "Package": "glue",
-      "Version": "1.4.2",
+      "Version": "1.5.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "6efd734b14c6471cfe443345f3e35e29"
+      "Hash": "5ccb956a6d09b4ca448094582f8c7571"
     },
     "googledrive": {
       "Package": "googledrive",
@@ -952,10 +952,10 @@
     },
     "readr": {
       "Package": "readr",
-      "Version": "2.0.2",
+      "Version": "2.1.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "7cb2c3ecfbc2c6786221d2c0c1f6ed68"
+      "Hash": "6c825746f32a68f4d8c40f94da5b1ac5"
     },
     "readxl": {
       "Package": "readxl",
@@ -1070,10 +1070,10 @@
     },
     "servr": {
       "Package": "servr",
-      "Version": "0.23",
+      "Version": "0.24",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "75a40cd4f8503fe175be6b213009767f"
+      "Hash": "e2c3e268d654becf0d78a1ec13a05b46"
     },
     "snow": {
       "Package": "snow",
@@ -1126,10 +1126,10 @@
     },
     "tibble": {
       "Package": "tibble",
-      "Version": "3.1.5",
+      "Version": "3.1.6",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "36eb05ad4cfdfeaa56f5a9b2a1311efd"
+      "Hash": "8a8f02d1934dfd6431c671361510dd0b"
     },
     "tidyr": {
       "Package": "tidyr",
@@ -1196,10 +1196,10 @@
     },
     "vroom": {
       "Package": "vroom",
-      "Version": "1.5.5",
+      "Version": "1.5.6",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "9c3b3a3f947c7936cea7485349247e5b"
+      "Hash": "0af818392e60673cd8968ab9119c30a7"
     },
     "webshot": {
       "Package": "webshot",
@@ -1234,12 +1234,12 @@
       "Version": "0.5.5",
       "Source": "GitHub",
       "RemoteType": "github",
+      "RemoteHost": "api.github.com",
       "RemoteUsername": "gadenbuie",
       "RemoteRepo": "xaringanExtra",
-      "RemoteRef": "master",
+      "RemoteRef": "main",
       "RemoteSha": "cc1f613b6c41fc1ee8d14e66e5b0b237703fb75f",
-      "RemoteHost": "api.github.com",
-      "Hash": "b4d713287b4f6d8a3363d43d15721560"
+      "Hash": "1c252ac3bf7be1611e47f85fbc63de29"
     },
     "xfun": {
       "Package": "xfun",
