@@ -2,6 +2,13 @@
 
 In this tutorial, we will explore how a large number of non-differentially expressed genes (negatives) affects the discovery of differentially expressed ones (positives). To do so, we will generate our own toy data set.
 
+```{r include = FALSE}
+counts <- read_csv(here("data", "pasilla_gene_counts.csv")) %>% 
+  column_to_rownames("gene_id")
+metadata <- read_csv(here("data", "pasilla_metadata.csv")) %>% 
+  column_to_rownames("file")
+```
+
 ## Slides
 
 ```{r echo=FALSE}
@@ -35,11 +42,19 @@ Please open RStudio and work with the examples by editing your `` `r params$proj
 
 ## Setup
 
+### R packages
+
 The {broom} package provides tools to format many standard R outputs as data frames, making them more accessible.
 
 ```{r eval = FALSE}
 library(tidyverse)
 library(broom)
+library(DESeq2)
+```
+
+### Data
+
+```{r child = here("Rmds", "child_Rmds", "pasilla.Rmd")}
 ```
 
 ## Measuring gene expression under a single condition
@@ -96,7 +111,7 @@ ggplot(single_gene, aes(x = read_count)) +
   geom_density()
 ```
 
-It is possible to pipe the data frame, creating flexible code to adjust and test variables.
+It is possible to pipe the data frame into `ggplot()`, creating flexible code to adjust and test variables.
 
 ```{r}
 tibble(condition  = "condition_a",
@@ -237,7 +252,6 @@ test_differential_gene_expression <- function(n,
 Finally, we can also provide default values for some or all variables with `<variable> = <default value>`.
 
 ```{r}
-# Provide default values
 test_differential_gene_expression <- function(n = 3,
                                               mean_a = 4,
                                               sd_a = 1,
@@ -279,7 +293,6 @@ We now have the tools to generate the *p*-values for differentially expressed ge
 We first need to combine the data from differentially or non-differentially expressed genes. If two data frames share the same variables, we can combine their rows with `bind_rows()`.
 
 ```{r}
-# combine data set
 data_set <- bind_rows(p_values_for_non_differentially_expressed_genes,
                       p_values_for_differentially_expressed_genes)
 
@@ -299,7 +312,6 @@ data_set %>%
 It would be helpful to see the non-differentially expressed genes at the base. Before plotting, we can convert `differentially_expressed` from a logical to a categorical variable with `factor()` and define the sequence of its possible values with the `levels` argument. 
 
 ```{r}
-# Fix sequence of plotting
 data_set %>% 
   mutate(differentially_expressed = factor(differentially_expressed,
                                            levels = c("TRUE", "FALSE"))) %>% 
@@ -340,24 +352,24 @@ Let's explore how increasing negatives will affect the number of true positives 
 
 ### Function to generate data sets with varying numbers of non-differentially and differentially expressed genes
 
-Since we will execute similar steps to generate data sets with increasing numbers of negatives (non-differentially expressed genes), this is another opportunity to define a function. In addition, we will create a variable `non_differential_genes` that indicates the data set (as the number of non-differentially expressed genes) and calculate the FDR-corrected *p*-value.
+Since we will execute similar steps to generate data sets with increasing numbers of negatives (non-differentially expressed genes), this is another opportunity to define a function. In addition, we will create a variable `negatives` that indicates the data set (as the number of non-differentially expressed genes) and calculate the FDR-corrected *p*-value.
 
 ```{r}
 simulate_p_values_for_gene_expression <- function(
     n_differential     = 1000,
     n_non_differential = 1000) {
   p_values_for_differentially_expressed_genes <- tibble(
-    non_differential_genes = n_non_differential,
+    negatives = n_non_differential,
     differentially_expressed = rep(TRUE, each = n_differential),
     p.value = replicate(
       n_differential,
       test_differential_gene_expression(3,
-                                                      mean_a = 4, sd_a = 1,
-                                                      mean_b = 8, sd_b = 1))
+                                        mean_a = 4, sd_a = 1,
+                                        mean_b = 8, sd_b = 1))
   )
   
   p_values_for_non_differentially_expressed_genes <- tibble(
-    non_differential_genes = n_non_differential,
+    negatives = n_non_differential,
     differentially_expressed = rep(FALSE, each = n_non_differential),
     p.value = replicate(
       n_non_differential,
@@ -422,17 +434,147 @@ data_set %>%
                                            levels = c("TRUE", "FALSE"))) %>% 
   ggplot(aes(x = p.value, fill = differentially_expressed)) +
   geom_histogram(boundary = 0, binwidth = 0.05) +
-  facet_wrap(vars(non_differential_genes))
+  facet_wrap(vars(negatives))
 
 data_set %>%
   mutate(differentially_expressed = factor(differentially_expressed,
                                            levels = c("TRUE", "FALSE"))) %>% 
   ggplot(aes(x = p.adj, fill = differentially_expressed)) +
   geom_histogram(boundary = 0, binwidth = 0.05) +
-  facet_wrap(vars(non_differential_genes))
+  facet_wrap(vars(negatives))
 ```
 
 As you can see, at 4000 negatives, there are no more true positives left.
+
+We can also plot the number of false positives vs. true positives. We can first filter for all genes with adjusted $p < 0.5$.
+
+```{r}
+positives <- data_set %>%
+  filter(p.adj < 0.05)
+```
+
+We want to count how many true or false positives are in each data subset (i.e. the number of non-differentially expressed genes). Previously, we have used `summarise()` to determine summary statistics for an entire data frame. In our case, we want to have a summary statistic for groups in our data, i.e. for each subset and either false or true positive. We can group our data with `group_by()` by one or more variables.
+
+```{r}
+positives <- data_set %>%
+  filter(p.adj < 0.05) %>% 
+  group_by(negatives, differentially_expressed) %>% 
+  summarise(n = n())
+```
+
+Finally, we can draw a line plot using `geom_line()`.
+
+```{r}
+positives %>% 
+  ggplot(aes(x = negatives, y = n, colour = differentially_expressed)) +
+  geom_point() +
+  geom_line()
+```
+
+## Independent filtering
+
+To counteract the loss of so many true positives, {DESeq2} removes tests that are unlikely to show significant differences. Genes with very low counts are prone to high dispersion and fall into that category. {DESeq2} empirically determines what quantile returns the largest numbers of rejections (i.e. adjusted *p*-value < 0.05).
+
+We load the Pasilla count and metadata with `read_csv()`. Because of {DESeq2} requirements, we need to convert the first column of each data frame to row names with `column_to_rownames()`.
+
+```{r eval = FALSE}
+counts <- read_csv("pasilla_gene_counts.csv") %>% 
+  column_to_rownames("gene_id")
+metadata <- read_csv("pasilla_metadata.csv") %>% 
+  column_to_rownames("file")
+```
+
+To work with {DESeq2}, we need to convert the data frame into a matrix and then use it to construct our `DESeq` object. Finally, we define the value of the independent variable `condition` representing the reference/control with `relevel()`.
+
+```{r}
+counts <- as.matrix(counts)
+
+deseq <- DESeqDataSetFromMatrix(
+  countData = counts,
+  colData = metadata,
+  design = ~ condition
+)
+
+deseq$condition <- relevel(deseq$condition, ref = "untreated")
+
+deseq
+```
+
+We will pre-filter our data set by removing any genes with less than 10 counts across all samples to increase the processing speed. 
+
+```{r}
+keep <- rowSums(counts(deseq)) >= 10
+deseq <- deseq[keep, ]
+```
+
+Let's perform the {DESeq2} model fitting and then define $\alpha$ as 0.5 to determine our results.
+
+```{r message = FALSE}
+deseq <- DESeq(deseq)
+deseq_results <- results(deseq, alpha = 0.05)
+```
+
+{DESeq2} automatically performs independent filtering. We can extract the information from the metadata of the `DESeq` object.
+
+```{r}
+independent_filtering_data <- metadata(deseq_results)$filterNumRej
+independent_filtering_data$fitted_line <- metadata(deseq_results)$lo.fit$y
+filter_threshold <- metadata(deseq_results)$filterTheta
+
+metadata(deseq_results)$filterThreshold
+```
+
+We can use `geom_point()` to create a scatterplot of the number of rejects vs. quantiles. We can provide specific aesthetics to a geom instead of `ggplot()`, with the latter it would be used universally for all geoms. 
+
+```{r}
+independent_filtering_data %>% 
+  ggplot() +
+  geom_point(aes(x = theta, y = numRej))
+```
+
+Next we can provide the `fitted_line` with `geom_line()`.
+
+```{r}
+independent_filtering_data %>% 
+  ggplot() +
+  geom_point(aes(x = theta, y = numRej)) +
+  geom_line(aes(x = theta, y = fitted_line), colour = "red")
+```
+
+Finally, we can visualize the filter threshold that {DESeq2} has determined with a vertical line using `geom_vline()`.
+
+```{r}
+independent_filtering_data %>% 
+  ggplot() +
+  geom_point(aes(x = theta, y = numRej)) +
+  geom_line(aes(x = theta, y = fitted_line), colour = "red") +
+  geom_vline(xintercept = filter_threshold)
+```
+
+There are many options to customize a {ggplot2} plot further. You will want to add custom labels for the axes with `labs()` in many cases.
+
+```{r}
+independent_filtering_data %>% 
+  ggplot() +
+  geom_point(aes(x = theta, y = numRej)) +
+  geom_line(aes(x = theta, y = fitted_line), colour = "red") +
+  geom_vline(xintercept = filter_threshold) +
+  labs(x = "significant genes",
+       y = "quantile")
+```
+
+You can also modify the general look of a plot by applying a theme. [{ggplot2}](https://datascienceplus.com/ggplot2-themes-examples/) provides a number of default themes or you can install additional packages like [{ggthemes}](http://www.rpubs.com/Mentors_Ubiqum/ggthemes_1) for more options. We will apply one of the default themes, `theme_bw()`.
+
+```{r}
+independent_filtering_data %>% 
+  ggplot() +
+  geom_point(aes(x = theta, y = numRej)) +
+  geom_line(aes(x = theta, y = fitted_line), colour = "red") +
+  geom_vline(xintercept = filter_threshold) +
+  labs(x = "significant genes",
+       y = "quantile") +
+  theme_bw()
+```
 
 ## Additional resources
 
