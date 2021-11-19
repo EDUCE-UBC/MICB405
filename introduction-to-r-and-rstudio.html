@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>10 Introduction to R and RStudio | MICB 405 Bioinformatics</title>
+<title>11 Introduction to R and RStudio | MICB 405 Bioinformatics</title>
 <meta name="author" content="Axel Hauduc and Stephan Koenig">
-<meta name="description" content="10.1 Slides  fitvids('.shareagain', {players: 'iframe'}); You can download the slides for this tutorial below.  Download slides   10.2 Learning outcomes By the end of this tutorial you should be...">
+<meta name="description" content="11.1 Slides  fitvids('.shareagain', {players: 'iframe'}); You can download the slides for this tutorial below.  Download slides   11.2 Learning outcomes By the end of this tutorial you should be...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="10 Introduction to R and RStudio | MICB 405 Bioinformatics">
+<meta property="og:title" content="11 Introduction to R and RStudio | MICB 405 Bioinformatics">
 <meta property="og:type" content="book">
-<meta property="og:description" content="10.1 Slides  fitvids('.shareagain', {players: 'iframe'}); You can download the slides for this tutorial below.  Download slides   10.2 Learning outcomes By the end of this tutorial you should be...">
+<meta property="og:description" content="11.1 Slides  fitvids('.shareagain', {players: 'iframe'}); You can download the slides for this tutorial below.  Download slides   11.2 Learning outcomes By the end of this tutorial you should be...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="10 Introduction to R and RStudio | MICB 405 Bioinformatics">
-<meta name="twitter:description" content="10.1 Slides  fitvids('.shareagain', {players: 'iframe'}); You can download the slides for this tutorial below.  Download slides   10.2 Learning outcomes By the end of this tutorial you should be...">
+<meta name="twitter:title" content="11 Introduction to R and RStudio | MICB 405 Bioinformatics">
+<meta name="twitter:description" content="11.1 Slides  fitvids('.shareagain', {players: 'iframe'}); You can download the slides for this tutorial below.  Download slides   11.2 Learning outcomes By the end of this tutorial you should be...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -57,11 +57,12 @@
 <li><a class="" href="rna-seq-alignment-with-star.html"><span class="header-section-number">7</span> RNA-seq alignment with STAR</a></li>
 <li><a class="" href="htseq-and-deseq2.html"><span class="header-section-number">8</span> HTSeq and DESeq2</a></li>
 <li><a class="" href="bedtools-and-plyranges.html"><span class="header-section-number">9</span> BEDtools and plyranges</a></li>
+<li><a class="" href="go-term-enrichment-analysis.html"><span class="header-section-number">10</span> GO term enrichment analysis</a></li>
 <li class="book-part">R lectures</li>
-<li><a class="active" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">10</span> Introduction to R and RStudio</a></li>
-<li><a class="" href="deseq2-count-normalization.html"><span class="header-section-number">11</span> {DESeq2}: count normalization</a></li>
-<li><a class="" href="deseq2-independent-filtering.html"><span class="header-section-number">12</span> {DESeq2}: independent filtering</a></li>
-<li><a class="" href="deseq2-model-fitting.html"><span class="header-section-number">13</span> {DESeq2}: model fitting</a></li>
+<li><a class="active" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">11</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="deseq2-count-normalization.html"><span class="header-section-number">12</span> {DESeq2}: count normalization</a></li>
+<li><a class="" href="deseq2-independent-filtering.html"><span class="header-section-number">13</span> {DESeq2}: independent filtering</a></li>
+<li><a class="" href="deseq2-model-fitting.html"><span class="header-section-number">14</span> {DESeq2}: model fitting</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="bash-cheat-sheet.html"><span class="header-section-number">A</span> Bash cheat sheet</a></li>
 <li><a class="" href="terminal-keyboard-shortcuts-1.html"><span class="header-section-number">B</span> Terminal keyboard shortcuts</a></li>
@@ -77,11 +78,11 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduction-to-r-and-rstudio" class="section level1">
 <h1>
-<span class="header-section-number">10</span> Introduction to R and RStudio<a class="anchor" aria-label="anchor" href="#introduction-to-r-and-rstudio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11</span> Introduction to R and RStudio<a class="anchor" aria-label="anchor" href="#introduction-to-r-and-rstudio"><i class="fas fa-link"></i></a>
 </h1>
-<div id="slides-9" class="section level2">
+<div id="slides-10" class="section level2">
 <h2>
-<span class="header-section-number">10.1</span> Slides<a class="anchor" aria-label="anchor" href="#slides-9"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.1</span> Slides<a class="anchor" aria-label="anchor" href="#slides-10"><i class="fas fa-link"></i></a>
 </h2>
 <div class="shareagain" style="min-width:300px;margin:1em auto;">
 <iframe src="slides/lectures/intro_r.html" width="400" height="300" style="border:2px solid currentColor;" loading="lazy" allowfullscreen></iframe>
@@ -94,7 +95,7 @@
 </div>
 <div id="learning-outcomes" class="section level2">
 <h2>
-<span class="header-section-number">10.2</span> Learning outcomes<a class="anchor" aria-label="anchor" href="#learning-outcomes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.2</span> Learning outcomes<a class="anchor" aria-label="anchor" href="#learning-outcomes"><i class="fas fa-link"></i></a>
 </h2>
 <p>By the end of this tutorial you should be able to:</p>
 <ul>
@@ -111,7 +112,7 @@
 </div>
 <div id="a-tour-of-rstudio" class="section level2">
 <h2>
-<span class="header-section-number">10.3</span> A Tour of RStudio<a class="anchor" aria-label="anchor" href="#a-tour-of-rstudio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.3</span> A Tour of RStudio<a class="anchor" aria-label="anchor" href="#a-tour-of-rstudio"><i class="fas fa-link"></i></a>
 </h2>
 <p>When you start RStudio, you will see something like the following window appear:</p>
 <div class="inline-figure"><img src="images/rstudio.png" style="width:100.0%"></div>
@@ -125,12 +126,12 @@
 </div>
 <div id="setup-2" class="section level2">
 <h2>
-<span class="header-section-number">10.4</span> Setup<a class="anchor" aria-label="anchor" href="#setup-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.4</span> Setup<a class="anchor" aria-label="anchor" href="#setup-2"><i class="fas fa-link"></i></a>
 </h2>
 <!-- Parent Rmd must contain `params$project` -->
 <div id="rstudio-projects" class="section level3">
 <h3>
-<span class="header-section-number">10.4.1</span> RStudio Projects<a class="anchor" aria-label="anchor" href="#rstudio-projects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.4.1</span> RStudio Projects<a class="anchor" aria-label="anchor" href="#rstudio-projects"><i class="fas fa-link"></i></a>
 </h3>
 <p>Projects are a great feature of RStudio. When you create a project, RStudio creates an <code>.Rproj</code> file that links all of your files and outputs to the project directory. When you import data from a file, R automatically looks for it in the project directory instead of you having to specify a full file path on your computer. R also automatically saves any output to the project directory. Finally, projects allow you to save your R environment in <code>.RData</code> so that when you close RStudio and then re-open it, you can start right where you left off without re-importing any data or re-calculating any intermediate steps.</p>
 <p>RStudio has a simple interface to create and switch between projects, accessed from the button in the top-right corner of the RStudio window. (Labeled “Project: (None)”, initially.)</p>
@@ -147,7 +148,7 @@
 </div>
 <div id="r-packages" class="section level3">
 <h3>
-<span class="header-section-number">10.4.2</span> R packages<a class="anchor" aria-label="anchor" href="#r-packages"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.4.2</span> R packages<a class="anchor" aria-label="anchor" href="#r-packages"><i class="fas fa-link"></i></a>
 </h3>
 <p>R packages are units of shareable code, containing functions that facilitate and enhance analyses. In simpler terms, think of R packages as iPhone Applications. Each App has specific capabilities that can be accessed when we install and then open the application. The same holds true for R packages. To use the functions contained in a specific R package, we first need to install the package, then each time we want to use the package we need to “open” the package by loading it.</p>
 <p>While installing packages you might be prompted:</p>
@@ -161,35 +162,35 @@ Do you want to install from sources the package which needs compilation? (Yes/no
 <p>These packages are distributed on two different platforms, CRAN (Comprehensive R Archive Network) and Bioconductor (think of those platforms as two different app stores for R packages).</p>
 <div id="installing-packages-from-cran" class="section level4">
 <h4>
-<span class="header-section-number">10.4.2.1</span> Installing Packages from CRAN<a class="anchor" aria-label="anchor" href="#installing-packages-from-cran"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.4.2.1</span> Installing Packages from CRAN<a class="anchor" aria-label="anchor" href="#installing-packages-from-cran"><i class="fas fa-link"></i></a>
 </h4>
 <p>Packages from CRAN (Comprehensive R Archive Network) can be installed with the function <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">c</a></span><span class="op">(</span><span class="st">"tidyverse"</span>, <span class="st">"pheatmap"</span>, <span class="st">"BiocManager"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="installing-packages-from-bioconductor" class="section level4">
 <h4>
-<span class="header-section-number">10.4.2.2</span> Installing packages from Bioconductor<a class="anchor" aria-label="anchor" href="#installing-packages-from-bioconductor"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.4.2.2</span> Installing packages from Bioconductor<a class="anchor" aria-label="anchor" href="#installing-packages-from-bioconductor"><i class="fas fa-link"></i></a>
 </h4>
 <p>Bioconductor specializes on distributing R packages for the analysis of high-throughput genomic data. Unfortunately, <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> is limited to installing packages from CRAN only and cannot install any from Bioconductor. Luckily, we can download the package BiocManager from CRAN that then in turn provides an interface to access packages from Bioconductor.</p>
 <p>This will be our first example of using a function provided by a package. In many situation, you just want to use a single function for a single time during your coding session. You can access the function by calling it with <code>&lt;package&gt;::&lt;function&gt;()</code>. As a concrete example, we can use the <code><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install()</a></code> function of the BiocManager by using <code><a href="https://rdrr.io/pkg/BiocManager/man/install.html">BiocManager::install()</a></code> to install a Bioconductor package.</p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"DESeq2"</span><span class="op">)</span>
 <span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"plyranges"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="loading-packages" class="section level4">
 <h4>
-<span class="header-section-number">10.4.2.3</span> Loading packages<a class="anchor" aria-label="anchor" href="#loading-packages"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.4.2.3</span> Loading packages<a class="anchor" aria-label="anchor" href="#loading-packages"><i class="fas fa-link"></i></a>
 </h4>
 <p>We sometimes will use functions of a package multiple times. To access the package’s functions and <em>every time</em> you open a new RStudio session, you need to first load (open) the packages you want to use with the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function.</p>
 <p>Packages can be loaded like this:</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="r-scripts" class="section level3">
 <h3>
-<span class="header-section-number">10.4.3</span> R Scripts<a class="anchor" aria-label="anchor" href="#r-scripts"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.4.3</span> R Scripts<a class="anchor" aria-label="anchor" href="#r-scripts"><i class="fas fa-link"></i></a>
 </h3>
 <p>R script files are the primary way in which R facilitates reproducible research. They contain the code that loads your raw data, cleans it, performs the analyses, and creates and saves visualizations. R scripts maintain a record of everything that is done to the raw data to reach the final result. That way, it is very easy to write up and communicate your methods because you have a document listing the precise steps you used to conduct your analyses. This is one of R’s primary advantages compared to traditional tools like Excel, where it may be unclear how to reproduce the results.</p>
 <p>Generally, if you are testing an operation (e.g. what would my data look like if I applied a log-transformation to it?), you should do it in the console (left pane of RStudio). If you are committing a step to your analysis (e.g. I want to apply a log-transformation to my data and then conduct the rest of my analyses on the log-transformed data), you should add it to your R script so that it is saved for future use.</p>
@@ -200,7 +201,7 @@ Do you want to install from sources the package which needs compilation? (Yes/no
 </div>
 <div id="data-types" class="section level2">
 <h2>
-<span class="header-section-number">10.5</span> Data types<a class="anchor" aria-label="anchor" href="#data-types"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.5</span> Data types<a class="anchor" aria-label="anchor" href="#data-types"><i class="fas fa-link"></i></a>
 </h2>
 <p>When working with data in R, you might have noticed that not all data are the same, and these different forms of data are called <em>data types</em>. As part of this tutorial, you will encounter three basic data types:</p>
 <div class="inline-table"><table class="table table-sm">
@@ -226,60 +227,60 @@ Do you want to install from sources the package which needs compilation? (Yes/no
 </tbody>
 </table></div>
 <p>Let’s look at a few examples of different data types. Below is a simple example of the type <em>character</em>. Character types are always enclosed by quotes.</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">salutation</span> <span class="op">&lt;-</span> <span class="st">"Hello, World!"</span>
 <span class="va">salutation</span></code></pre></div>
 <pre><code>## [1] "Hello, World!"</code></pre>
 <p>Here an example of a <em>numeric</em>:</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">some_number</span> <span class="op">&lt;-</span> <span class="fl">6</span>
 <span class="va">some_number</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>It is important to use the correct data type for a function or other operations in R. For example, the operator <code>+</code> only works with numeric data</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">6</span> <span class="op">+</span> <span class="fl">2</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p>but not character data</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="st">"6"</span> <span class="op">+</span> <span class="st">"2"</span></code></pre></div>
 <pre><code>## Error in "6" + "2": non-numeric argument to binary operator</code></pre>
 <p><em>Logicals</em> can take either <code>TRUE</code> or <code>FALSE</code>. You might have already encountered them as values for arguments in functions.</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">microbiology_is_awesome</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span>
 <span class="va">microbiology_is_awesome</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="functions" class="section level2">
 <h2>
-<span class="header-section-number">10.6</span> Functions<a class="anchor" aria-label="anchor" href="#functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.6</span> Functions<a class="anchor" aria-label="anchor" href="#functions"><i class="fas fa-link"></i></a>
 </h2>
 <p>Functions are one of the basic units in programming. Generally speaking, a function takes some input and generates some output. Every R function follows the same basic syntax, where <code>function()</code> is the name of the function and <code>arguments</code> are the different parameters you can specify (i.e. your input):</p>
 <p><code>function(argument1 = ..., argument2 = ..., ...)</code></p>
 <p>You can treat functions as a black box and do not necessarily need to know how it works under the hood as long as your provided input conforms to a specific shape.</p>
 <div class="inline-figure"><img src="images/function.png" style="width:75.0%"></div>
 <p>For example, the function <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> expects numbers:</p>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">9</span>, <span class="fl">18</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 35</code></pre>
 <p>If you instead pass text as arguments to <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> you will receive an error:</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="st">"Sum"</span>, <span class="st">"does"</span>, <span class="st">"not"</span>, <span class="st">"accept"</span>, <span class="st">"text!"</span><span class="op">)</span></code></pre></div>
 <pre><code>## Error in sum("Sum", "does", "not", "accept", "text!"): invalid 'type' (character) of argument</code></pre>
 <p>Sometimes, you want to confirm the data type (see above) of a variable, and you can do so by using the <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code> function.</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">microbiology_is_awesome</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "logical"</code></pre>
 </div>
 <div id="getting-help" class="section level2">
 <h2>
-<span class="header-section-number">10.7</span> Getting Help<a class="anchor" aria-label="anchor" href="#getting-help"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.7</span> Getting Help<a class="anchor" aria-label="anchor" href="#getting-help"><i class="fas fa-link"></i></a>
 </h2>
 <div id="the-help-function" class="section level3">
 <h3>
-<span class="header-section-number">10.7.1</span> The help function<a class="anchor" aria-label="anchor" href="#the-help-function"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.7.1</span> The help function<a class="anchor" aria-label="anchor" href="#the-help-function"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can get help with any function in R by inputting <code>?function_name</code> into the Console. If the function is part of a package, then you need to load the package first (i.e. with <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>). This will open a window in the bottom right under the Help tab with information on that function, including input options and example code.</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">?</span><span class="va">read_delim</span></code></pre></div>
 <p>The <strong>Description</strong> section tells us that <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim()</a></code> is a general case of the function we used, <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code>, and <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv()</a></code>.</p>
 <p>The <strong>Usage</strong> section tells us the inputs that need to be specified and default inputs of read_delim:</p>
@@ -295,7 +296,7 @@ Do you want to install from sources the package which needs compilation? (Yes/no
 </div>
 <div id="vignettes" class="section level3">
 <h3>
-<span class="header-section-number">10.7.2</span> Vignettes<a class="anchor" aria-label="anchor" href="#vignettes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.7.2</span> Vignettes<a class="anchor" aria-label="anchor" href="#vignettes"><i class="fas fa-link"></i></a>
 </h3>
 <p>A lot of packages also provide a long-form guide called vignette to their functionality often giving examples of use-cases or more information on methods used. You can browse all vignettes with <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes()</a></code> or get the vignette for a particular package with <code>browseVignettes("&lt;package name&gt;")</code> (replace <code>&lt;package name&gt;</code> with name of your package).</p>
 <div class="rmdwarning">
@@ -318,15 +319,15 @@ Do you want to install from sources the package which needs compilation? (Yes/no
 </div>
 <div id="data-structures" class="section level2">
 <h2>
-<span class="header-section-number">10.8</span> Data structures<a class="anchor" aria-label="anchor" href="#data-structures"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.8</span> Data structures<a class="anchor" aria-label="anchor" href="#data-structures"><i class="fas fa-link"></i></a>
 </h2>
 <p>The data types in R are the elements to build more complex objects called <em>data structures</em>. The most basic structures are <em>vector</em>, <em>lists</em>, <em>matrix</em> and <em>data frame</em>.</p>
 <div id="vector" class="section level3">
 <h3>
-<span class="header-section-number">10.8.1</span> Vector<a class="anchor" aria-label="anchor" href="#vector"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.8.1</span> Vector<a class="anchor" aria-label="anchor" href="#vector"><i class="fas fa-link"></i></a>
 </h3>
 <p>We can use the <code><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">c()</a></code> function to create a vector. All vector elements have to be of the same data type (a so-called <em>atomic</em> vector).</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vector_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">c</a></span><span class="op">(</span><span class="st">"This"</span>, <span class="st">"vector"</span>, <span class="st">"has"</span>, <span class="st">"5"</span>, <span class="st">"elements!"</span><span class="op">)</span>
 <span class="va">vector_example</span></code></pre></div>
 <pre><code>## [1] "This"      "vector"    "has"       "5"         "elements!"</code></pre>
@@ -336,7 +337,7 @@ Do you want to install from sources the package which needs compilation? (Yes/no
 <p>The behaviour you will observe is called <em>coercion</em>. Why do you think this particular set of behaviours were selected for the design of R?</p>
 </div>
 <p>You can also assign each element a name using <code>&lt;name&gt; = &lt;value&gt;</code></p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vector_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">c</a></span><span class="op">(</span>first <span class="op">=</span> <span class="st">"Hi"</span>, second <span class="op">=</span> <span class="st">"there"</span><span class="op">)</span>
 <span class="va">vector_example</span></code></pre></div>
 <pre><code>##   first  second 
@@ -344,23 +345,23 @@ Do you want to install from sources the package which needs compilation? (Yes/no
 </div>
 <div id="list" class="section level3">
 <h3>
-<span class="header-section-number">10.8.2</span> List<a class="anchor" aria-label="anchor" href="#list"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.8.2</span> List<a class="anchor" aria-label="anchor" href="#list"><i class="fas fa-link"></i></a>
 </h3>
 <p>In R, a list is a special kind of vector whose elements can be any combination of objects (i.e. they also do not have to be the same).</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">list_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">c</a></span><span class="op">(</span><span class="st">"gene_a"</span>, <span class="st">"gene_b"</span><span class="op">)</span>,
                      <span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">c</a></span><span class="op">(</span><span class="st">"untreated"</span>, <span class="st">"control"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>You can also assign a name to elements of a list.</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">list_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>gene_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">c</a></span><span class="op">(</span><span class="st">"gene_a"</span>, <span class="st">"gene_b"</span><span class="op">)</span>,
                      treatments <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">c</a></span><span class="op">(</span><span class="st">"untreated"</span>, <span class="st">"control"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="matrix" class="section level3">
 <h3>
-<span class="header-section-number">10.8.3</span> Matrix<a class="anchor" aria-label="anchor" href="#matrix"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.8.3</span> Matrix<a class="anchor" aria-label="anchor" href="#matrix"><i class="fas fa-link"></i></a>
 </h3>
 <p>The data is provided as a vector to <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> and filled either column- or row-wise into the matrix. Rows and columns can also be assigned names.</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">matrix_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">c</a></span><span class="op">(</span>
     <span class="fl">10</span>, <span class="fl">20</span>,
@@ -381,10 +382,10 @@ Do you want to install from sources the package which needs compilation? (Yes/no
 </div>
 <div id="data-frame" class="section level3">
 <h3>
-<span class="header-section-number">10.8.4</span> Data frame<a class="anchor" aria-label="anchor" href="#data-frame"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.8.4</span> Data frame<a class="anchor" aria-label="anchor" href="#data-frame"><i class="fas fa-link"></i></a>
 </h3>
 <p>A data frame is another data structure that contains elements in columns and rows and it is a list of vectors, with each column being one vector of a single data type but the data type may differ among vectors. Data frames are a big part of working with data in R. Data is always provided by column <code>&lt;column name&gt; = &lt;data&gt;</code></p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data_frame_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
   gene_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">c</a></span><span class="op">(</span><span class="st">"gene_a"</span>, <span class="st">"gene_b"</span><span class="op">)</span>,
   control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">3</span><span class="op">)</span>,
@@ -396,39 +397,39 @@ Do you want to install from sources the package which needs compilation? (Yes/no
 ## 1    gene_a      10      20
 ## 2    gene_b       3       3</code></pre>
 <p>Although the data frame and matrix conain the same information, they are not the same <em>class</em> of object. You can determine the class with <code><a href="https://rdrr.io/r/base/class.html">class()</a></code>.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "matrix" "array"</code></pre>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">data_frame_example</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "data.frame"</code></pre>
 </div>
 <div id="subsetting" class="section level3">
 <h3>
-<span class="header-section-number">10.8.5</span> Subsetting<a class="anchor" aria-label="anchor" href="#subsetting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.8.5</span> Subsetting<a class="anchor" aria-label="anchor" href="#subsetting"><i class="fas fa-link"></i></a>
 </h3>
 <p>We often want to use only part of the data and have to subset them accordingly. In base R, subsetting is done with brackets <code>[ ]</code>. For example, a vector can be subset by the index or the name of the position.</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vector_example</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></code></pre></div>
 <pre><code>## first 
 ##  "Hi"</code></pre>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vector_example</span><span class="op">[</span><span class="st">"first"</span><span class="op">]</span></code></pre></div>
 <pre><code>## first 
 ##  "Hi"</code></pre>
 <p>Matrices and data frames can also be subset that way by first specifying rows then columns <code>[&lt;rows&gt;, &lt;columns&gt;]</code>.</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">matrix_example</span><span class="op">[</span>,  <span class="st">"control"</span><span class="op">]</span></code></pre></div>
 <pre><code>## gene_a gene_b 
 ##     10      3</code></pre>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">matrix_example</span><span class="op">[</span><span class="fl">1</span>, <span class="st">"control"</span><span class="op">]</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>We can extract a single column (vector) from a data frame using the <code>$</code> operator.</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data_frame_example</span><span class="op">[</span>, <span class="st">"control"</span><span class="op">]</span></code></pre></div>
 <pre><code>## [1] 10  3</code></pre>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data_frame_example</span><span class="op">$</span><span class="va">control</span></code></pre></div>
 <pre><code>## [1] 10  3</code></pre>
 
@@ -436,37 +437,37 @@ Do you want to install from sources the package which needs compilation? (Yes/no
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="bedtools-and-plyranges.html"><span class="header-section-number">9</span> BEDtools and plyranges</a></div>
-<div class="next"><a href="deseq2-count-normalization.html"><span class="header-section-number">11</span> {DESeq2}: count normalization</a></div>
+<div class="prev"><a href="go-term-enrichment-analysis.html"><span class="header-section-number">10</span> GO term enrichment analysis</a></div>
+<div class="next"><a href="deseq2-count-normalization.html"><span class="header-section-number">12</span> {DESeq2}: count normalization</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#introduction-to-r-and-rstudio"><span class="header-section-number">10</span> Introduction to R and RStudio</a></li>
-<li><a class="nav-link" href="#slides-9"><span class="header-section-number">10.1</span> Slides</a></li>
-<li><a class="nav-link" href="#learning-outcomes"><span class="header-section-number">10.2</span> Learning outcomes</a></li>
-<li><a class="nav-link" href="#a-tour-of-rstudio"><span class="header-section-number">10.3</span> A Tour of RStudio</a></li>
+<li><a class="nav-link" href="#introduction-to-r-and-rstudio"><span class="header-section-number">11</span> Introduction to R and RStudio</a></li>
+<li><a class="nav-link" href="#slides-10"><span class="header-section-number">11.1</span> Slides</a></li>
+<li><a class="nav-link" href="#learning-outcomes"><span class="header-section-number">11.2</span> Learning outcomes</a></li>
+<li><a class="nav-link" href="#a-tour-of-rstudio"><span class="header-section-number">11.3</span> A Tour of RStudio</a></li>
 <li>
-<a class="nav-link" href="#setup-2"><span class="header-section-number">10.4</span> Setup</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#rstudio-projects"><span class="header-section-number">10.4.1</span> RStudio Projects</a></li>
-<li><a class="nav-link" href="#r-packages"><span class="header-section-number">10.4.2</span> R packages</a></li>
-<li><a class="nav-link" href="#r-scripts"><span class="header-section-number">10.4.3</span> R Scripts</a></li>
+<a class="nav-link" href="#setup-2"><span class="header-section-number">11.4</span> Setup</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#rstudio-projects"><span class="header-section-number">11.4.1</span> RStudio Projects</a></li>
+<li><a class="nav-link" href="#r-packages"><span class="header-section-number">11.4.2</span> R packages</a></li>
+<li><a class="nav-link" href="#r-scripts"><span class="header-section-number">11.4.3</span> R Scripts</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#data-types"><span class="header-section-number">10.5</span> Data types</a></li>
-<li><a class="nav-link" href="#functions"><span class="header-section-number">10.6</span> Functions</a></li>
+<li><a class="nav-link" href="#data-types"><span class="header-section-number">11.5</span> Data types</a></li>
+<li><a class="nav-link" href="#functions"><span class="header-section-number">11.6</span> Functions</a></li>
 <li>
-<a class="nav-link" href="#getting-help"><span class="header-section-number">10.7</span> Getting Help</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#the-help-function"><span class="header-section-number">10.7.1</span> The help function</a></li>
-<li><a class="nav-link" href="#vignettes"><span class="header-section-number">10.7.2</span> Vignettes</a></li>
+<a class="nav-link" href="#getting-help"><span class="header-section-number">11.7</span> Getting Help</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#the-help-function"><span class="header-section-number">11.7.1</span> The help function</a></li>
+<li><a class="nav-link" href="#vignettes"><span class="header-section-number">11.7.2</span> Vignettes</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#data-structures"><span class="header-section-number">10.8</span> Data structures</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#vector"><span class="header-section-number">10.8.1</span> Vector</a></li>
-<li><a class="nav-link" href="#list"><span class="header-section-number">10.8.2</span> List</a></li>
-<li><a class="nav-link" href="#matrix"><span class="header-section-number">10.8.3</span> Matrix</a></li>
-<li><a class="nav-link" href="#data-frame"><span class="header-section-number">10.8.4</span> Data frame</a></li>
-<li><a class="nav-link" href="#subsetting"><span class="header-section-number">10.8.5</span> Subsetting</a></li>
+<a class="nav-link" href="#data-structures"><span class="header-section-number">11.8</span> Data structures</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#vector"><span class="header-section-number">11.8.1</span> Vector</a></li>
+<li><a class="nav-link" href="#list"><span class="header-section-number">11.8.2</span> List</a></li>
+<li><a class="nav-link" href="#matrix"><span class="header-section-number">11.8.3</span> Matrix</a></li>
+<li><a class="nav-link" href="#data-frame"><span class="header-section-number">11.8.4</span> Data frame</a></li>
+<li><a class="nav-link" href="#subsetting"><span class="header-section-number">11.8.5</span> Subsetting</a></li>
 </ul>
 </li>
 </ul>

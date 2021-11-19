@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>13 {DESeq2}: model fitting | MICB 405 Bioinformatics</title>
+<title>14 {DESeq2}: model fitting | MICB 405 Bioinformatics</title>
 <meta name="author" content="Axel Hauduc and Stephan Koenig">
-<meta name="description" content="13.1 Slides  fitvids('.shareagain', {players: 'iframe'}); You can download the slides for this tutorial below.  Download slides   13.2 Learning outcomes Describe properties of read count data and...">
+<meta name="description" content="14.1 Slides  fitvids('.shareagain', {players: 'iframe'}); You can download the slides for this tutorial below.  Download slides   14.2 Learning outcomes Describe properties of read count data and...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="13 {DESeq2}: model fitting | MICB 405 Bioinformatics">
+<meta property="og:title" content="14 {DESeq2}: model fitting | MICB 405 Bioinformatics">
 <meta property="og:type" content="book">
-<meta property="og:description" content="13.1 Slides  fitvids('.shareagain', {players: 'iframe'}); You can download the slides for this tutorial below.  Download slides   13.2 Learning outcomes Describe properties of read count data and...">
+<meta property="og:description" content="14.1 Slides  fitvids('.shareagain', {players: 'iframe'}); You can download the slides for this tutorial below.  Download slides   14.2 Learning outcomes Describe properties of read count data and...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="13 {DESeq2}: model fitting | MICB 405 Bioinformatics">
-<meta name="twitter:description" content="13.1 Slides  fitvids('.shareagain', {players: 'iframe'}); You can download the slides for this tutorial below.  Download slides   13.2 Learning outcomes Describe properties of read count data and...">
+<meta name="twitter:title" content="14 {DESeq2}: model fitting | MICB 405 Bioinformatics">
+<meta name="twitter:description" content="14.1 Slides  fitvids('.shareagain', {players: 'iframe'}); You can download the slides for this tutorial below.  Download slides   14.2 Learning outcomes Describe properties of read count data and...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -57,11 +57,12 @@
 <li><a class="" href="rna-seq-alignment-with-star.html"><span class="header-section-number">7</span> RNA-seq alignment with STAR</a></li>
 <li><a class="" href="htseq-and-deseq2.html"><span class="header-section-number">8</span> HTSeq and DESeq2</a></li>
 <li><a class="" href="bedtools-and-plyranges.html"><span class="header-section-number">9</span> BEDtools and plyranges</a></li>
+<li><a class="" href="go-term-enrichment-analysis.html"><span class="header-section-number">10</span> GO term enrichment analysis</a></li>
 <li class="book-part">R lectures</li>
-<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">10</span> Introduction to R and RStudio</a></li>
-<li><a class="" href="deseq2-count-normalization.html"><span class="header-section-number">11</span> {DESeq2}: count normalization</a></li>
-<li><a class="" href="deseq2-independent-filtering.html"><span class="header-section-number">12</span> {DESeq2}: independent filtering</a></li>
-<li><a class="active" href="deseq2-model-fitting.html"><span class="header-section-number">13</span> {DESeq2}: model fitting</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">11</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="deseq2-count-normalization.html"><span class="header-section-number">12</span> {DESeq2}: count normalization</a></li>
+<li><a class="" href="deseq2-independent-filtering.html"><span class="header-section-number">13</span> {DESeq2}: independent filtering</a></li>
+<li><a class="active" href="deseq2-model-fitting.html"><span class="header-section-number">14</span> {DESeq2}: model fitting</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="bash-cheat-sheet.html"><span class="header-section-number">A</span> Bash cheat sheet</a></li>
 <li><a class="" href="terminal-keyboard-shortcuts-1.html"><span class="header-section-number">B</span> Terminal keyboard shortcuts</a></li>
@@ -77,11 +78,11 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="deseq2-model-fitting" class="section level1">
 <h1>
-<span class="header-section-number">13</span> {DESeq2}: model fitting<a class="anchor" aria-label="anchor" href="#deseq2-model-fitting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14</span> {DESeq2}: model fitting<a class="anchor" aria-label="anchor" href="#deseq2-model-fitting"><i class="fas fa-link"></i></a>
 </h1>
-<div id="slides-12" class="section level2">
+<div id="slides-13" class="section level2">
 <h2>
-<span class="header-section-number">13.1</span> Slides<a class="anchor" aria-label="anchor" href="#slides-12"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.1</span> Slides<a class="anchor" aria-label="anchor" href="#slides-13"><i class="fas fa-link"></i></a>
 </h2>
 <div class="shareagain" style="min-width:300px;margin:1em auto;">
 <iframe src="slides/lectures/model_fitting.html" width="400" height="300" style="border:2px solid currentColor;" loading="lazy" allowfullscreen></iframe>
@@ -94,7 +95,7 @@
 </div>
 <div id="learning-outcomes-3" class="section level2">
 <h2>
-<span class="header-section-number">13.2</span> Learning outcomes<a class="anchor" aria-label="anchor" href="#learning-outcomes-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2</span> Learning outcomes<a class="anchor" aria-label="anchor" href="#learning-outcomes-3"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><p>Describe properties of read count data and how DESeq models them.</p></li>
@@ -103,37 +104,37 @@
 </div>
 <div id="setup-5" class="section level2">
 <h2>
-<span class="header-section-number">13.3</span> Setup<a class="anchor" aria-label="anchor" href="#setup-5"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3</span> Setup<a class="anchor" aria-label="anchor" href="#setup-5"><i class="fas fa-link"></i></a>
 </h2>
 <div id="r-packages-3" class="section level3">
 <h3>
-<span class="header-section-number">13.3.1</span> R packages<a class="anchor" aria-label="anchor" href="#r-packages-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3.1</span> R packages<a class="anchor" aria-label="anchor" href="#r-packages-3"><i class="fas fa-link"></i></a>
 </h3>
 <p>Install the R Markdown package.</p>
-<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"rmarkdown"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="what-is-r-markdown" class="section level2">
 <h2>
-<span class="header-section-number">13.4</span> What is R Markdown?<a class="anchor" aria-label="anchor" href="#what-is-r-markdown"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4</span> What is R Markdown?<a class="anchor" aria-label="anchor" href="#what-is-r-markdown"><i class="fas fa-link"></i></a>
 </h2>
 <p>R Markdown allows you to create reproducible documents containing code. It both includes the information on content and formatting information “markup”. R Markdown offers a simple way to markup your text using a simplified markup language called “Markdown”.</p>
 <div id="formatting-for-emphasis" class="section level3">
 <h3>
-<span class="header-section-number">13.4.1</span> Formatting for emphasis<a class="anchor" aria-label="anchor" href="#formatting-for-emphasis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.1</span> Formatting for emphasis<a class="anchor" aria-label="anchor" href="#formatting-for-emphasis"><i class="fas fa-link"></i></a>
 </h3>
 <p>You get <code>*</code><em>emphasis</em><code>*</code> with single asterisk, and <code>**</code><strong>strong emphasis</strong><code>**</code> with two asterisks.</p>
 </div>
 <div id="superscript-and-subsript" class="section level3">
 <h3>
-<span class="header-section-number">13.4.2</span> Superscript and subsript<a class="anchor" aria-label="anchor" href="#superscript-and-subsript"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.2</span> Superscript and subsript<a class="anchor" aria-label="anchor" href="#superscript-and-subsript"><i class="fas fa-link"></i></a>
 </h3>
 <p>superscript<code>^</code><sup>2</sup><code>^</code> subscript<code>~</code><sub>2</sub><code>~</code></p>
 </div>
 <div id="linbreaks-and-paragraphs" class="section level3">
 <h3>
-<span class="header-section-number">13.4.3</span> Linbreaks and paragraphs<a class="anchor" aria-label="anchor" href="#linbreaks-and-paragraphs"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.3</span> Linbreaks and paragraphs<a class="anchor" aria-label="anchor" href="#linbreaks-and-paragraphs"><i class="fas fa-link"></i></a>
 </h3>
 <p>A regular new line won’t render as a new line in the formatted document. Ending a line with two spaces creates a line break<br>
 like so. Leaving a blank line, creates a new paragraph.</p>
@@ -142,13 +143,13 @@ like so. Leaving a blank line, creates a new paragraph.</p>
 </div>
 <div id="themes" class="section level2">
 <h2>
-<span class="header-section-number">13.5</span> Themes<a class="anchor" aria-label="anchor" href="#themes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.5</span> Themes<a class="anchor" aria-label="anchor" href="#themes"><i class="fas fa-link"></i></a>
 </h2>
 <p><a href="https://bootswatch.com/3/">Check out different Bootstrap themes</a>. You can use them in the YAML header with <code>theme:</code> followed by default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, or yeti.</p>
 </div>
-<div id="additional-resources-8" class="section level2">
+<div id="additional-resources-9" class="section level2">
 <h2>
-<span class="header-section-number">13.6</span> Additional resources<a class="anchor" aria-label="anchor" href="#additional-resources-8"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.6</span> Additional resources<a class="anchor" aria-label="anchor" href="#additional-resources-9"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><p><a href="https://commonmark.org/help/tutorial/">Interactive tutorial for learning Markdown</a></p></li>
@@ -160,26 +161,26 @@ like so. Leaving a blank line, creates a new paragraph.</p>
 
 
 <div class="chapter-nav">
-<div class="prev"><a href="deseq2-independent-filtering.html"><span class="header-section-number">12</span> {DESeq2}: independent filtering</a></div>
+<div class="prev"><a href="deseq2-independent-filtering.html"><span class="header-section-number">13</span> {DESeq2}: independent filtering</a></div>
 <div class="next"><a href="bash-cheat-sheet.html"><span class="header-section-number">A</span> Bash cheat sheet</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#deseq2-model-fitting"><span class="header-section-number">13</span> {DESeq2}: model fitting</a></li>
-<li><a class="nav-link" href="#slides-12"><span class="header-section-number">13.1</span> Slides</a></li>
-<li><a class="nav-link" href="#learning-outcomes-3"><span class="header-section-number">13.2</span> Learning outcomes</a></li>
+<li><a class="nav-link" href="#deseq2-model-fitting"><span class="header-section-number">14</span> {DESeq2}: model fitting</a></li>
+<li><a class="nav-link" href="#slides-13"><span class="header-section-number">14.1</span> Slides</a></li>
+<li><a class="nav-link" href="#learning-outcomes-3"><span class="header-section-number">14.2</span> Learning outcomes</a></li>
 <li>
-<a class="nav-link" href="#setup-5"><span class="header-section-number">13.3</span> Setup</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#r-packages-3"><span class="header-section-number">13.3.1</span> R packages</a></li></ul>
+<a class="nav-link" href="#setup-5"><span class="header-section-number">14.3</span> Setup</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#r-packages-3"><span class="header-section-number">14.3.1</span> R packages</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#what-is-r-markdown"><span class="header-section-number">13.4</span> What is R Markdown?</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#formatting-for-emphasis"><span class="header-section-number">13.4.1</span> Formatting for emphasis</a></li>
-<li><a class="nav-link" href="#superscript-and-subsript"><span class="header-section-number">13.4.2</span> Superscript and subsript</a></li>
-<li><a class="nav-link" href="#linbreaks-and-paragraphs"><span class="header-section-number">13.4.3</span> Linbreaks and paragraphs</a></li>
+<a class="nav-link" href="#what-is-r-markdown"><span class="header-section-number">14.4</span> What is R Markdown?</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#formatting-for-emphasis"><span class="header-section-number">14.4.1</span> Formatting for emphasis</a></li>
+<li><a class="nav-link" href="#superscript-and-subsript"><span class="header-section-number">14.4.2</span> Superscript and subsript</a></li>
+<li><a class="nav-link" href="#linbreaks-and-paragraphs"><span class="header-section-number">14.4.3</span> Linbreaks and paragraphs</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#themes"><span class="header-section-number">13.5</span> Themes</a></li>
-<li><a class="nav-link" href="#additional-resources-8"><span class="header-section-number">13.6</span> Additional resources</a></li>
+<li><a class="nav-link" href="#themes"><span class="header-section-number">14.5</span> Themes</a></li>
+<li><a class="nav-link" href="#additional-resources-9"><span class="header-section-number">14.6</span> Additional resources</a></li>
 </ul>
 
       <div class="book-extra">
