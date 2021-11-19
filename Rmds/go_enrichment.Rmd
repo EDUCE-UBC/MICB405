@@ -18,9 +18,10 @@ downloadthis::download_file(
 
 ## Setting up for GO term enrichment
 
-Create a new script or R markdown in the same project you used for the DESeq2 tutorial and install + load the required packages. Since these are Bioconductor packages, to install them you must use ```BiocManager::install```.
+Create a new script or R markdown in the same project you used for the DESeq2 tutorial and install and load the required packages. Since these are Bioconductor packages, to install them you must use `BiocManager::install()`.
 
-Load packages necessary
+Load the necessary packages.
+
 ```{r load-packages-2, message = FALSE, warning = FALSE}
 library(AnnotationDbi)
 library(org.Mm.eg.db)
@@ -28,40 +29,47 @@ library(GO.db)
 library(GOstats)
 ```
 
-```{r, echo = FALSE}
+```{r echo = FALSE}
 knitr::load_cache("export-results")
 ```
 
 Copy the significant results from the DESeq2 tutorial into a new file that we will be modifying.
+
 ```{r}
 annotated_significant_results <- significant_res
 ```
 
-The row names of your significant genes from the DEseq2 tutorial are mouse Ensembl Gene IDs. Convert the ensemble gene IDs in the rownames to Entrez IDs as a new column (and add the symbols too!)
-```{r, warning = FALSE}
-annotated_significant_results$symbol <- mapIds(org.Mm.eg.db,
-                                 keys = rownames(annotated_significant_results),
-                                 keytype = "ENSEMBL",
-                                 column = "SYMBOL",
-                                 multiVals = "first")
+The row names of your significant genes from the DEseq2 tutorial are mouse Ensembl Gene IDs. Convert the Ensemble Gene IDs in the rownames to Entrez IDs as a new column (and add the symbols too!).
 
-annotated_significant_results$entrez <- mapIds(org.Mm.eg.db,
-                                 keys = rownames(annotated_significant_results),
-                                 keytype = "ENSEMBL",
-                                 column = "ENTREZID",
-                                 multiVals = "first")
+```{r warning = FALSE}
+annotated_significant_results$symbol <- mapIds(
+  org.Mm.eg.db,
+  keys = rownames(annotated_significant_results),
+  keytype = "ENSEMBL",
+  column = "SYMBOL",
+  multiVals = "first"
+)
+
+annotated_significant_results$entrez <- mapIds(
+  org.Mm.eg.db,
+  keys = rownames(annotated_significant_results),
+  keytype = "ENSEMBL",
+  column = "ENTREZID",
+  multiVals = "first"
+)
 ```
 
 Create a non-redundant list of genes from your enriched list.
-```{r, warning = FALSE}
+```{r warning = FALSE}
 all_genes <- annotated_significant_results %>% 
   as.data.frame() %>% 
   pull(entrez) %>% 
   unique()
 ```
 
-Filter your significant genes by log2foldchange to pull out upregulated genes.
-```{r, warning = FALSE}
+Filter your significant genes by `log2FoldChange` to pull out upregulated genes.
+
+```{r warning = FALSE}
 genes_upregulated <- annotated_significant_results %>% 
   as.data.frame() %>% 
   filter(log2FoldChange > 4) %>% 
@@ -69,7 +77,8 @@ genes_upregulated <- annotated_significant_results %>%
   unique()
 ```
 
-Create GO hyperGTest object from a new GOHyperGParams object that you will create with your upregulated terms and gene IDs, looking in the Biological Process ("BP") ontology.
+Create GO `hyperGTest` object from a new `GOHyperGParams` object that you will create with your upregulated terms and gene IDs, looking in the Biological Process ("BP") ontology.
+
 ```{r}
 go_bp_upregulated <- hyperGTest(new("GOHyperGParams",
                                     geneIds = genes_upregulated,
@@ -82,13 +91,14 @@ go_bp_upregulated <- hyperGTest(new("GOHyperGParams",
 ```
 
 Convert your hyperGTest object into a viewable format, and print the top 10 enriched GO terms.
+
 ```{r}
 go_bp_upregulated %>% summary() %>% head(10)
 ```
 
 ## Additional questions
 
-Now, how could you pull out downregulated Biological Process terms in ```annotated_significant_results```? How about upregulated terms for one of the other gene ontologies?
+Now, how could you pull out downregulated Biological Process terms in `annotated_significant_results`? How about upregulated terms for one of the other gene ontologies?
 
 What is the general pattern of upregulated and downregulated GO terms in the Biological Process ontology?
 
