@@ -198,6 +198,10 @@ significant_res <- subset(res, padj < 0.05)
 write.csv(as.data.frame(significant_res), file = "treat_vs_control_05.csv")
 ```
 
+```{r export-results, echo = FALSE, cache = TRUE}
+significant_res <- subset(res, padj < 0.05)
+```
+
 If you want more information about DESeq2, you can access the package vignette by running:
 
 ```{r vignette, eval = FALSE}
