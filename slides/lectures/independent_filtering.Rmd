@@ -123,7 +123,7 @@ ggplot(aes(x = value, fill = population, colour = population)) +
 
 ---
 
-## Bejamini-Hochberg method
+## Bejamini-Hochberg method `r testable`
 
 Adjust *p*-values by making them larger:
 
