@@ -43,11 +43,13 @@ R Markdown allows you to create reproducible documents containing code. It both 
 
 ### Formatting for emphasis
 
-You get `*`*emphasis*`*` with single asterisk, and `**`**strong emphasis**`**` with two asterisks.
+When you wrap a word or sentence with a single asterisk it gets emphasized, for example, `*emphasis*` becomes *emphasis*. Two asterisks create a strong emphasis, e.g. `**strong emphasis** is interpreted as **strong emphasis**.
 
 ### Superscript and subsript
 
-superscript`^`^2^`^` subscript`~`~2~`~`
+`superscript^2^` superscript^2^
+
+`subscript~2~` subscript~2~
 
 ### Linbreaks and paragraphs
 
@@ -63,5 +65,11 @@ This is a new paragraph.
 ## Additional resources
 
 - [Interactive tutorial for learning Markdown](https://commonmark.org/help/tutorial/)
+
+- [R Markdown---Get started](https://rmarkdown.rstudio.com/lesson-1.html)
+
+- [R Markdown Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rmarkdown.pdf)
+
+- [R Markdown---The definitive guide](https://bookdown.org/yihui/rmarkdown/)
 
 - [Publishing with Netlify Drop](https://app.netlify.com/drop)
